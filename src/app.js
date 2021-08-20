@@ -1,6 +1,5 @@
 import "./styles.css";
 import ContextMenu from "./menu";
-import Timer from "./modules/timer.module";
 import {createArea} from "./utils";
 import {BackgroundModule} from "./modules/background.module";
 import {RandomSound} from "./modules/randomSound.module";
