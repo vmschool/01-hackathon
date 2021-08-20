@@ -1,6 +1,6 @@
 import {Module} from '../core/module'
 
-export class Timer extends Module {
+export class TimerModule extends Module {
 
  trigger() {
 
@@ -14,11 +14,8 @@ export class Timer extends Module {
         timeEl.className = 'timeEl'
         body.append(timeEl)
          
-    
         setInterval(decreaseTime,1000)
             
-         
-        
         function decreaseTime() {
             if (time=== 0){
                 finishTimer()
@@ -37,9 +34,6 @@ export class Timer extends Module {
          function finishTimer(){
           timeEl.parentNode.classList.add('hide')  
          }
-        
-        
-        
     }
     
  }
