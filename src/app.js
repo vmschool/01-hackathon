@@ -2,13 +2,21 @@ import "./styles.css";
 import ContextMenu from "./menu";
 import Timer from "./modules/timer.module";
 import {createArea} from "./utils";
+import {BackgroundModule} from "./modules/background.module";
+import {RandomSound} from "./modules/randomSound.module";
 
 const timerModule = new Timer("timer", "Запустить Таймер");
+const backgroundModule = new BackgroundModule()
+const randomSound = new RandomSound()
+
+
 const contextMenuModule = new ContextMenu('#menu');
 const contextMenu = document.querySelector(".menu");
 createArea();
 
 contextMenuModule.add(timerModule);
+contextMenuModule.add(backgroundModule)
+contextMenuModule.add(randomSound)
 
 document.body.addEventListener("contextmenu", (event) => {
 	contextMenuModule.open(event);
