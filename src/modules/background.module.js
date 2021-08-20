@@ -1,13 +1,16 @@
 import { Module } from "../core/module";
-import { getRandomColor } from "../utils";
+import { getArea } from "../utils";
 
 export class BackgroundModule extends Module {
-	constructor() {
-		super("randomcolor", "Random Color");
-	}
+  constructor() {
+    super("randomColor", "Create Random Background Color");
+  }
 
-	trigger() {
-		const randomColor = getRandomColor();
-		document.body.style.backgroundColor = randomColor;
-	}
+  trigger() {
+    const area = getArea();
+    area.style.backgroundColor = `rgb(${random(0, 256)},${random(
+      0,
+      256
+    )},${random(0, 256)})`;
+  }
 }
