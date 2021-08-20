@@ -1,4 +1,4 @@
-import { Module } from "@/core/module";
+import { Module } from "../core/module";
 import { random } from "../utils";
 
 export class RandomSound extends Module {
@@ -10,7 +10,7 @@ export class RandomSound extends Module {
   ];
 
   constructor() {
-    super("randomsound", "Random Sound");
+    super("randomSound", "generate Random Sound");
   }
 
   trigger() {
