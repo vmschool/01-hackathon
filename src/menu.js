@@ -4,8 +4,9 @@ import { BackgroundModule } from "./modules/background.module";
 export class ContextMenu extends Menu {
   constructor(selector) {
     super(selector);
+    //this.el = document.querySelector(selector);
     this.modules = ["Включить слайдер", "Создать фигуру", "Кастомное сообщение", "Собственный модуль"];
-    this.backgroundModule = new BackgroundModule();
+    this.backgroundModule = new BackgroundModule("background", "Включить слайдер");
   }
 
   close() {
@@ -21,11 +22,12 @@ export class ContextMenu extends Menu {
       newmenu.style.top = e.pageY + "px";
     }
     let newmenu = document.getElementById("menu");
+    //console.log(this.el);
     newmenu.addEventListener("click", (e) => {
       let fn = e.target.id;
       switch (fn) {
         case "0":
-          this.backgroundModule.render();
+          this.backgroundModule.trigger();
           break;
         case "1":
           console.log(this.modules[1]);
@@ -37,13 +39,9 @@ export class ContextMenu extends Menu {
           console.log(this.modules[3]);
           break;
       }
-
-      if (e.target.id === "0") {
-        this.backgroundModule.render();
-      }
     });
   }
-  render() {
+  add() {
     const getMenu = document.querySelector("#menu");
     const getElements = this.modules.map((el, index) => `<li class="menu-item" id='${index}'>${el}</li>`);
     getMenu.insertAdjacentHTML("afterbegin", getElements.join(""));
