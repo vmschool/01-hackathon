@@ -1,3 +1,7 @@
 export function random(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min
+  return Math.round(min - 0.5 + Math.random() * (max - min + 1));
+}
+
+export function textToAttribute(text) {
+  return text.replace(/Module/, '').toLowerCase();
 }

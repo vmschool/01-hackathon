@@ -7,22 +7,24 @@
 }
 
 body {
+    position: relative;
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
     height: 100vh;
     width: 100%;
     padding: 2rem;
-    background-color: #cccccc;
 }
 
 .menu {
     position: fixed;
     z-index: 1000;
-    width: 150px;
-    background: #1b1a1a;
+    padding: 15px 0;
+    background-color: #353b48;
+    border: 1px solid #2f3640;
     border-radius: 5px;
     display: none;
     list-style: none;
+    overflow: hidden;
 }
 
 .menu.open {
@@ -30,14 +32,18 @@ body {
 }
 
 .menu .menu-item {
-    padding: 8px 10px;
-    font-size: 1rem;
-    color: #eee;
+    padding: 5px 25px;
+    font-size: 0.875rem;
+    letter-spacing: 0.05rem;
+    color: #f5f6fa;
     cursor: pointer;
     transition: background-color .2s ease-in;
-    border-radius: inherit;
+}
+
+.menu .menu-item:not(:last-child) {
+    border-bottom: 1px solid #718093;
 }
 
 .menu .menu-item:hover {
-    background: #343434;
+    background-color: #718093;
 }
