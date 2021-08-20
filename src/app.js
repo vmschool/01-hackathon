@@ -1,5 +1,7 @@
 import "./styles.css";
 import ContextMenu from "./menu";
+
+import ClicksModule from "./modules/clicks.module";
 import {createArea} from "./utils";
 import {BackgroundModule} from "./modules/background.module";
 import {RandomSound} from "./modules/randomSound.module";
@@ -12,8 +14,12 @@ const contextMenuModule = new ContextMenu('#menu');
 const contextMenu = document.querySelector(".menu");
 createArea();
 
+
+
+
 contextMenuModule.add(backgroundModule)
 contextMenuModule.add(randomSound)
+
 
 document.body.addEventListener("contextmenu", (event) => {
 	contextMenuModule.open(event);
@@ -33,3 +39,10 @@ contextMenu.addEventListener("click", (event) => {
 
 	clickedModule.trigger();
 });
+
+// init modules
+const clickModule = new ClicksModule('clickModule', 'Counts clicks for 3 seconds');
+
+// add modules to contextMenu
+contextMenuModule.add(clickModule);
+
