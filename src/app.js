@@ -7,7 +7,7 @@ const timerModule = new Timer("timer", "Запустить Таймер");
 const contextMenuModule = new ContextMenu('#menu');
 const contextMenu = document.querySelector(".menu");
 
-contextMenuModule.addModule(timerModule);
+contextMenuModule.add(timerModule);
 
 document.body.addEventListener("contextmenu", (event) => {
 	contextMenuModule.open(event);

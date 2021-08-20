@@ -8,7 +8,7 @@ export default class ContextMenu extends Menu {
 		this.modules = [];
 	}
 
-	addModule(module) {
+	add(module) {
 		this.modules.push(module);
 	}
 
