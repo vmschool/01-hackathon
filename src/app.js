@@ -1,48 +1,34 @@
 import "./styles.css";
 import ContextMenu from "./menu";
+import { ClicksModule } from "./modules/clicks.module";
+import { createArea } from "./utils";
+import { BackgroundModule } from "./modules/background.module";
+import { RandomSound } from "./modules/randomSound.module";
 
-import ClicksModule from "./modules/clicks.module";
-import {createArea} from "./utils";
-import {BackgroundModule} from "./modules/background.module";
-import {RandomSound} from "./modules/randomSound.module";
-
-const backgroundModule = new BackgroundModule()
-const randomSound = new RandomSound()
+// Initialising contextMenu
+const contextMenu = new ContextMenu('#menu');
 
 
-const contextMenuModule = new ContextMenu('#menu');
-const contextMenu = document.querySelector(".menu");
+// creating field area, to generate objects there
 createArea();
 
+const area = document.querySelector('.area');
 
-
-
-contextMenuModule.add(backgroundModule)
-contextMenuModule.add(randomSound)
-
-
-document.body.addEventListener("contextmenu", (event) => {
-	contextMenuModule.open(event);
+// чтобы только на квадрате меню открывалось
+area.addEventListener("contextmenu", (event) => {
+	contextMenu.open(event);
 });
 document.body.addEventListener("click", (event) => {
-	contextMenuModule.close(event);
-});
-
-contextMenu.addEventListener("click", (event) => {
-	const clickedModule = contextMenuModule.modules.reduce(
-		(clickedModule, module) =>
-			module.type === event.target.dataset.type
-				? (clickedModule = module)
-				: clickedModule
-	);
-	if (!clickedModule) return;
-
-	clickedModule.trigger();
+	contextMenu.close(event);
 });
 
 // init modules
-const clickModule = new ClicksModule('clickModule', 'Counts clicks for 3 seconds');
+const clickModule = new ClicksModule('clickModule', 'Counts clicks made in 3 seconds');
+const backgroundModule = new BackgroundModule()
+const randomSound = new RandomSound()
 
 // add modules to contextMenu
-contextMenuModule.add(clickModule);
+contextMenu.add(clickModule);
+contextMenu.add(backgroundModule)
+contextMenu.add(randomSound)
 
