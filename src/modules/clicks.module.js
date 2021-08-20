@@ -1,5 +1,5 @@
 import {Module} from '../core/module'
 
-export class ClicksModule extends Module {
+export default class ClicksModule extends Module {
 
 }
