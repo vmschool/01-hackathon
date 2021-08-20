@@ -11,7 +11,18 @@ body {
   font-family: "Roboto", sans-serif;
   height: 100vh;
   width: 100%;
-  padding: 2rem;
+
+  background: url("https://pixabay.com/get/gdf08f3311b7285aa9662c607f37e9f58e50b8251fd255ea49eca9f61372be51cfdf749b29248797d828f0adad69f02e1f00588d2e19901319e013979a3218d1d_1280.jpg");
+  background-blend-mode: darken;
+  transition: 3s;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .menu {

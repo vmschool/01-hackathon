@@ -1,2 +1,5 @@
 import "./styles.css";
-import "./menu";
+import { ContextMenu } from "./menu";
+
+const menu = new ContextMenu();
+menu.render();
