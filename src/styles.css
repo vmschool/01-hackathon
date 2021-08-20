@@ -8,6 +8,7 @@
 
 body {
     position: relative;
+    z-index: 1;
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
     height: 100vh;
@@ -16,7 +17,7 @@ body {
 }
 
 .menu {
-    position: fixed;
+    position: absolute;
     z-index: 1000;
     padding: 15px 0;
     background-color: #353b48;
@@ -27,7 +28,8 @@ body {
     overflow: hidden;
 }
 
-.menu.open {
+.menu.open,
+.modal-window.open {
     display: block;
 }
 
@@ -50,4 +52,16 @@ body {
 
 .hide {
     display: none;
+}
+
+.modal-window {
+    width: 150px;
+    height: 100px;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3000;
+    box-shadow: 1px 5px 25px rgba(0, 0, 0, 0.5);
 }
