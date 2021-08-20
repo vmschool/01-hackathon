@@ -9,17 +9,15 @@ export default class ContextMenu extends Menu {
 	}
 
 	add(module) {
-		this.modules.push(module);
+		this.el.insertAdjacentHTML('afterbegin', module.toHTML());
+		const elem = this.el.querySelector('.menu-item');
+		elem.addEventListener('click', () => {
+			module.trigger();
+		})
 	}
 
 	open(event) {
 		event.preventDefault();
-		this.el.innerHTML = "";
-
-		this.modules.forEach((module) => {
-			this.el.insertAdjacentHTML("beforeend", module.toHTML());
-		});
-
 		this.el.style.top = `${event.clientY}px`;
 		this.el.style.left = `${event.clientX}px`;
 		this.el.classList.add("open");

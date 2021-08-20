@@ -41,4 +41,12 @@ body {
 
 .menu .menu-item:hover {
 	background: #343434;
+	color: bisque;
+}
+
+.area {
+	position: fixed;
+	width: 600px;
+	height: 600px;
+	background-color: antiquewhite;
 }
