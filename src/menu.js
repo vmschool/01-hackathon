@@ -5,7 +5,6 @@ import { Menu } from "./core/menu";
 export default class ContextMenu extends Menu {
 	constructor(selector) {
 		super(selector);
-		this.menuItem = document.querySelector(".menu");
 		this.modules = [];
 	}
 
@@ -13,20 +12,20 @@ export default class ContextMenu extends Menu {
 		this.modules.push(module);
 	}
 
-	open() {
+	open(event) {
 		event.preventDefault();
-		this.menuItem.innerHTML = "";
+		this.el.innerHTML = "";
 
 		this.modules.forEach((module) => {
-			this.menuItem.insertAdjacentHTML("beforeend", module.toHTML());
+			this.el.insertAdjacentHTML("beforeend", module.toHTML());
 		});
 
-		this.menuItem.style.top = `${event.clientY}px`;
-		this.menuItem.style.left = `${event.clientX}px`;
-		this.menuItem.classList.add("open");
+		this.el.style.top = `${event.clientY}px`;
+		this.el.style.left = `${event.clientX}px`;
+		this.el.classList.add("open");
 	}
 
 	close() {
-		this.menuItem.classList.remove("open");
+		this.el.classList.remove("open");
 	}
 }
