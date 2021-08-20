@@ -1,5 +1,5 @@
 import { Module } from "../core/module";
-import { getArea } from "../utils";
+import { getArea, random } from "../utils";
 
 export class BackgroundModule extends Module {
   constructor() {

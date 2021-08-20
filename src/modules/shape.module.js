@@ -1,5 +1,27 @@
-import {Module} from '../core/module'
+import { Module } from "../core/module";
+import { random } from "../utils";
+import { getArea } from "@/utils";
 
-export default class ShapeModule extends Module {
+export class ShapeModule extends Module {
+  constructor() {
+    super("ShapeModule", "generate random block");
 
+    const randomBlock = document.createElement("div");
+    randomBlock.classList.add("randomBlock");
+    document.body.append(randomBlock);
+  }
+
+  trigger() {
+    const block = document.querySelector(".randomBlock");
+    block.style.width = `${random(0, 500)}px`;
+    block.style.height = `${random(0, 500)}px`;
+    block.style.top = `${random(0, document.body.scrollHeight - 500)}px`;
+    block.style.left = `${random(0, document.body.scrollWidth - 500)}px`;
+    block.style.position = "absolute";
+    block.style.transition = "all 2s ease";
+    block.style.backgroundColor = `rgb(${random(0, 256)},${random(
+      0,
+      256
+    )},${random(0, 256)})`;
+  }
 }

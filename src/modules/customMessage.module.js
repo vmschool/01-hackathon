@@ -1,5 +1,10 @@
-import {Module} from "@/core/module";
+import { Module } from "@/core/module";
 
-export default class customMessage extends Module {
-	
+export default class CustomMessage extends Module {
+  constructor() {
+    super("Custom Message", "generate message block");
+  }
+  trigger() {
+    console.log("object");
+  }
 }
