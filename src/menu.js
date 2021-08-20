@@ -10,7 +10,19 @@ export default class ContextMenu extends Menu {
     super(selector);
     this.#root = document.body;
     this.open();
+    this.modules = {};
+    this.modulesHandler();
   }
+
+  modulesHandler() {
+    this.el.addEventListener('click', this.runTrigger);
+  }
+
+  runTrigger = (event) => {
+    const { target } = event;
+    this.modules[target.dataset.type].trigger();
+  }
+
 
   open() {
     this.#root.addEventListener('contextmenu', (event) => {
@@ -22,6 +34,7 @@ export default class ContextMenu extends Menu {
       this.el.innerHTML = '';
       Object.keys(modules).forEach((module) => {
         const instance = new modules[module](textToAttribute(module), labels[module]);
+        this.modules[textToAttribute(module)] = instance;
         this.add(instance);
       });
     });
@@ -33,11 +46,5 @@ export default class ContextMenu extends Menu {
 
   add(module) {
     this.el.innerHTML += module.toHTML();
-    this.el.addEventListener('click', (event) => {
-      const { target } = event;
-      if (target.dataset.type === module.type) {
-        module.trigger();
-      }
-    });
   }
 }
