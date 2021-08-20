@@ -1,5 +1,5 @@
 import {Module} from '../core/module'
 
-export class ShapeModule extends Module {
+export default class ShapeModule extends Module {
 
 }
