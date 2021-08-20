@@ -48,3 +48,7 @@ body {
     background-color: #718093;
 }
 
+.hide {
+    display: none;
+}
+

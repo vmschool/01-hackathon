@@ -10,7 +10,6 @@ export default class ContextMenu extends Menu {
     super(selector);
     this.#root = document.body;
     this.open();
-    this.modules = [];
   }
 
   open() {
