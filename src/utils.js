@@ -30,6 +30,10 @@ export function createArea() {
   document.body.append(area)
 }
 
+export function getArea() {
+  return document.querySelector('#area');
+}
+
 export function getRandomColor() {
   let hex = [];
   for (let i = 0; i < 3; i++) {
