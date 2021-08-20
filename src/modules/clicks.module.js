@@ -5,13 +5,6 @@ export class ClicksModule extends Module {
     super(type, text)
     this.time_count = time_count
 
-    // document.body.addEventListener('contextmenu', (event) => {
-    //   event.preventDefault()
-
-    //   if (event.target === document.body) {
-    //     this.trigger()
-    //   }
-    // })
   }
 
   trigger() {
