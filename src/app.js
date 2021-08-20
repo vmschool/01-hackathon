@@ -1,11 +1,12 @@
 import "./styles.css";
 import ContextMenu from "./menu";
 import Timer from "./modules/timer.module";
+import {createArea} from "./utils";
 
 const timerModule = new Timer("timer", "Запустить Таймер");
-
 const contextMenuModule = new ContextMenu('#menu');
 const contextMenu = document.querySelector(".menu");
+createArea();
 
 contextMenuModule.add(timerModule);
 
