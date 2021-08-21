@@ -11,6 +11,11 @@ export class ShapeModule extends Module {
     br: [40, 60],
   }
 
+  constructor(type, text) {
+    super(type, text)
+    this.#displayValues.className = `module-${ this.type }`
+  }
+
   createFig = () => {
     const fig = document.createElement("div")
     fig.className = "figure"

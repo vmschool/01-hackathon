@@ -1,6 +1,6 @@
 import { Module } from '../core/module';
-//import { sounds } from '../db/sounds';
 import { random } from '../utils'
+
 import sound1 from '../assets/sounds/death.mp3'
 import sound2 from '../assets/sounds/descent.mp3'
 import sound3 from '../assets/sounds/discord.mp3'
@@ -39,6 +39,11 @@ function getSoundSrc() {
 }
 
 export class SoundModule extends Module {
+  
+  constructor(type, text) {
+    super(type, text)
+    this.#displayValues.className = `module-${ this.type }`
+  }
 
   createSound() {
     //console.log(await sound);
