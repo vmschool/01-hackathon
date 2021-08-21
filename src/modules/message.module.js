@@ -25,7 +25,9 @@ export class MessageModule extends Module {
       left: '5px',
       padding: '10px',
       margin: '10px',
-      color: '#cd3'
+      color: '#cd3',
+      background: '#fff',
+      opacity: '0.8'
     }
   }
   trigger() {
