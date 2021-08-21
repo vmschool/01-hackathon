@@ -29,31 +29,19 @@ const sounds = [
   sound12,
 ];
 
-// import sound from `../assets/sounds/${getSoundSrc()}`
-//console.log(soundFiles);
-
-//import sound from '../assets/sounds/' + getSoundSrc() + '.mp3'
-
 function getSoundSrc() {
   return sounds[random(0, sounds.length - 1)];
 }
 
 export class SoundModule extends Module {
-  constructor(type, text) {
-    super(type, text);
-    this.#displayValues.className = `module-${this.type}`;
-  }
+  //#displayValues
 
-  createSound() {
-    //console.log(await sound);
-    //const audio = await new Audio(sound)
-    //console.log(sound);
-    //setTimeout(() => audio.play(), 500)
-    // audio.play()
-  }
+  /* constructor(type, text) {
+    super(type, text)
+    this.#displayValues.className = `module-${ this.type }`
+  } */
 
   trigger() {
     new Audio(getSoundSrc()).play();
-    //this.createSound()
   }
 }
