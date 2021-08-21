@@ -46,3 +46,20 @@ body {
 .figure.circle{
     border-radius: 50%;
 }
+.btn_stop_audio{
+    width: 100px;
+    height: 100px;
+    background-color: #f3f3f3;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    flex-wrap: wrap;
+    box-shadow: 1px 1px 8px 0px #2876b9;
+    transition: 0.7s;
+}
+.btn_stop_audio:hover{
+    box-shadow: 1px 1px 8px 0px #27a778;
+    background: #fff;
+}
