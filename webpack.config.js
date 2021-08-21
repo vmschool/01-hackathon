@@ -20,7 +20,7 @@ module.exports = (env, argv) => {
         'core-js/stable',
         'regenerator-runtime/runtime',
         './app.js'
-      ],
+      ]
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
@@ -36,7 +36,7 @@ module.exports = (env, argv) => {
     devServer: {
       port: '3000',
       open: true,
-      hot: true,
+      hot: true
     },
     devtool: isDev ? 'source-map' : false,
     plugins: [
@@ -45,25 +45,29 @@ module.exports = (env, argv) => {
       }),
       new MiniCssExtractPlugin({
         filename: filename('css')
-      }),
+      })
     ],
     module: {
       rules: [
         {
           test: /\.css$/i,
-          use: [MiniCssExtractPlugin.loader, "css-loader"],
+          use: [MiniCssExtractPlugin.loader, 'css-loader']
         },
         {
           test: /\.m?js$/,
           exclude: /node_modules/,
           use: {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env']
             }
           }
+        },
+        {
+          test: /\.(ogg|mp3|wav|mpe?g)$/i,
+          use: 'file-loader'
         }
-      ],
+      ]
     }
   }
 }
