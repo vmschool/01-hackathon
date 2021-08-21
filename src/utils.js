@@ -30,9 +30,10 @@ export function createArea() {
   document.body.append(area);
 }
 
-export function createEl(el, text = "", arrClass = []) {
+export function createEl(el, text = "", arrClass = [], data = "") {
   const blockHTML = document.createElement(el);
   blockHTML.textContent = text;
+  blockHTML.setAttribute("data", data);
   blockHTML.classList.add(...arrClass);
   return blockHTML;
 }

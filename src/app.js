@@ -1,11 +1,12 @@
 import "./styles.css";
 import ContextMenu from "./menu";
 import { ClicksModule } from "./modules/clicks.module";
-import { createArea } from "./utils";
+import { createArea, createEl } from "./utils";
 import { BackgroundModule } from "./modules/background.module";
 import { RandomSound } from "./modules/randomSound.module";
 import { ShapeModule } from "./modules/shape.module";
 import CustomMessage from "./modules/customMessage.module";
+import { CreateMusic } from "./modules/createMusic";
 
 // Initialising contextMenu
 const contextMenu = new ContextMenu("#menu");
@@ -32,6 +33,7 @@ const backgroundModule = new BackgroundModule();
 const randomSound = new RandomSound();
 const shapeModule = new ShapeModule();
 const customMessage = new CustomMessage();
+const createMusic = new CreateMusic();
 
 // add modules to contextMenu
 contextMenu.add(clickModule);
@@ -39,3 +41,4 @@ contextMenu.add(backgroundModule);
 contextMenu.add(randomSound);
 contextMenu.add(shapeModule);
 contextMenu.add(customMessage);
+contextMenu.add(createMusic);
