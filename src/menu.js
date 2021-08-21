@@ -12,24 +12,33 @@ export default class ContextMenu extends Menu {
     this.open();
     this.modules = {};
     this.modulesHandler();
+
+    this.#root.addEventListener('click', () => {
+      this.close();
+    });
   }
 
   modulesHandler() {
-    this.el.addEventListener('click', this.runTrigger);
+    this.el.addEventListener('click', this.#runTrigger);
   }
 
-  runTrigger = (event) => {
+  #runTrigger = (event) => {
     const { target } = event;
     this.modules[target.dataset.type].trigger();
-  }
+  };
 
+  #getCoordinates = (event) => {
+    return {
+      x: event.clientX,
+      y: event.clientY,
+      width: this.el.offsetWidth,
+      height: this.el.offsetHeight
+    };
+  };
 
   open() {
     this.#root.addEventListener('contextmenu', (event) => {
       event.preventDefault();
-      this.el.classList.add('open');
-      this.el.style.top = `${ event.clientY }px`;
-      this.el.style.left = `${ event.clientX }px`;
 
       this.el.innerHTML = '';
       Object.keys(modules).forEach((module) => {
@@ -37,6 +46,21 @@ export default class ContextMenu extends Menu {
         this.modules[textToAttribute(module)] = instance;
         this.add(instance);
       });
+      this.el.classList.add('open');
+
+      const { x, y, width, height } = this.#getCoordinates(event);
+
+      if (width + x > this.#root.clientWidth) {
+        this.el.style.left = `${ x - width }px`;
+      } else {
+        this.el.style.left = `${ x }px`;
+      }
+
+      if (height + y > this.#root.clientHeight) {
+        this.el.style.top = `${ y - height }px`;
+      } else {
+        this.el.style.top = `${ y }px`;
+      }
     });
   }
 
