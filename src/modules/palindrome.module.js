@@ -21,6 +21,7 @@ export class IsPalindromeModule extends Module {
 			true: `rgba(11, 156, 49, 0.6)`,
 			false: `rgba(255, 0, 0, 0.4)`,
 		};
+		this.#initiateListener();
 	}
 
 	#createPalindromeMarkup() {
@@ -138,19 +139,21 @@ export class IsPalindromeModule extends Module {
 		this.#titleField.innerHTML = "";
 	}
 
+	#initiateListener() {
+		this.#form.addEventListener("submit", (event) => {
+			event.preventDefault();
+			const inputField = document.querySelector(".palindrome-input");
+			this.#checkInput(inputField.value.toLowerCase());
+			inputField.value = "";
+			this.#titleField.value = "";
+		});
+	}
+
 	trigger() {
 		if (document.querySelector("#palindrome")) return;
 
 		this.#reset();
 		this.#createPalindromeMarkup();
-
-		this.#form.addEventListener("submit", (event) => {
-			event.preventDefault();
-			const inputField = document.querySelector(".palindrome-input");
-			this.#checkInput(inputField.value);
-			inputField.value = "";
-			this.#titleField.value = "";
-		});
 
 		this.#modal.append(this.#titleField, this.#form);
 		this.#area.append(this.#modal);
