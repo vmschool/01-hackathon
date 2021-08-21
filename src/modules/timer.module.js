@@ -110,6 +110,7 @@ export class TimerModule extends Module {
   }
 
   #closeTimer(el){
+    el.innerHTML = ''
     el.remove()
   }
 
