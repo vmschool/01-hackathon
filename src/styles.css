@@ -74,6 +74,7 @@ body {
     font-size: 25px;
     color: #f5f6fa;
     background-color: #718093;
+    border: 1px solid #353b48;
 }
 
 .calculator__input:focus {

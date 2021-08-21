@@ -15,7 +15,7 @@ export class CalculatorModule extends Module {
     this.#input = document.createElement('input');
     this.#input.dataset.type = this.type;
     this.#input.className = 'calculator__input';
-    this.#input.placeholder = 'Enter expression and press Enter';
+    this.#input.placeholder = 'Enter an expression with two values and press Enter';
 
     this.destroy(this.#el, this.type);
   }
