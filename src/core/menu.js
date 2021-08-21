@@ -1,23 +1,23 @@
 export class Menu {
   constructor(selector) {
-    this.el = document.querySelector(selector)
-
-    document.body.addEventListener('click', event => {
+    this.state = 0;
+    this.el = document.querySelector(selector);
+    document.body.addEventListener('click', (event) => {
       if (event.target.offsetParent !== this.el) {
-        this.close()
+        this.close();
       }
-    })
+    });
   }
 
   open() {
-    throw new Error(`"open" method should be implemented in Menu"`)
+    this.el.classList.add('open');
   }
 
   close() {
-    throw new Error(`"close" method should be implemented in Menu"`)
+    this.el.classList.remove('open');
   }
 
   add() {
-    throw new Error(`"add" method should be implemented in Menu"`)
+    throw new Error(`"add" method should be implemented in Menu"`);
   }
 }
