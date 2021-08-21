@@ -58,7 +58,7 @@ export class BackgroundModule extends Module {
     ]
   }
   trigger() {
-    console.log('BackgroundModule')
+    this.changeBody()
   }
   changeBody() {
     return utils.random(1, 2) === 1
