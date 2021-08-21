@@ -4,8 +4,8 @@ import { Module } from "../core/module";
 import { getArea, isPalindrome } from "../utils";
 
 export class IsPalindromeModule extends Module {
-	constructor() {
-		super("isPalindrome", "Given input is a Palindrome?");
+	constructor(type, text) {
+		super(type, text);
 		this.area = getArea();
 		this.inputBlock = document.createElement("div");
 	}
