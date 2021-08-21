@@ -80,3 +80,9 @@ export function createModal(modalId) {
 	modal.append(modalCloseButton);
 	return modal;
 }
+export const randomColorRGB = () =>
+	`rgb(${random(0, 256)},${random(0, 256)},${random(0, 256)})`;
+
+export function getArea() {
+	return document.querySelector("#area");
+}

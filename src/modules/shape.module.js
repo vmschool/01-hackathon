@@ -1,6 +1,5 @@
 import { Module } from "../core/module";
 import { random } from "../utils";
-import { getArea } from "@/utils";
 import { randomColorRGB } from "./../utils";
 
 export class ShapeModule extends Module {
