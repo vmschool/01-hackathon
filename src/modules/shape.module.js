@@ -12,7 +12,6 @@ export class ShapeModule extends Module {
   }
 
   createFig = () => {
-    this.el = document.createElement('div');
 
     const fig = document.createElement('div')
     fig.type = this.type;
@@ -51,9 +50,9 @@ export class ShapeModule extends Module {
     document.querySelector(`.figure`).remove()
   }
 
-  destroy() {
+/*   destroy() {
     this.deleteFig()
-  }
+  } */
 
   trigger() {
     if (document.querySelector(`.figure`)) {
