@@ -53,7 +53,7 @@ body {
     display: none;
 }
 
-/* Calculator */
+/* Calculator Module */
 .module-calculator {
     position: absolute;
     top: 50%;
@@ -102,7 +102,7 @@ body {
 
 /* Shape Module */
 .figure {
-    box-shadow: 1px 3px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 3px 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Timer Module */
