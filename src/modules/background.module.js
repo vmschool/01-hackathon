@@ -75,6 +75,7 @@ export class BackgroundModule extends Module {
     document.body.style.backgroundColor = colorBg
   }
 
+
   changeBodyImg() {
     // меняем на случайную каритнку и растягиваем ее
     const pictNum = utils.random(1, 10)
@@ -83,4 +84,5 @@ export class BackgroundModule extends Module {
     document.body.style.background = `url("${pictUrl}") no-repeat`
     document.body.style.backgroundSize = 'cover'
   }
+
 }
