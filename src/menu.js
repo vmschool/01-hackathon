@@ -33,7 +33,7 @@ export default class ContextMenu extends Menu {
 
       this.el.innerHTML = '';
       Object.keys(modules).forEach((module) => {
-        const instance = new modules[module](textToAttribute(module), labels[module]);
+        const instance = new modules[module](textToAttribute(module), labels[module] || textToAttribute(module));
         this.modules[textToAttribute(module)] = instance;
         this.add(instance);
       });
