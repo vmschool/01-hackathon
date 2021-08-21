@@ -18,12 +18,6 @@ export class ClicksModule extends Module {
   }
 
   #createClickHTML = () => {
-    this.timer = 5;
-    this.totalClicks = 0;
-    this.thisTimerId = null;
-    this.modal = document.createElement("div");
-    this.timerHtml = document.createElement("p");
-    this.totalClickHtml = document.createElement("p");
     this.modal.classList.add("modalForClick");
 
     this.timerHtml.style.fontSize = "600px";
