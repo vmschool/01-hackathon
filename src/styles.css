@@ -84,3 +84,40 @@ body {
 .calculator__input::placeholder {
     color: #91a0b7;
 }
+
+/* Clicks Module */
+.module-clicks {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    padding: 25px;
+    color: #f5f6fa;
+    text-align: center;
+    background-color: #353b48;
+    border-radius: 5px;
+    transform: translate(-50%, -50%);
+    box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Shape Module */
+.figure {
+    box-shadow: 1px 3px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Timer Module */
+.timeEl {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    color: #f5f6fa;
+    border-radius: 50%;
+    background-color: #353b48;
+    box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.3);
+}

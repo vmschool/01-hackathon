@@ -21,7 +21,7 @@ export class ClicksModule extends Module {
     this.#displayValues = document.createElement('div');
     this.#displayValues.dataset.type = this.type;
     this.#displayValues.className = `module-${ this.type }`;
-    this.#displayText = document.createElement('h1');
+    this.#displayText = document.createElement('h2');
 
     this.#container.addEventListener('contextmenu', () => {
       this.close();
@@ -42,7 +42,7 @@ export class ClicksModule extends Module {
 
     setTimeout(() => {
       this.#isTimeUp = true;
-      this.#displayText.textContent =`Время закончилось. Ваш результат: ${this.#count} кликов за ${this.#time / 1000} секунд, из которых ${this.#doubleCount} были двойными кликами.`;
+      this.#displayText.textContent =`Time is over. Result: ${this.#count} clicks in ${this.#time / 1000} seconds, including ${this.#doubleCount} double clicks.`;
     }, ms);
   }
 
@@ -53,19 +53,17 @@ export class ClicksModule extends Module {
   }
 
   getText() {
-    return `Ваш текущий результат: ${this.#count} одиночных кликов, включая ${this.#doubleCount} двойных кликов`;
+    return `Result: ${this.#count} single clicks, including ${this.#doubleCount} double clicks`;
   }
 
   #onClick = () => {
     if (this.#isTimeUp) return;
-    console.log('this.#count:', this.#count);
     this.#count++;
     this.#displayText.textContent = this.getText();
   }
 
   #onDblclick = () => {
     if (this.#isTimeUp) return;
-    console.log('this.#doubleCount:', this.#doubleCount);
     this.#doubleCount++;
     this.#displayText.textContent = this.getText();
   }
