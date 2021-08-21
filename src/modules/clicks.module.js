@@ -12,6 +12,7 @@ export class ClicksModule extends Module {
     this.#countClick = 0
     this.#stateCount = true
     this.time_count = 5000
+
   }
 
   #showClick(event) {
