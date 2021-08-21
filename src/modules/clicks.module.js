@@ -32,7 +32,7 @@ export class ClicksModule extends Module {
     this.#countDown = TIME;
 
     this.#container.addEventListener('contextmenu', () => {
-      this.close();
+      this.#close();
     });
   }
 
@@ -40,7 +40,7 @@ export class ClicksModule extends Module {
   trigger() {
     this.#counterClicks(this.#time);
     this.#render();
-    this.backwardTime();
+    this.#backwardTime();
   }
 
   #counterClicks(ms) {
@@ -78,20 +78,19 @@ export class ClicksModule extends Module {
     this.#displayText.textContent = this.getText();
   }
 
-  close() {
-    this.#displayValues.remove();
-    this.#timeEl.remove();
+  #close() {
+    this.#box.remove();
     clearInterval(this.#timerId);
   }
 
-  backwardTime() {
+  #backwardTime() {
     this.#timeEl.className = 'timeEl';
     this.#box.append(this.#timeEl);
-    this.#timerId = setInterval(this.decreaseTime,10);
+    this.#timerId = setInterval(this.#decreaseTime,10);
   }
 
 
-  decreaseTime = () => {
+  #decreaseTime = () => {
     this.#countDown -= 10;
     let tithe = Math.floor(this.#countDown / 10).toString();
 
@@ -100,15 +99,17 @@ export class ClicksModule extends Module {
         tithe = '0' + tithe;
       }
     }
+
     let sec = tithe.substr(-4, 2);
     let mlSec = tithe.substr(-2, 2);
+
     if (tithe === '0000'){
       clearInterval(this.#timerId);
     }
-    this.setTime(sec, mlSec);
+    this.#setTime(sec, mlSec);
   }
 
-  setTime = (sec, ms) => {
+  #setTime = (sec, ms) => {
     this.#timeEl.textContent = `${sec}:${ms}`
   }
 }
