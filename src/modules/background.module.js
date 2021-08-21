@@ -2,8 +2,8 @@ import { Module } from "../core/module";
 import { randomImages } from "../utils";
 
 export class BackgroundModule extends Module {
-  constructor() {
-    super();
+  constructor(type, text) {
+    super(type, text);
 
     this.word = "nature";
     this.my_key = "22726779-5ea117f2beee7c3a85fd732ea";
@@ -24,9 +24,9 @@ export class BackgroundModule extends Module {
   };
 
   changeImages(pics) {
-    pics.forEach(function (img) {
-      new Image().src = img;
-    });
+    // pics.forEach(function (img) {
+    //   new Image().src = img;
+    // });
 
     setInterval(() => this.setImage(pics), 3000);
   }
@@ -36,8 +36,9 @@ export class BackgroundModule extends Module {
     document.body.style.backgroundImage = `url(${pics[random].largeImageURL})`;
   }
 
-  render() {
+  trigger() {
     // document.body.style.backgroundColor = "red";
     this.sendRequest();
+    this.toHTML();
   }
 }

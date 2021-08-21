@@ -4,6 +4,7 @@ import { BackgroundModule } from "./modules/background.module";
 export class ContextMenu extends Menu {
   constructor(selector) {
     super(selector);
+
     this.modules = [
       // "Включить слайдер",
       // "Создать фигуру",
@@ -12,6 +13,7 @@ export class ContextMenu extends Menu {
     ];
     // this.backgroundModule = new BackgroundModule();
     this.add = this.add.bind(this);
+
   }
 
   close() {
@@ -27,8 +29,10 @@ export class ContextMenu extends Menu {
       newmenu.style.top = e.pageY + "px";
     }
     let newmenu = document.getElementById("menu");
+    //console.log(this.el);
     newmenu.addEventListener("click", (e) => {
       let fn = e.target.id;
+
       this.modules[fn].trigger();
       // switch (fn) {
       //   case "0":
@@ -57,6 +61,8 @@ export class ContextMenu extends Menu {
   }
   render() {
     console.log("module", this.modules);
+
+
     const getMenu = document.querySelector("#menu");
     const getElements = this.modules.map(
       (el, index) => `<li class="menu-item" id='${index}'>${el.text}</li>`
