@@ -56,6 +56,10 @@ export class TimerModule extends Module {
   }
 
   #createTimer(point){
+    if(qel('#tmr')){
+      alert('Таймер уже включен!')
+      return
+    }
     setStyle(this.div, this.styles.div)
     this.div.id = 'tmr'
 
@@ -96,6 +100,7 @@ export class TimerModule extends Module {
       }
       if(t === -5) {
         clearInterval(timeCounter)
+        this.div.innerText = ''
         this.#closeTimer(this.div)
       }
 
