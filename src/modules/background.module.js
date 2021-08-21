@@ -2,8 +2,8 @@ import { Module } from '../core/module';
 import { random } from '../utils';
 
 export class BackgroundModule extends Module {
-  constructor() {
-    super('background-color', 'Поменять текст');
+  constructor(type, text) {
+    super(type, text);
   }
 
   trigger() {
