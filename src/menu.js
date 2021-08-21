@@ -1,32 +1,36 @@
 import { Menu } from "./core/menu";
-import * as settings from "./constants/settings";
 import { menuPosition } from "./utils";
 
 export class ContextMenu extends Menu {
   constructor(selector) {
     super(selector);
-    this.add();
+    this.modules = [];
     document.addEventListener("contextmenu", (event) => {
       event.preventDefault();
       this.open(event);
     });
   }
-
   open(event) {
     menuPosition(event, this.el);
     this.el.classList.add("menu", "open");
+    this.el.addEventListener("click", (event) => {
+      let { target } = event;
+      let datasetModule = target.dataset.type;
+      this.modules.forEach((element) => {
+        if (datasetModule === element.type) {
+          element.trigger();
+        }
+        this.close();
+      });
+    });
   }
 
   close() {
     this.el.classList.remove("open");
   }
 
-  add() {
-    settings.modules.forEach((element) => {
-      let module = document.createElement("li");
-      module.textContent = element;
-      module.classList.add("menu-item");
-      this.el.append(module);
-    });
+  add(module) {
+    this.modules.push(module);
+    this.el.innerHTML += module.toHTML();
   }
 }
