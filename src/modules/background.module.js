@@ -58,14 +58,14 @@ export class BackgroundModule extends Module {
     ]
   }
   trigger() {
-    this.changeBody()
+    this.#changeBody()
   }
-  changeBody() {
+  #changeBody() {
     return utils.random(1, 2) === 1
-      ? this.changeBodyImg()
-      : this.changeBodyColor()
+      ? this.#changeBodyImg()
+      : this.#changeBodyColor()
   }
-  changeBodyColor() {
+  #changeBodyColor() {
     // меняем на случайный цвет
     const color = Math.floor(Math.random() * parseInt('ffffff', 16)).toString(
       16
@@ -75,7 +75,7 @@ export class BackgroundModule extends Module {
     document.body.style.backgroundColor = colorBg
   }
 
-  changeBodyImg() {
+  #changeBodyImg() {
     // меняем на случайную каритнку и растягиваем ее
     const pictNum = utils.random(1, 10)
     const pictUrl = this.pict.find((item) => item.id === pictNum).url
