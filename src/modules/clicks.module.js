@@ -1,5 +1,6 @@
 import { Module } from '../core/module'
-import { cel, qel, setStyle } from '../utils'
+import { cel, qel } from '../utils'
+import '../css/clicks.module.css'
 
 export class ClicksModule extends Module {
   #countClick
@@ -13,13 +14,14 @@ export class ClicksModule extends Module {
     this.time_count = 3000
     this.#countClick = 0
     this.#stateCount = true
-    this.#moduleStyle = []
   }
 
   #showClick(event) {
-    const messageBlock = cel('div')
-    messageBlock.textContent = `Total clicks/dblclicks: ${this.#countClick}`
-    setStyle(messageBlock, this.#moduleStyle)
+    console.log(event.target)
+    const messagePopup = cel('div')
+    messagePopup.textContent = `${event.type}`
+    messagePopup.classList.add('message-popup')
+    document.body.append(messagePopup)
   }
 
   #countClicks(event) {
@@ -31,7 +33,19 @@ export class ClicksModule extends Module {
     }
   }
 
-  #showResult() {}
+  #showResult() {
+    const messageBlock = cel('div')
+    messageBlock.textContent = this.#countClick
+      ? `Total clicks/dblclicks: ${this.#countClick}`
+      : 'no clicks'
+
+    messageBlock.className = 'message-block'
+    document.body.append(messageBlock)
+
+    setTimeout(() => {
+      qel('.message-block').remove()
+    }, 4000)
+  }
 
   trigger() {
     console.log('start')
@@ -41,13 +55,7 @@ export class ClicksModule extends Module {
 
     setTimeout(() => {
       this.#stateCount = false
-
-      console.log('stop')
-      console.log('Total clicks:', this.#countClick)
+      this.#showResult()
     }, this.time_count)
-  }
-
-  toHTML() {
-    return `<li class="menu-item" data-type="${this.type}">${this.text}</li>`
   }
 }
