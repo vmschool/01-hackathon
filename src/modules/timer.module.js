@@ -48,6 +48,6 @@ export class TimerModule extends Module {
     }
 
     const tagModul = document.querySelector('.module')
-    !tagModul ? createTimer() : (tagModul.innerHTML = '')
+    !tagModul ? createTimer() : (tagModul.remove())
   }
 }
