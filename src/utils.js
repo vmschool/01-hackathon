@@ -4,18 +4,29 @@ export const timer = 3;
 
 // functions
 export function random(min, max) {
-  return Math.round(min - 0.5 + Math.random() * (max - min + 1));
+	return Math.round(min - 0.5 + Math.random() * (max - min + 1));
 }
 
 export function counterIncrement() {
-  counter++;
+	counter++;
 }
 
 export function refreshCounter() {
-  counter = -1;
+	counter = -1;
 }
 
 export function addObjectToArea(object) {
+	const area = document.querySelector("#area");
+	area.append(object);
+	setTimeout(() => {
+		object.remove();
+	}, 3000);
+}
+
+export function isPalindrome(str) {
+	if (!str || str.length < 3) return "empty or short string given";
+	return str === str.split("").reverse().join("") ? true : false;
+}
   const area = document.querySelector("#area");
   area.append(object);
   setTimeout(() => {
@@ -44,5 +55,3 @@ export const randomColorRGB = () =>
 export function getArea() {
   return document.querySelector("#area");
 }
-
-// functions
