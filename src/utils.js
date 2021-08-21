@@ -4,7 +4,7 @@ export const timer = 3;
 
 // functions
 export function random(min, max) {
-  return Math.round(min - 0.5 + Math.random() * (max - min + 1))
+  return Math.round(min - 0.5 + Math.random() * (max - min + 1));
 }
 
 export function counterIncrement() {
@@ -16,7 +16,7 @@ export function refreshCounter() {
 }
 
 export function addObjectToArea(object) {
-  const area = document.querySelector('#area');
+  const area = document.querySelector("#area");
   area.append(object);
   setTimeout(() => {
     object.remove();
@@ -24,17 +24,25 @@ export function addObjectToArea(object) {
 }
 
 export function createArea() {
-  const area = document.createElement('div')
-  area.classList.add('area')
-  area.id = 'area'
-  document.body.append(area)
+  const area = document.createElement("div");
+  area.classList.add("area");
+  area.id = "area";
+  document.body.append(area);
 }
+
+export function createEl(el, text = "", arrClass = [], data = "") {
+  const blockHTML = document.createElement(el);
+  blockHTML.textContent = text;
+  blockHTML.setAttribute("data", data);
+  blockHTML.classList.add(...arrClass);
+  return blockHTML;
+}
+
+export const randomColorRGB = () =>
+  `rgb(${random(0, 256)},${random(0, 256)},${random(0, 256)})`;
 
 export function getArea() {
-  return document.querySelector('#area');
+  return document.querySelector("#area");
 }
 
-export function getRandomColor() {
-  return `rgb(${random(0, 256)}, ${random(0, 256)}, ${random(0, 256)})`
-}
-
+// functions
