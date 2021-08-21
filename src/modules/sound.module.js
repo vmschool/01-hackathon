@@ -1,15 +1,18 @@
 import { Module } from '../core/module';
 import { sounds } from '../db/sounds';
 import { random } from '../utils'
+import sound from '../assets/sounds/jump.mp3'
+
+console.log(sound)
 
 export class SoundModule extends Module {
-  getSoundSrc() {
-    const soundName = sounds[random(0, sounds.length - 1)]
-    return `../assets/sounds/${soundName}.mp3`
-  }
+  // getSoundSrc() {
+  //   const soundName = sounds[random(0, sounds.length - 1)]
+  //   return `../assets/sounds/${soundName}.mp3`
+  // }
 
   /* createAudio() {
-    const audio = document.createElement('audio') 
+    const audio = document.createElement('audio')
     audio.src = this.getSoundSrc()
     audio.setAttribute('autoplay', '')
     audio.textContent = 'Тег audio не поддерживается вашим браузером.'
@@ -24,14 +27,14 @@ export class SoundModule extends Module {
   } */
 
   createSound() {
-    const audio = new Audio(this.getSoundSrc()) 
-    console.log(this.getSoundSrc());
-    setTimeout(() => audio.play(), 500)
-    //audio.play()
+    // const audio = new Audio(this.getSoundSrc())
+    // console.log(this.getSoundSrc());
+    // setTimeout(() => audio.play(), 500)
+    // audio.play()
   }
-  
+
   trigger() {
-      this.createSound()
+      new Audio(sound).play()
   }
-} 
+}
 

@@ -62,7 +62,15 @@ module.exports = (env, argv) => {
               presets: ['@babel/preset-env']
             }
           }
-        }
+        },
+        {
+          test: /\.(png|jpe?g|gif|mp3)$/i,
+          use: [
+            {
+              loader: 'file-loader',
+            },
+          ],
+        },
       ],
     }
   }
