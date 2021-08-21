@@ -6,6 +6,7 @@ import {TimerModule} from './modules/timer.module'
 import {SoundModule} from './modules/sound.module'
 import {BackgroundModule} from './modules/background.module'
 import {MessageModule} from './modules/message.module'
+import { ColorsModule } from './modules/colors.module'
 
 const contextMenu = new ContextMenu('#menu')
 
@@ -15,6 +16,7 @@ const timerModule = new TimerModule('timer', 'Таймер отсчета')
 const soundModule = new SoundModule('sound', 'Случайный звук')
 const backgroundModule = new BackgroundModule('background', 'Поменять цвет')
 const messageModule = new MessageModule('message', 'Кастомное сообщение')
+const colorsModule = new ColorsModule('colors', 'Набор случайных цветов')
 
 contextMenu.add(clicksModule)
 contextMenu.add(shapeModule)
@@ -22,3 +24,4 @@ contextMenu.add(timerModule)
 contextMenu.add(soundModule)
 contextMenu.add(backgroundModule)
 contextMenu.add(messageModule)
+contextMenu.add(colorsModule)
