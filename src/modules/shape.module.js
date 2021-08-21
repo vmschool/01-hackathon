@@ -4,8 +4,8 @@ import { getArea } from "@/utils";
 import { randomColorRGB } from "./../utils";
 
 export class ShapeModule extends Module {
-  constructor() {
-    super("ShapeModule", "generate random block");
+  constructor(type, text) {
+    super(type, text);
 
     const randomBlock = document.createElement("div");
     randomBlock.classList.add("randomBlock");

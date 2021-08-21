@@ -41,7 +41,7 @@ export function createEl(el, text = "", arrClass = [], data = "") {
 
 export function isPalindrome(str) {
 	if (!str || str.length < 3) return "empty or short string given";
-	return str === str.split("").reverse().join("") ? true : false;
+	return str === str.split("").reverse().join("");
 }
 
 export function createModal(modalId) {

@@ -10,8 +10,8 @@ export class IsPalindromeModule extends Module {
 	#titleField;
 	#colors;
 
-	constructor() {
-		super("isPalindrome", "Given input is a Palindrome?");
+	constructor(type, text) {
+		super(type, text);
 		this.#area = document.querySelector(".area");
 		this.#modal = createModal("palindrome");
 		this.#form = document.createElement("form");

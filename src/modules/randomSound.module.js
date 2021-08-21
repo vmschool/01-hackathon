@@ -9,8 +9,8 @@ export class RandomSound extends Module {
     "http://ring-nature.com/tones/cat.mp3",
   ];
 
-  constructor() {
-    super("randomSound", "generate Random Sound");
+  constructor(type, text) {
+    super(type, text);
   }
 
   trigger() {
