@@ -1,6 +1,7 @@
 import { Module } from "../core/module";
 import { random } from "../utils";
 import { getArea } from "@/utils";
+import { randomColorRGB } from "./../utils";
 
 export class ShapeModule extends Module {
   constructor() {
@@ -19,9 +20,6 @@ export class ShapeModule extends Module {
     block.style.left = `${random(0, document.body.scrollWidth - 500)}px`;
     block.style.position = "absolute";
     block.style.transition = "all 2s ease";
-    block.style.backgroundColor = `rgb(${random(0, 256)},${random(
-      0,
-      256
-    )},${random(0, 256)})`;
+    block.style.backgroundColor = randomColorRGB();
   }
 }
