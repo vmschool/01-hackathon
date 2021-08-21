@@ -32,7 +32,8 @@ export class TimerModule extends Module {
         }
         
          function finishTimer(){
-          timeEl.parentNode.classList.add('hide')  
+          //timeEl.parentNode.classList.add('hide')  
+          body.remove(timeEl)
          }
     }
     
