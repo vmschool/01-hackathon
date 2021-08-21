@@ -28,6 +28,11 @@ export class ShapeModule extends Module {
     circle.style.boxShadow = `0 0 2px ${color}, 0 0 10px ${color}`;
 
     body.append(circle);
+    let i = 0;
+    setInterval(() => {
+      circle.style.transform = `rotate(${i}deg)`;
+      i++;
+    }, 20);
 
     setTimeout(() => {
       circle.remove();
