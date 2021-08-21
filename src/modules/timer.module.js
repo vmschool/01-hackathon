@@ -100,7 +100,6 @@ export class TimerModule extends Module {
       }
       if(t === -5) {
         clearInterval(timeCounter)
-        this.div.innerText = ''
         this.#closeTimer(this.div)
       }
 
