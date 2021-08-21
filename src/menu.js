@@ -38,8 +38,9 @@ export default class ContextMenu extends Menu {
 
   open() {
     this.#root.addEventListener('contextmenu', (event) => {
-      event.preventDefault();
+      if (!Object.keys(modules).length) return;
 
+      event.preventDefault();
       this.el.innerHTML = '';
       Object.keys(modules).forEach((module) => {
         const instance = new modules[module](textToAttribute(module), labels[module] || textToAttribute(module));
