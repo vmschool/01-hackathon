@@ -35,10 +35,6 @@ export function getArea() {
 }
 
 export function getRandomColor() {
-  return `rgb(${getRandomHex()}, ${getRandomHex()}, ${getRandomHex()})`
-}
-
-function getRandomHex() {
-  return Math.floor(Math.random() * 255);
+  return `rgb(${random(0, 256)}, ${random(0, 256)}, ${random(0, 256)})`
 }
 
