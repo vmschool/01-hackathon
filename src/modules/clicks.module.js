@@ -1,32 +1,36 @@
 import { Module } from '../core/module'
 
 export class ClicksModule extends Module {
-  constructor(type, text, time_count) {
-    super(type, text)
-    this.time_count = time_count
+  #countClick
 
+  #stateCount
+
+  constructor(type, text) {
+    super(type, text)
+    this.time_count = 3000
+    this.#countClick = 0
+    this.#stateCount = true
+  }
+
+  #countClicks(event) {
+    if (this.#stateCount) {
+      this.#countClick += 1
+      console.log('countClick:', this.#countClick, 'event.type:', event.type)
+    }
   }
 
   trigger() {
     console.log('start')
 
-    function countClicks() {
-      countClick += 1
-      console.log('countClick:', countClick)
-    }
-
-    let countClick = 0
-
-    document.body.addEventListener('click', countClicks)
-    document.body.addEventListener('dblclick', countClicks)
+    document.body.addEventListener('click', this.#countClicks.bind(this))
+    document.body.addEventListener('dblclick', this.#countClicks.bind(this))
 
     setTimeout(() => {
-      document.body.removeEventListener('click', countClicks)
-      document.body.removeEventListener('dblclick', countClicks)
-      console.log('stop');
-    }, this.time_count)
+      this.#stateCount = false
 
-    return countClick
+      console.log('stop')
+      console.log('Total clicks:', this.#countClick)
+    }, this.time_count)
   }
 
   toHTML() {
