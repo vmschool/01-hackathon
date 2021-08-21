@@ -47,6 +47,10 @@ export class ShapeModule extends Module {
     el.remove()
   }
 
+  destroy() {
+    this.deleteFig()
+  }
+
   trigger() {
     if (document.querySelector(".figure")) {
       this.deleteFig(document.querySelector(".figure"))
