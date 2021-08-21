@@ -21,6 +21,7 @@ export class IsPalindromeModule extends Module {
 			true: `rgba(11, 156, 49, 0.6)`,
 			false: `rgba(255, 0, 0, 0.4)`,
 		};
+		this.#initiateListener();
 	}
 
 	#createPalindromeMarkup() {
@@ -87,13 +88,13 @@ export class IsPalindromeModule extends Module {
 			case true: {
 				this.#changeBackgroundColorAndTitle(
 					this.#colors.true,
-					"Это палиндром!",
+					"Yes! Palindrome!",
 					10
 				);
 				setTimeout(() => {
 					this.#changeBackgroundColorAndTitle(
 						this.#colors.default,
-						"Является ли строка палиндромом?",
+						"Given input is a Palindrome?",
 						0
 					);
 				}, 1500);
@@ -102,13 +103,13 @@ export class IsPalindromeModule extends Module {
 			case false: {
 				this.#changeBackgroundColorAndTitle(
 					this.#colors.false,
-					"Не палиндром!",
+					"No! It's not.",
 					10
 				);
 				setTimeout(() => {
 					this.#changeBackgroundColorAndTitle(
 						this.#colors.default,
-						"Является ли строка палиндромом?",
+						"Given input is a Palindrome?",
 						0
 					);
 				}, 1500);
@@ -117,13 +118,13 @@ export class IsPalindromeModule extends Module {
 			case "empty or short string given": {
 				this.#changeBackgroundColorAndTitle(
 					this.#colors.default,
-					"Введите слово длинее 3-х символов.",
+					"Please, enter valid input",
 					0
 				);
 				setTimeout(() => {
 					this.#changeBackgroundColorAndTitle(
 						this.#colors.default,
-						"Является ли строка палиндромом?",
+						"Given input is a Palindrome?",
 						0
 					);
 				}, 1500);
@@ -138,19 +139,21 @@ export class IsPalindromeModule extends Module {
 		this.#titleField.innerHTML = "";
 	}
 
+	#initiateListener() {
+		this.#form.addEventListener("submit", (event) => {
+			event.preventDefault();
+			const inputField = document.querySelector(".palindrome-input");
+			this.#checkInput(inputField.value.toLowerCase());
+			inputField.value = "";
+			this.#titleField.value = "";
+		});
+	}
+
 	trigger() {
 		if (document.querySelector("#palindrome")) return;
 
 		this.#reset();
 		this.#createPalindromeMarkup();
-
-		this.#form.addEventListener("submit", (event) => {
-			event.preventDefault();
-			const inputField = document.querySelector(".palindrome-input");
-			this.#checkInput(inputField.value);
-			inputField.value = "";
-			this.#titleField.value = "";
-		});
 
 		this.#modal.append(this.#titleField, this.#form);
 		this.#area.append(this.#modal);
