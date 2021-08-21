@@ -39,10 +39,11 @@ function getSoundSrc() {
 }
 
 export class SoundModule extends Module {
-  
+  //#displayValues
+
   constructor(type, text) {
     super(type, text)
-    this.#displayValues.className = `module-${ this.type }`
+    //this.#displayValues.className = `module-${ this.type }`
   }
 
   createSound() {
