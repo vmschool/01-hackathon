@@ -25,7 +25,9 @@ export class SoundModule extends Module {
 
   createSound() {
     const audio = new Audio(this.getSoundSrc()) 
-    audio.play()
+    console.log(this.getSoundSrc());
+    setTimeout(() => audio.play(), 500)
+    //audio.play()
   }
   
   trigger() {
