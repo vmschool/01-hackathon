@@ -53,12 +53,33 @@ body {
     display: none;
 }
 
+/* Calculator */
 .module-calculator {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 80%;
-    height: 50px;
-    background-color: red;
+    height: 55px;
+    padding: 3px;
+    background-color: #353b48;
+    border-radius: 5px;
+    box-shadow: 1px 3px 15px rgba(0, 0, 0, 0.5);
+}
+
+.calculator__input {
+    width: 90%;
+    height: 100%;
+    padding-left: 10px;
+    font-size: 25px;
+    color: #f5f6fa;
+    background-color: #718093;
+}
+
+.calculator__input:focus {
+    outline: none;
+}
+
+.calculator__input::placeholder {
+    color: #91a0b7;
 }

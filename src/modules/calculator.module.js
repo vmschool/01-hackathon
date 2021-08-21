@@ -16,12 +16,20 @@ export class CalculatorModule extends Module {
         this.close();
       }
     });
+
+    this.#root.addEventListener('contextmenu', (event) => {
+      this.close();
+    });
   }
 
 
   trigger() {
-    console.log('test');
+    const input = document.createElement('input');
+    input.className = 'calculator__input';
+    input.placeholder = 'Enter something...';
+    this.#el.append(input);
     this.#root.append(this.#el);
+    input.focus();
   }
 
   close() {
