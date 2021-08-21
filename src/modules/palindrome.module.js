@@ -88,13 +88,13 @@ export class IsPalindromeModule extends Module {
 			case true: {
 				this.#changeBackgroundColorAndTitle(
 					this.#colors.true,
-					"Это палиндром!",
+					"Yes! Palindrome!",
 					10
 				);
 				setTimeout(() => {
 					this.#changeBackgroundColorAndTitle(
 						this.#colors.default,
-						"Является ли строка палиндромом?",
+						"Given input is a Palindrome?",
 						0
 					);
 				}, 1500);
@@ -103,13 +103,13 @@ export class IsPalindromeModule extends Module {
 			case false: {
 				this.#changeBackgroundColorAndTitle(
 					this.#colors.false,
-					"Не палиндром!",
+					"No! It's not.",
 					10
 				);
 				setTimeout(() => {
 					this.#changeBackgroundColorAndTitle(
 						this.#colors.default,
-						"Является ли строка палиндромом?",
+						"Given input is a Palindrome?",
 						0
 					);
 				}, 1500);
@@ -118,13 +118,13 @@ export class IsPalindromeModule extends Module {
 			case "empty or short string given": {
 				this.#changeBackgroundColorAndTitle(
 					this.#colors.default,
-					"Введите слово длинее 3-х символов.",
+					"Please, enter valid input",
 					0
 				);
 				setTimeout(() => {
 					this.#changeBackgroundColorAndTitle(
 						this.#colors.default,
-						"Является ли строка палиндромом?",
+						"Given input is a Palindrome?",
 						0
 					);
 				}, 1500);
