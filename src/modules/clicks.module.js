@@ -14,13 +14,11 @@ export class ClicksModule extends Module {
     body.addEventListener('click', () => {
       if(start) {
         clicksCount++
-        console.log(clicksCount)
       } else {
         start = true
         clicksCount = 0
         setTimeout(() => {
           if (start) {
-            console.log(clicksCount)
             start = false;
             alert(clicksCount);
           }
