@@ -17,15 +17,7 @@ export class CalculatorModule extends Module {
     this.#input.className = 'calculator__input';
     this.#input.placeholder = 'Enter expression and press Enter';
 
-    this.#root.addEventListener('click', (event) => {
-      if (event.target.dataset.type !== 'calculator') {
-        this.close();
-      }
-    });
-
-    this.#root.addEventListener('contextmenu', (event) => {
-      this.close();
-    });
+    this.destroy(this.#el, this.type);
   }
 
 

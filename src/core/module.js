@@ -17,4 +17,16 @@ export class Module {
   toHTML() {
     return `<li class="menu-item" data-type="${this.type}">${this.text}</li>`
   }
+
+  destroy(module, type) {
+    document.body.addEventListener('click', (event) => {
+      if (event.target.dataset.type !== type) {
+        module.remove();
+      }
+    });
+
+    document.body.addEventListener('contextmenu', (event) => {
+      module.remove();
+    });
+  }
 }
