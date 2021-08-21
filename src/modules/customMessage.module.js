@@ -4,8 +4,7 @@ import * as utils from "../utils";
 export default class CustomMessage extends Module {
   constructor(type, text) {
     super(type, text);
-    this.timer = utils.timer;
-}
+  }
 
   #delteQuote() {
     if (document.querySelector(".quote")) {

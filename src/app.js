@@ -8,6 +8,7 @@ import { IsPalindromeModule } from "./modules/palindrome.module";
 import { ShapeModule } from "./modules/shape.module";
 import CustomMessage from "./modules/customMessage.module";
 import { CreateMusic } from "./modules/createMusic";
+import Timer from "./modules/timer.module";
 // Initialising contextMenu
 const contextMenu = new ContextMenu("#menu");
 
@@ -33,9 +34,9 @@ const backgroundModule = new BackgroundModule();
 const randomSound = new RandomSound();
 const isPalindrome = new IsPalindromeModule();
 const shapeModule = new ShapeModule();
-const customMessage = new CustomMessage("мustomMessage", "Get a quote");
+const customMessage = new CustomMessage("customMessage", "Get a quote");
 const createMusic = new CreateMusic();
-
+const timer = new Timer("timer", "Start Timer");
 // add modules to contextMenu
 contextMenu.add(clickModule);
 contextMenu.add(backgroundModule);
@@ -44,3 +45,4 @@ contextMenu.add(isPalindrome);
 contextMenu.add(shapeModule);
 contextMenu.add(customMessage);
 contextMenu.add(createMusic);
+contextMenu.add(timer);
