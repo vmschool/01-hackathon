@@ -37,6 +37,9 @@ export function createEl(el, text = "", arrClass = []) {
   return blockHTML;
 }
 
+export const randomColorRGB = () =>
+  `rgb(${random(0, 256)},${random(0, 256)},${random(0, 256)})`;
+
 export function getArea() {
   return document.querySelector("#area");
 }

@@ -1,5 +1,6 @@
 import { Module } from "../core/module";
 import { getArea, random } from "../utils";
+import { randomColorRGB } from "./../utils";
 
 export class BackgroundModule extends Module {
   constructor() {
@@ -8,9 +9,7 @@ export class BackgroundModule extends Module {
 
   trigger() {
     const area = getArea();
-    area.style.backgroundColor = `rgb(${random(0, 256)},${random(
-      0,
-      256
-    )},${random(0, 256)})`;
+    area.style.backgroundColor = randomColorRGB();
+    area.style.transition = `background-color 500ms ease`;
   }
 }
