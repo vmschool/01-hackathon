@@ -2,10 +2,28 @@ import { Module } from "../core/module";
 
 export class MessageModule extends Module {
   constructor() {
-    super("custom message", text);
+    super("custom message", 'Кастомное сообщение');
   }
 
   trigger() {
+
+    const currentMenuItemHTML = document.querySelector(`[type="${this.type}"]`)
+    currentMenuItemHTML.addEventListener('click', () => {
+      const { target } = event
+      if (target) {
+        let intervalCreator1 = createMessageByInterval();
+
+        document.addEventListener("keydown", (event) => {
+          const { key } = event;
+          if (key === "Escape") {
+            clearInterval(intervalCreator1);
+          } else if (key === "Enter") {
+            intervalCreator1 = createMessageByInterval();
+          }
+        });
+      }
+    })
+
     COMMENTS_URL = "https://jsonplaceholder.typicode.com/comments";
 
     const messageContainer = document.createElement("div");
@@ -39,15 +57,6 @@ export class MessageModule extends Module {
       return creator;
     }
 
-    let intervalCreator1 = createMessageByInterval();
 
-    document.addEventListener("keydown", (event) => {
-      const { key } = event;
-      if (key === "Escape") {
-        clearInterval(intervalCreator1);
-      } else if (key === "Enter") {
-        intervalCreator1 = createMessageByInterval();
-      }
-    });
   }
 }

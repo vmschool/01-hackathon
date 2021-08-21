@@ -2,7 +2,7 @@ import { Module } from "../core/module";
 
 export class ClicksModule extends Module {
   constructor() {
-    super("click analytics", text);
+    super('click analytics', 'Аналитика кликов');
   }
 
   trigger() {
@@ -23,6 +23,6 @@ export class ClicksModule extends Module {
       
     }, currentTimeout);
 
-    return clicksCounter;
+    return clicksAmountElement;
   }
 }
