@@ -10,24 +10,11 @@ export class Menu {
   }
 
   open() {
-    const menu = document.querySelector('#menu')
-    document.addEventListener('contextmenu', function (e) {
-      menu.style.display = 'block'
-      menu.style.position = 'absolute'
-      menu.style.top = `${e.pageY}px`
-      menu.style.left = `${e.pageX}px`
-      e.preventDefault()
-    })
+    throw new Error(`"open" method should be implemented in Menu"`)
   }
 
   close() {
-    const menu = document.querySelector('#menu')
-    document.addEventListener('click', (e) => {
-      e.button !== 2 ? (menu.style.display = 'none') : false
-    })
-    menu.addEventListener('click', (e) => {
-      e.stopPropagation()
-    })
+    throw new Error(`"close" method should be implemented in Menu"`)
   }
 
   add() {
