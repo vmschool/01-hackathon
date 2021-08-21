@@ -6,12 +6,6 @@ export default class CustomMessage extends Module {
     super(type, text);
   }
 
-  #delteQuote() {
-    if (document.querySelector(".quote")) {
-      document.querySelector(".quote").remove();
-    }
-  }
-
   async #getQuote() {
     const url = `https://favqs.com/api/qotd`;
     const responsJSON = await fetch(url);
@@ -20,12 +14,11 @@ export default class CustomMessage extends Module {
   }
 
   async #createQuote() {
-    // this.#delteQuote();
-    const area = document.querySelector("#area");
-    const wrapper = utils.createModal("qoute");
+    const area = utils.getArea();
+    const wrapper = utils.createModal("quote");
+    wrapper.classList.add("quote");
     area.append(wrapper);
     const messageText = document.createElement("span");
-    messageText.classList.add("quote");
     messageText.textContent = await this.#getQuote();
     wrapper.append(messageText);
     return wrapper;
