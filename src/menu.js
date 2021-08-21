@@ -1,4 +1,8 @@
 import { Menu } from './core/menu'
+import { TimerModule } from './modules/timer.module'
+import { BackgroundModule } from './modules/background.module'
+import { ShapeModule } from './modules/shape.module'
+import { Sound } from './modules/sound.module'
 
 export class ContextMenu extends Menu {
   open() {
@@ -17,8 +21,33 @@ export class ContextMenu extends Menu {
     document.addEventListener('click', (e) => {
       e.button !== 2 ? (menu.style.display = 'none') : false
     })
+  }
+
+  add() {
+    const menu = document.querySelector('#menu')
+
+    // Добавление в меню
+
+    const timerModule = new TimerModule()
+    menu.insertAdjacentHTML('afterbegin', timerModule.toHTML())
+
+    const backgroundModule = new BackgroundModule()
+    menu.insertAdjacentHTML('beforeend', backgroundModule.toHTML())
+
+    const shapeModule = new ShapeModule()
+    menu.insertAdjacentHTML('beforeend', shapeModule.toHTML())
+
+    const sound = new Sound()
+    menu.insertAdjacentHTML('beforeend', sound.toHTML())
+
+    // Запуск модуля
+
     menu.addEventListener('click', (e) => {
-      e.stopPropagation()
+      let target = e.target
+      target.dataset.type === 'timer' ? timerModule.trigger() : false
+      target.dataset.type === 'background' ? backgroundModule.trigger() : false
+      target.dataset.type === 'shape' ? shapeModule.trigger() : false
+      target.dataset.type === 'audio' ? sound.trigger() : false
     })
   }
 }

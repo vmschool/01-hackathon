@@ -1,9 +1,9 @@
 import { Module } from "../core/module";
-import { random } from "../units";
+import { random } from "../utils";
 
 export class ShapeModule extends Module {
   constructor() {
-    super("shape", "Случайный фигура");
+    super("shape", "Случайная фигура");
   }
 
   trigger() {

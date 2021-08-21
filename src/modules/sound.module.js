@@ -1,4 +1,4 @@
-import { random } from "../units";
+import { random } from "../utils";
 import { Module } from "../core/module";
 
 const sounds = [
