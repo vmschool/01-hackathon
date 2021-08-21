@@ -4,50 +4,54 @@ export const timer = 3;
 
 // functions
 export function random(min, max) {
-  return Math.round(min - 0.5 + Math.random() * (max - min + 1))
+	return Math.round(min - 0.5 + Math.random() * (max - min + 1));
 }
 
 export function counterIncrement() {
-  counter++;
+	counter++;
 }
 
 export function refreshCounter() {
-  counter = -1;
+	counter = -1;
 }
 
 export function addObjectToArea(object) {
-  const area = document.querySelector('#area');
-  area.append(object);
-  setTimeout(() => {
-    object.remove();
-  }, 3000);
+	const area = document.querySelector("#area");
+	area.append(object);
+	setTimeout(() => {
+		object.remove();
+	}, 3000);
 }
 
 export function createArea() {
-  const area = document.createElement('div')
-  area.classList.add('area')
-  area.id = 'area'
-  document.body.append(area)
+	const area = document.createElement("div");
+	area.classList.add("area");
+	area.id = "area";
+	document.body.append(area);
 }
 
 export function getArea() {
-  return document.querySelector('#area');
+	return document.querySelector("#area");
 }
 
 export function getRandomColor() {
-  let hex = [];
-  for (let i = 0; i < 3; i++) {
-    let r = getRandomHex().toString(16);
-    if (r < 10) {
-      r = "0" + r;
-    }
-    hex.push(r);
-  }
-  const r = "#" + hex.join("");
-  return r;
+	let hex = [];
+	for (let i = 0; i < 3; i++) {
+		let r = getRandomHex().toString(16);
+		if (r < 10) {
+			r = "0" + r;
+		}
+		hex.push(r);
+	}
+	const r = "#" + hex.join("");
+	return r;
 }
 
 function getRandomHex() {
-  return Math.floor(Math.random() * 255);
+	return Math.floor(Math.random() * 255);
 }
 
+export function isPalindrome(str) {
+	if (!str || str.length < 3) return "empty or short string given";
+	return str === str.split("").reverse().join("") ? true : false;
+}

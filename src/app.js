@@ -4,15 +4,15 @@ import { ClicksModule } from "./modules/clicks.module";
 import { createArea } from "./utils";
 import { BackgroundModule } from "./modules/background.module";
 import { RandomSound } from "./modules/randomSound.module";
+import { IsPalindromeModule } from "./modules/palindrome.module";
 
 // Initialising contextMenu
-const contextMenu = new ContextMenu('#menu');
-
+const contextMenu = new ContextMenu("#menu");
 
 // creating field area, to generate objects there
 createArea();
 
-const area = document.querySelector('.area');
+const area = document.querySelector(".area");
 
 // чтобы только на квадрате меню открывалось
 area.addEventListener("contextmenu", (event) => {
@@ -23,12 +23,16 @@ document.body.addEventListener("click", (event) => {
 });
 
 // init modules
-const clickModule = new ClicksModule('clickModule', 'Counts clicks made in 3 seconds');
-const backgroundModule = new BackgroundModule()
-const randomSound = new RandomSound()
+const clickModule = new ClicksModule(
+	"clickModule",
+	"Counts clicks made in 3 seconds"
+);
+const backgroundModule = new BackgroundModule();
+const randomSound = new RandomSound();
+const isPalindrome = new IsPalindromeModule();
 
 // add modules to contextMenu
 contextMenu.add(clickModule);
-contextMenu.add(backgroundModule)
-contextMenu.add(randomSound)
-
+contextMenu.add(backgroundModule);
+contextMenu.add(randomSound);
+contextMenu.add(isPalindrome);
