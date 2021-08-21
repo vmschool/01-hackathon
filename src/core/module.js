@@ -11,7 +11,9 @@ export class Module {
   }
 
   trigger() {
-    throw new Error(`Trigger method should be implemented in module "${this.type}"`)
+    throw new Error(
+      `Trigger method should be implemented in module "${this.type}"`
+    )
   }
 
   toHTML() {
