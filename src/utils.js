@@ -31,25 +31,12 @@ export function createArea() {
 	document.body.append(area);
 }
 
-export function getArea() {
-	return document.querySelector("#area");
-}
-
-export function getRandomColor() {
-	let hex = [];
-	for (let i = 0; i < 3; i++) {
-		let r = getRandomHex().toString(16);
-		if (r < 10) {
-			r = "0" + r;
-		}
-		hex.push(r);
-	}
-	const r = "#" + hex.join("");
-	return r;
-}
-
-function getRandomHex() {
-	return Math.floor(Math.random() * 255);
+export function createEl(el, text = "", arrClass = [], data = "") {
+	const blockHTML = document.createElement(el);
+	blockHTML.textContent = text;
+	blockHTML.setAttribute("data", data);
+	blockHTML.classList.add(...arrClass);
+	return blockHTML;
 }
 
 export function isPalindrome(str) {

@@ -12,7 +12,7 @@ export class IsPalindromeModule extends Module {
 
 	constructor() {
 		super("isPalindrome", "Given input is a Palindrome?");
-		this.#area = getArea();
+		this.#area = document.querySelector(".area");
 		this.#modal = createModal("palindrome");
 		this.#form = document.createElement("form");
 		this.#titleField = document.createElement("h1");
