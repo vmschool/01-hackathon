@@ -1,11 +1,13 @@
 import "./styles.css";
 import ContextMenu from "./menu";
 import { ClicksModule } from "./modules/clicks.module";
-import { createArea } from "./utils";
+import { createArea, createEl } from "./utils";
 import { BackgroundModule } from "./modules/background.module";
 import { RandomSound } from "./modules/randomSound.module";
 import { IsPalindromeModule } from "./modules/palindrome.module";
-
+import { ShapeModule } from "./modules/shape.module";
+import CustomMessage from "./modules/customMessage.module";
+import { CreateMusic } from "./modules/createMusic";
 // Initialising contextMenu
 const contextMenu = new ContextMenu("#menu");
 
@@ -16,10 +18,10 @@ const area = document.querySelector(".area");
 
 // чтобы только на квадрате меню открывалось
 area.addEventListener("contextmenu", (event) => {
-	contextMenu.open(event);
+  contextMenu.open(event);
 });
 document.body.addEventListener("click", (event) => {
-	contextMenu.close(event);
+  contextMenu.close(event);
 });
 
 // init modules
@@ -30,9 +32,16 @@ const clickModule = new ClicksModule(
 const backgroundModule = new BackgroundModule();
 const randomSound = new RandomSound();
 const isPalindrome = new IsPalindromeModule();
+const shapeModule = new ShapeModule();
+const customMessage = new CustomMessage();
+const createMusic = new CreateMusic();
+
 
 // add modules to contextMenu
 contextMenu.add(clickModule);
 contextMenu.add(backgroundModule);
 contextMenu.add(randomSound);
 contextMenu.add(isPalindrome);
+contextMenu.add(shapeModule);
+contextMenu.add(customMessage);
+contextMenu.add(createMusic);
