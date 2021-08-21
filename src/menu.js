@@ -18,20 +18,36 @@ export class ContextMenu extends Menu {
     }
     
     add() {
-        const menuInnerHTML = modulesArray.map((module) => {
-            const moduleInstance = new module
-            const moduleInnerHTML = moduleInstance.toHTML()
-            // moduleInstance.trigger()
-
-            return moduleInnerHTML
+        const menuItemsInfo = modulesArray.map((module) => {
+            const moduleClassInstance = new module
+            const moduleInnerHTML = moduleClassInstance.toHTML()
+            const moduleDataType = moduleClassInstance.type
+            return {
+                instance: moduleClassInstance,
+                innerHTML: moduleInnerHTML,
+                dataType: moduleDataType,
+            }
         })
 
-        this.el.innerHTML = menuInnerHTML.join('; ')
+        const menuInnerHTML = menuItemsInfo.map((module) => {
+            return module.innerHTML
+        }).join('; ')
+
+        this.el.innerHTML = menuInnerHTML
         document.addEventListener('contextmenu', (event) => {
             event.preventDefault()
             this.open()
+        })
 
-
+        this.el.addEventListener('click', (event) => {
+            const {target} = event
+            menuItemsInfo.forEach(item => {
+                if (target.dataset.type === item.dataType) {
+                    item.instance.trigger()
+                    console.log(`triggered ${item.dataType}`)
+                }
+                
+            });
         })
     }
 }

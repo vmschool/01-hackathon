@@ -6,23 +6,40 @@ export class ClicksModule extends Module {
   }
 
   trigger() {
+    const bodyContainer = document.querySelector('body')
+
+    const clickedArea = document.createElement('div')
+    clickedArea.className = 'clicked-area'
+
+    const getReady = document.createElement('span')
+    getReady.className = 'get-ready'
+    getReady.textContent = 'Кликай по синему прямоугольнику!'
+
+    bodyContainer.append(getReady, clickedArea)
+    console.log('im triggered!')
+
     let clicksCounter = 0;
+
+    
+
     document.addEventListener("click", (event) => {
       const { target } = event;
       if (target) {
         clicksCounter++;
       }
     });
-    const currentTimeout = 20000;
+    const currentTimeout = 5000;
+    
     setTimeout(() => {
       const clicksAmount = `Количество кликов за ${
         currentTimeout / 1000
       } секунд равно ${clicksCounter}`;
+      console.log(clicksAmount)
       const clicksAmountElement = document.createElement("div");
       clicksAmountElement.textContent = clicksAmount;
+      bodyContainer.append(clicksAmountElement)
       
     }, currentTimeout);
 
-    return clicksAmountElement;
   }
 }

@@ -40,3 +40,26 @@ body {
 .menu .menu-item:hover {
     background: #343434;
 }
+
+.clicked-area {
+    width: 50%;
+    height: 50%;
+    background-color:cornflowerblue;
+}
+
+.message-container {
+    position: fixed;
+    right: 50px;
+    bottom: 30px;
+    z-index: 100;
+    border-radius: 10px;
+    background-color: aquamarine;
+    text-align: center;
+    width: 220px;
+    height: 100px;
+    padding: 20px 10px;
+}
+
+.message-container.hidden {
+    display: none;
+}
