@@ -25,13 +25,7 @@ export function addObjectToArea(object) {
 
 export function isPalindrome(str) {
 	if (!str || str.length < 3) return "empty or short string given";
-	return str === str.split("").reverse().join("") ? true : false;
-}
-  const area = document.querySelector("#area");
-  area.append(object);
-  setTimeout(() => {
-    object.remove();
-  }, 3000);
+	return str === str.split("").reverse().join("");
 }
 
 export function createArea() {
