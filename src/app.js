@@ -26,16 +26,15 @@ document.body.addEventListener("click", (event) => {
 
 // init modules
 const clickModule = new ClicksModule(
-	"clickModule",
-	"Counts clicks made in 3 seconds"
+  "clickModule",
+  "Counts clicks made in 3 seconds"
 );
 const backgroundModule = new BackgroundModule();
 const randomSound = new RandomSound();
 const isPalindrome = new IsPalindromeModule();
 const shapeModule = new ShapeModule();
-const customMessage = new CustomMessage();
+const customMessage = new CustomMessage("мustomMessage", "Get a quote");
 const createMusic = new CreateMusic();
-
 
 // add modules to contextMenu
 contextMenu.add(clickModule);
