@@ -44,7 +44,7 @@ export class ShapeModule extends Module {
   }
 
   deleteFig(el) {
-    el.remove()
+    document.querySelector(".figure").remove()
   }
 
   destroy() {
@@ -53,7 +53,7 @@ export class ShapeModule extends Module {
 
   trigger() {
     if (document.querySelector(".figure")) {
-      this.deleteFig(document.querySelector(".figure"))
+      this.deleteFig()
     }
     
     const fig = this.createFig()
