@@ -8,11 +8,11 @@ export class MessageModule extends Module {
       'Привет, как дела!',
       'В 18:00 вынести мусор',
       'Досмотреть уроки по Redux',
-      'Ф',
-      'Д',
-      '123',
-      'ВА',
-      'ОРН'
+      'Не торопись жить, наслаждайся каждым моментом',
+      'Позвонить маме',
+      'Книга Дэвида Хермана "Сила JavaScript"',
+      'Купить Библию',
+      'Выучить ещё six english words'
     ]
 
     this.styles = {
@@ -29,7 +29,10 @@ export class MessageModule extends Module {
     }
   }
   trigger() {
-    if(qel('#msg')) return
+    if(qel('#msg')) {
+      alert('Не торопись :)')
+      return
+    }
     const n = random(0, this.massageList.length - 1)
 
     const div = cel('div')
