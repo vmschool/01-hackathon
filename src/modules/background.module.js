@@ -10,5 +10,6 @@ export class BackgroundModule extends Module {
 		const randomColor = getRandomColor();
 		const area = getArea();
 		area.style.backgroundColor = randomColor;
+		area.style.transition = `background-color 500ms ease`;
 	}
 }
