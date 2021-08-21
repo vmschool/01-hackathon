@@ -7,6 +7,7 @@ export class BackgroundModule extends Module {
     super("randomColor", "Create Random Background Color");
   }
 
+  
   trigger() {
     const area = getArea();
     area.style.backgroundColor = randomColorRGB();
