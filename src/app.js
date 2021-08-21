@@ -7,8 +7,7 @@ import { RandomSound } from "./modules/randomSound.module";
 import { IsPalindromeModule } from "./modules/palindrome.module";
 import { ShapeModule } from "./modules/shape.module";
 import CustomMessage from "./modules/customMessage.module";
-import { CreateMusic } from "./modules/createMusic";
-import Timer from "./modules/timer.module";
+import { CreateMusicModule } from "./modules/createMusic.module";
 // Initialising contextMenu
 const contextMenu = new ContextMenu("#menu");
 
@@ -26,17 +25,14 @@ document.body.addEventListener("click", (event) => {
 });
 
 // init modules
-const clickModule = new ClicksModule(
-  "clickModule",
-  "Counts clicks made in 3 seconds"
-);
-const backgroundModule = new BackgroundModule();
-const randomSound = new RandomSound();
-const isPalindrome = new IsPalindromeModule();
-const shapeModule = new ShapeModule();
+const clickModule = new ClicksModule("clickModule", "Counts clicks made in 3 seconds");
+const backgroundModule = new BackgroundModule('randomColor', 'Create Random Background Color');
+const randomSound = new RandomSound("randomSound", "Generate Random Sound");
+const isPalindrome = new IsPalindromeModule("isPalindrome", "Given input is a Palindrome?");
+const shapeModule = new ShapeModule("ShapeModule", "Generate random block");
 const customMessage = new CustomMessage("customMessage", "Get a quote");
-const createMusic = new CreateMusic();
-const timer = new Timer("timer", "Start Timer");
+const createMusic = new CreateMusicModule("createMusic", "Create Music");
+
 // add modules to contextMenu
 contextMenu.add(clickModule);
 contextMenu.add(backgroundModule);

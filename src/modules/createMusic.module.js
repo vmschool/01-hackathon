@@ -1,9 +1,9 @@
 import { Module } from "../core/module";
 import { random, createEl } from "../utils";
 
-export class CreateMusic extends Module {
-  constructor() {
-    super("createMusic", "Create Music");
+export class CreateMusicModule extends Module {
+  constructor(type, text) {
+    super(type, text);
   }
 
   trigger() {
