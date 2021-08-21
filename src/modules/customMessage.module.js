@@ -20,16 +20,19 @@ export default class CustomMessage extends Module {
   }
 
   async #createQuote() {
-    this.#delteQuote();
-    const area = utils.getArea();
+    // this.#delteQuote();
+    const area = document.querySelector("#area");
+    const wrapper = utils.createModal("qoute");
+    area.append(wrapper);
     const messageText = document.createElement("span");
     messageText.classList.add("quote");
     messageText.textContent = await this.#getQuote();
-    area.append(messageText);
+    wrapper.append(messageText);
+    return wrapper;
   }
 
   async trigger() {
-    await this.#createQuote();
-    setTimeout(this.#delteQuote, 5000);
+    const quote = await this.#createQuote();
+    utils.addObjectToArea(quote);
   }
 }
