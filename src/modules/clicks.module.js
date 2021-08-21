@@ -4,7 +4,6 @@ export class ClicksModule extends Module {
   constructor(type, text, time_count) {
     super(type, text)
     this.time_count = time_count
-
   }
 
   trigger() {
