@@ -3,6 +3,7 @@ import { random } from '../utils';
 
 export class BackgroundModule extends Module {
     constructor() {
+        super('background', 'Изменить фон')
     }
     makeRandomBackground() {
         const background = document.querySelector('body');
