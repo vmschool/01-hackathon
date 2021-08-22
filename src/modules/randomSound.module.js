@@ -1,13 +1,5 @@
 import { Module } from "../core/module";
-
-const sounds = [
-    'https://actions.google.com/sounds/v1/alarms/beep_short.ogg',
-    'https://actions.google.com/sounds/v1/cartoon/tympani_bing.ogg',
-    'https://actions.google.com/sounds/v1/alarms/bugle_tune.ogg',
-    'https://actions.google.com/sounds/v1/animals/buzzing_fly.ogg',
-    'https://actions.google.com/sounds/v1/emergency/emergency_siren_distant.ogg',
-    'https://actions.google.com/sounds/v1/foley/jog_on_solid_wood.ogg'
-]
+import { sounds } from "../utils";
 
 export class RandomSound extends Module {
     constructor(type, text) {
