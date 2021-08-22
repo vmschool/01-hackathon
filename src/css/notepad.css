@@ -1,0 +1,83 @@
+.notepad-wrap {
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  background: rgba(255, 255, 255, 0.8)
+}
+
+.notepad-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+  box-sizing: border-box
+}
+
+.notepad-title {
+  color: #333;
+  font-weight: bold
+}
+
+.notepad-close-btn {
+  width: 14px;
+  height: 14px;
+  color: #fff;
+  background: #fff;
+  border: 1px solid #ff0000;
+  background: #ff0000;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px;
+  line-height: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center
+}
+
+.notepad-footer-btn {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 3px;
+  text-align: center;
+  color: #333;
+  cursor: pointer;
+  font-size: 11px;
+  background: #fff;
+}
+
+.notepad-textarea {
+  width: 230px;
+  min-width: 160px;
+  outline: none;
+  height: 230px;
+  margin: 8px;
+  padding: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px
+}
+
+.notepad-note-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 10px;
+  box-sizing: border-box
+}
+
+.notepad-note-list-p {
+  background: #dce;
+  border-radius: 3px;
+  padding: 3px;
+  text-align: left;
+  width: 220px;
+  height: auto;
+  margin-bottom: 5px
+}

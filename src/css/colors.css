@@ -1,0 +1,57 @@
+.colors-wrap {
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  margin-bottom: 10px
+}
+
+.colors-line {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px
+}
+
+.colors-color {
+  width: 80px;
+  height: 25px;
+  border-radius: 3px
+}
+
+.colors-color-hash {
+  margin-right: 10px;
+  cursor: pointer;
+  position: relative
+}
+
+.colors-pop {
+  position: absolute;
+  padding: 3px;
+  border-radius: 3px;
+  background: #383839;
+  color: #fff;
+  font-size: 11px;
+  z-index: 5000;
+  width: 100px;
+  top: -3px;
+  left: 90px
+}
+
+.colors-close-btn {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: #383839;
+  width: 100%;
+  height: 25px;
+  cursor: pointer;
+}
