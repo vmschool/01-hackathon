@@ -5,8 +5,9 @@ export class ClicksModule extends Module {
   #timeInterval
   #countClick
   #stateCount
+  #timer
 
-  constructor(type = 'clicks', text = 'Считать клики (за 3 секунды)', timeInterval = 3000) {
+  constructor(type = 'clicks', text = 'Считать клики (за 3 секунды)', timeInterval = 4000) {
     if (timeInterval !== 3000) {
       text = `Считать клики (за ${Math.round(timeInterval / 1000)} сек.)`
     }
@@ -15,7 +16,7 @@ export class ClicksModule extends Module {
     this.#timeInterval = timeInterval
 
     document.body.addEventListener('click', this.#countClicks.bind(this))
-    document.body.addEventListener('dblclick', this.#countClicks.bind(this))
+    document.body.addEventListener('dblclick', this.#countDblclick.bind(this))
   }
 
   trigger() {
@@ -45,7 +46,20 @@ export class ClicksModule extends Module {
   }
 
   #countClicks(event) {
-    if (this.#stateCount && (event.target === document.body)) {
+    if (event.detail === 1) {
+      this.#timer = setTimeout(() => {
+        if (this.#stateCount && event.target === document.body) {
+          this.#showClick(event)
+          this.#countClick++
+        }
+      }, 200)
+    }
+  }
+
+  #countDblclick(event) {
+    clearTimeout(this.#timer)
+
+    if (this.#stateCount && event.target === document.body) {
       this.#showClick(event)
       this.#countClick++
     }

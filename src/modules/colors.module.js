@@ -1,133 +1,73 @@
 import {Module} from '../core/module'
-import {cel, qel, setStyle} from '../utils'
+import {random} from '../utils'
+import '../css/colors.css'
 
 export class ColorsModule extends Module {
   constructor(type = 'colors', text = 'Набор случайных цветов') {
     super(type, text)
-    this.styles = {
-      div: {
-        width: '200px',
-        border: '1px solid #ccc',
-        borderRadius: '5px',
-        padding: '5px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: '#fff',
-        marginBottom: '10px'
-      },
-      lineDiv: {
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'row',
-        flex: '1 1 0',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        marginBottom: '5px'
-      },
-      color: {
-        width: '80px',
-        height: '25px',
-        borderRadius: '3px'
-      },
-      colorHash: {
-        marginRight: '10px',
-        cursor: 'pointer',
-        position: 'relative'
-      },
-      pop: {
-        position: 'absolute',
-        padding: '3px',
-        borderRadius: '3px',
-        background: '#383839',
-        color: '#fff',
-        fontSize: '11px',
-        zIndex: '5000',
-        width: '100px',
-        top: '-3px',
-        left: '90px'
-      },
-      closeBtn: {
-        background: '#fff',
-        border: '1px solid #ccc',
-        borderRadius: '3px',
-        color: '#383839',
-        width: '100%',
-        height: '25px',
-        cursor: 'pointer'
-      }
-    }
   }
 
   trigger() {
-    this.#createTable(qel('body'))
-  }
-
-  getRandomColor() {
-    return `#${
-      'xxxxxx'
-        .split('')
-        .map(x => x = Math.floor(Math.random() * 16).toString(16))
-        .join('')
-    }`
-  }
-
-  #createTable(point) {
-
-
-    const div = cel('div')
-    setStyle(div, this.styles.div)
-    div.title = 'Кликните по номеру цвета, чтобы скопировать'
+    const wrap$ = document.createElement('div')
+    wrap$.className = 'colors-wrap'
+    wrap$.title = 'Кликните по номеру цвета, чтобы скопировать'
 
     'colors'.split('').forEach(() => {
-      const c = this.getRandomColor()
+      const randomColor = this.#getRandomColor()
 
-      const line = cel('div')
-      setStyle(line, this.styles.lineDiv)
+      const line$ = document.createElement('div')
+      line$.className = 'colors-line'
 
-      const color = cel('div')
-      setStyle(color, this.styles.color)
-      color.style.background = c
+      const color$ = document.createElement('div')
+      color$.className = 'colors-color'
+      color$.style.background = randomColor
 
-      const colorHash = cel('h3')
-      setStyle(colorHash, this.styles.colorHash)
-      colorHash.style.color = c
-      colorHash.textContent = c
-      colorHash.addEventListener('click', e => {
-        const {target} = e
+      const colorHash$ = document.createElement('h3')
+      colorHash$.className = 'colors-color-hash'
+      colorHash$.style.color = randomColor
+      colorHash$.textContent = randomColor
+      colorHash$.addEventListener('click', event => {
+        const {target} = event
         console.log(target.textContent)
         navigator.clipboard.writeText(target.textContent)
-        const pop = cel('div')
-        setStyle(pop, this.styles.pop)
-        pop.textContent = 'Цвет скопирован'
-        target.append(pop)
+        const pop$ = document.createElement('div')
+        pop$.className = 'colors-pop'
+        pop$.textContent = 'Цвет скопирован'
+        target.append(pop$)
         setTimeout(() => {
-          pop.textContent = ''
-          this.#hide(pop)
+          pop$.textContent = ''
+          this.#hide(pop$)
         }, 700)
       })
 
-
-      line.append(color, colorHash)
-      div.append(line)
+      line$.append(color$, colorHash$)
+      wrap$.append(line$)
     })
 
-    const closeBtn = cel('button')
-    setStyle(closeBtn, this.styles.closeBtn)
-    closeBtn.textContent = 'Закрыть'
-    closeBtn.addEventListener('click', () => {
-      div.innerHTML = ''
-      this.#hide(div)
+    const closeBtn$ = document.createElement('button')
+    closeBtn$.className = 'colors-close-btn'
+    closeBtn$.textContent = 'Закрыть'
+    closeBtn$.addEventListener('click', () => {
+      wrap$.innerHTML = ''
+      this.#hide(wrap$)
     })
 
-    div.append(closeBtn)
+    wrap$.append(closeBtn$)
 
-    point.append(div)
+      console.log('wrap$', wrap$)
+    document.body.append(wrap$)
   }
 
   #hide(el) {
     el.remove()
   }
 
+  #getRandomColor() {
+    return `#${
+      'xxxxxx'
+        .split('')
+        .map(x => x = random(0, 15).toString(16))
+        .join('')
+    }`
+  }
 }

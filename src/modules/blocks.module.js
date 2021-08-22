@@ -32,7 +32,7 @@ export class BlocksModule extends Module {
   #styleFigure(figure$, size, body, color) {
     figure$.style.position = 'absolute'
     figure$.style.top = random(0, body.height - size) + 'px'
-    figure$.style.left = random(0, body.height - size) + 'px'
+    figure$.style.left = random(0, body.width - size) + 'px'
     figure$.style.width = size + 'px'
     figure$.style.height = size + 'px'
     figure$.style.backgroundColor = color

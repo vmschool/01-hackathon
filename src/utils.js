@@ -10,14 +10,6 @@ export function getRandomColor() {
   return `#${r}${g}${b}`
 }
 
-export const cel = (el) => document.createElement(el)
-export const qel = (selector) => document.querySelector(selector)
-export const setStyle = (el, styles) => {
-  for (let st in styles) {
-    el.style[st] = styles[st]
-  }
-}
-
 export function playSound(sound) {
   const audio = new Audio(sound)
   audio.play()
