@@ -9,6 +9,7 @@ import { JokeModule } from "./modules/joke.module";
 import { WeatherModule } from "./modules/weather.module";
 import { FigureModule } from "./modules/figure.module";
 import { BackgroundColorModule } from "./modules/backgroundColor.module";
+import { RandomQuote } from "./modules/randomQuote.module";
 
 const menu = new ContextMenu();
 
@@ -20,6 +21,7 @@ const jokeModule = new JokeModule("getJoke", "Показать шутку");
 const weatherModule = new WeatherModule("getWeather", "Показать погоду");
 const figureModule = new FigureModule("createFigure", "Создать фигуру");
 const backgroundColorModule = new BackgroundColorModule("createBackground", "Создать случайный фон");
+const addRandomQuote = new RandomQuote("randomQuote", "Произвольная фраза");
 
 menu.add(counterClick);
 menu.add(backgroundModule);
@@ -29,5 +31,6 @@ menu.add(jokeModule);
 menu.add(weatherModule);
 menu.add(figureModule);
 menu.add(backgroundColorModule);
+menu.add(addRandomQuote);
 
 menu.render();
