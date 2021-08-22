@@ -27,7 +27,7 @@ export class IsPalindromeModule extends Module {
 	#createPalindromeMarkup() {
 		this.#modal = createModal("palindrome");
 
-		this.#titleField.textContent = `Given input is a Palindrome?`;
+		this.#titleField.textContent = `Given input is a Palindrome? Length is more than 2 characters `;
 		this.#titleField.style.height = "35px";
 		this.#titleField.style.textAlign = "center";
 		this.#titleField.style.fontSize = "15px";
