@@ -15,6 +15,10 @@ export class RandomSound extends Module {
       super(type, text);
     }
 
+    // pauseSound(){
+
+    // }
+
     playRandom(){
         let i = Math.floor(Math.random() * (sounds.length));
         let currentSound = new Audio(sounds[i]);
