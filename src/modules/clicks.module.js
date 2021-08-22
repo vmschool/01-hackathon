@@ -16,7 +16,6 @@ export class ClicksModule extends Module {
     getReady.textContent = 'Кликай по синему прямоугольнику!'
 
     container.append(getReady, clickedArea)
-    console.log('im triggered!')
 
     let clicksCounter = 0;
 
@@ -33,7 +32,6 @@ export class ClicksModule extends Module {
       const clicksAmount = `Количество кликов за ${
         currentTimeout / 1000
       } секунд равно ${clicksCounter}`;
-      console.log(clicksAmount)
       const clicksAmountElement = document.createElement("div");
       clicksAmountElement.textContent = clicksAmount;
       container.append(clicksAmountElement)

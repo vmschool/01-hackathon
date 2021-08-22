@@ -66,6 +66,9 @@ body {
 }
 
 .module-help {
+    position: fixed;
+    right: 65px;
+    bottom: 160px;
     font-size: 10px;
     display: block;
     margin-bottom: 12px;
