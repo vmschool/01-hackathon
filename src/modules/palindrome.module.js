@@ -12,7 +12,7 @@ export class IsPalindromeModule extends Module {
 
 	constructor(type, text) {
 		super(type, text);
-		this.#area = document.querySelector(".area");
+		this.#area = getArea();
 		this.#modal = createModal("palindrome");
 		this.#form = document.createElement("form");
 		this.#titleField = document.createElement("h1");
@@ -83,6 +83,16 @@ export class IsPalindromeModule extends Module {
 		this.#titleField.textContent = `${title}`;
 	}
 
+	#returnToStartWindow() {
+		setTimeout(() => {
+			this.#changeBackgroundColorAndTitle(
+				this.#colors.default,
+				"Given input is a Palindrome?",
+				0
+			);
+		}, 1500);
+	}
+
 	#checkInput(input) {
 		switch (isPalindrome(input)) {
 			case true: {
@@ -91,13 +101,7 @@ export class IsPalindromeModule extends Module {
 					"Yes! Palindrome!",
 					10
 				);
-				setTimeout(() => {
-					this.#changeBackgroundColorAndTitle(
-						this.#colors.default,
-						"Given input is a Palindrome?",
-						0
-					);
-				}, 1500);
+				this.#returnToStartWindow();
 				break;
 			}
 			case false: {
@@ -106,13 +110,7 @@ export class IsPalindromeModule extends Module {
 					"No! It's not.",
 					10
 				);
-				setTimeout(() => {
-					this.#changeBackgroundColorAndTitle(
-						this.#colors.default,
-						"Given input is a Palindrome?",
-						0
-					);
-				}, 1500);
+				this.#returnToStartWindow();
 				break;
 			}
 			case "empty or short string given": {
@@ -121,13 +119,7 @@ export class IsPalindromeModule extends Module {
 					"Please, enter valid input",
 					0
 				);
-				setTimeout(() => {
-					this.#changeBackgroundColorAndTitle(
-						this.#colors.default,
-						"Given input is a Palindrome?",
-						0
-					);
-				}, 1500);
+				this.#returnToStartWindow();
 				break;
 			}
 		}
@@ -151,10 +143,8 @@ export class IsPalindromeModule extends Module {
 
 	trigger() {
 		if (document.querySelector("#palindrome")) return;
-
 		this.#reset();
 		this.#createPalindromeMarkup();
-
 		this.#modal.append(this.#titleField, this.#form);
 		this.#area.append(this.#modal);
 	}

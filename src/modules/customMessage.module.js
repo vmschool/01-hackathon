@@ -4,13 +4,6 @@ import * as utils from "../utils";
 export default class CustomMessage extends Module {
   constructor(type, text) {
     super(type, text);
-    this.timer = utils.timer;
-}
-
-  #delteQuote() {
-    if (document.querySelector(".quote")) {
-      document.querySelector(".quote").remove();
-    }
   }
 
   async #getQuote() {
@@ -21,16 +14,18 @@ export default class CustomMessage extends Module {
   }
 
   async #createQuote() {
-    this.#delteQuote();
     const area = utils.getArea();
+    const wrapper = utils.createModal("quote");
+    wrapper.classList.add("quote");
+    area.append(wrapper);
     const messageText = document.createElement("span");
-    messageText.classList.add("quote");
     messageText.textContent = await this.#getQuote();
-    area.append(messageText);
+    wrapper.append(messageText);
+    return wrapper;
   }
 
   async trigger() {
-    await this.#createQuote();
-    setTimeout(this.#delteQuote, 5000);
+    const quote = await this.#createQuote();
+    utils.addObjectToArea(quote);
   }
 }

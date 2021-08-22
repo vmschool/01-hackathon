@@ -101,3 +101,65 @@ body {
   right: 0px;
   padding: 0px 6px 2px;
 }
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  margin: 30% auto;
+  height: 180px;
+  width: 38%;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  transition: all 350ms ease;
+  position: relative;
+}
+
+.modal_close-button {
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  left: 100%;
+  top: -10%;
+  font-size: 15px;
+  border-style: none;
+  background: none;
+}
+
+.modal.quote {
+  width: 55%;
+  margin: 5% 35%;
+}
+
+.timer-input {
+  padding: 5px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  border-style: none;
+}
+
+.timer_start-button {
+  margin-top: 15px;
+  height: 35px;
+  width: 70px;
+  border-style: none;
+  border-radius: 5px;
+  background: rgba(255, 0, 0, 0.45);
+  color: rgba(255, 255, 255, 0.8);
+  transition: background 150ms ease;
+  cursor: pointer;
+}
+
+.timer-title {
+  height: 35px;
+  text-align: center;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: Lato, sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+}

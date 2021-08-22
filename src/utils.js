@@ -16,12 +16,13 @@ export function refreshCounter() {
   counter = -1;
 }
 
-export function addObjectToArea(object) {
+
+export function addObjectToArea(object, ms = 3000) {
   const area = document.querySelector("#area");
   area.append(object);
   setTimeout(() => {
     object.remove();
-  }, 3000);
+  }, ms);
 }
 
 export function createArea() {
@@ -51,29 +52,12 @@ export function isPalindrome(str) {
 export function createModal(modalId) {
   const modal = document.createElement("div");
   modal.id = `${modalId}`;
-  modal.style.display = "flex";
-  modal.style.flexDirection = "column";
-  modal.style.justifyContent = "center";
-  modal.style.alignItems = "center";
-  modal.style.padding = "15px";
-  modal.style.margin = "30% auto";
-  modal.style.height = "180px";
-  modal.style.width = "38%";
-  modal.style.background = "rgba(0, 0, 0, 0.3)";
-  modal.style.borderRadius = "10px";
-  modal.style.boxShadow = "0px 5px 10px 2px rgba(34, 60, 80, 0.2)";
-  modal.style.transition = "all 350ms ease";
+  modal.classList.add("modal");
 
   const modalCloseButton = document.createElement("button");
+  modalCloseButton.classList.add("modal_close-button");
   modalCloseButton.textContent = `\u2716`;
-  modalCloseButton.style.cursor = "pointer";
-  modalCloseButton.style.display = "block";
-  modalCloseButton.style.position = "absolute";
-  modalCloseButton.style.left = "70%";
-  modalCloseButton.style.top = "30%";
-  modalCloseButton.style.fontSize = "15px";
-  modalCloseButton.style.borderStyle = "none";
-  modalCloseButton.style.background = "none";
+
 
   modalCloseButton.addEventListener("click", () => {
     const modal = document.querySelector(`#${modalId}`);
