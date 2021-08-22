@@ -55,6 +55,7 @@ body {
   display: none;
   position: fixed;
   bottom: 50px;
+  left: 50px;
   justify-content: space-between;
 }
 

@@ -1,5 +1,5 @@
 import { Module } from "../core/module";
-import { createEl, random } from "../utils";
+import { createEl, getArea, random } from "../utils";
 import { randomColorRGB } from "./../utils";
 
 export class ShapeModule extends Module {
@@ -9,14 +9,15 @@ export class ShapeModule extends Module {
 
   #createBlock() {
     const randomBlock = createEl("div", "", ["randomBlock"]);
-    const closeRandomBlock = createEl("button", "", ["closeRandomBlock"]);
+    const closeRandomBlock = createEl("button", "", ["modal_close-button"]);
     if (closeRandomBlock) {
       closeRandomBlock.textContent = "x";
       closeRandomBlock.addEventListener("click", (event) => {
         event.target.parentNode.remove();
       });
       randomBlock.append(closeRandomBlock);
-      document.body.append(randomBlock);
+      const area = getArea();
+      area.append(randomBlock);
       return randomBlock;
     }
   }
