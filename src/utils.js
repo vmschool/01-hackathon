@@ -19,7 +19,6 @@ export const setStyle = (el, styles) => {
   for (let st in styles) {
     el.style[st] = styles[st]
   }
-
 }
 
 /* крайние правые и крайние нижние позиции мыши еще некоррктно вычисляются. нужна поправка */
@@ -48,4 +47,10 @@ export function xyPopup(event) {
   }
 
   return { left: left, top: top }
+}
+
+export function playSound(sound)
+{
+  const audio = new Audio(sound)
+  audio.play()
 }

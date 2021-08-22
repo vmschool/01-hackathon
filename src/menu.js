@@ -16,9 +16,12 @@ export class ContextMenu extends Menu {
 
   open(event) {
     event.preventDefault()
-    this.contextMenu$.style.left = event.pageX + 'px'
-    this.contextMenu$.style.top = event.pageY + 'px'
+
     this.contextMenu$.style.display = 'block'
+    this.contextMenu$.style.left =
+      Math.min(event.pageX, document.body.offsetWidth - this.contextMenu$.offsetWidth - 5) + 'px'
+    this.contextMenu$.style.top =
+      Math.min(event.pageY, document.body.offsetHeight - this.contextMenu$.offsetHeight - 5) + 'px'
   }
 
   close() {

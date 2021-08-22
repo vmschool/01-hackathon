@@ -1,10 +1,10 @@
 import {Module} from '../core/module'
-import {random} from '../utils'
+import {random, playSound} from '../utils'
 
-import soundCow from '../assets/sounds/cow.wav'
-import soundCat from '../assets/sounds/cat.wav'
-import soundDog from '../assets/sounds/dog.wav'
-import soundCuckoo from '../assets/sounds/cuckoo.wav'
+import soundCow from '../assets/cow.mp3'
+import soundCat from '../assets/cat.mp3'
+import soundDog from '../assets/dog.mp3'
+import soundCuckoo from '../assets/cuckoo.mp3'
 
 export class SoundModule extends Module {
   sounds
@@ -15,10 +15,7 @@ export class SoundModule extends Module {
   }
 
   async trigger() {
-    const r = random(0, this.sounds.length - 1)
-    console.log(r)
-    const soundToPlay = this.sounds[r]
-    const audio = new Audio(soundToPlay);
-    await audio.play()
+    const soundToPlay = this.sounds[random(0, this.sounds.length - 1)]
+    playSound(soundToPlay)
   }
 }

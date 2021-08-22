@@ -7,6 +7,7 @@ import {SoundModule} from './modules/sound.module'
 import {BackgroundModule} from './modules/background.module'
 import {MessageModule} from './modules/message.module'
 import { ColorsModule } from './modules/colors.module'
+import {BlocksModule} from './modules/blocks.module'
 
 const contextMenu = new ContextMenu('#menu')
 
@@ -25,3 +26,4 @@ contextMenu.add(soundModule)
 contextMenu.add(backgroundModule)
 contextMenu.add(messageModule)
 contextMenu.add(colorsModule)
+contextMenu.add(new BlocksModule())
