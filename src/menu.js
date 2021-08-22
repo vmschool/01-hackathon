@@ -2,10 +2,10 @@ import { Menu } from './core/menu';
 import { ClicksModule } from './modules/clicks.module';
 import { MessageModule } from './modules/message.module';
 import { ShapeModule } from './modules/shape.module';
-import { SoundModule } from './modules/sound.module';
+// import { SoundModule } from './modules/sound.module';
 import { positionMenu } from './utils';
 
-const modulesArray = [ClicksModule, MessageModule, ShapeModule, SoundModule];
+const modulesArray = [ClicksModule, MessageModule, ShapeModule]; //  , SoundModule
 
 const menuItemsInfo = modulesArray.map((module) => {
   const moduleClassInstance = new module();
@@ -29,6 +29,21 @@ export class ContextMenu extends Menu {
     this.openContextMenu();
     this.openModule();
   }
+
+  // start
+  open() {
+    this.el.classList.add('open');
+  }
+
+  close() {
+    this.el.classList.remove('open');
+  }
+
+  add(menuInnerHTML = '') {
+    this.el.innerHTML = menuInnerHTML;
+  }
+
+  // end
 
   openContextMenu() {
     document.addEventListener('contextmenu', (event) => {

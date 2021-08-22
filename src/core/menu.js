@@ -10,17 +10,14 @@ export class Menu {
   }
 
   open() {
-    this.el.classList.add('open');
-    // throw new Error(`"open" method should be implemented in Menu"`);
+    throw new Error(`"open" method should be implemented in Menu"`);
   }
 
   close() {
-    this.el.classList.remove('open');
-    // throw new Error(`"close" method should be implemented in Menu"`);
+    throw new Error(`"close" method should be implemented in Menu"`);
   }
 
-  add(menuInnerHTML = '') {
-    this.el.innerHTML = menuInnerHTML;
+  add() {
+    throw new Error(`"add" method should be implemented in Menu"`);
   }
-  // throw new Error(`"add" method should be implemented in Menu"`);
 }
