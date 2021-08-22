@@ -2,7 +2,7 @@ import { Module } from "../core/module"
 import { cel, qel, setStyle } from "../utils";
 
 export class ColorsModule extends Module {
-  constructor(type, text) {
+  constructor(type = 'colors', text = 'Набор случайных цветов') {
     super(type, text)
     this.styles = {
         div: {
@@ -64,7 +64,7 @@ export class ColorsModule extends Module {
     this.#createTable(qel('body'))
   }
 
-  getRandomColor(){   
+  getRandomColor(){
     return `#${
         'xxxxxx'
         .split('')
@@ -74,7 +74,7 @@ export class ColorsModule extends Module {
   }
 
   #createTable(point){
-      
+
 
       const div = cel('div')
       setStyle(div, this.styles.div)
@@ -108,7 +108,7 @@ export class ColorsModule extends Module {
               }, 700)
           })
 
-          
+
 
           line.append(color, colorHash)
           div.append(line)
@@ -122,7 +122,7 @@ export class ColorsModule extends Module {
               this.#hide(div)
           })
 
-      div.append(closeBtn)    
+      div.append(closeBtn)
 
       point.append(div)
   }
@@ -130,5 +130,5 @@ export class ColorsModule extends Module {
   #hide(el){
       el.remove()
   }
-  
+
 }

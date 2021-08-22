@@ -5,8 +5,8 @@ export class ShapeModule extends Module {
   #pageWidth
   #pageHeight
 
-  constructor() {
-    super('shape', 'Случайная фигура')
+  constructor(type = 'shape', text = 'Случайная фигура') {
+    super(type, text)
   }
 
   #getSizeWindow() {

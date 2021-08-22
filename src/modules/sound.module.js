@@ -9,7 +9,7 @@ import soundCuckoo from '../assets/cuckoo.mp3'
 export class SoundModule extends Module {
   sounds
 
-  constructor(type, text) {
+  constructor(type = 'sound', text = 'Случайный звук') {
     super(type, text)
     this.sounds = [soundCow, soundCat, soundDog, soundCuckoo]
   }

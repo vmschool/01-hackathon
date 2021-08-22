@@ -2,7 +2,7 @@ import { Module } from "../core/module"
 import { setStyle, cel, qel, random } from "../utils"
 
 export class MessageModule extends Module {
-  constructor(type, text) {
+  constructor(type='message', text= 'Кастомное сообщение') {
     super(type, text)
     this.massageList = [
       'Привет, как дела!',
@@ -43,7 +43,7 @@ export class MessageModule extends Module {
     div.id = 'msg';
 
     const body = qel('body')
-    
+
     body.append(div)
     this.#disapear(3000)
   }

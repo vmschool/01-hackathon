@@ -6,7 +6,7 @@ export class ClicksModule extends Module {
 
   #stateCount
 
-  constructor(type, text) {
+  constructor(type = 'clicks', text = 'Считать клики (за 3 секунды)') {
     super(type, text)
     this.#countClick = 0
     this.#stateCount = false

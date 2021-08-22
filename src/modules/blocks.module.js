@@ -6,8 +6,8 @@ export class BlocksModule extends Module {
   #pageWidth
   #pageHeight
 
-  constructor() {
-    super('blocks', 'Множество прямоугольников')
+  constructor(type = 'blocks', text = 'Множество прямоугольников') {
+    super(type, text)
   }
 
   trigger() {

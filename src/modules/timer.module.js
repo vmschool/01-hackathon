@@ -2,8 +2,8 @@ import {Module} from '../core/module'
 import { cel, qel, setStyle } from '../utils'
 
 export class TimerModule extends Module {
-  constructor(type,text){
-    super(type,text)
+  constructor(type = 'timer', text = 'Таймер отсчета') {
+    super(type, text)
     this.div = cel('div')
     this.styles = {
       div: {
@@ -93,7 +93,7 @@ export class TimerModule extends Module {
       if(t >= 0){
         h3.innerText = `${t-1}`
       }
-      
+
       t -= 1
       if(t === -1) {
         h3.innerText = 'Время вышло'
