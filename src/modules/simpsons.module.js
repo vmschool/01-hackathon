@@ -1,13 +1,20 @@
 import { Module } from "../core/module";
 
 export class SimpsonsModule extends Module {
+  #el;
+  #body;
+
+  constructor(type, text) {
+    super(type, text);
+    this.#body = document.querySelector("body");
+    this.#el = document.createElement("div");
+    this.#el.dataset.type = this.type;
+    this.#el.className = `module-${this.type}`;
+    this.#body.append(this.#el);
+    this.destroy(this.#el, this.type);
+  }
   trigger() {
     const sympsonsUrl = "https://thesimpsonsquoteapi.glitch.me/quotes";
-
-    const body = document.querySelector("body");
-    const dataContainer = document.createElement("div");
-
-    body.append(dataContainer);
 
     const createSympsonQuoteElement = (quote) => {
       const sympsonQuoteElement = document.createElement("div");
@@ -26,9 +33,7 @@ export class SimpsonsModule extends Module {
       sympsonImageElement.src = image;
       return sympsonImageElement;
     };
-    const removeSympson = () => {
-      dataContainer.remove();
-    };
+
     const renderSympsons = async () => {
       try {
         const response = await fetch(sympsonsUrl);
@@ -44,7 +49,7 @@ export class SimpsonsModule extends Module {
               data.push(obj[prop]);
             }
 
-            dataContainer.append(
+            this.#el.append(
               createSympsonQuoteElement(data[0]),
               createSympsonNameElement(data[1]),
               createSympsonImageElement(data[2])
@@ -58,6 +63,5 @@ export class SimpsonsModule extends Module {
     };
 
     renderSympsons();
-    setTimeout(removeSympson, 4000);
   }
 }
