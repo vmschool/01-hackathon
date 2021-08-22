@@ -40,3 +40,10 @@ body {
 .menu .menu-item:hover {
     background: #343434;
 }
+
+.figure{
+    position: absolute;
+}
+.figure.circle{
+    border-radius: 50%;
+}
