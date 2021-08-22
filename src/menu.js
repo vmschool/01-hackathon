@@ -33,7 +33,6 @@ export class ContextMenu extends Menu {
   openContextMenu() {
     document.addEventListener('contextmenu', (event) => {
       event.preventDefault();
-      
       this.add(menuInnerHTML);
       this.open();
       positionMenu(event);
