@@ -56,10 +56,16 @@ body {
     background-color: aquamarine;
     text-align: center;
     width: 220px;
-    height: 100px;
-    padding: 20px 10px;
+    height: 140px;
+    padding: 10px;
 }
 
-.message-container.hidden {
+.hidden {
     display: none;
+}
+
+.module-help {
+    font-size: 10px;
+    display: block;
+    margin-bottom: 12px;
 }
