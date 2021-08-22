@@ -29,7 +29,7 @@ export class CalculatorModule extends Module {
   }
 
   calculateData(symbol, x, y) {
-    let result = 0
+    let result = 0;
     switch (symbol) {
       case '+':
         result = x + y;
@@ -49,7 +49,7 @@ export class CalculatorModule extends Module {
       default:
         result = 0;
     }
-    return result;
+    return Number(result.toFixed(2));
   }
 
   getData() {
@@ -57,9 +57,7 @@ export class CalculatorModule extends Module {
       const { target } = event;
       const symbols = ['+', '-', '/', '*', '**'];
       const currentExpression = target.value;
-      const symbol = currentExpression.match(/\D+/)
-        ? currentExpression.match(/\D+/)[0]
-        : '';
+      const symbol = currentExpression.match(/[^\d\.]+/)[0];
 
       if (!symbols.includes(symbol)) return;
 
@@ -68,12 +66,10 @@ export class CalculatorModule extends Module {
       a = Number(a);
       b = Number(b);
       target.value = this.calculateData(symbol, a, b);
-      console.log(currentValues)
     });
   }
 
   close() {
     this.#el.remove();
   }
-
 }
