@@ -36,7 +36,7 @@ export default class CustomMessage extends Module {
     });
 
     wrapper.addEventListener("mouseout", (event) => {
-      removeItem;
+      setTimeout(() => wrapper.remove(), 2500);
     });
   }
 
