@@ -26,11 +26,23 @@ const menuInnerHTML = menuItemsInfo
 export class ContextMenu extends Menu {
   constructor(selector) {
     super(selector);
-    this.openContextMenu();
-    this.openModule();
+    this.#openContextMenu();
+    this.#openModule();
   }
 
-  openContextMenu() {
+  open() {
+    this.el.classList.add('open');
+  }
+
+  close() {
+    this.el.classList.remove('open');
+  }
+
+  add(menuInnerHTML = '') {
+    this.el.innerHTML = menuInnerHTML;
+  }
+
+  #openContextMenu() {
     document.addEventListener('contextmenu', (event) => {
       event.preventDefault();
       this.add(menuInnerHTML);
@@ -39,7 +51,7 @@ export class ContextMenu extends Menu {
     });
   }
 
-  openModule() {
+  #openModule() {
     this.el.addEventListener('click', (event) => {
       this.close();
       document.querySelector('.container').innerHTML = '';
