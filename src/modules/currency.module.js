@@ -22,6 +22,12 @@ export class СurrencyModule extends Module {
       this.date = money.date;
       this.baseCurrency = money.base;
       this.createModule();
+
+      setTimeout(() => {
+        document.body.addEventListener("click", () => {
+          window.location.reload();
+        });
+      }, 2000);
     } catch (error) {
       console.log("error");
     }

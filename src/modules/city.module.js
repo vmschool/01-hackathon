@@ -65,6 +65,12 @@ export class CityModule extends Module {
       this.description = data.extract;
 
       this.createModule();
+
+      setTimeout(() => {
+        document.body.addEventListener("click", () => {
+          window.location.reload();
+        });
+      }, 2000);
     } catch (error) {
       console.log("error2");
     }

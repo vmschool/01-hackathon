@@ -30,9 +30,7 @@ export class JokeModule extends Module {
       this.id = data.id;
 
       this.sendRequest2();
-    } catch (error) {
-      console.log("error1");
-    }
+    } catch (error) {}
   };
 
   sendRequest2 = async () => {
@@ -48,9 +46,13 @@ export class JokeModule extends Module {
       this.imageUrl = data.hits[random].largeImageURL;
 
       this.createModule();
-    } catch (error) {
-      console.log("error2");
-    }
+
+      setTimeout(() => {
+        document.body.addEventListener("click", () => {
+          window.location.reload();
+        });
+      }, 2000);
+    } catch (error) {}
   };
 
   createModule() {

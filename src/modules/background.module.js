@@ -24,11 +24,13 @@ export class BackgroundModule extends Module {
   };
 
   changeImages(pics) {
-    // pics.forEach(function (img) {
-    //   new Image().src = img;
-    // });
-
     setInterval(() => this.setImage(pics), 3000);
+
+    setTimeout(() => {
+      document.body.addEventListener("click", () => {
+        window.location.reload();
+      });
+    }, 2000);
   }
 
   setImage(pics) {
