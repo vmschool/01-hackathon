@@ -150,7 +150,7 @@ body {
   transition: background 150ms ease;
 }
 .quote:hover {
-  background: rgba(226, 251, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .quote-author {
