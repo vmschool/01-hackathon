@@ -1,6 +1,7 @@
 "use strict";
 
 import { Menu } from "./core/menu";
+import {getArea} from "@/utils";
 
 export default class ContextMenu extends Menu {
 	constructor(selector) {
@@ -12,6 +13,8 @@ export default class ContextMenu extends Menu {
 		this.el.insertAdjacentHTML('afterbegin', module.toHTML());
 		const elem = this.el.querySelector('.menu-item');
 		elem.addEventListener('click', () => {
+			const area = getArea()
+			area.innerHTML = ``;
 			module.trigger();
 		})
 	}
