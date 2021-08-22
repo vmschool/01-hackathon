@@ -1,64 +1,83 @@
-import { Module } from '../core/module'
-import * as utils from '../utils'
+import {Module} from '../core/module'
+import {getRandomColor, random} from '../utils'
+
+const figures = [
+  'rectangle',
+  'circle',
+  'triangle',
+  'trapezoid'
+]
 
 export class ShapeModule extends Module {
-  #pageWidth
-  #pageHeight
-
   constructor(type = 'shape', text = 'Случайная фигура') {
     super(type, text)
   }
 
-  #getSizeWindow() {
-    this.#pageWidth = document.documentElement.clientWidth
-    this.#pageHeight = document.documentElement.clientHeight
+  trigger() {
+    const selectedFigure = figures[random(0, figures.length - 1)]
+    this.#renderFigure(selectedFigure)
   }
 
-  trigger() {
-    const QUANTITY_FIGURE = 4
-    const figure = utils.random(1, QUANTITY_FIGURE)
+  #renderFigure(selectedFigure) {
+    const figure$ = document.createElement('div')
+    const size = random(30, 200)
+    const color = getRandomColor()
 
-    this.#getSizeWindow()
-    const div = document.createElement('div')
-    const size = utils.random(30, 200)
+    this.#styleFigure(selectedFigure, figure$, size, color)
 
-    div.style.position = 'absolute'
-    div.style.top = utils.random(size, this.#pageHeight - size) + 'px'
-    div.style.left = utils.random(size, this.#pageWidth - size) + 'px'
+    document.body.append(figure$)
 
-    switch (figure) {
-      // прямоугольник
-      case 1:
-        div.style.width = `${size}px`
-        div.style.height = `${size}px`
-        div.style.backgroundColor = utils.getRandomColor()
+    setTimeout(() => figure$.remove(), 3000)
+  }
+
+  #styleFigure(selectedFigure, figure$, size, color) {
+    const body = document.body.getBoundingClientRect()
+
+    figure$.style.position = 'absolute'
+    figure$.style.top = random(0, body.height - size) + 'px'
+    figure$.style.left = random(0, body.width - size) + 'px'
+
+    switch (selectedFigure) {
+      case 'rectangle':
+        this.#styleRectangle(figure$, size, color)
         break
-      // круг
-      case 2:
-        div.style.borderRadius = '50%'
-        div.style.backgroundColor = utils.getRandomColor()
-        div.style.width = `${size}px`
-        div.style.height = `${size}px`
+      case 'circle':
+        this.#styleCircle(figure$, size, color)
         break
-      // треугольник
-      case 3:
-        div.style.borderLeft = '50px solid transparent'
-        div.style.borderRight = '50px solid transparent'
-        div.style.borderBottom = `${size}px solid ${utils.getRandomColor()}`
-        div.style.width = '0px'
-        div.style.height = '0px'
+      case 'triangle':
+        this.#styleTriangle(figure$, size, color)
         break
-      // трапеция
-      case 4:
-        div.style.width = `${size}px`
-        div.style.borderLeft = '50px solid transparent'
-        div.style.borderRight = '50px solid transparent'
-        div.style.borderBottom = `${size}px solid ${utils.getRandomColor()}`
+      case 'trapezoid':
+        this.#styleTrapezoid(figure$, size, color)
+        break
     }
-    document.body.append(div)
+  }
 
-    setTimeout(() => {
-      div.remove()
-    }, 3000)
+  #styleRectangle(figure$, size, color) {
+    figure$.style.width = size + 'px'
+    figure$.style.height = size + 'px'
+    figure$.style.backgroundColor = color
+  }
+
+  #styleCircle(figure$, size, color) {
+    figure$.style.borderRadius = '50%'
+    figure$.style.width = size + 'px'
+    figure$.style.height = size + 'px'
+    figure$.style.backgroundColor = color
+  }
+
+  #styleTriangle(figure$, size, color) {
+    figure$.style.borderLeft = '50px solid transparent'
+    figure$.style.borderRight = '50px solid transparent'
+    figure$.style.borderBottom = `${size}px solid ${color}`
+    figure$.style.width = '0px'
+    figure$.style.height = '0px'
+  }
+
+  #styleTrapezoid(figure$, size, color) {
+    figure$.style.width = size + 'px'
+    figure$.style.borderLeft = '50px solid transparent'
+    figure$.style.borderRight = '50px solid transparent'
+    figure$.style.borderBottom = `${size}px solid ${color}`
   }
 }

@@ -1,0 +1,43 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
+
+.message-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  font-size: 2em;
+  border: 1px solid green;
+  border-radius: 6px;
+  color: white;
+  background-color: darkslateblue;
+  opacity: 1;
+}
+
+.message-popup {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  width: 58px;
+  height: 58px;
+  font-size: 1em;
+  border: 1px solid green;
+  border-radius: 29px;
+  color: white;
+  background-color: darkslateblue;
+  opacity: 1;
+}
+
+.hidden-block {
+  transition: opacity 0.8s ease-in-out;
+  opacity: 0;
+}

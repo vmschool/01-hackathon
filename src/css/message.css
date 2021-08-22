@@ -1,0 +1,14 @@
+.msg-style  {
+  width: 200px;
+  min-height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  position: fixed;
+  top: 5px;
+  left: 5px;
+  padding: 10px;
+  margin: 10px;
+  color: #cd3;
+  background: #fff;
+  opacity: 0.8;
+}
