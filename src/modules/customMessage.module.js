@@ -8,13 +8,16 @@ export default class CustomMessage extends Module {
 
   async #getQuote() {
     try {
-      const url = `https://favqs.com/api/qotd`;
-      const responsJSON = await fetch(url);
-      if (!responsJSON.ok) throw new Error(`status isn't ok`);
-      const responeObj = await responsJSON.json();
+      const num = utils.random(0, 1);
+      const url = num > 0.5 ? 'https://favqs.com/api/qotd' : 'https://api.chucknorris.io/jokes/random';
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`status isn't ok`);
+      }
+      const responseObj = await response.json();
       return {
-        body: responeObj.quote.body,
-        author: responeObj.quote.author,
+        body: `${num > 0.5 ? responseObj.quote.body : responseObj.value}`,
+        author: `${num > 0.5 ? responseObj.quote.author : 'Chuck Norris'}`,
       };
     } catch (error) {
       console.error(error);
@@ -38,16 +41,14 @@ export default class CustomMessage extends Module {
     messageText.textContent = `"${quoteText}"`;
     area.append(wrapper);
 
-    let removeItem = () => {
-      return setTimeout(() => wrapper.remove(), 2500);
-    };
+    let timerId;
 
     wrapper.addEventListener("mouseover", (event) => {
-      clearTimeout(removeItem());
+      clearTimeout(timerId);
     });
 
     wrapper.addEventListener("mouseleave", (event) => {
-      removeItem();
+      timerId = setTimeout(() => wrapper.remove(), 2500);
     });
   }
 
