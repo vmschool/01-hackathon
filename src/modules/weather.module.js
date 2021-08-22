@@ -10,9 +10,14 @@ import {
 
 export class WeatherModule extends Module {
 	#area;
+	#modal;
+	#form;
 	constructor(type, text) {
 		super(type, text);
 		this.#area = getArea();
+		this.#modal = createModal("weather-modal");
+		this.#form = document.createElement("form");
+		this.#initiateListener();
 	}
 
 	async #getWeatherData(city) {
@@ -23,7 +28,7 @@ export class WeatherModule extends Module {
 			const resp = await data.json();
 			return resp;
 		} catch (err) {
-			console.error(err);
+			console.error(`ОШИБКА - ${err}`);
 		}
 	}
 
@@ -57,6 +62,31 @@ export class WeatherModule extends Module {
 		return divWeather;
 	}
 
+	#initiateListener() {
+		this.#form.addEventListener("submit", (event) => {
+			event.preventDefault();
+			const inputField = document.querySelector(".starterWeatherInput");
+			if (!isNaN(inputField.value) || inputField.value.length < 1) {
+				document.querySelector(".starterWeatherTitle").textContent =
+					"Введите название города.";
+				return;
+			}
+
+			this.#getWeatherData(inputField.value).then((response) => {
+				if (response.cod == 404) return;
+				const data = response;
+				//prettier-ignore
+				this.#getWeatherMarkup(
+					data.name,
+					this.#createMarkUpHTML(data),
+					this.#getCurrentWeatherImageHTML(data),
+				);
+			});
+
+			inputField.value = "";
+		});
+	}
+
 	#getCurrentWeatherImageHTML(data) {
 		const image = document.createElement("img");
 		image.className = "weatherImage";
@@ -65,8 +95,9 @@ export class WeatherModule extends Module {
 		return image;
 	}
 
-	#displayData(cityName, weatherMarkUp, image) {
-		const modal = createModal("weather-modal");
+	#getWeatherMarkup(cityName, weatherMarkUp, image) {
+		this.#reset();
+
 		const titleWeather = document.createElement("h2");
 		titleWeather.className = "titleWeather";
 		titleWeather.textContent = `Погода в городе ${cityName}`;
@@ -76,20 +107,48 @@ export class WeatherModule extends Module {
 
 		weatherWrapper.append(weatherMarkUp, image);
 
-		modal.append(titleWeather, weatherWrapper);
+		this.#modal.append(titleWeather, weatherWrapper);
 
-		this.#area.append(modal);
+		this.#area.append(this.#modal);
+	}
+
+	#getStarterWindow() {
+		this.#modal = createModal("weather-modal");
+
+		this.#form.className = "starterWeatherMarkup";
+
+		const starterTitle = document.createElement("h1");
+		starterTitle.className = "starterWeatherTitle";
+		starterTitle.textContent = "Введите город";
+
+		const starterInput = document.createElement("input");
+		starterInput.className = "starterWeatherInput";
+
+		starterInput.type = "text";
+
+		const starterButton = document.createElement("button");
+		starterButton.className = "starterWeatherButton";
+		starterButton.type = "submit";
+		starterButton.value = "Check";
+		starterButton.textContent = "Узнать погоду";
+
+		this.#form.append(starterTitle, starterInput, starterButton);
+		this.#modal.append(this.#form);
+	}
+
+	#reset() {
+		this.#form.innerHTML = "";
+		this.#form.remove();
 	}
 
 	async trigger() {
 		try {
-			const data = await this.#getWeatherData("Майкоп");
+			if (document.querySelector("#weather-modal")) return;
 
-			this.#displayData(
-				data.name,
-				this.#createMarkUpHTML(data),
-				this.#getCurrentWeatherImageHTML(data)
-			);
+			this.#reset();
+			this.#getStarterWindow();
+
+			this.#area.append(this.#modal);
 		} catch (err) {
 			console.log(`ОШИБКА - ${err}`);
 		}
