@@ -1,5 +1,5 @@
-import './styles.css'
-import { ContextMenu } from './menu'
+import './styles.css';
+import { ContextMenu } from './menu';
 
-const menu1 = new ContextMenu('#menu')
-menu1.add()
+const menu1 = new ContextMenu('#menu');
+menu1.add();

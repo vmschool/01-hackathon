@@ -41,6 +41,7 @@ body {
     background: #343434;
 }
 
+
 .clicked-area {
     width: 50%;
     height: 50%;
@@ -68,4 +69,15 @@ body {
     font-size: 10px;
     display: block;
     margin-bottom: 12px;
+  
+.figure{
+    position: absolute;
+}
+.figure.circle{
+    border-radius: 50%;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
 }

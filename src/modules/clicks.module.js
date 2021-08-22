@@ -1,4 +1,4 @@
-import { Module } from "../core/module";
+import { Module } from '../core/module';
 
 export class ClicksModule extends Module {
   constructor() {
@@ -29,7 +29,6 @@ export class ClicksModule extends Module {
       }
     });
     const currentTimeout = 5000;
-    
     setTimeout(() => {
       const clicksAmount = `Количество кликов за ${
         currentTimeout / 1000
@@ -40,6 +39,5 @@ export class ClicksModule extends Module {
       bodyContainer.append(clicksAmountElement)
       
     }, currentTimeout);
-
   }
 }
