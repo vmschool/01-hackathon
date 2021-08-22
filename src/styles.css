@@ -15,16 +15,16 @@ body {
 }
 
 .menu {
-  position: fixed;
-  z-index: 1000;
-  width: 200px;
-  background: #1b1a1a;
-  border-radius: 5px;
-  transform: scale(0);
-  transform-origin: top left;
-  list-style: none;
-  overflow: hidden;
-  opacity: 0.8;
+	position: fixed;
+	z-index: 1000;
+	width: 200px;
+	background: #1b1a1a;
+	border-radius: 5px;
+	transform: scale(0);
+	transform-origin: top left;
+	list-style: none;
+	overflow: hidden;
+	opacity: 0.8;
 }
 
 .menu.open {
@@ -33,17 +33,16 @@ body {
 }
 
 .menu .menu-item {
-  padding: 8px 10px;
-  font-size: 0.85rem;
-  color: #eee;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in;
-  border-radius: 0;
-  border-bottom: 1px #444 solid;
-
+	padding: 8px 10px;
+	font-size: 0.85rem;
+	color: #eee;
+	cursor: pointer;
+	transition: background-color 0.2s ease-in;
+	border-radius: 0;
+	border-bottom: 1px #444 solid;
 }
 .menu .menu-item:last-child {
-  border-bottom: none;
+	border-bottom: none;
 }
 
 .menu .menu-item:hover {
@@ -52,12 +51,12 @@ body {
 }
 
 .area {
-  display: flex;
-  padding: 50px;
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgb(123, 163, 234);
+	display: flex;
+	padding: 50px;
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgb(123, 163, 234);
 }
 
 .sounds {
@@ -192,20 +191,20 @@ body {
 	justify-content: space-between;
 	padding: 0px 5px;
 	margin-top: 10px;
-	width: 90%;
+	width: 100%;
 }
 
 .weather {
 	font-size: 15px;
 	color: rgba(255, 255, 255, 0.8);
-	font-family: Lato, sans-serif;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	font-weight: bold;
 }
 
 .weather span {
 	font-size: 15px;
 	color: rgba(255, 255, 255, 0.8);
-	font-family: Lato, sans-serif;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	font-weight: 300;
 	margin-left: 10px;
 	font-style: italic;
@@ -239,7 +238,7 @@ body {
 	text-align: center;
 	font-size: 20px;
 	color: rgba(255, 255, 255, 0.8);
-	font-family: Lato, sans-serif;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	font-weight: 600;
 	letter-spacing: 1px;
 }
@@ -257,14 +256,16 @@ body {
 	width: 140px;
 	border-style: none;
 	border-radius: 5px;
-	background: rgba(255, 0, 0, 0.45);
+	background: rgba(0, 255, 34, 0.35);
 	color: rgba(255, 255, 255, 0.8);
+	font-size: 15px;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	transition: background 150ms ease;
 	cursor: pointer;
 }
 
 .starterWeatherButton:hover {
-	background: rgba(255, 0, 0, 0.7);
+	background: rgba(0, 255, 34, 0.45);
 }
 
 .titleFieldPalindrome {
@@ -275,15 +276,20 @@ body {
 	font-family: Lato, sans-serif;
 	font-weight: 600;
 	letter-spacing: 1px;
+	line-height: 20px;
 }
 
 .titleWeather {
 	text-align: center;
 	font-size: 23px;
 	color: rgba(255, 255, 255, 0.8);
-	font-family: Lato, sans-serif;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	font-weight: 600;
 	letter-spacing: 1px;
+}
+
+#palindrome {
+	width: 320px;
 }
 
 .palindrome-form {
@@ -295,6 +301,7 @@ body {
 
 .palindrome-input {
 	padding: 5px;
+	width: 200px;
 	height: 30px;
 	background: rgba(255, 255, 255, 0.5);
 	border-radius: 4px;
@@ -350,7 +357,7 @@ body {
 	border: none;
 	padding: 10px;
 	cursor: pointer;
-	background-color: #FEFAFA;
+	background-color: #fefafa;
 	box-shadow: 1px 1px 3px #5f5f5f;
 	transition: all 150ms;
 }

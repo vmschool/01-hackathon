@@ -47,7 +47,7 @@ export class WeatherModule extends Module {
 		temperatureWeather.className = "temperatureWeather";
 		temperatureWeather.textContent = `Температура:`;
 		const temperatureWeatherSpan = document.createElement("span");
-		temperatureWeatherSpan.textContent = `${data.main.temp}°C`;
+		temperatureWeatherSpan.textContent = `${data.main.temp} °C`;
 		temperatureWeather.append(temperatureWeatherSpan);
 
 		const humidityWeather = document.createElement("p");
@@ -88,14 +88,13 @@ export class WeatherModule extends Module {
 				if (response.cod == 404) return;
 				this.#modal.style.width = `350px`;
 				const data = response;
-				//prettier-ignore
 				setTimeout(() => {
 					this.#getWeatherMarkup(
 						data.name,
 						this.#createMarkUpHTML(data),
-						this.#getCurrentWeatherImageHTML(data),
+						this.#getCurrentWeatherImageHTML(data)
 					);
-				},400)
+				}, 400);
 			});
 
 			inputField.value = "";
