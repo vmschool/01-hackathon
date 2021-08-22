@@ -121,3 +121,30 @@ body {
     background-color: #353b48;
     box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.3);
 }
+
+/* Simpsons Module */
+/*#data-container {*/
+/*    position: absolute;*/
+/*    top: 50%;*/
+/*    left: 50%;*/
+/*    transform: translate(-50%, -50%);*/
+/*    width: 60%;*/
+/*    padding: 50px 35px;*/
+/*    border-radius: 5px;*/
+/*    box-shadow: 1px 3px 15px rgba(0, 0, 0, 0.3);*/
+/*}*/
+
+/*#data-container > div:not(:last-child) {*/
+/*    margin-bottom: 15px;*/
+/*    font-size: 20px;*/
+/*}*/
+
+/*#data-container > div + div {*/
+/*    margin-bottom: 30px;*/
+/*    text-align: right;*/
+/*}*/
+
+/*#data-container img {*/
+/*    display: block;*/
+/*    margin: 0 auto;*/
+/*}*/

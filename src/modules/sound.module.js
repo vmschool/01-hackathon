@@ -3,8 +3,6 @@ import { sounds } from '../db/sounds';
 import { random } from '../utils'
 import sound from '../assets/sounds/jump.mp3'
 
-console.log(sound)
-
 export class SoundModule extends Module {
   // getSoundSrc() {
   //   const soundName = sounds[random(0, sounds.length - 1)]
