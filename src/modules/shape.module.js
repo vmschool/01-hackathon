@@ -2,10 +2,12 @@ import {Module} from '../core/module';
 import {random} from '../utils';
 
 export class ShapeModule extends Module {
+    #container;
+    #color;
     constructor(){
         super('random_figure', 'Создать фигуру');
-        this.container = document.querySelector('body');
-        this.color = ['green', 'blue', 'red', 'black'];
+        this.#container = document.querySelector('.container');
+        this.#color = ['green', 'blue', 'red', 'black'];
     }
 
     trigger(){
@@ -27,7 +29,7 @@ export class ShapeModule extends Module {
     #createRandomCircle(){
         const figure = document.createElement('div');
         const size = random(30, 130);
-        const {width, height} = this.container.getBoundingClientRect();
+        const {width, height} = this.#container.getBoundingClientRect();
         const x=random(0, width - size);
         const y=random(0, height - size);
     
@@ -36,14 +38,14 @@ export class ShapeModule extends Module {
         figure.style.height = `${size}px`;
         figure.style.top = `${y}px`;
         figure.style.right = `${x}px`;
-        figure.style.background = this.color[random(0, 3)];
+        figure.style.background = this.#color[random(0, 3)];
     
-        this.container.append(figure);
+        this.#container.append(figure);
     }
     #createRandomSquare(){
         const figure = document.createElement('div');
         const size = random(30, 130);
-        const {width, height} = this.container.getBoundingClientRect();
+        const {width, height} = this.#container.getBoundingClientRect();
         const x=random(0, width - size);
         const y=random(0, height - size);
     
@@ -52,24 +54,24 @@ export class ShapeModule extends Module {
         figure.style.height = `${size}px`;
         figure.style.top = `${y}px`;
         figure.style.right = `${x}px`;
-        figure.style.background = this.color[random(0, 3)];
+        figure.style.background = this.#color[random(0, 3)];
     
-        this.container.append(figure);
+        this.#container.append(figure);
     }
     #createRandomTriangleUp(){
         const figure = document.createElement('div');
         const size = random(30, 130);
-        const {width, height} = this.container.getBoundingClientRect();
+        const {width, height} = this.#container.getBoundingClientRect();
         const x=random(0, width - size*2);
         const y=random(0, height - size);
     
         figure.classList.add('figure');
         figure.style.borderLeft = `${size}px solid transparent`;
         figure.style.borderRight = `${size}px solid transparent`;
-        figure.style.borderBottom = `${size*2}px solid ${this.color[random(0, 3)]}`;
+        figure.style.borderBottom = `${size*2}px solid ${this.#color[random(0, 3)]}`;
         figure.style.top = `${y}px`;
         figure.style.right = `${x}px`;
     
-        this.container.append(figure);
+        this.#container.append(figure);
     }
 }
