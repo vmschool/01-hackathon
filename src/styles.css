@@ -40,6 +40,36 @@ body {
 .menu .menu-item:hover {
     background: #343434;
 }
+
+
+.clicked-area {
+    width: 50%;
+    height: 50%;
+    background-color:cornflowerblue;
+}
+
+.message-container {
+    position: fixed;
+    right: 50px;
+    bottom: 30px;
+    z-index: 100;
+    border-radius: 10px;
+    background-color: aquamarine;
+    text-align: center;
+    width: 220px;
+    height: 140px;
+    padding: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.module-help {
+    font-size: 10px;
+    display: block;
+    margin-bottom: 12px;
+}
 .figure{
     position: absolute;
 }
@@ -62,4 +92,9 @@ body {
 .btn_stop_audio:hover{
     box-shadow: 1px 1px 8px 0px #27a778;
     background: #fff;
+  }
+
+.container {
+    width: 100%;
+    height: 100%;
 }
