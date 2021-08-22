@@ -49,8 +49,8 @@ document.body.addEventListener("click", (event) => {
 
 // init modules
 const clickModule = new ClicksModule(
-  "clickModule",
-  "Counts clicks made in 3 seconds"
+	"clickModule",
+	"Counts clicks in time"
 );
 const backgroundModule = new BackgroundModule(
   "randomColor",

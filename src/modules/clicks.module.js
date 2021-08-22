@@ -1,45 +1,30 @@
-import {Module} from '../core/module'
 import * as utils from '../utils';
-import {createEl, createModal} from "../utils";
+import { TimerInterface } from "./timerInterface";
 
-export class ClicksModule extends Module {
+export class ClicksModule extends TimerInterface {
     constructor(type, text) {
         super(type, text);
-        this.timer = utils.timer;
     }
 
-    #startProcess() {
-        this.intervalId = setInterval(this.#decreaseTimer.bind(this), 1000);
+    startProcess(text) {
         window.addEventListener('click', utils.counterIncrement);
+        this.timerControlOn(text);
     }
 
-    #decreaseTimer() {
-        console.log('timer: ', this.timer);
-        if (this.timer === 0) {
-            this.#finish()
-        } else {
-            this.timer = this.timer - 1;
-        }
+    #showResult() {
+        const result = document.querySelector('.timer-title');
+        result.textContent = `Your score is: ${utils.counter}`;
     }
 
-    #finish() {
-        // turning off functionality
+    finishProcess() {
         window.removeEventListener('click', utils.counterIncrement);
-        clearInterval(this.intervalId);
-
-        // create answer object
-        const answer = createEl('div', '', ['modal'] )
-        const span = createEl('span', `Количество кликов ${String(utils.counter)}`)
-        answer.append(span)
-        // show answer
-        utils.addObjectToArea(answer);
-
-        //refresh values
+        this.timerControlOf();
+        this.#showResult();
         utils.refreshCounter();
-        this.timer = utils.timer;
+        setTimeout(() => this.restart(), 3000);
     }
 
     trigger() {
-        this.#startProcess();
+        this.initiateTimer(this.type, 'Create Timer');
     }
 }
