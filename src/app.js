@@ -1,16 +1,25 @@
-import { ContextMenu } from './menu'
-import './styles.css'
+import { ContextMenu } from './menu';
+import './styles.css';
+import { ClicksModule } from './modules/clicks.module';
+import { ShapeModule } from './modules/shape.module';
 
-const contextMenu = new ContextMenu("#menu")
+const contextMenu = new ContextMenu("#menu");
 
 document.addEventListener("contextmenu", (event) => {
-	event.preventDefault()
+	event.preventDefault();
     contextMenu.open(event);
 }, true);
 
 document.addEventListener("click", (event) => {
-	event.preventDefault()
+	event.preventDefault();
     contextMenu.close(event);
 }, true);
 
 
+// variables
+const clicksModule = new ClicksModule();
+const shapesModule = new ShapeModule();
+
+// adding elements to menu
+contextMenu.add(clicksModule, "Click click");
+contextMenu.add(shapesModule, "Shapes");
