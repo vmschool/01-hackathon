@@ -1,5 +1,5 @@
 import { Module } from "../core/module";
-import { createEl } from "../utils";
+import { createEl, getArea } from "../utils";
 
 export class CreateMusicModule extends Module {
   constructor(type, text) {
@@ -145,7 +145,8 @@ export class CreateMusicModule extends Module {
       const soundsHTML = this.#createKeys();
 
       if (soundsHTML) {
-        document.body.append(soundsHTML);
+        const area = getArea();
+        area.append(soundsHTML);
         soundsHTML.classList.add("showMusicKeys");
         this.#showPanel();
       }
