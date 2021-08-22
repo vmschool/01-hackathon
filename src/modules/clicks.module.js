@@ -3,27 +3,29 @@ import {Module} from '../core/module'
 export class ClicksModule extends Module {
   constructor(type, text) {
     super(type, text);
+    this.clicksCount = 0
+    this.start = false
   }
 
   trigger () {
-    let clicksCount = 0
-    let start = false
-    const TIMER = 2000
     const body = document.body
+    body.addEventListener('click', this.listenerCountClicks)
+  }
 
-    body.addEventListener('click', () => {
-      if(start) {
-        clicksCount++
-      } else {
-        start = true
-        clicksCount = 0
-        setTimeout(() => {
-          if (start) {
-            start = false;
-            alert(clicksCount);
-          }
-        }, TIMER)
-      }
-    })
+  listenerCountClicks () {
+    const TIMER = 2000
+    if(this.start) {
+      this.clicksCount++
+    } else {
+      this.start = true
+      this.clicksCount = 0
+      const clickCounter = setTimeout(() => {
+        if (this.start) {
+          this.start = false;
+          alert(this.clicksCount);
+          clearTimeout(clickCounter);
+        }
+      }, TIMER)
+    }
   }
 }
