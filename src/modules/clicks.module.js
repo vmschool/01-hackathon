@@ -1,5 +1,6 @@
 import {Module} from '../core/module'
 import * as utils from '../utils';
+import {createEl, createModal} from "../utils";
 
 export class ClicksModule extends Module {
     constructor(type, text) {
@@ -27,9 +28,9 @@ export class ClicksModule extends Module {
         clearInterval(this.intervalId);
 
         // create answer object
-        const answer = document.createElement('div');
-        answer.textContent = String(utils.counter);
-
+        const answer = createEl('div', '', ['modal'] )
+        const span = createEl('span', `Количество кликов ${String(utils.counter)}`)
+        answer.append(span)
         // show answer
         utils.addObjectToArea(answer);
 
