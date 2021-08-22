@@ -15,9 +15,8 @@ export default class ContextMenu extends Menu {
     elem.addEventListener("click", () => {
       const area = getArea();
       area.innerHTML = ``;
-      const helpList = document.querySelector(".help-list");
-      if (helpList.classList.contains("active")) {
-        helpList.classList.remove("active");
+      if (document.querySelector(".help-list")) {
+        document.querySelector(".help-list").remove();
       }
       module.trigger();
     });
