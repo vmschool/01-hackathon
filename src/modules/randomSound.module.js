@@ -25,7 +25,7 @@ export class RandomSound extends Module {
     }
 
     addItemInMenuList() {
-        menu.add('Random Sound', this.trigger.bind(this));
+        menu.add('Случайный звук', this.trigger.bind(this));
       }
   
     trigger() {
