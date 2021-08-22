@@ -8,4 +8,5 @@ export const arrayHelpText = [
 	"Generate Random Sound - Издается случайный звук",
 	"Create Random Background Color - Изменяется фон сайта на случайный цвет",
 	"Counts clicks made in 3 seconds - Подсчёт кликов за установленное вами время",
+	"Generate Bill meme - Генерирует рандомный мем про била"
 ];

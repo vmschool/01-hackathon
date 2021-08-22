@@ -9,6 +9,7 @@ export default class BeLikeBillModule extends Module {
     trigger() {
         const area = utils.getArea();
         const image = document.createElement('img');
+        image.classList.add('img__bill')
         image.src = "https://belikebill.ga/billgen-API.php?default=1&name=Bill&sex=m";
         area.append(image);
 

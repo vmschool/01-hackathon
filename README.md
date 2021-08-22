@@ -18,3 +18,4 @@
   
   # Counts clicks made in 3 seconds - Подсчёт кликов за установленное вами время
   
+  # Generate Bill meme - Генерирует рандомный мем про била
