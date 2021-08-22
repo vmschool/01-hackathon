@@ -20,7 +20,7 @@ export class ClicksModule extends Module {
   #createClickHTML = () => {
     this.modal.classList.add("modalForClick");
 
-    this.timerHtml.style.fontSize = "600px";
+    this.timerHtml.style.fontSize = "300px";
     this.timerHtml.style.textAlign = "center";
     this.timerHtml.style.opacity = "0.5";
 
@@ -59,7 +59,7 @@ export class ClicksModule extends Module {
       this.totalClicks++;
     });
     this.totalClickHtml.textContent = `Всего кликов ${this.totalClicks}`;
-    this.totalClickHtml.style.fontSize = "200px";
+    this.totalClickHtml.style.fontSize = "100px";
     this.totalClickHtml.style.textAlign = "center";
     this.totalClickHtml.style.opacity = "0.8";
 
@@ -75,10 +75,7 @@ export class ClicksModule extends Module {
   };
 
   addItemInMenuList() {
-    menu.add(
-      `Аналитика кликов\n(за ${this.timer} секунд)`,
-      this.#trigger.bind(this)
-    );
+    menu.add(`Аналитика кликов\n(за ${this.timer} секунд)`, this.#trigger.bind(this));
   }
 }
 

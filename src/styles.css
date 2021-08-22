@@ -7,12 +7,12 @@
 }
 
 body {
-  font-size: 14px;
+  font-size: 13px !important;
   font-family: "Roboto", sans-serif;
   height: 100vh;
   width: 100%;
+  background-color: #dee1e5 !important; /* fallback for old browsers */
 
-  background: url("https://pixabay.com/get/gdf08f3311b7285aa9662c607f37e9f58e50b8251fd255ea49eca9f61372be51cfdf749b29248797d828f0adad69f02e1f00588d2e19901319e013979a3218d1d_1280.jpg");
   background-blend-mode: darken;
   transition: 3s;
 
@@ -25,10 +25,15 @@ body {
   background-size: cover;
 }
 
+ol,
+ul {
+  padding-left: 0px !important;
+}
+
 .menu {
   position: fixed;
   z-index: 1000;
-  width: 250px;
+  width: 310px;
 
   background-color: #f0e9ea;
   border-radius: 7px;
@@ -36,15 +41,21 @@ body {
   list-style: none;
   border: #b9b9b8 1px solid;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: 0s !important;
 }
 
 .menu.open {
   display: block;
 }
+.menu {
+  padding-right: 5px;
+  padding-left: 5px !important;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
 
 .menu .menu-item {
-  padding: 8px 10px;
-  margin: 5px;
+  padding: 4px 9px;
 
   color: #242323;
   cursor: pointer;

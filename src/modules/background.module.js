@@ -1,7 +1,8 @@
 import { Module } from "../core/module";
 import { randomImages } from "../utils";
+import menu from "../app";
 
-export class BackgroundModule extends Module {
+class BackgroundModule extends Module {
   constructor(type, text) {
     super(type, text);
 
@@ -34,11 +35,18 @@ export class BackgroundModule extends Module {
   setImage(pics) {
     let random = randomImages(1, 20);
     document.body.style.backgroundImage = `url(${pics[random].largeImageURL})`;
+    document.body.style.backgroundSize = "cover";
   }
 
-  trigger() {
+  addItemInMenuList() {
+    menu.add(`Слайдер`, this.#trigger.bind(this));
+  }
+
+  #trigger() {
     // document.body.style.backgroundColor = "red";
     this.sendRequest();
     this.toHTML();
   }
 }
+
+export const backgroundModule = new BackgroundModule("type", "text");
