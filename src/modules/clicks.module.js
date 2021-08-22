@@ -6,7 +6,7 @@ export class ClicksModule extends Module {
   }
 
   trigger() {
-    const bodyContainer = document.querySelector('body')
+    const container = document.querySelector('.container')
 
     const clickedArea = document.createElement('div')
     clickedArea.className = 'clicked-area'
@@ -15,7 +15,7 @@ export class ClicksModule extends Module {
     getReady.className = 'get-ready'
     getReady.textContent = 'Кликай по синему прямоугольнику!'
 
-    bodyContainer.append(getReady, clickedArea)
+    container.append(getReady, clickedArea)
     console.log('im triggered!')
 
     let clicksCounter = 0;
@@ -36,7 +36,7 @@ export class ClicksModule extends Module {
       console.log(clicksAmount)
       const clicksAmountElement = document.createElement("div");
       clicksAmountElement.textContent = clicksAmount;
-      bodyContainer.append(clicksAmountElement)
+      container.append(clicksAmountElement)
       
     }, currentTimeout);
   }
