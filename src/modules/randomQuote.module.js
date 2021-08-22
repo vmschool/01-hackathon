@@ -1,13 +1,6 @@
 import { Module } from "../core/module";
+import { phrases } from "../utils";
 
-const phrases = [
-    'Тото, у меня такое ощущение, что мы больше не в Канзасе',
-    'Да пребудет с тобой Сила!',
-    'Хьюстон, у нас проблема',
-    'Carpe diem. Ловите момент, мальчики. Сделайте свою жизнь экстраординарной!',
-    'Улыбаемся и машем!',
-    'Всё будет хорошо, я узнавала'
-]
 export class RandomQuote extends Module {
   constructor(type, text) {
     super(type, text);
