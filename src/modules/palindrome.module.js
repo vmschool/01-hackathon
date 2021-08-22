@@ -28,7 +28,7 @@ export class IsPalindromeModule extends Module {
 		this.#modal = createModal("palindrome");
 
 		this.#titleField.className = "titleFieldPalindrome";
-		this.#titleField.textContent = `Given input is a Palindrome? Length is more than 2 characters `;
+		this.#titleField.textContent = `Given input is a Palindrome? Length is more than 2 characters`;
 
 		this.#form.className = "palindrome-form";
 
@@ -54,7 +54,7 @@ export class IsPalindromeModule extends Module {
 		setTimeout(() => {
 			this.#changeBackgroundColorAndTitle(
 				this.#colors.default,
-				"Given input is a Palindrome?",
+				"Given input is a Palindrome? Length is more than 2 characters",
 				0
 			);
 		}, 1500);
