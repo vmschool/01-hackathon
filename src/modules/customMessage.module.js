@@ -7,10 +7,15 @@ export default class CustomMessage extends Module {
   }
 
   async #getQuote() {
-    const url = `https://favqs.com/api/qotd`;
-    const responsJSON = await fetch(url);
-    const responeObj = await responsJSON.json();
-    return responeObj.quote.body;
+    try {
+      const url = `https://favqs.com/api/qotd`;
+      const responsJSON = await fetch(url);
+      if (!responsJSON.ok) throw new Error(`status isn't ok`);
+      const responeObj = await responsJSON.json();
+      return responeObj.quote.body;
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   async #createQuote() {
@@ -19,13 +24,23 @@ export default class CustomMessage extends Module {
     wrapper.classList.add("quote");
     area.append(wrapper);
     const messageText = document.createElement("span");
-    messageText.textContent = await this.#getQuote();
+    messageText.textContent = "Loading the quote...";
     wrapper.append(messageText);
-    return wrapper;
+    messageText.textContent = await this.#getQuote();
+    area.append(wrapper);
+
+    let removeItem = setTimeout(() => wrapper.remove(), 2500);
+
+    wrapper.addEventListener("mouseover", (event) => {
+      clearTimeout(removeItem);
+    });
+
+    wrapper.addEventListener("mouseout", (event) => {
+      setTimeout(() => wrapper.remove(), 2500);
+    });
   }
 
   async trigger() {
-    const quote = await this.#createQuote();
-    utils.addObjectToArea(quote);
+    await this.#createQuote();
   }
 }
