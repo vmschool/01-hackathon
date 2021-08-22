@@ -2,6 +2,9 @@
 // variables
 export let counter = -1;
 export const timer = 3;
+export const WEATHER_API_URL =
+	"http://api.openweathermap.org/data/2.5/weather?q=";
+export const WEATHER_API_KEY = "fe57b721fd47b8600afac45a7829c1ea";
 
 // functions
 export function random(min, max) {
@@ -48,6 +51,7 @@ export function createModal(modalId) {
 	const modal = document.createElement("div");
 	modal.id = `${modalId}`;
 	modal.style.display = "flex";
+	modal.style.position = "relative";
 	modal.style.flexDirection = "column";
 	modal.style.justifyContent = "center";
 	modal.style.alignItems = "center";
@@ -65,8 +69,8 @@ export function createModal(modalId) {
 	modalCloseButton.style.cursor = "pointer";
 	modalCloseButton.style.display = "block";
 	modalCloseButton.style.position = "absolute";
-	modalCloseButton.style.left = "70%";
-	modalCloseButton.style.top = "30%";
+	modalCloseButton.style.left = "103%";
+	modalCloseButton.style.top = "-2%";
 	modalCloseButton.style.fontSize = "15px";
 	modalCloseButton.style.borderStyle = "none";
 	modalCloseButton.style.background = "none";
