@@ -56,5 +56,9 @@ export class ShapeModule extends Module {
         div.style.borderBottom = `${size}px solid ${utils.getRandomColor()}`
     }
     document.body.append(div)
+
+    setTimeout(() => {
+      div.remove()
+    }, 3000)
   }
 }
