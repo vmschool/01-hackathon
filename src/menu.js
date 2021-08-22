@@ -4,9 +4,10 @@ import { MessageModule } from './modules/message.module';
 import { ShapeModule } from './modules/shape.module';
 import { SoundModule } from './modules/sound.module';
 import { TimerModule } from './modules/timer.module';
+import { BackgroundModule } from './modules/background.module';
 import { positionMenu } from './utils';
 
-const modulesArray = [ClicksModule, MessageModule, ShapeModule, SoundModule, TimerModule];
+const modulesArray = [ClicksModule, MessageModule, ShapeModule, SoundModule, TimerModule, BackgroundModule];
 
 const menuItemsInfo = modulesArray.map((module) => {
   const moduleClassInstance = new module();

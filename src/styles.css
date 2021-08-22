@@ -105,3 +105,11 @@ body {
     color: #1779f5;
     font-size: 38px;
 }
+.bg-area {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
