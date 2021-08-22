@@ -1,6 +1,5 @@
 import { Module } from '../core/module'
-import { cel, qel } from '../utils'
-import { xyPopup } from '../utils'
+import { cel, qel, xyTooltips } from '../utils'
 
 export class ClicksModule extends Module {
   #countClick
@@ -10,13 +9,15 @@ export class ClicksModule extends Module {
   constructor(type, text) {
     super(type, text)
     this.#countClick = 0
-    this.#stateCount = true
+    this.#stateCount = false
     this.time_count = 5000
 
+    document.body.addEventListener('click', this.#countClicks.bind(this))
+    document.body.addEventListener('dblclick', this.#countClicks.bind(this))
   }
 
   #showClick(event) {
-    const { top, left } = xyPopup(event)
+    const { top, left } = xyTooltips(event)
     const messagePopup = cel('div')
 
     messagePopup.textContent = `${event.type}`
@@ -36,8 +37,10 @@ export class ClicksModule extends Module {
 
   #countClicks(event) {
     if (this.#stateCount) {
-      this.#showClick(event)
-      this.#countClick += 1
+      if (event.target === document.body) {
+        this.#showClick(event)
+        this.#countClick += 1
+      }
     }
   }
 
@@ -56,20 +59,20 @@ export class ClicksModule extends Module {
 
     setTimeout(() => {
       qel('.wrapper').classList.add('hidden-block')
-    }, 4000)
+    }, 2000)
 
     setTimeout(() => {
       qel('.wrapper').remove()
-    }, 4900)
+    }, 2900)
   }
 
   trigger() {
-    document.body.addEventListener('click', this.#countClicks.bind(this))
-    document.body.addEventListener('dblclick', this.#countClicks.bind(this))
+    this.#stateCount = true
 
     setTimeout(() => {
       this.#stateCount = false
       this.#showResult()
+      this.#countClick = 0
     }, this.time_count)
   }
 }
