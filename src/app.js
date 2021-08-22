@@ -34,16 +34,9 @@ const helpBtn = createEl("button", "Help", ["help-btn"]);
 
 document.body.append(descriptionHelper);
 descriptionHelper.append(helpBtn);
-const blockHelp = showHelpComponent(arrayHelpText);
-descriptionHelper.append(blockHelp);
 
 helpBtn.addEventListener("click", () => {
-  const helpList = document.querySelector(".help-list");
-  if (helpList.classList.contains("active")) {
-    helpList.classList.remove("active");
-  } else {
-    helpList.classList.add("active");
-  }
+  showHelpComponent(arrayHelpText);
 });
 
 // чтобы только на квадрате меню открывалось
