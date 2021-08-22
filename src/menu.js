@@ -2,10 +2,10 @@ import { Menu } from './core/menu';
 import { ClicksModule } from './modules/clicks.module';
 import { MessageModule } from './modules/message.module';
 import { ShapeModule } from './modules/shape.module';
-import { SoundModule } from './modules/sound.module';
+// import { SoundModule } from './modules/sound.module';
 import { positionMenu } from './utils';
 
-const modulesArray = [ClicksModule, MessageModule, ShapeModule, SoundModule];
+const modulesArray = [ClicksModule, MessageModule, ShapeModule]; // , SoundModule
 
 const menuItemsInfo = modulesArray.map((module) => {
   const moduleClassInstance = new module();
@@ -26,11 +26,10 @@ const menuInnerHTML = menuItemsInfo
 export class ContextMenu extends Menu {
   constructor(selector) {
     super(selector);
-    this.openContextMenu();
-    this.openModule();
+    this.#openContextMenu();
+    this.#openModule();
   }
 
-  // start
   open() {
     this.el.classList.add('open');
   }
@@ -43,9 +42,7 @@ export class ContextMenu extends Menu {
     this.el.innerHTML = menuInnerHTML;
   }
 
-  // end
-
-  openContextMenu() {
+  #openContextMenu() {
     document.addEventListener('contextmenu', (event) => {
       event.preventDefault();
       this.add(menuInnerHTML);
@@ -54,7 +51,7 @@ export class ContextMenu extends Menu {
     });
   }
 
-  openModule() {
+  #openModule() {
     this.el.addEventListener('click', (event) => {
       this.close();
       document.querySelector('.container').innerHTML = '';
