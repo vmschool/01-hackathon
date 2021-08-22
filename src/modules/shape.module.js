@@ -2,14 +2,13 @@ import { Module } from '../core/module'
 import { random, getRandomColor } from '../utils'
 
 export class ShapeModule extends Module {
-  constructor(type, text) {
+  constructor(type = 'shape', text = 'Случайная фигура') {
     super(type, text)
   }
   
   trigger() {
-    const body = document.querySelector('body')
     const shape = document.createElement('div')
-    const {width, height} = body.getBoundingClientRect()
+    const { width, height } = document.body.getBoundingClientRect()
     shape.className = 'shape active'
 
     const widthShape = random(50, 300)
