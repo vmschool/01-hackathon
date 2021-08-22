@@ -11,23 +11,13 @@ import { CreateMusicModule } from "./modules/createMusic.module";
 import { WeatherModule } from "./modules/weather.module";
 import Timer from "./modules/timer.module";
 import { showHelpComponent } from "@/component/help.component";
+import {arrayHelpText} from "@/data/text.data";
 
 // Initialising contextMenu
 const contextMenu = new ContextMenu("#menu");
 
 // creating field area, to generate objects there
 createArea();
-const arrayHelpText = [
-  "Start timer - Пользователь задает время, создается маленький таймер",
-  "Create music - игра в которой можно самому нажимая клавиши придумать музыку",
-  "Get a quote - Создается случайный блок с случайной цитатой",
-  "Generate random block - Создается случайная по размеру и цвету фигура в рандомном месте экрана",
-  "Weather forecast - мини приложение чтобы узнать погоду в своём городе",
-  "Given input is a Palindrome? - можно узнать является ли слово или число полиндромом",
-  "Generate Random Sound - Издается случайный звук",
-  "Create Random Background Color - Изменяется фон сайта на случайный цвет",
-  "Counts clicks made in 3 seconds - подсчёт кликов за установленное вами время",
-];
 const area = document.querySelector(".area");
 const descriptionHelper = createEl("div", "", ["help-description"]);
 const helpBtn = createEl("button", "Help", ["help-btn"]);
