@@ -9,6 +9,8 @@ import { ShapeModule } from "./modules/shape.module";
 import CustomMessage from "./modules/customMessage.module";
 import { CreateMusicModule } from "./modules/createMusic.module";
 import { WeatherModule } from "./modules/weather.module";
+import Timer from "./modules/timer.module";
+
 // Initialising contextMenu
 const contextMenu = new ContextMenu("#menu");
 
@@ -42,6 +44,7 @@ const isPalindrome = new IsPalindromeModule(
 const shapeModule = new ShapeModule("ShapeModule", "Generate random block");
 const customMessage = new CustomMessage("customMessage", "Get a quote");
 const createMusic = new CreateMusicModule("createMusic", "Create Music");
+const timer = new Timer("timer", "Start timer");
 const weatherModule = new WeatherModule("weatherModule", "Weather forecast");
 
 // add modules to contextMenu
@@ -53,3 +56,4 @@ contextMenu.add(weatherModule);
 contextMenu.add(shapeModule);
 contextMenu.add(customMessage);
 contextMenu.add(createMusic);
+contextMenu.add(timer);

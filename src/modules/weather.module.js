@@ -31,13 +31,13 @@ export class WeatherModule extends Module {
 		const divWeather = document.createElement("div");
 		divWeather.className = "weather";
 
-		const titleWeather = document.createElement("h2");
-		titleWeather.className = "titleWeather";
-		titleWeather.textContent = `Погода в городе ${data.name}`;
+		const statusWeather = document.createElement("p");
+		statusWeather.className = "statusWeather";
+		statusWeather.textContent = `Погода: ${data.weather[0].description}`;
 
 		const temperatureWeather = document.createElement("p");
 		temperatureWeather.className = "temperatureWeather";
-		temperatureWeather.textContent = `Погода: ${data.weather[0].description}, ${data.main.temp}°C`;
+		temperatureWeather.textContent = `Температура: ${data.main.temp}°C`;
 
 		const humidityWeather = document.createElement("p");
 		humidityWeather.className = "humidityWeather";
@@ -48,7 +48,7 @@ export class WeatherModule extends Module {
 		windWeather.textContent = `Ветер: ${data.wind.speed} км/ч`;
 
 		divWeather.append(
-			titleWeather,
+			statusWeather,
 			temperatureWeather,
 			humidityWeather,
 			windWeather
@@ -65,18 +65,28 @@ export class WeatherModule extends Module {
 		return image;
 	}
 
-	#displayData(weatherMarkUp, image) {
-		const modal = createModal("weather");
-		modal.append(weatherMarkUp, image);
+	#displayData(cityName, weatherMarkUp, image) {
+		const modal = createModal("weather-modal");
+		const titleWeather = document.createElement("h2");
+		titleWeather.className = "titleWeather";
+		titleWeather.textContent = `Погода в городе ${cityName}`;
+
+		const weatherWrapper = document.createElement("div");
+		weatherWrapper.className = "weather-wrapper";
+
+		weatherWrapper.append(weatherMarkUp, image);
+
+		modal.append(titleWeather, weatherWrapper);
 
 		this.#area.append(modal);
 	}
 
 	async trigger() {
 		try {
-			const data = await this.#getWeatherData("Хабаровск");
+			const data = await this.#getWeatherData("Майкоп");
 
 			this.#displayData(
+				data.name,
 				this.#createMarkUpHTML(data),
 				this.#getCurrentWeatherImageHTML(data)
 			);
