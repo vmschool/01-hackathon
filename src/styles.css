@@ -15,14 +15,16 @@ body {
 }
 
 .menu {
-	position: fixed;
-	z-index: 1000;
-	width: 150px;
-	background: #1b1a1a;
-	border-radius: 5px;
-	transform: scale(0);
-	transform-origin: top left;
-	list-style: none;
+  position: fixed;
+  z-index: 1000;
+  width: 200px;
+  background: #1b1a1a;
+  border-radius: 5px;
+  transform: scale(0);
+  transform-origin: top left;
+  list-style: none;
+  overflow: hidden;
+  opacity: 0.8;
 }
 
 .menu.open {
@@ -31,12 +33,17 @@ body {
 }
 
 .menu .menu-item {
-	padding: 8px 10px;
-	font-size: 1rem;
-	color: #eee;
-	cursor: pointer;
-	transition: background-color 0.2s ease-in;
-	border-radius: inherit;
+  padding: 8px 10px;
+  font-size: 0.85rem;
+  color: #eee;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in;
+  border-radius: 0;
+  border-bottom: 1px #444 solid;
+
+}
+.menu .menu-item:last-child {
+  border-bottom: none;
 }
 
 .menu .menu-item:hover {
@@ -45,11 +52,12 @@ body {
 }
 
 .area {
-	display: flex;
-	position: fixed;
-	width: 100vw;
-	height: 100vh;
-	background-color: antiquewhite;
+  display: flex;
+  padding: 50px;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: antiquewhite;
 }
 
 .sounds {
@@ -119,6 +127,7 @@ body {
 	transition: all 350ms ease;
 	position: relative;
 }
+
 .modal span {
 	color: white;
 }
