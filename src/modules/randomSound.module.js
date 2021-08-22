@@ -1,5 +1,4 @@
 import { Module } from "../core/module";
-import menu from "../app";
 
 const sounds = [
     'https://actions.google.com/sounds/v1/alarms/beep_short.ogg',
@@ -15,27 +14,39 @@ export class RandomSound extends Module {
       super(type, text);
     }
 
-    // pauseSound(){
-
-    // }
-
-    playRandom(){
+    playRandomSound(){
         let i = Math.floor(Math.random() * (sounds.length));
         let currentSound = new Audio(sounds[i]);
         let body = document.querySelector("body");
+        let div = document.createElement("div");
+        div.classList.add('soundDiv');
         currentSound.volume = 0.2;
-        body.append(currentSound);
+        body.append(div);
+        div.append(currentSound);
         currentSound.play();
     }
 
+    removeRandomSound(){
+      let allSounds = document.querySelectorAll('.soundDiv');
+      allSounds.forEach((sound) =>{
+        setTimeout(() => { sound.remove(); }, 4000);
+      })
+  }
+
+    toHTML() {
+      return `<li class="menu-item" data-type="${this.type}">${this.text}</li>`;
+    }
+
     addItemInMenuList() {
-        menu.add('Случайный звук', this.trigger.bind(this));
+      return {
+        text: this.toHTML.bind(this),
+        trigger: this.trigger.bind(this),
+      };
       }
   
     trigger() {
-        this.playRandom();
+        this.playRandomSound();
+        this.removeRandomSound();
     }
   }
-
-  export const playRandomSound = new RandomSound("type", "text");
 
