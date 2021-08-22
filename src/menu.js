@@ -2,9 +2,10 @@ import { Menu } from './core/menu';
 import { ClicksModule } from './modules/clicks.module';
 import { MessageModule } from './modules/message.module';
 import { ShapeModule } from './modules/shape.module';
+import { SoundModule } from './modules/sound.module';
 import { positionMenu } from './utils';
 
-const modulesArray = [ClicksModule, MessageModule, ShapeModule];
+const modulesArray = [ClicksModule, MessageModule, ShapeModule, SoundModule];
 
 const menuItemsInfo = modulesArray.map((module) => {
   const moduleClassInstance = new module();
@@ -32,7 +33,7 @@ export class ContextMenu extends Menu {
   openContextMenu() {
     document.addEventListener('contextmenu', (event) => {
       event.preventDefault();
-      document.querySelector('.container').innerHTML = '';
+      
       this.add(menuInnerHTML);
       this.open();
       positionMenu(event);
@@ -42,6 +43,7 @@ export class ContextMenu extends Menu {
   openModule() {
     this.el.addEventListener('click', (event) => {
       this.close();
+      document.querySelector('.container').innerHTML = '';
       const { target } = event;
       menuItemsInfo.forEach((item) => {
         if (target.dataset.type === item.dataType) {
