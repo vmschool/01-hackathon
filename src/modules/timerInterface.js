@@ -46,13 +46,13 @@ export class TimerInterface extends Module {
 
     #prettyTime(timeLeft) {
         let part1 = '';
-        let part2 = '';
+        let part2 = '00';
         if (timeLeft > 60) {
-            const minutes = Math.round(timeLeft / 60);
+            const minutes = Math.floor(timeLeft / 60);
             part1 = minutes < 10 ? `0${minutes}:` : `${minutes}`;
             timeLeft = timeLeft - minutes * 60;
         }
-        if (timeLeft > 0) {
+        if (timeLeft > 0 && timeLeft <= 60) {
             part2 = timeLeft < 10 ? `0${timeLeft}` : `${timeLeft}`;
         }
         return `${part1}${part2} time left`;
