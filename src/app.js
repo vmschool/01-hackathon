@@ -1,17 +1,24 @@
 import "./styles.css";
 import { ContextMenu } from "./menu";
-import { counterClick } from "./modules/clicks.module";
-import { backgroundModule } from "./modules/background.module";
-import { shapeModule } from "./modules/shape.module";
-import { currencyModule } from "./modules/currency.module";
-import { cityModule } from "./modules/city.module";
-import { jokeModule } from "./modules/joke.module";
+
+import { ClicksModule } from "./modules/clicks.module";
+import { BackgroundModule } from "./modules/background.module";
+import { СurrencyModule } from "./modules/currency.module";
+import { CityModule } from "./modules/city.module";
+import { JokeModule } from "./modules/joke.module";
 
 const menu = new ContextMenu();
 
-// console.log(menu);
-export default menu;
-const menuList = [counterClick, backgroundModule, shapeModule, currencyModule, cityModule, jokeModule];
-// hi.render();
-menuList.forEach((el) => el.addItemInMenuList());
+const counterClick = new ClicksModule("counterClick", "Аналитика кликов (за 5 секунд)");
+const backgroundModule = new BackgroundModule("startSlider", "Запусить слайдер");
+const currencyModule = new СurrencyModule("getCurrency", "Курс валюты");
+const cityModule = new CityModule("getCity", "Показать локацию");
+const jokeModule = new JokeModule("getJoke", "Показать шутку");
+
+menu.add(counterClick);
+menu.add(backgroundModule);
+menu.add(currencyModule);
+menu.add(cityModule);
+menu.add(jokeModule);
+
 menu.render();

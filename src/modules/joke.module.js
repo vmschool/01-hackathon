@@ -1,10 +1,9 @@
-import menu from "../app";
 import { Module } from "../core/module";
 import { randomImages } from "../utils";
 import "bootstrap/dist/css/bootstrap.min.css";
 import bootstrap from "bootstrap";
 
-class JokeModule extends Module {
+export class JokeModule extends Module {
   constructor(type, text) {
     super(type, text);
     this.category = "programming"; //any
@@ -27,10 +26,6 @@ class JokeModule extends Module {
       this.joke = data.joke || "";
       this.setup = data.setup || "";
       this.delivery = data.delivery || "";
-
-      //data.joke ? (this.joke = data.joke) : (this.joke = "");
-      //data.setup ? (this.setup = data.setup) : (this.setup = "");
-      //data.delivery ? (this.delivery = data.delivery) : (this.delivery = "");
 
       this.id = data.id;
 
@@ -84,9 +79,15 @@ class JokeModule extends Module {
   #trigger = () => {
     this.sendRequest();
   };
+
+  toHTML() {
+    return `<li class="menu-item" data-type="${this.type}">${this.text}</li>`;
+  }
+
   addItemInMenuList() {
-    menu.add(`Шутка`, this.#trigger.bind(this));
+    return {
+      text: this.toHTML.bind(this),
+      trigger: this.#trigger.bind(this),
+    };
   }
 }
-
-export const jokeModule = new JokeModule("type", "text");

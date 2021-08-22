@@ -1,9 +1,8 @@
-import menu from "../app";
 import { Module } from "../core/module";
 import "bootstrap/dist/css/bootstrap.min.css";
 import bootstrap from "bootstrap";
 
-class CityModule extends Module {
+export class CityModule extends Module {
   constructor(type, text) {
     super(type, text);
     this.city = "";
@@ -100,9 +99,15 @@ class CityModule extends Module {
   #trigger = () => {
     this.sendRequest();
   };
+
   addItemInMenuList() {
-    menu.add(`Ваши данные`, this.#trigger.bind(this));
+    return {
+      text: this.toHTML.bind(this),
+      trigger: this.#trigger.bind(this),
+    };
+  }
+
+  toHTML() {
+    return `<li class="menu-item" data-type="${this.type}">${this.text}</li>`;
   }
 }
-
-export const cityModule = new CityModule("type", "text");

@@ -1,9 +1,8 @@
-import menu from "../app";
 import { Module } from "../core/module";
 import "bootstrap/dist/css/bootstrap.min.css";
 import bootstrap from "bootstrap";
 
-class CurrencyModule extends Module {
+export class СurrencyModule extends Module {
   constructor(type, text) {
     super(type, text);
     this.baseCurrency = "";
@@ -47,9 +46,15 @@ class CurrencyModule extends Module {
   #trigger = () => {
     this.sendRequest();
   };
+
+  toHTML() {
+    return `<li class="menu-item" data-type="${this.type}">${this.text}</li>`;
+  }
+
   addItemInMenuList() {
-    menu.add(`Курс валют`, this.#trigger.bind(this));
+    return {
+      text: this.toHTML.bind(this),
+      trigger: this.#trigger.bind(this),
+    };
   }
 }
-
-export const currencyModule = new CurrencyModule("type", "text");

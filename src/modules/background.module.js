@@ -1,8 +1,7 @@
 import { Module } from "../core/module";
 import { randomImages } from "../utils";
-import menu from "../app";
 
-class BackgroundModule extends Module {
+export class BackgroundModule extends Module {
   constructor(type, text) {
     super(type, text);
 
@@ -47,6 +46,15 @@ class BackgroundModule extends Module {
     this.sendRequest();
     this.toHTML();
   }
-}
 
-export const backgroundModule = new BackgroundModule("type", "text");
+  toHTML() {
+    return `<li class="menu-item" data-type="${this.type}">${this.text}</li>`;
+  }
+
+  addItemInMenuList() {
+    return {
+      text: this.toHTML.bind(this),
+      trigger: this.#trigger.bind(this),
+    };
+  }
+}
