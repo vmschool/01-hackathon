@@ -29,21 +29,18 @@ export default class CustomMessage extends Module {
     messageText.textContent = await this.#getQuote();
     area.append(wrapper);
 
-    setTimeout(() => wrapper.remove(), 2500);
+    let removeItem = setTimeout(() => wrapper.remove(), 2500);
 
     wrapper.addEventListener("mouseover", (event) => {
-      setTimeout(() => wrapper.remove(), 2500);
+      clearTimeout(removeItem);
     });
 
     wrapper.addEventListener("mouseout", (event) => {
-      setTimeout(() => wrapper.remove(), 2500);
+      removeItem;
     });
-    // return wrapper;
   }
 
   async trigger() {
     await this.#createQuote();
-    // const quote = await this.#createQuote();
-    // utils.addObjectToArea(quote,1500);
   }
 }
