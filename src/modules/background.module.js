@@ -44,7 +44,6 @@ export class BackgroundModule extends Module {
   }
 
   #trigger() {
-    // document.body.style.backgroundColor = "red";
     this.sendRequest();
     this.toHTML();
   }

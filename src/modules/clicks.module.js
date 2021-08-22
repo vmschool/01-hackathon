@@ -12,6 +12,8 @@ export class ClicksModule extends Module {
   }
 
   #trigger() {
+    const getSvg = document.getElementById("svg");
+    getSvg.remove();
     this.#createClickHTML();
   }
 
