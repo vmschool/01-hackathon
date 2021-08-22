@@ -16,6 +16,7 @@ export function refreshCounter() {
   counter = -1;
 }
 
+
 export function addObjectToArea(object, ms = 3000) {
   const area = document.querySelector("#area");
   area.append(object);
@@ -34,8 +35,12 @@ export function createArea() {
 export function createEl(el, text = "", arrClass = [], data = "") {
   const blockHTML = document.createElement(el);
   blockHTML.textContent = text;
-  blockHTML.setAttribute("data", data);
-  blockHTML.classList.add(...arrClass);
+  if (data) {
+    blockHTML.setAttribute("data", data);
+  }
+  if (arrClass.length) {
+    blockHTML.classList.add(...arrClass);
+  }
   return blockHTML;
 }
 
@@ -52,6 +57,7 @@ export function createModal(modalId) {
   const modalCloseButton = document.createElement("button");
   modalCloseButton.classList.add("modal_close-button");
   modalCloseButton.textContent = `\u2716`;
+
 
   modalCloseButton.addEventListener("click", () => {
     const modal = document.querySelector(`#${modalId}`);

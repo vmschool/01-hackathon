@@ -52,7 +52,7 @@ body {
 }
 
 .sounds {
-  display: flex;
+  display: none;
   position: fixed;
   bottom: 50px;
   justify-content: space-between;
@@ -65,8 +65,9 @@ body {
   margin: 0 5px;
   padding: 10px;
   border-radius: 3px;
-  transition: box-shadow 1s, background-color 1.5s ease;
+  transition: color 0.5s, box-shadow 1s, background-color 0.5s ease-in-out;
   background: #ccc;
+  font-weight: bold;
 }
 
 .key-shadow {
@@ -79,6 +80,26 @@ body {
 .exit {
   border: none;
   cursor: pointer;
+  background: #e03434;
+  color: white;
+}
+
+.showMusicKeys {
+  display: flex;
+}
+
+.closeRandomBlock {
+  background: rgb(189, 20, 20);
+  border: none;
+  font-size: 15px;
+  color: #fff;
+  position: absolute;
+  cursor: pointer;
+  font-weight: 500;
+  border-radius: 5px;
+  top: -22px;
+  right: 0px;
+  padding: 0px 6px 2px;
 }
 
 .modal {
