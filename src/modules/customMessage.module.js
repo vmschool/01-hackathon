@@ -41,16 +41,14 @@ export default class CustomMessage extends Module {
     messageText.textContent = `"${quoteText}"`;
     area.append(wrapper);
 
-    let removeItem = () => {
-      return setTimeout(() => wrapper.remove(), 2500);
-    };
+    let timerId;
 
     wrapper.addEventListener("mouseover", (event) => {
-      clearTimeout(removeItem());
+      clearTimeout(timerId);
     });
 
     wrapper.addEventListener("mouseleave", (event) => {
-      removeItem();
+      timerId = setTimeout(() => wrapper.remove(), 2500);
     });
   }
 
