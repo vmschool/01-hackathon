@@ -143,10 +143,8 @@ export class IsPalindromeModule extends Module {
 
 	trigger() {
 		if (document.querySelector("#palindrome")) return;
-
 		this.#reset();
 		this.#createPalindromeMarkup();
-
 		this.#modal.append(this.#titleField, this.#form);
 		this.#area.append(this.#modal);
 	}
