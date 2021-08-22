@@ -1,7 +1,7 @@
 import { Module } from "../core/module";
 import { getArea, isPalindrome, createModal } from "../utils";
 
-export default class IsPalindromeModule extends Module {
+export default class PalindromeModule extends Module {
 	#area;
 	#modal;
 	#form;

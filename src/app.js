@@ -6,7 +6,7 @@ import ContextMenu from "./menu";
 import ClicksModule from "./modules/clicks.module";
 import BackgroundModule from "./modules/background.module";
 import RandomSoundModule from "./modules/randomSound.module";
-import IsPalindromeModule from "./modules/palindrome.module";
+import PalindromeModule from "./modules/palindrome.module";
 import ShapeModule from "./modules/shape.module";
 import CustomMessageModule from "./modules/customMessage.module";
 import CreateMusicModule from "./modules/createMusic.module";
@@ -48,7 +48,7 @@ const backgroundModule = new BackgroundModule(
   "Create Random Background Color"
 );
 const randomSound = new RandomSoundModule("randomSound", "Generate Random Sound");
-const isPalindrome = new IsPalindromeModule(
+const isPalindrome = new PalindromeModule(
   "isPalindrome",
   "Given input is a Palindrome?"
 );
