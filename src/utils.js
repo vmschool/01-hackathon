@@ -45,8 +45,10 @@ export function xyTooltips(event) {
     top = 0
   } else if (pageY + delta > height) {
     top = height - 58
+  } else if (height - pageY < 58) {
+    top = height - 58
   } else {
-    top = event.pageY + delta
+    top = pageY - delta
   }
 
   return { left: left, top: top }
