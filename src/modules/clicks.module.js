@@ -1,10 +1,11 @@
-import {Module} from '../core/module'
+import { Module } from '../core/module'
 import '../css/clicks.css'
 
 export class ClicksModule extends Module {
   #timeInterval
   #countClick
   #stateCount
+  #moduleIsWorking
   #timer
 
   constructor(type = 'clicks', text = 'Считать клики (за 3 секунды)', timeInterval = 4000) {
@@ -14,19 +15,24 @@ export class ClicksModule extends Module {
     super(type, text)
     this.#countClick = 0
     this.#timeInterval = timeInterval
+    this.#moduleIsWorking = true
 
     document.body.addEventListener('click', this.#countClicks.bind(this))
     document.body.addEventListener('dblclick', this.#countDblclick.bind(this))
   }
 
   trigger() {
-    this.#stateCount = true
-    this.#countClick = 0
+    if (this.#moduleIsWorking) {
+      this.#moduleIsWorking = false
+      this.#stateCount = true
+      this.#countClick = 0
 
-    setTimeout(() => {
-      this.#stateCount = false
-      this.#showResult()
-    }, this.#timeInterval)
+      setTimeout(() => {
+        this.#moduleIsWorking = true
+        this.#stateCount = false
+        this.#showResult()
+      }, this.#timeInterval)
+    }
   }
 
   #showResult() {
@@ -66,7 +72,7 @@ export class ClicksModule extends Module {
   }
 
   #showClick(event) {
-    const {top, left} = this.#calculateCoordinates(event)
+    const { top, left } = this.#calculateCoordinates(event)
     const messagePopup$ = document.createElement('div')
 
     messagePopup$.textContent = event.type
@@ -88,7 +94,7 @@ export class ClicksModule extends Module {
     }, removeTimeout)
   }
 
-  #calculateCoordinates({pageX: clickX, pageY: clickY}) {
+  #calculateCoordinates({ pageX: clickX, pageY: clickY }) {
     const body = document.body.getBoundingClientRect()
     const clickSize = 58
     const delta = clickSize / 2
@@ -99,6 +105,6 @@ export class ClicksModule extends Module {
     let top = Math.max(0, clickY - delta)
     top = Math.min(top, clickY + clickSize, body.height - clickSize)
 
-    return {left: left, top: top}
+    return { left: left, top: top }
   }
 }

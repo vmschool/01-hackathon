@@ -10,6 +10,7 @@ import {BackgroundImageModule} from './modules/background-image.module'
 import {MessageModule} from './modules/message.module'
 import {ColorsModule} from './modules/colors.module'
 import {BlocksModule} from './modules/blocks.module'
+import {NotepadModule} from './modules/notepad.module'
 
 const contextMenu = new ContextMenu('#menu')
 
@@ -22,3 +23,4 @@ contextMenu.add(new BackgroundImageModule())
 contextMenu.add(new MessageModule())
 contextMenu.add(new ColorsModule())
 contextMenu.add(new BlocksModule())
+contextMenu.add(new NotepadModule())

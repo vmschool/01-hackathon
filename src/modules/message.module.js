@@ -20,8 +20,7 @@ export class MessageModule extends Module {
 
   trigger() {
     if (document.querySelector('#msg')) {
-      alert('Не торопись :)')
-      return
+      document.querySelector('#msg').remove()
     }
 
     const message$ = document.createElement('div')

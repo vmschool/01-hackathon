@@ -28,7 +28,6 @@ export class ColorsModule extends Module {
       colorHash$.textContent = randomColor
       colorHash$.addEventListener('click', event => {
         const {target} = event
-        console.log(target.textContent)
         navigator.clipboard.writeText(target.textContent)
         const pop$ = document.createElement('div')
         pop$.className = 'colors-pop'
@@ -54,7 +53,6 @@ export class ColorsModule extends Module {
 
     wrap$.append(closeBtn$)
 
-      console.log('wrap$', wrap$)
     document.body.append(wrap$)
   }
 

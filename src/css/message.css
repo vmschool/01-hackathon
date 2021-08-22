@@ -5,10 +5,9 @@
   border-radius: 5px;
   position: fixed;
   top: 5px;
-  left: 5px;
+  right: 5px;
   padding: 10px;
   margin: 10px;
-  color: #cd3;
+  color: #333;
   background: #fff;
-  opacity: 0.8;
 }
