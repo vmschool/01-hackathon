@@ -27,52 +27,19 @@ export class IsPalindromeModule extends Module {
 	#createPalindromeMarkup() {
 		this.#modal = createModal("palindrome");
 
+		this.#titleField.className = "titleFieldPalindrome";
 		this.#titleField.textContent = `Given input is a Palindrome? Length is more than 2 characters `;
-		this.#titleField.style.height = "35px";
-		this.#titleField.style.textAlign = "center";
-		this.#titleField.style.fontSize = "15px";
-		this.#titleField.style.color = "rgba(255, 255, 255, 0.8)";
-		this.#titleField.style.fontFamily = "Lato, sans-serif";
-		this.#titleField.style.fontWeight = "600";
-		this.#titleField.style.letterSpacing = "1px";
 
-		this.#form.type = "palindrome-form";
-		this.#form.style.display = "flex";
-		this.#form.style.marginTop = "25px";
-		this.#form.style.flexDirection = "column";
-		this.#form.style.alignItems = "center";
+		this.#form.className = "palindrome-form";
 
 		const input = document.createElement("input");
 		input.className = "palindrome-input";
 		input.type = "text";
-		input.style.padding = "5px";
-		input.style.height = "30px";
-		input.style.background = "rgba(255, 255, 255, 0.5)";
-		input.style.borderRadius = "4px";
-		input.style.borderStyle = "none";
 
 		const checkButton = document.createElement("input");
 		checkButton.className = "palindrome-check-button";
 		checkButton.type = "submit";
 		checkButton.value = "Check";
-		checkButton.style.marginTop = "15px";
-		checkButton.style.height = "35px";
-		checkButton.style.width = "140px";
-		checkButton.style.borderStyle = "none";
-		checkButton.style.borderRadius = "5px";
-		checkButton.style.background = "rgba(255, 0, 0, 0.45)";
-		checkButton.style.color = "rgba(255, 255, 255, 0.8)";
-		checkButton.style.transition = "background 150ms ease";
-		checkButton.style.cursor = "pointer";
-
-		checkButton.addEventListener(
-			"mouseover",
-			() => (checkButton.style.background = "rgba(255, 0, 0, 0.7)")
-		);
-		checkButton.addEventListener(
-			"mouseleave",
-			() => (checkButton.style.background = "rgba(255, 0, 0, 0.45)")
-		);
 
 		this.#form.append(input, checkButton);
 	}
