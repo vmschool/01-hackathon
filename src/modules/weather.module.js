@@ -1,12 +1,5 @@
-"use strict";
-
 import { Module } from "../core/module";
-import {
-	getArea,
-	createModal,
-	WEATHER_API_URL,
-	WEATHER_API_KEY,
-} from "../utils";
+import { createModal, getArea, WEATHER_API_KEY, WEATHER_API_URL } from "../utils";
 
 export default class WeatherModule extends Module {
 	#area;
@@ -20,19 +13,18 @@ export default class WeatherModule extends Module {
 		this.#initiateListener();
 	}
 
-	async #getWeatherData(city) {
+	static async #getWeatherData(city) {
 		try {
 			const data = await fetch(
 				`${WEATHER_API_URL}${city}&lang=ru&units=metric&appid=${WEATHER_API_KEY}`
 			);
-			const resp = await data.json();
-			return resp;
+			return await data.json();
 		} catch (err) {
 			console.error(`ОШИБКА - ${err}`);
 		}
 	}
 
-	#createMarkUpHTML(data) {
+	static #createMarkUpHTML(data) {
 		const divWeather = document.createElement("div");
 		divWeather.className = "weather";
 
@@ -84,15 +76,15 @@ export default class WeatherModule extends Module {
 				return;
 			}
 
-			this.#getWeatherData(inputField.value).then((response) => {
-				if (response.cod == 404) return;
+			WeatherModule.#getWeatherData(inputField.value).then((response) => {
+				if (response.code === 404) return;
 				this.#modal.style.width = `350px`;
 				const data = response;
 				setTimeout(() => {
 					this.#getWeatherMarkup(
 						data.name,
-						this.#createMarkUpHTML(data),
-						this.#getCurrentWeatherImageHTML(data)
+						WeatherModule.#createMarkUpHTML(data),
+						WeatherModule.#getCurrentWeatherImageHTML(data)
 					);
 				}, 400);
 			});
@@ -101,7 +93,7 @@ export default class WeatherModule extends Module {
 		});
 	}
 
-	#getCurrentWeatherImageHTML(data) {
+	static #getCurrentWeatherImageHTML(data) {
 		const image = document.createElement("img");
 		image.className = "weatherImage";
 		image.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;

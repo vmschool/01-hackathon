@@ -1,5 +1,3 @@
-"use strict";
-
 import { Module } from "../core/module";
 import { getArea, isPalindrome, createModal } from "../utils";
 

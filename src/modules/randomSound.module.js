@@ -1,5 +1,5 @@
 import { Module } from "../core/module";
-import { random } from "../utils";
+import { random, showError } from "../utils";
 
 export default class RandomSoundModule extends Module {
   arraySounds = [
@@ -16,6 +16,7 @@ export default class RandomSoundModule extends Module {
   trigger() {
     const randomNumber = random(0, this.arraySounds.length - 1);
     const audio = new Audio([this.arraySounds[randomNumber]]);
-    audio.play();
+    audio.play()
+        .catch(showError);
   }
 }

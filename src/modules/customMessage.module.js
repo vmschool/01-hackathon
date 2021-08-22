@@ -1,36 +1,36 @@
-import { Module } from "@/core/module";
-import * as utils from "../utils";
+import { Module } from "../core/module";
+import { random, showError, getArea, createModal } from "../utils";
 
 export default class CustomMessageModule extends Module {
   constructor(type, text) {
     super(type, text);
   }
 
-  async #getQuote() {
+  static async #getQuote() {
     try {
-      const num = utils.random(0, 1);
+      const num = random(0, 1);
       const url = num > 0.5 ? 'https://favqs.com/api/qotd' : 'https://api.chucknorris.io/jokes/random';
       const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`status isn't ok`);
-      }
+      // if (!response.ok) {
+      //   throw new Error(`status isn't ok`);
+      // }
       const responseObj = await response.json();
       return {
-        body: `${num > 0.5 ? responseObj.quote.body : responseObj.value}`,
-        author: `${num > 0.5 ? responseObj.quote.author : 'Chuck Norris'}`,
+        body: `${num > 0.5 ? responseObj?.quote.body : responseObj.value}`,
+        author: `${num > 0.5 ? responseObj?.quote.author : 'Chuck Norris'}`,
       };
     } catch (error) {
-      console.error(error);
+      showError(error);
     }
   }
 
   async #createQuote() {
-    const area = utils.getArea();
-    const wrapper = utils.createModal("quote");
+    const area = getArea();
+    const wrapper = createModal("quote");
     wrapper.classList.add("quote");
     const messageText = document.createElement("span");
     wrapper.append(messageText);
-    const quote = await this.#getQuote();
+    const quote = await CustomMessageModule.#getQuote();
     const quoteText = quote.body;
     const quoteAuthor = quote.author;
     const author = document.createElement("span");
@@ -43,11 +43,11 @@ export default class CustomMessageModule extends Module {
 
     let timerId;
 
-    wrapper.addEventListener("mouseover", (event) => {
+    wrapper.addEventListener("mouseover", () => {
       clearTimeout(timerId);
     });
 
-    wrapper.addEventListener("mouseleave", (event) => {
+    wrapper.addEventListener("mouseleave", () => {
       timerId = setTimeout(() => wrapper.remove(), 2500);
     });
   }

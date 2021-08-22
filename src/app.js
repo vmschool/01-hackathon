@@ -1,5 +1,7 @@
 import "./styles.css";
 import { createArea, createEl } from "./utils";
+import { showHelpComponent } from "./component/help.component";
+import { arrayHelpText } from "./data/text.data";
 import ContextMenu from "./menu";
 import ClicksModule from "./modules/clicks.module";
 import BackgroundModule from "./modules/background.module";
@@ -10,8 +12,6 @@ import CustomMessageModule from "./modules/customMessage.module";
 import CreateMusicModule from "./modules/createMusic.module";
 import WeatherModule from "./modules/weather.module";
 import TimerModule from "./modules/timer.module";
-import showHelpComponent from "@/component/help.component";
-import arrayHelpText from "@/data/text.data";
 import BeLikeBillModule from "./modules/beLikeBill.module";
 
 // Initialising contextMenu

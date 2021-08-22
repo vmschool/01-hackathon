@@ -1,13 +1,13 @@
 import { Module } from "../core/module";
 import { createEl, getArea, random } from "../utils";
-import { randomColorRGB } from "./../utils";
+import { randomColorRGB } from "../utils";
 
 export default class ShapeModule extends Module {
   constructor(type, text) {
     super(type, text);
   }
 
-  #createBlock() {
+  static #createBlock() {
     const randomBlock = createEl("div", "", ["randomBlock"]);
     const closeRandomBlock = createEl("button", "", ["modal_close-button"]);
     if (closeRandomBlock) {
@@ -22,7 +22,7 @@ export default class ShapeModule extends Module {
     }
   }
 
-  #changeBlock(block) {
+  static #changeBlock(block) {
     block.style.width = `${random(0, 500)}px`;
     block.style.borderRadius = "5px";
     block.style.height = `${random(0, 500)}px`;
@@ -36,10 +36,10 @@ export default class ShapeModule extends Module {
   trigger() {
     const block = document.querySelector(".randomBlock");
     if (block) {
-      this.#changeBlock(block);
+      ShapeModule.#changeBlock(block);
     } else {
-      const block2 = this.#createBlock();
-      this.#changeBlock(block2);
+      const block2 = ShapeModule.#createBlock();
+      ShapeModule.#changeBlock(block2);
     }
   }
 }

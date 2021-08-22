@@ -19,14 +19,6 @@ export function refreshCounter() {
   counter = -1;
 }
 
-export function addObjectToArea(object, ms = 3000) {
-  const area = document.querySelector("#area");
-  area.append(object);
-  setTimeout(() => {
-    object.remove();
-  }, ms);
-}
-
 export function createArea() {
   const area = document.createElement("div");
   area.classList.add("area");
@@ -74,4 +66,8 @@ export const randomColorRGB = () =>
 
 export function getArea() {
   return document.querySelector("#area");
+}
+
+export function showError(err) {
+  console.error(err)
 }

@@ -1,5 +1,5 @@
-import {Module} from '../core/module'
-import * as utils from '../utils';
+import { Module } from '../core/module'
+import { getArea, createModal } from '../utils';
 
 export class TimerInterface extends Module {
     #input; #titleField; #startButton; #restartButton; #modalName;
@@ -20,7 +20,7 @@ export class TimerInterface extends Module {
         this.#restartButton.classList.add("timer_start-button");
         this.#restartButton.value = 'Restart';
         this.#restartButton.textContent = 'Restart';
-        this.#restartButton.addEventListener("click", (event) => {
+        this.#restartButton.addEventListener("click", () => {
             this.#timerSettings();
         });
         this.wrapper.append(this.#restartButton);
@@ -44,7 +44,7 @@ export class TimerInterface extends Module {
         this.#createRestartButton();
     }
 
-    #prettyTime(timeLeft) {
+    static #prettyTime(timeLeft) {
         let part1 = '';
         let part2 = '00';
         if (timeLeft > 60) {
@@ -59,7 +59,7 @@ export class TimerInterface extends Module {
     }
 
     timerControlOn(titleField) {
-        titleField.textContent = `${this.#prettyTime(this.time)}`;
+        titleField.textContent = `${TimerInterface.#prettyTime(this.time)}`;
         this.time--;
         this.intervalId = setInterval(() => this.timeDecrease(titleField), 1000);
     }
@@ -76,11 +76,10 @@ export class TimerInterface extends Module {
             this.timerControlOf();
             return;
         }
-        text.textContent = `${this.#prettyTime(this.time)}`;
+        text.textContent = `${TimerInterface.#prettyTime(this.time)}`;
         if (this.time === 0) {
             this.finishProcess();
         }
-        console.log(this.time);
         this.time--;
     }
 
@@ -91,9 +90,9 @@ export class TimerInterface extends Module {
         this.wrapper.append(this.#titleField);
     }
 
-    #timerSettings() {
+    #timerSettings(title) {
         this.#clearWrapperField();
-        this.#generateTitle('Create Timer');
+        this.#generateTitle(title);
         this.#generateInputField();
         this.#generateStartButton();
     }
@@ -127,11 +126,11 @@ export class TimerInterface extends Module {
 
     initiateTimer(modalName, title) {
         this.#modalName = modalName;
-        this.area = utils.getArea();
+        this.area = getArea();
         if (!document.querySelector(`#${modalName}`)) {
-            this.wrapper = utils.createModal(modalName);
+            this.wrapper = createModal(modalName);
         }
-        this.#timerSettings();
+        this.#timerSettings(title);
         this.area.append(this.wrapper);
     }
 }
