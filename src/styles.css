@@ -11,7 +11,7 @@ body {
   font-family: "Roboto", sans-serif;
   height: 100vh;
   width: 100%;
-  padding: 2rem;
+  padding: 0;
 }
 
 .menu {
@@ -46,8 +46,8 @@ body {
 
 .area {
   position: fixed;
-  width: 600px;
-  height: 600px;
+  width: 100vw;
+  height: 100vh;
   background-color: antiquewhite;
 }
 
