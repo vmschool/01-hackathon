@@ -24,7 +24,7 @@ export class SoundModule extends Module {
        const btn = document.createElement('div');
        btn.className = 'btn_stop_audio';
        btn.textContent = 'stop sound';
-       document.body.append(btn);
+       this.#container.append(btn);
        btn.addEventListener('click', e=>{
            const {target} = e;
            target.remove();
