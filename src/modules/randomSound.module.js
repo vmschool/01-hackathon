@@ -1,7 +1,7 @@
 import { Module } from "../core/module";
 import { random } from "../utils";
 
-export class RandomSound extends Module {
+export default class RandomSoundModule extends Module {
   arraySounds = [
     "http://cd.textfiles.com/sbsw/ANIMALS/FROG1.WAV",
     "http://www.classicalmusicproject.com/Joshuahomework/Sealion.wav",

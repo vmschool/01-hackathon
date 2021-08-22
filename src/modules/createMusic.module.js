@@ -1,7 +1,7 @@
 import { Module } from "../core/module";
 import { createEl, getArea } from "../utils";
 
-export class CreateMusicModule extends Module {
+export default class CreateMusicModule extends Module {
   constructor(type, text) {
     super(type, text);
   }

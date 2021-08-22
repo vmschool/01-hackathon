@@ -1,7 +1,7 @@
 import * as utils from '../utils';
 import { TimerInterface } from "./timerInterface";
 
-export class ClicksModule extends TimerInterface {
+export default class ClicksModule extends TimerInterface {
     constructor(type, text) {
         super(type, text);
     }

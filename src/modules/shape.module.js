@@ -2,7 +2,7 @@ import { Module } from "../core/module";
 import { createEl, getArea, random } from "../utils";
 import { randomColorRGB } from "./../utils";
 
-export class ShapeModule extends Module {
+export default class ShapeModule extends Module {
   constructor(type, text) {
     super(type, text);
   }

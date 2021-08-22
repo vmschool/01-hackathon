@@ -8,7 +8,7 @@ import {
 	WEATHER_API_KEY,
 } from "../utils";
 
-export class WeatherModule extends Module {
+export default class WeatherModule extends Module {
 	#area;
 	#modal;
 	#form;

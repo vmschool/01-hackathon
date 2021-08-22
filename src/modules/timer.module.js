@@ -1,6 +1,6 @@
 import { TimerInterface } from "./timerInterface";
 
-export default class Timer extends TimerInterface {
+export default class TimerModule extends TimerInterface {
   constructor(type, text) {
     super(type, text);
   }

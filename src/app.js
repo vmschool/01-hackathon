@@ -1,17 +1,17 @@
 import "./styles.css";
-import ContextMenu from "./menu";
-import { ClicksModule } from "./modules/clicks.module";
 import { createArea, createEl } from "./utils";
-import { BackgroundModule } from "./modules/background.module";
-import { RandomSound } from "./modules/randomSound.module";
-import { IsPalindromeModule } from "./modules/palindrome.module";
-import { ShapeModule } from "./modules/shape.module";
-import CustomMessage from "./modules/customMessage.module";
-import { CreateMusicModule } from "./modules/createMusic.module";
-import { WeatherModule } from "./modules/weather.module";
-import Timer from "./modules/timer.module";
-import { showHelpComponent } from "@/component/help.component";
-import {arrayHelpText} from "@/data/text.data";
+import ContextMenu from "./menu";
+import ClicksModule from "./modules/clicks.module";
+import BackgroundModule from "./modules/background.module";
+import RandomSoundModule from "./modules/randomSound.module";
+import IsPalindromeModule from "./modules/palindrome.module";
+import ShapeModule from "./modules/shape.module";
+import CustomMessageModule from "./modules/customMessage.module";
+import CreateMusicModule from "./modules/createMusic.module";
+import WeatherModule from "./modules/weather.module";
+import TimerModule from "./modules/timer.module";
+import showHelpComponent from "@/component/help.component";
+import arrayHelpText from "@/data/text.data";
 import BeLikeBillModule from "./modules/beLikeBill.module";
 
 // Initialising contextMenu
@@ -47,15 +47,15 @@ const backgroundModule = new BackgroundModule(
   "randomColor",
   "Create Random Background Color"
 );
-const randomSound = new RandomSound("randomSound", "Generate Random Sound");
+const randomSound = new RandomSoundModule("randomSound", "Generate Random Sound");
 const isPalindrome = new IsPalindromeModule(
   "isPalindrome",
   "Given input is a Palindrome?"
 );
 const shapeModule = new ShapeModule("ShapeModule", "Generate random block");
-const customMessage = new CustomMessage("customMessage", "Get a quote");
+const customMessage = new CustomMessageModule("customMessage", "Get a quote");
 const createMusic = new CreateMusicModule("createMusic", "Create Music");
-const timer = new Timer("timer", "Start timer");
+const timer = new TimerModule("timer", "Start timer");
 const weatherModule = new WeatherModule("weatherModule", "Weather forecast");
 const beLikeBill = new BeLikeBillModule("beLikeBillModule", "Generate Bill meme");
 

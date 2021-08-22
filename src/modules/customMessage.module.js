@@ -1,7 +1,7 @@
 import { Module } from "@/core/module";
 import * as utils from "../utils";
 
-export default class CustomMessage extends Module {
+export default class CustomMessageModule extends Module {
   constructor(type, text) {
     super(type, text);
   }
