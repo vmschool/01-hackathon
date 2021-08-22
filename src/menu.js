@@ -3,8 +3,11 @@ import { Menu } from "./core/menu";
 export class ContextMenu extends Menu {
   constructor(selector) {
     super(selector);
+
     this.modules = {};
+
     this.add = this.add.bind(this);
+
   }
 
   close() {
@@ -20,8 +23,11 @@ export class ContextMenu extends Menu {
       newmenu.style.top = e.pageY + "px";
     }
     let newmenu = document.getElementById("menu");
+    //console.log(this.el);
     newmenu.addEventListener("click", (e) => {
+
       let fn = e.target.dataset.type;
+
       this.modules[fn].trigger();
     });
   }
@@ -33,10 +39,12 @@ export class ContextMenu extends Menu {
     };
   }
   render() {
+
     const getMenu = document.getElementById("menu");
     getMenu.innerHTML = "";
     Object.keys(this.modules).forEach((el) =>
       getMenu.insertAdjacentHTML("afterbegin", this.modules[el].text())
+
     );
 
     document.onclick = this.close;

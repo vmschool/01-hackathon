@@ -12,6 +12,7 @@ import { ClicksModule } from "./modules/clicks.module";
 // menu.render();
 
 const menu = new ContextMenu();
+
 const counterClick = new ClicksModule(
   "counterClick",
   "Аналитика кликов (за 5 секунд)"
@@ -19,4 +20,6 @@ const counterClick = new ClicksModule(
 
 menu.add(counterClick);
 
+
 menu.render();
+
