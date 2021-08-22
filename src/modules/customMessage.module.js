@@ -12,7 +12,10 @@ export default class CustomMessage extends Module {
       const responsJSON = await fetch(url);
       if (!responsJSON.ok) throw new Error(`status isn't ok`);
       const responeObj = await responsJSON.json();
-      return responeObj.quote.body;
+      return {
+        body: responeObj.quote.body,
+        author: responeObj.quote.author,
+      };
     } catch (error) {
       console.error(error);
     }
@@ -22,21 +25,29 @@ export default class CustomMessage extends Module {
     const area = utils.getArea();
     const wrapper = utils.createModal("quote");
     wrapper.classList.add("quote");
-    area.append(wrapper);
     const messageText = document.createElement("span");
-    messageText.textContent = "Loading the quote...";
     wrapper.append(messageText);
-    messageText.textContent = await this.#getQuote();
+    const quote = await this.#getQuote();
+    const quoteText = quote.body;
+    const quoteAuthor = quote.author;
+    const author = document.createElement("span");
+    author.classList.add("quote-author");
+    wrapper.append(author);
+    author.textContent = quoteAuthor;
+
+    messageText.textContent = `"${quoteText}"`;
     area.append(wrapper);
 
-    let removeItem = setTimeout(() => wrapper.remove(), 2500);
+    let removeItem = () => {
+      return setTimeout(() => wrapper.remove(), 2500);
+    };
 
     wrapper.addEventListener("mouseover", (event) => {
-      clearTimeout(removeItem);
+      clearTimeout(removeItem());
     });
 
-    wrapper.addEventListener("mouseout", (event) => {
-      setTimeout(() => wrapper.remove(), 2500);
+    wrapper.addEventListener("mouseleave", (event) => {
+      removeItem();
     });
   }
 
