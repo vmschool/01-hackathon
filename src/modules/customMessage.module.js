@@ -24,13 +24,26 @@ export default class CustomMessage extends Module {
     wrapper.classList.add("quote");
     area.append(wrapper);
     const messageText = document.createElement("span");
-    messageText.textContent = await this.#getQuote();
+    messageText.textContent = "Loading the quote...";
     wrapper.append(messageText);
-    return wrapper;
+    messageText.textContent = await this.#getQuote();
+    area.append(wrapper);
+
+    setTimeout(() => wrapper.remove(), 2500);
+
+    wrapper.addEventListener("mouseover", (event) => {
+      setTimeout(() => wrapper.remove(), 2500);
+    });
+
+    wrapper.addEventListener("mouseout", (event) => {
+      setTimeout(() => wrapper.remove(), 2500);
+    });
+    // return wrapper;
   }
 
   async trigger() {
-    const quote = await this.#createQuote();
-    utils.addObjectToArea(quote);
+    await this.#createQuote();
+    // const quote = await this.#createQuote();
+    // utils.addObjectToArea(quote,1500);
   }
 }
