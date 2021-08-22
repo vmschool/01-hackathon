@@ -12,6 +12,7 @@ import { WeatherModule } from "./modules/weather.module";
 import Timer from "./modules/timer.module";
 import { showHelpComponent } from "@/component/help.component";
 import {arrayHelpText} from "@/data/text.data";
+import BeLikeBillModule from "./modules/beLikeBill.module";
 
 // Initialising contextMenu
 const contextMenu = new ContextMenu("#menu");
@@ -56,6 +57,7 @@ const customMessage = new CustomMessage("customMessage", "Get a quote");
 const createMusic = new CreateMusicModule("createMusic", "Create Music");
 const timer = new Timer("timer", "Start timer");
 const weatherModule = new WeatherModule("weatherModule", "Weather forecast");
+const beLikeBill = new BeLikeBillModule("beLikeBillModule", "Generate Bill meme");
 
 // add modules to contextMenu
 contextMenu.add(clickModule);
@@ -67,3 +69,4 @@ contextMenu.add(shapeModule);
 contextMenu.add(customMessage);
 contextMenu.add(createMusic);
 contextMenu.add(timer);
+contextMenu.add(beLikeBill);
