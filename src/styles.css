@@ -153,6 +153,12 @@ body {
   background: rgba(226, 251, 0, 0.5);
 }
 
+.quote-author {
+  font-size: 8pt;
+  margin-left: 70%;
+  margin-top: 40px;
+}
+
 .timer-input {
   padding: 5px;
   height: 30px;
