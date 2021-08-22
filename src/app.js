@@ -10,6 +10,7 @@ import { WeatherModule } from "./modules/weather.module";
 import { FigureModule } from "./modules/figure.module";
 import { BackgroundColorModule } from "./modules/backgroundColor.module";
 import { RandomQuote } from "./modules/randomQuote.module";
+import { playRandomSound } from "./modules/randomSound.module";
 
 const menu = new ContextMenu();
 
@@ -22,6 +23,7 @@ const weatherModule = new WeatherModule("getWeather", "Показать пого
 const figureModule = new FigureModule("createFigure", "Создать фигуру");
 const backgroundColorModule = new BackgroundColorModule("createBackground", "Создать случайный фон");
 const addRandomQuote = new RandomQuote("randomQuote", "Произвольная фраза");
+const addRandomSound = new playRandomSound("randpmSound", "Произвольный звук");
 
 menu.add(counterClick);
 menu.add(backgroundModule);
@@ -32,5 +34,6 @@ menu.add(weatherModule);
 menu.add(figureModule);
 menu.add(backgroundColorModule);
 menu.add(addRandomQuote);
+menu.add(playRandomSound);
 
 menu.render();
