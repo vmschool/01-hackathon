@@ -15,11 +15,10 @@ document.addEventListener("click", (event) => {
     contextMenu.close(event);
 }, true);
 
-
 // variables
 const clicksModule = new ClicksModule();
 const shapesModule = new ShapeModule();
 
 // adding elements to menu
-contextMenu.add(clicksModule, "Click click");
-contextMenu.add(shapesModule, "Shapes");
+contextMenu.add(clicksModule);
+contextMenu.add(shapesModule);
