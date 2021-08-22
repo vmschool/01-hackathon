@@ -2,10 +2,10 @@ import { Menu } from './core/menu';
 import { ClicksModule } from './modules/clicks.module';
 import { MessageModule } from './modules/message.module';
 import { ShapeModule } from './modules/shape.module';
-// import { SoundModule } from './modules/sound.module';
+import { SoundModule } from './modules/sound.module';
 import { positionMenu } from './utils';
 
-const modulesArray = [ClicksModule, MessageModule, ShapeModule]; // , SoundModule
+const modulesArray = [ClicksModule, MessageModule, ShapeModule, SoundModule];
 
 const menuItemsInfo = modulesArray.map((module) => {
   const moduleClassInstance = new module();
