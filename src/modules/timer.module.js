@@ -8,14 +8,18 @@ export default class Timer extends Module {
     super(type, text);
   }
 
-  #timeDdecriase(text) {
+  #timeDecriase(text) {
     if (this.#time === 0) {
-      const area = utils.getArea();
-      area.innerHTML = "";
-      alert("Time is up");
+      text.textContent = `Time is UP!!`;
+      setTimeout(() => {
+        const area = utils.getArea();
+        area.innerHTML = "";
+      }, 3000);
+      return;
     }
-    text.textContent = `${this.#time} sec`;
+    text.textContent = `${this.#time - 1} sec`;
     this.#time--;
+    setTimeout(() => this.#timeDecriase(text), 1000);
   }
 
   #startTimer(event, input, text) {
@@ -23,7 +27,11 @@ export default class Timer extends Module {
     input.remove();
     event.target.remove();
     text.textContent = `${this.#time} sec`;
-    setInterval(() => this.#timeDdecriase(text), 1000);
+    this.#timeDecriase(text);
+  }
+
+  #updateTitle(value, text) {
+    text.textContent = `${value} sec`;
   }
 
   #renderBlock() {
@@ -46,6 +54,11 @@ export default class Timer extends Module {
     startButton.value = "Start";
     startButton.textContent = "Start";
     wrapper.append(startButton);
+
+    input.addEventListener("input", (event) => {
+      let count = event.target.value;
+      this.#updateTitle(count, titleField);
+    });
 
     startButton.addEventListener("click", (event) =>
       this.#startTimer(event, input, titleField)
