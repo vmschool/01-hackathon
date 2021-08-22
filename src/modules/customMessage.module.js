@@ -8,13 +8,14 @@ export default class CustomMessage extends Module {
 
   async #getQuote() {
     try {
-      const url = `https://favqs.com/api/qotd`;
+      const num = utils.random(0, 1);
+      const url = num > 0.5 ? 'https://favqs.com/api/qotd' : 'https://api.chucknorris.io/jokes/random';
       const responsJSON = await fetch(url);
       if (!responsJSON.ok) throw new Error(`status isn't ok`);
       const responeObj = await responsJSON.json();
       return {
-        body: responeObj.quote.body,
-        author: responeObj.quote.author,
+        body: `${num > 0.5 ? responeObj.quote.body : responeObj.value}`,
+        author: `${num > 0.5 ? responeObj.quote.author : 'Chuck Norris'}`,
       };
     } catch (error) {
       console.error(error);
