@@ -6,33 +6,40 @@ import { positionMenu } from './utils';
 
 const modulesArray = [ClicksModule, MessageModule, ShapeModule];
 
+const menuItemsInfo = modulesArray.map((module) => {
+  const moduleClassInstance = new module();
+  const moduleInnerHTML = moduleClassInstance.toHTML();
+  const moduleDataType = moduleClassInstance.type;
+  return {
+    instance: moduleClassInstance,
+    innerHTML: moduleInnerHTML,
+    dataType: moduleDataType,
+  };
+});
+
+const menuInnerHTML = menuItemsInfo
+  .map((module) => {
+    return module.innerHTML;
+  })
+  .join('');
 export class ContextMenu extends Menu {
-  add() {
-    const menuItemsInfo = modulesArray.map((module) => {
-      const moduleClassInstance = new module();
-      const moduleInnerHTML = moduleClassInstance.toHTML();
-      const moduleDataType = moduleClassInstance.type;
-      return {
-        instance: moduleClassInstance,
-        innerHTML: moduleInnerHTML,
-        dataType: moduleDataType,
-      };
-    });
+  constructor(selector) {
+    super(selector);
+    this.openContextMenu();
+    this.openModule();
+  }
 
-    const menuInnerHTML = menuItemsInfo
-      .map((module) => {
-        return module.innerHTML;
-      })
-      .join('');
-
-    this.el.innerHTML = menuInnerHTML;
+  openContextMenu() {
     document.addEventListener('contextmenu', (event) => {
       event.preventDefault();
       document.querySelector('.container').innerHTML = '';
+      this.add(menuInnerHTML);
       this.open();
       positionMenu(event);
     });
+  }
 
+  openModule() {
     this.el.addEventListener('click', (event) => {
       this.close();
       const { target } = event;

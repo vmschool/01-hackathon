@@ -19,8 +19,8 @@ export class Menu {
     // throw new Error(`"close" method should be implemented in Menu"`);
   }
 
-  // add() {
-
-  //   // throw new Error(`"add" method should be implemented in Menu"`);
-  // }
+  add(menuInnerHTML = '') {
+    this.el.innerHTML = menuInnerHTML;
+  }
+  // throw new Error(`"add" method should be implemented in Menu"`);
 }
