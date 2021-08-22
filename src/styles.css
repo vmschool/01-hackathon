@@ -1,17 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap");
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-  font-size: 14px;
-  font-family: "Roboto", sans-serif;
-  height: 100vh;
-  width: 100%;
-  padding: 0;
+	font-size: 14px;
+	font-family: "Roboto", sans-serif;
+	height: 100vh;
+	width: 100%;
+	padding: 0;
 }
 
 .menu {
@@ -28,8 +28,8 @@ body {
 }
 
 .menu.open {
-  transform: scale(1);
-  transition: transform 200ms ease-in-out;
+	transform: scale(1);
+	transition: transform 200ms ease-in-out;
 }
 
 .menu .menu-item {
@@ -47,8 +47,8 @@ body {
 }
 
 .menu .menu-item:hover {
-  background: #343434;
-  color: bisque;
+	background: #343434;
+	color: bisque;
 }
 
 .area {
@@ -61,121 +61,212 @@ body {
 }
 
 .sounds {
-  display: none;
-  position: fixed;
-  bottom: 50px;
-  left: 50px;
-  justify-content: space-between;
+	display: none;
+	position: fixed;
+	bottom: 50px;
+	left: 50px;
+	justify-content: space-between;
 }
 
 .sound {
-  background: #fff;
-  flex-direction: column;
-  height: 70px;
-  margin: 0 5px;
-  padding: 10px;
-  border-radius: 3px;
-  transition: color 0.5s, box-shadow 1s, background-color 0.5s ease-in-out;
-  background: #ccc;
-  font-weight: bold;
+	background: #fff;
+	flex-direction: column;
+	height: 70px;
+	margin: 0 5px;
+	padding: 10px;
+	border-radius: 3px;
+	transition: color 0.5s, box-shadow 1s, background-color 0.5s ease-in-out;
+	background: #ccc;
+	font-weight: bold;
 }
 
 .key-shadow {
-  -webkit-box-shadow: 0px 5px 5px 2px rgba(34, 60, 80, 0.54);
-  -moz-box-shadow: 0px 5px 5px 2px rgba(34, 60, 80, 0.54);
-  box-shadow: 0px 5px 5px 2px rgba(34, 60, 80, 0.54);
-  background: #fff;
+	-webkit-box-shadow: 0px 5px 5px 2px rgba(34, 60, 80, 0.54);
+	-moz-box-shadow: 0px 5px 5px 2px rgba(34, 60, 80, 0.54);
+	box-shadow: 0px 5px 5px 2px rgba(34, 60, 80, 0.54);
+	background: #fff;
 }
 
 .exit {
-  border: none;
-  cursor: pointer;
-  background: #e03434;
-  color: white;
+	border: none;
+	cursor: pointer;
+	background: #e03434;
+	color: white;
 }
 
 .showMusicKeys {
-  display: flex;
+	display: flex;
 }
 
 .closeRandomBlock {
-  background: rgb(189, 20, 20);
-  border: none;
-  font-size: 15px;
-  color: #fff;
-  position: absolute;
-  cursor: pointer;
-  font-weight: 500;
-  border-radius: 5px;
-  top: -22px;
-  right: 0px;
-  padding: 0px 6px 2px;
+	background: rgb(189, 20, 20);
+	border: none;
+	font-size: 15px;
+	color: #fff;
+	position: absolute;
+	cursor: pointer;
+	font-weight: 500;
+	border-radius: 5px;
+	top: -22px;
+	right: 0px;
+	padding: 0px 6px 2px;
 }
 
 .modal {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-  margin: 20% auto;
-  height: 180px;
-  width: 38%;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
-  transition: all 350ms ease;
-  position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 15px;
+	margin: 20% auto;
+	height: 180px;
+	width: 38%;
+	background: rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+	transition: all 350ms ease;
+	position: relative;
 }
 
 .modal span {
-  color: white;
+	color: white;
 }
 
 .modal_close-button {
-  cursor: pointer;
-  display: block;
-  position: absolute;
-  right: -10px;
-  top: -15px;
-  font-size: 15px;
-  font-family: "Lato, sans-serif";
-  font-weight: 600;
-  border-style: none;
-  background: none;
+	cursor: pointer;
+	display: block;
+	position: absolute;
+	right: -10px;
+	top: -15px;
+	font-size: 15px;
+	font-family: "Lato, sans-serif";
+	font-weight: 600;
+	border-style: none;
+	background: none;
 }
 
 .modal.quote {
-  width: 55%;
-  margin: 5% 35%;
+	width: 55%;
+	margin: 5% 35%;
 }
 
 .timer-input {
-  padding: 5px;
-  height: 30px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 4px;
-  border-style: none;
+	padding: 5px;
+	height: 30px;
+	background: rgba(255, 255, 255, 0.5);
+	border-radius: 4px;
+	border-style: none;
 }
 
 .timer_start-button {
-  margin-top: 15px;
-  height: 35px;
-  width: 70px;
-  border-style: none;
-  border-radius: 5px;
-  background: rgba(255, 0, 0, 0.45);
-  color: rgba(255, 255, 255, 0.8);
-  transition: background 150ms ease;
-  cursor: pointer;
+	margin-top: 15px;
+	height: 35px;
+	width: 70px;
+	border-style: none;
+	border-radius: 5px;
+	background: rgba(255, 0, 0, 0.45);
+	color: rgba(255, 255, 255, 0.8);
+	transition: background 150ms ease;
+	cursor: pointer;
 }
 
 .timer-title {
-  height: 35px;
-  text-align: center;
-  font-size: 15px;
-  color: rgba(255, 255, 255, 0.8);
-  font-family: Lato, sans-serif;
-  font-weight: 600;
-  letter-spacing: 1px;
+	height: 35px;
+	text-align: center;
+	font-size: 15px;
+	color: rgba(255, 255, 255, 0.8);
+	font-family: Lato, sans-serif;
+	font-weight: 600;
+	letter-spacing: 1px;
+}
+
+#weather-modal {
+	width: 400px;
+}
+
+.weather-wrapper {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0px 5px;
+	margin-top: 10px;
+}
+
+.weatherImage {
+	margin-left: 20px;
+}
+
+.starterWeatherMarkup {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.starterWeatherTitle {
+	margin-bottom: 10px;
+}
+
+.starterWeatherInput {
+	padding: 5px;
+	height: 30px;
+	background: rgba(255, 255, 255, 0.5);
+	border-radius: 4px;
+	border-style: none;
+}
+
+.starterWeatherButton {
+	margin-top: 15px;
+	height: 35px;
+	width: 140px;
+	border-style: none;
+	border-radius: 5px;
+	background: rgba(255, 0, 0, 0.45);
+	color: rgba(255, 255, 255, 0.8);
+	transition: background 150ms ease;
+	cursor: pointer;
+}
+
+.starterWeatherButton:hover {
+	background: rgba(255, 0, 0, 0.7);
+}
+
+.titleFieldPalindrome {
+	height: 35px;
+	text-align: center;
+	font-size: 15px;
+	color: rgba(255, 255, 255, 0.8);
+	font-family: Lato, sans-serif;
+	font-weight: 600;
+	letter-spacing: 1px;
+}
+
+.palindrome-form {
+	display: flex;
+	margin-top: 25px;
+	flex-direction: column;
+	align-items: center;
+}
+
+.palindrome-input {
+	padding: 5px;
+	height: 30px;
+	background: rgba(255, 255, 255, 0.5);
+	border-radius: 4px;
+	border-style: none;
+}
+
+.palindrome-check-button {
+	margin-top: 15px;
+	height: 35px;
+	width: 140px;
+	border-style: none;
+	border-radius: 5px;
+	background: rgba(255, 0, 0, 0.45);
+	color: rgba(255, 255, 255, 0.8);
+	transition: background 150ms ease;
+	cursor: pointer;
+}
+
+.palindrome-check-button:hover {
+	background: rgba(255, 0, 0, 0.7);
 }
