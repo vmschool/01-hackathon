@@ -7,10 +7,15 @@ export default class CustomMessage extends Module {
   }
 
   async #getQuote() {
-    const url = `https://favqs.com/api/qotd`;
-    const responsJSON = await fetch(url);
-    const responeObj = await responsJSON.json();
-    return responeObj.quote.body;
+    try {
+      const url = `https://favqs.com/api/qotd`;
+      const responsJSON = await fetch(url);
+      if (!responsJSON.ok) throw new Error(`status isn't ok`);
+      const responeObj = await responsJSON.json();
+      return responeObj.quote.body;
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   async #createQuote() {
