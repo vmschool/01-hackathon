@@ -1,6 +1,4 @@
-import menu from "../app";
 import { Module } from "../core/module";
-// import { ContextMenu } from "../menu";
 
 export class ClicksModule extends Module {
   constructor(type, text) {
@@ -17,10 +15,14 @@ export class ClicksModule extends Module {
     this.#createClickHTML();
   }
 
+  toHTML() {
+    return `<li class="menu-item" data-type="${this.type}">${this.text}</li>`;
+  }
+
   #createClickHTML = () => {
     this.modal.classList.add("modalForClick");
 
-    this.timerHtml.style.fontSize = "600px";
+    this.timerHtml.style.fontSize = "50vh";
     this.timerHtml.style.textAlign = "center";
     this.timerHtml.style.opacity = "0.5";
 
@@ -29,14 +31,17 @@ export class ClicksModule extends Module {
   };
 
   startTimer = () => {
-    const thisTimerId = setInterval(this.decrimentTimer, 100);
-    this.thisTimerId = thisTimerId;
+    this.thisTimerId = setInterval(this.decrimentTimer.bind(this), 100);
 
     this.setTime(this.timer);
 
-    this.modal.addEventListener("click", () => {
-      this.totalClicks++;
-    });
+    this.modal.addEventListener(
+      "click",
+      () => {
+        this.totalClicks++;
+      },
+      false
+    );
   };
 
   decrimentTimer = () => {
@@ -54,12 +59,15 @@ export class ClicksModule extends Module {
 
   endTimer = () => {
     clearInterval(this.thisTimerId);
-    console.log("stop, total = ", this.totalClicks);
-    this.modal.removeEventListener("click", () => {
-      this.totalClicks++;
-    });
+    this.modal.removeEventListener(
+      "click",
+      () => {
+        this.totalClicks++;
+      },
+      false
+    );
     this.totalClickHtml.textContent = `Всего кликов ${this.totalClicks}`;
-    this.totalClickHtml.style.fontSize = "200px";
+    this.totalClickHtml.style.fontSize = "17vh";
     this.totalClickHtml.style.textAlign = "center";
     this.totalClickHtml.style.opacity = "0.8";
 
@@ -67,19 +75,15 @@ export class ClicksModule extends Module {
 
     setTimeout(() => {
       this.modal.addEventListener("click", () => {
-        this.modal.remove();
-        this.timerHtml.remove();
-        this.totalClickHtml.remove();
+        window.location.reload();
       });
     }, 2000);
   };
 
   addItemInMenuList() {
-    menu.add(
-      `Аналитика кликов\n(за ${this.timer} секунд)`,
-      this.#trigger.bind(this)
-    );
+    return {
+      text: this.toHTML.bind(this),
+      trigger: this.#trigger.bind(this),
+    };
   }
 }
-
-export const counterClick = new ClicksModule("type", "text");
