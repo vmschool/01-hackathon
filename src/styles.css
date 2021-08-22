@@ -86,23 +86,31 @@ body {
 }
 
 /* Clicks Module */
-.module-clicks {
+.box_counter {
     position: absolute;
     top: 50%;
-    left: 50%;
-    width: 80%;
-    padding: 25px;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    width: fit-content;
+}
+
+.module-clicks {
+    padding: 25px 25px 25px 60px;
     color: #f5f6fa;
-    text-align: center;
+    text-align: right;
     background-color: #353b48;
     border-radius: 5px;
-    transform: translate(-50%, -50%);
     box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.box_counter .timeEl {
+    top: -38px;
+    left: -100px;
 }
 
 /* Shape Module */
 .figure {
-    box-shadow: 1px 3px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Timer Module */
@@ -117,6 +125,7 @@ body {
     align-items: center;
     font-size: 25px;
     color: #f5f6fa;
+    border: 2px solid #f5f6fa;
     border-radius: 50%;
     background-color: #353b48;
     box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.3);

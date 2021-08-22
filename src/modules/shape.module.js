@@ -12,8 +12,11 @@ export class ShapeModule extends Module {
   }
 
   createFig = () => {
-    const fig = document.createElement("div")
-    fig.className = "figure"
+
+    const fig = document.createElement('div')
+    fig.type = this.type;
+    fig.className = `module-${ this.type }`
+    fig.classList.add('figure')
 
     const figHeight = random(...this.options.height)
     const figWidth = random(...this.options.width)
@@ -43,13 +46,17 @@ export class ShapeModule extends Module {
     return fig
   }
 
-  deleteFig(el) {
-    el.remove()
+  deleteFig() {
+    document.querySelector(`.figure`).remove()
   }
 
+/*   destroy() {
+    this.deleteFig()
+  } */
+
   trigger() {
-    if (document.querySelector(".figure")) {
-      this.deleteFig(document.querySelector(".figure"))
+    if (document.querySelector(`.figure`)) {
+      this.deleteFig()
     }
     
     const fig = this.createFig()
