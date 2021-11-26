@@ -1,7 +1,7 @@
 import {Module} from '../core/module'
 
 export class ClicksModule extends Module {
-    constructor() {
-        
+    constructor(type, text) {
+        super(type,text)
     }
 }
