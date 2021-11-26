@@ -1,50 +1,46 @@
-import { Module } from '../core/module'
+import { Module } from '../core/module';
+import { random } from '../utils';
 
 export class MessageModule extends Module {
 
-    #message
-    #messageBlock
-    constructor(message, type, text) {
-        super(type, text);
-        this.#message = message;
+    static #messagesArray = ['Have a nice weekend!', 'Happy Thanksgiving Day!', 'All the leaves are brown)', 'Id be safe and warm'];
 
-    }
+    constructor(type, text) {
+        super(type, text);
+    };
+
     trigger() {
         try {
-
-            window.addEventListener('click', () => {
-                this.#messageBlock = document.createElement('div');
-                this.#messageBlock.className = 'message';
-                this.#messageBlock.textContent = 'text content';
-                const body = document.querySelector('body');
-                body.append(this.#messageBlock);
-                console.log('click is made');
+            let messageTimeout;
+            const body = document.querySelector('body');
+            body.addEventListener('click', () => {
+                const messageBlock = this.createMessageElement();
+                body.append(messageBlock);
+                messageTimeout = setTimeout(() => {
+                    if (messageBlock) {
+                        messageBlock.remove();
+                    }
+                }, 2000);
             });
-
-
-            const observer = new MutationObserver((body, obs) => {
-                const hello = document.querySelector('.message');
-                if (hello) {
-                    console.log(this.#messageBlock);
-                    setTimeout(() => { hello.remove() }, 2000);
-                    return;
-                }
-
-            });
-
-            observer.observe(document, {
-                childList: true,
-                subtree: true
-            });
-            MutationObserver.disconnect();
-
-
-
-
-            //throw new Error(`Trigger method should be implemented in module "${this.type}"`);
+            clearTimeout(messageTimeout);
         } catch (e) {
             console.log(e.name + ': ' + e.message);
         }
-    }
+    };
+    createMessageElement() {
+        const randomIndex = random(0, MessageModule.#messagesArray.length - 1);
+        const messageBlock = document.createElement('div');
+        messageBlock.className = 'message';
+        messageBlock.textContent = MessageModule.#messagesArray[randomIndex];
+        const winWidth = window.innerWidth;
+        const winHeight = window.innerHeight;
 
+        const randomTop = random(0, winHeight - 100);
+        const randomLeft = random(0, winWidth - 100);
+
+        messageBlock.style.top = randomTop + 'px';
+        messageBlock.style.left = randomLeft + 'px';
+
+        return messageBlock;
+    }
 }
