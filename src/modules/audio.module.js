@@ -7,12 +7,5 @@ export class AudioModule extends Module {
     const audioElement = document.createElement('audio');
     audioElement.innerHTML = '<source src="' + urlAudio + '" type="audio/mpeg" />';
     audioElement.play();
-
-    // document.addEventListener('click', function () {
-    //   const audioElement = document.createElement('audio');
-    //   audioElement.innerHTML = '<source src="' + urlAudio + '" type="audio/mpeg" />';
-
-    //   audioElement.play();
-    // });
   }
 }
