@@ -21,7 +21,7 @@ export class VideoModule extends Module {
     deleteButton.id = 'videoBtn';
     deleteButton.innerHTML = 'Убрать видео';
     videoBlock.prepend(deleteButton);
-    deleteButton.addEventListener('click', function (event) {
+    deleteButton.addEventListener('click', function () {
       document.getElementById('video').remove();
     });
   }
