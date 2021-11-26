@@ -1,5 +1,3 @@
-import {Module} from '../core/module'
+import { Module } from '../core/module';
 
-export class ShapeModule extends Module {
-
-}
+export class ShapeModule extends Module {}
