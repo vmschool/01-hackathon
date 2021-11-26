@@ -2,10 +2,12 @@ import { Module } from '../core/module';
 
 export class AudioModule extends Module {
   trigger() {
-    //должно отрабатывать надо проверить
-    const urlAudio = 'https://zvukogram.com/mp3/cats/1064/pikachu-malyish.mp3';
-    const audioElement = document.createElement('audio');
-    audioElement.innerHTML = '<source src="' + urlAudio + '" type="audio/mpeg" />';
-    audioElement.play();
+    const url = 'https://zvukogram.com/mp3/cats/1064/pikachu-malyish.mp3';
+    const audio = new Audio(url);
+    document.body.append(audio);
+
+    setTimeout(() => {
+      audio.play();
+    }, 100);
   }
 }
