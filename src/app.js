@@ -13,7 +13,10 @@ const clicksModule = new ClicksModule(
   "clicks-analyzer",
   "Считать клики (за 5 секунд)"
 );
-const shapeModule = new ShapeModule("random-shape", "Создать фигуру");
+const shapeModule = new ShapeModule(
+  "random-shape",
+  "Создать фигуру"
+);
 
 const backgroundModuleHTML = backgroundModule.toHTML();
 const clicksModuleHTML = clicksModule.toHTML();
@@ -26,6 +29,5 @@ document.body.addEventListener("contextmenu", (event) => {
   console.log(event.pageX, event.pageY);
   menu.el.style.top = `${event.pageY}px`;
   menu.el.style.left = `${event.pageX}px`;
-  console.log(menu)
   menu.open();
 });
