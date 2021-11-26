@@ -13,15 +13,16 @@ export class MessageModule extends Module {
         try {
             let messageTimeout;
             const body = document.querySelector('body');
-            body.addEventListener('click', () => {
-                const messageBlock = this.createMessageElement();
-                body.append(messageBlock);
-                messageTimeout = setTimeout(() => {
-                    if (messageBlock) {
-                        messageBlock.remove();
-                    }
-                }, 2000);
-            });
+            const messageBlock = this.createMessageElement();
+            body.append(messageBlock);
+            messageTimeout = setTimeout(() => {
+                if (messageBlock) {
+                    messageBlock.remove();
+                }
+            }, 2000);
+            // body.addEventListener('click', () => {
+
+            // });
             clearTimeout(messageTimeout);
         } catch (e) {
             console.log(e.name + ': ' + e.message);
