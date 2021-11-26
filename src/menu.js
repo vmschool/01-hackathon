@@ -34,17 +34,20 @@ export class ContextMenu extends Menu {
             switch (module.dataset.type) { // на каждый элемент li вешаем слушатель клика в зависимовсти от data-type
                 case 'background':
                     module.addEventListener('click', () => {
-                        console.log('background')
+                        const moduleItem = modules.find(item => item.type === 'background')
+                        console.log(moduleItem.trigger())
                     })
                     break
                 case 'click':
                     module.addEventListener('click', () => {
-                        console.log('click')
+                        const moduleItem = modules.find(item => item.type === 'click')
+                        console.log(moduleItem.trigger())
                     })
                     break
                 case 'shape':
                     module.addEventListener('click', () => {
-                        console.log('shape')
+                        const moduleItem = modules.find(item => item.type === 'shape')
+                        console.log(moduleItem.trigger())
                     })
                     break
             }
