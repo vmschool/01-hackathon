@@ -1,7 +1,6 @@
-import {Module} from '../core/module';
-
-export class Timer extends Module {
+class Timer {
   constructor() {
+
   }
   trigger() {
     const timer = document.createElement('div');
@@ -21,11 +20,11 @@ export class Timer extends Module {
     </div>
     <div class="input__container">
       <label for="inp-seconds">Seconds</label>
-      <input type="text" id="inp-seconds" placeholder="00" />
+      <input type="text" id="inp-seconds" placeholder="0" />
     </div>
   </div>
   <div class="btn-group">
-    <button class="btn start">Start</button>
+    <button class="btn start">start</button>
   </div>
   <audio class="audio" src="https://soundbible.com/mp3/service-bell_daniel_simion.mp3" type="audio/mp3"></audio>
 `
@@ -62,7 +61,7 @@ export class Timer extends Module {
     start.addEventListener("click", () => {
       totalTime = inpMinutes.value * 60 + inpSeconds.value * 1;
       if (inpMinutes.value != "" || inpSeconds.value != "") {
-
+        start.setAttribute('disabled', "")
         interval = setInterval(() => {
           const minutes = Math.floor(totalTime / 60);
           const seconds = totalTime % 60;
@@ -74,10 +73,12 @@ export class Timer extends Module {
             totalTime--;
           } else {
             clearInterval(interval)
-            inpMinutes.value = "";
-            inpSeconds.value = "";
-            timerDisplay.innerHTML = `<p class="end_time">Время истекло</p>`
+            timerDisplay.remove()
+            start.remove()
             music.play();
+            timer.innerHTML = `<p class="end_time">
+            time is over</p>`
+            setTimeout(() => timer.remove(), 2000)
           }
         }, 1000);
       }
