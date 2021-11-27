@@ -24,10 +24,11 @@ export default class ClicksModule extends Module {
 
 	setupEventListeners() {
 		document.body.addEventListener('click', (event) => {			
-			if (event.detail === 1) {				
-				this.#timerSingleClick = setTimeout(() => {					
+			this.#isActive = true;
+			if (event.detail === 1) {								
+				this.#timerSingleClick = setTimeout(() => {
 					this.clickProcessing();
-				}, 200)
+				}, 100)
 			}	
 		});
 
