@@ -9,6 +9,14 @@ export class Popup {
         this.#header = header;
     }
 
+    setContent(content) {
+        this.#content = content;
+    }
+
+    setHeader(header) {
+        this.#header = header;
+    }
+
     close() {
         const overlay = document.querySelector('.overlay');
         if (overlay) {
@@ -16,7 +24,7 @@ export class Popup {
         }
     }
 
-    render() {
+    open() {
         const overlay = document.createElement('div');
         overlay.className = 'overlay';
 
