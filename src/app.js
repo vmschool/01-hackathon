@@ -2,10 +2,13 @@ import './styles.css';
 import {
   ContextMenu
 } from './menu';
+import {
+  SoundModule
+} from './modules/sound.module';
 
 const menu = new ContextMenu('#menu');
 
-const modules = [];
+const modules = [new SoundModule('sound', 'Рандомный звук')];
 
 menu.add(modules);
 
