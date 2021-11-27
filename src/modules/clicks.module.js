@@ -20,6 +20,25 @@ export class ClicksModule extends Module {
          }
     }
 
+    trigger() {
+       setTimeout(() => this.#finish(), this.#time * 1000); 
+        const body = document.querySelector('body');
+        body.addEventListener('click', () => {
+            this.#clickCounts.singleClick++;
+        });
+
+        body.addEventListener('dblclick', () => {
+            this.#clickCounts.doubleClick++;
+            this.#clickCounts.singleClick -= 2;
+        });
+
+        body.addEventListener('mousedown', (event) => {
+            if (event.button === 1) {
+                this.#clickCounts.wheelClick++;
+            }
+        })
+    }
+
     #finish() {
         const body = document.querySelector('body');
         const divMain = document.createElement('div');
