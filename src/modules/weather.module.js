@@ -3,14 +3,26 @@ import { Popup } from '../components/popup';
 import keys from '../api/keys.json';
 
 export class WeatherModule extends Module {
+    #popup;
+
     constructor() {
         super('WeatherModule', 'Show weather');
+        this.#popup = new Popup(null, '');
+    }
+
+    createLoader() {
+        const loader = document.createElement('div');
+        loader.className = "lds-ripple";
+        loader.innerHTML = '<div></div><div></div>';
+
+        return loader;
     }
 
     async requestData(lat, long) {
         const resp = await fetch(
           `https://api.weatherapi.com/v1/current.json?key=${keys.weatherKey}&q=${lat},${long}&aqi=no`
         );
+        if (!resp.ok) throw new Error('request failed');
         const data = await resp.json();
 
         return data;
@@ -41,19 +53,25 @@ export class WeatherModule extends Module {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
 
-        const data = await this.requestData(latitude, longitude);
-        const content = this.createContent(data);
+        try {
+            const data = await this.requestData(latitude, longitude);
+            const content = this.createContent(data);
 
-        const popup = new Popup(content, `${data.location.country}, ${data.location.name}`);
-        popup.open();
+            this.#popup.update(content.outerHTML, `${data.location.country}, ${data.location.name}`);
+        } catch (error) {
+            this.#popup.update(`Error: ${error}`);
+        }
     }
 
     showMistake() {
-        const popup = new Popup("You browser doesn't support geolocation data", 'Weather');
-        popup.open();
+        this.#popup.update('You browser doesn\'t support geolocation data');
     }
 
     trigger() {
+        this.#popup.setHeader('Weather App');
+        this.#popup.setContent(this.createLoader());
+        this.#popup.open();
+
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => this.showPosition(position));
         } else {
