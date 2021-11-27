@@ -40,6 +40,9 @@ body {
 .menu .menu-item:hover {
     background: #343434;
 }
+
+/*start click analytics*/
+
 .clicksAnalytics {
   text-align: center;
 }
@@ -49,4 +52,77 @@ body {
   display: inline-block;
   background: #1b1a1a;
   color: #eee;
+  border-radius: 5px;
 }
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay--hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.modal--hidden {
+  display: none;
+}
+
+.modal__contents {
+  background-color: #fff;
+  padding: 2rem 4rem;
+  border-radius: 5px;
+}
+
+.modal__contents input[type="number"] {
+  margin-top: 10px;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.modal__contents #submitTimeClicks {
+  margin-top: 10px;
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+
+.modal__contents #submitTimeClicks:hover {
+  background-color: #ffe600;
+  color: rgb(0, 0, 0);
+}
+
+.modal__close-bar {
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: -2rem;
+  margin-top: -1rem;
+}
+
+.modal__close-bar:hover {
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: -2rem;
+  margin-top: -1rem;
+  color: #ffe600;
+}
+/*end click analytics*/
