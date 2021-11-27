@@ -1,31 +1,43 @@
 import {Menu} from './core/menu'
 export class ContextMenu extends Menu {
-    static contextMenu = document.querySelector('#menu')
+    #contextMenu
+    #elementsMenu
+
+    constructor(){
+        super()
+        this.#contextMenu = document.querySelector('#menu')
+        this.#elementsMenu = []
+    }
     
-    super(){}
 
     open(positionX, positionY){
-        ContextMenu.contextMenu.classList.add('open')
+        this.#contextMenu.classList.add('open')
 
         const windowsScreenWidth = window.innerWidth
         const windowsScreenHeight = window.innerHeight
-        const contextMenuHeight = ContextMenu.contextMenu.offsetHeight 
+        const contextMenuHeight = this.#contextMenu.offsetHeight 
 
         positionX + 250 >= windowsScreenWidth
-        ? ContextMenu.contextMenu.style.left = `${windowsScreenWidth - 250}px`
-        : ContextMenu.contextMenu.style.left = `${positionX}px`
+        ? this.#contextMenu.style.left = `${windowsScreenWidth - 250}px`
+        : this.#contextMenu.style.left = `${positionX}px`
         
-        console.log(positionY, contextMenuHeight, windowsScreenHeight)
         positionY + contextMenuHeight >= windowsScreenHeight
-        ? ContextMenu.contextMenu.style.top = `${windowsScreenHeight - contextMenuHeight}px`
-        : ContextMenu.contextMenu.style.top = `${positionY}px`
+        ? this.#contextMenu.style.top = `${windowsScreenHeight - contextMenuHeight}px`
+        : this.#contextMenu.style.top = `${positionY}px`
     }
 
     close(){
-        ContextMenu.contextMenu.classList.remove('open')
+        this.#contextMenu.classList.remove('open')
     }
 
     add(element){
-        ContextMenu.contextMenu.insertAdjacentHTML('beforeend', element)
+        this.#contextMenu.insertAdjacentHTML('beforeend', element.toHTML())
+        this.#elementsMenu.push(element)
     }
+
+    startElementTriger(eventType){
+        const element = this.#elementsMenu.find(element =>element.type === eventType)
+        element.trigger()
+    }
+
 }

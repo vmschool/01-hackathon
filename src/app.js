@@ -1,14 +1,18 @@
 import './styles.css'
 import { ContextMenu } from './menu'
+import { ClicksModule } from "./modules/clicks.module.js";
 
 const contextMenu = new ContextMenu('ul')
+const menuConatainer = document.querySelector('#menu')
 
-contextMenu.add(`<li class="menu-item" data-type="type">test</li>`)
-contextMenu.add(`<li class="menu-item" data-type="type">test</li>`)
 
+const clic = new ClicksModule("countClicks", "Подсчет кликов")
+
+contextMenu.add(clic)
 
 document.body.addEventListener('contextmenu', event => {
     event.preventDefault();
     contextMenu.open(event.clientX, event.clientY)
-    return false;
-}, false);
+})
+
+menuConatainer.addEventListener('click', event => contextMenu.startElementTriger(event.target.dataset.type))
