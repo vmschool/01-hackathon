@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
 
 :root {
 	--main-background: #2b2b2b;
@@ -87,7 +87,7 @@ h2 {
 
 h3 {
 	font-size: .8em;
-	font-weight: 100;
+	font-weight: 300;
 }
 
 .teammate {
