@@ -1,12 +1,12 @@
 import './styles.css';
-import ContextMenu from './menu'
-import BackgroundModule from './modules/background.module'
-import ClicksModule from './modules/clicks.module'
-import ShapeModule from './modules/shape.module'
-import SoundModule from './modules/sound.module'
-import TimerModule from './modules/timer.module'
-import MessageModule from './modules/message.module'
-import AboutDevsModule from './modules/about-devs.module'
+import ContextMenu from './menu';
+import BackgroundModule from './modules/background.module';
+import ClicksModule from './modules/clicks.module';
+import ShapeModule from './modules/shape.module';
+import SoundModule from './modules/sound.module';
+import TimerModule from './modules/timer.module';
+import MessageModule from './modules/message.module';
+import AboutDevsModule from './modules/about-devs.module';
 
 const contextMenu = new ContextMenu('#menu');
 
