@@ -34,7 +34,8 @@ export class ShapeModule extends Module {
       'https://assets7.lottiefiles.com/packages/lf20_f8swhg5f.json',
       'https://assets2.lottiefiles.com/packages/lf20_x9h8ar8l.json',
       'https://assets9.lottiefiles.com/packages/lf20_rt9mhehe.json',
-      'https://assets5.lottiefiles.com/packages/lf20_ecxcfmdm.json'
+      'https://assets5.lottiefiles.com/packages/lf20_ecxcfmdm.json',
+      'https://assets4.lottiefiles.com/private_files/lf30_tfozcvfo.json'
     ] 
   }
 
