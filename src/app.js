@@ -19,12 +19,16 @@ document.body.addEventListener('contextmenu', (e) => {
 
   menu.open(mouseX, mouseY);
 
-  menu.el.addEventListener('click', (e) => {
+  function eventHandler(e) {
     const moduleType = e.target.dataset.type;
     modules.forEach(item => {
       if (item.type === moduleType) {
         item.trigger(e);
+        menu.el.removeEventListener('click', eventHandler);
+        menu.close();
       }
     });
-  });
+  }
+
+  menu.el.addEventListener('click', eventHandler);
 });
