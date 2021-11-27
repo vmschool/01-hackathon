@@ -47,9 +47,7 @@ export default class ClicksModule extends Module {
 	trigger() {
 		console.log('Clicks triggered');
 		
-		this.#numberOfClicks = 0;
-		this.#isActive = true;		
-
+		this.resetState();
 		setTimeout(() => {			
 			this.clickTimeout();
 		},  this.#clicksTimeoutInSeconds * 1000);		
