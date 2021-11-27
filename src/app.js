@@ -17,7 +17,7 @@ const shapeModule = new ShapeModule(
   "random-shape",
   "Создать фигуру"
 );
-
+shapeModule.addFigure()
 const backgroundModuleHTML = backgroundModule.toHTML();
 const clicksModuleHTML = clicksModule.toHTML();
 const shapeModuleHTML = shapeModule.toHTML();
