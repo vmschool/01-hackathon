@@ -12,13 +12,21 @@ export class TimerModule extends Module {
         this.#timeLeft = 20;
     }
 
-    trigger() {
-        console.log('Start timer');
-        this.#timeLeft = +prompt('Сколько секунд поставить?');
-        const popup = new Popup(this.#render(), "I'm timer, yeah man!");
-        popup.open();
+    startTimer() {
+        const timer = this.#createTimer();
+        document.querySelector('.popup__content').append(timer);
         this.#countdownTimer();
         this.#timerId = setInterval(this.#countdownTimer.bind(this), 1000);
+    }
+
+    setTimeLeft(timeLeft) {
+        this.#timeLeft = timeLeft;
+    }
+
+    trigger() {
+        console.log('Start timer');
+        const popup = new Popup(this.#generateForm(), "I'm a super timer, yeah man! =)");
+        popup.open();
     }
 
     #countdownTimer() {
@@ -33,7 +41,7 @@ export class TimerModule extends Module {
         minutesHTML.dataset.title = this.#declensionNum(minutes, ['минута', 'минуты', 'минут']);
         secondsHTML.dataset.title = this.#declensionNum(seconds, ['секунда', 'секунды', 'секунд']);
 
-        console.log(this.#timeLeft);
+        // console.log(this.#timeLeft);
         if (this.#timeLeft < 0) {
             clearInterval(this.#timerId);
             document.querySelector('.timer__items').textContent = 'Time is up!';
@@ -45,7 +53,48 @@ export class TimerModule extends Module {
         return words[num % 100 > 4 && num % 100 < 20 ? 2 : [2, 0, 1, 1, 1, 2][num % 10 < 5 ? num % 10 : 5]];
     }
 
-    #render() {
+    #generateForm() {
+        const form = document.createElement('form');
+        form.className = 'timer';
+
+        const text = document.createElement('p');
+        text.className = 'timer__text';
+        text.textContent = 'How much time do you need?';
+
+        const inputBox = document.createElement('div');
+        inputBox.className = 'timer__input-box';
+
+        const input = document.createElement('input');
+        input.className = 'timer__input';
+        input.name = 'timeleft';
+        input.type = 'number';
+        input.value = '0';
+        input.min = '0';
+
+        const span = document.createElement('span');
+        span.textContent = ' seconds';
+        span.className = '.timer__seconds';
+
+        const button = document.createElement('button');
+        button.type = 'submit';
+        button.className = 'btn';
+        button.textContent = 'Start';
+
+        inputBox.append(input, span);
+        form.append(text, inputBox, button);
+
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
+            this.setTimeLeft(+input.value);
+            // console.log(this.#timeLeft);
+            document.querySelector('.popup__content').textContent = '';
+            this.startTimer();
+        });
+
+        return form;
+    }
+
+    #createTimer() {
         const container = document.createElement('div');
         container.className = 'timer__items';
 

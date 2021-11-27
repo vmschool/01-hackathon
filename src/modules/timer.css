@@ -1,15 +1,20 @@
+.timer__input {
+    width: 50px;
+    text-align: center;
+}
+
 .timer__items {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 48px;
+    font-size: 40px;
     min-height: 50px;
 }
 .timer__item {
     position: relative;
-    min-width: 60px;
-    margin-left: 10px;
-    margin-right: 10px;
+    min-width: 50px;
+    margin-left: 5px;
+    margin-right: 5px;
     padding-bottom: 15px;
     text-align: center;
 }
@@ -25,5 +30,5 @@
 .timer__item:not(:last-child)::after {
     content: ':';
     position: absolute;
-    right: -15px;
+    right: -10px;
 }
