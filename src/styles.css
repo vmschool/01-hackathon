@@ -41,3 +41,54 @@ body {
 .menu .menu-item:hover {
     background: #343434;
 }
+
+/* ============
+ popup 
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.popup__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup__close {
+    font-size: 2rem;
+    text-decoration: none;
+}
+
+.popup__close:hover {
+    color: orangered;
+}
+
+.popup__content {
+    line-height: 1.6rem;
+} */
