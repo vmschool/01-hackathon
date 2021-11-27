@@ -11,18 +11,14 @@ export class MessageModule extends Module {
 
     trigger() {
         try {
-            let messageTimeout;
             const body = document.querySelector('body');
             const messageBlock = this.createMessageElement();
             body.append(messageBlock);
-            messageTimeout = setTimeout(() => {
+            const messageTimeout = setTimeout(() => {
                 if (messageBlock) {
                     messageBlock.remove();
                 }
             }, 2000);
-            // body.addEventListener('click', () => {
-
-            // });
             clearTimeout(messageTimeout);
         } catch (e) {
             console.log(e.name + ': ' + e.message);
