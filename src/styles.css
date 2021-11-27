@@ -1,42 +1,102 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-size: 14px;
-    font-family: 'Roboto', sans-serif;
-    height: 100vh;
-    width: 100%;
-    padding: 2rem;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+  width: 100%;
+  padding: 2rem;
 }
 
 .menu {
-    position: fixed;
-    z-index: 1000;
-    width: 150px;
-    background: #1b1a1a;
-    border-radius: 5px;
-    display: none;
-    list-style: none;
+  position: fixed;
+  z-index: 1000;
+  width: 150px;
+  background: #1b1a1a;
+  border-radius: 5px;
+  display: none;
+  list-style: none;
 }
 
 .menu.open {
-    display: block;
+  display: block;
 }
 
 .menu .menu-item {
-    padding: 8px 10px;
-    font-size: 1rem;
-    color: #eee;
-    cursor: pointer;
-    transition: background-color .2s ease-in;
-    border-radius: inherit;
+  padding: 8px 10px;
+  font-size: 1rem;
+  color: #eee;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in;
+  border-radius: inherit;
 }
 
 .menu .menu-item:hover {
-    background: #343434;
+  background: #343434;
+}
+
+/* Стили для BackgroundModule */
+@keyframes block {
+  0% {
+    transform: rotate(45deg) translate(-10%, -10%);
+  }
+  50% {
+    transform: rotate(140deg) translate(5%, 0%);
+  }
+  100% {
+    transform: rotate(225deg) translate(10%, 10%);
+  }
+}
+@keyframes blockInBlock {
+  0% {
+    transform: rotate(-45deg);
+  }
+  50% {
+    transform: rotate(-135deg);
+  }
+  100% {
+    transform: rotate(-225deg);
+  }
+}
+.backgroundModule-block {
+  position: relative;
+  top: 20%;
+  left: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60vw;
+  height: 60vw;
+  animation: block 4s infinite linear;
+}
+.backgroundModule-blockInBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 50%;
+  animation: blockInBlock 2s infinite linear;
+}
+.backgroundModule-btnBlock {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.backgroundModule-btnBack,
+.backgroundModule-btnBackToMenu {
+  padding: 10px 20px;
+  font-size: 28px;
+  color: #ffffff;
+  background-color: #04aa6d;
+  border: none;
+  cursor: pointer;
 }
