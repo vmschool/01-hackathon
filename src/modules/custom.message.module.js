@@ -13,9 +13,11 @@ export class CustomMessage extends Module {
     this.closeCustomMessage = document.createElement('button')
     this.closeCustomMessage.className = 'block__btn'
     this.closeCustomMessage.innerHTML = '&times;' 
-  }
     //пока не могу понять, как инициадизировать type
     super()
+  }
+    
+    
 
   renderCustomMessage () {
     //renderHTML
