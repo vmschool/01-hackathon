@@ -8,7 +8,7 @@ import {
 
 const menu = new ContextMenu('#menu');
 
-const modules = [new SoundModule('sound', 'Случайный звук'), new SoundModule('sound', 'Boom')];
+const modules = [new SoundModule('sound', 'Случайный звук')];
 
 menu.add(modules);
 
@@ -19,12 +19,11 @@ document.body.addEventListener('contextmenu', (e) => {
 
   menu.open(mouseX, mouseY);
 
-
   menu.el.addEventListener('click', (e) => {
     const moduleType = e.target.dataset.type;
     modules.forEach(item => {
       if (item.type === moduleType) {
-        item.trigger();
+        item.trigger(e);
       }
     });
   });
