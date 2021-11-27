@@ -5,7 +5,8 @@ import { random } from '../utils'
 export class ShapeModule extends Module {
   constructor(type, text){
     super(type, text)
-    this.init()
+    this.init() 
+
   }
 
   trigger(){ 
@@ -16,10 +17,8 @@ export class ShapeModule extends Module {
     // e.target.insertAdjacentElement('afterend', subMenu)
     // setTimeout(()=> {
     //   subMenu.style.cssText += 'height: auto; padding: 8px 10px;' 
-    // },0)
-    console.log('HELLO')
-    const animation = [this.triggerAnim.bind(this), this.triggerFigure.bind(this)]
-
+    // },0) 
+    const animation = [this.triggerAnim.bind(this), this.triggerFigure.bind(this)] 
     animation[random(0,1)]()
 
     // subMenu.addEventListener('click', this.triggerAnim.bind(this))
@@ -33,16 +32,15 @@ export class ShapeModule extends Module {
       'https://assets10.lottiefiles.com/private_files/lf30_t0igqye8.json',
       'https://assets9.lottiefiles.com/packages/lf20_q7uarxsb.json',
       'https://assets7.lottiefiles.com/packages/lf20_f8swhg5f.json',
-      'https://assets2.lottiefiles.com/packages/lf20_x9h8ar8l.json'
+      'https://assets2.lottiefiles.com/packages/lf20_x9h8ar8l.json',
+      'https://assets9.lottiefiles.com/packages/lf20_rt9mhehe.json',
+      'https://assets5.lottiefiles.com/packages/lf20_ecxcfmdm.json'
     ] 
   }
 
   triggerAnim(){ 
 
-    const {width, height} = document.body.getBoundingClientRect()
- 
-    const posX = width - random(0, width)
-    const posY = height - random(0, height)
+    const {posX, posY, figureWidth, figureHeight} = this.getCP()
 
     const animation = document.createElement('lottie-player') 
     const randAnimation = this.getRandomAtimationURL()
@@ -52,37 +50,42 @@ export class ShapeModule extends Module {
     animation.setAttribute('speed', '1')
     animation.setAttribute('loop', '')
     animation.setAttribute('autoplay', '')
-    animation.style.cssText = `position:absolute; width: ${random(200, 500)}px; height: ${random(200, 500)}px; top:${posY}px; left:${posX}px; transform:translate(-50%, -50%); opacity:1; transition: 0.4s all ease `
-    document.body.append(animation)
 
-    setTimeout(() => {
-      animation.style.opacity = '0'
-      setTimeout(() => {
-        animation.remove()
-      }, 400)
-    }, 5000)
+    animation.style.cssText = `
+      position: absolute; 
+      width: ${figureWidth}px;
+      height: ${figureWidth}px;
+      top:${random(0, posY)}px; 
+      left:${random(0, posX)}px; 
+      opacity: 0;
+      transform: scale(0);
+      transition: 0.4s all ease `
+
+    this.show(animation)
+    document.body.append(animation) 
+    this.remove(animation)
   }
 
   triggerFigure(){
-   
-    const {width, height} = document.body.getBoundingClientRect()
- 
-    const posX = width - random(0, width)
-    const posY = height - random(0, height)
+    const {posX, posY, figureWidth, figureHeight} = this.getCP()
+    const color = this.getRandomColor()
+    
+    const figure = document.createElement('div')
+    figure.style.cssText = `
+      position: absolute;
+      top:${random(0, posY)}px;
+      left:${random(0, posX)}px; 
+      width:${figureWidth}px; 
+      height:${figureHeight}px; 
+      border-radius:${random(0, 50)}%; 
+      background:${color};
+      opacity: 0;
+      transform: scale(0);
+      transition: 0.4s all ease `
 
-    const color = `rgb(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})`
-
-    const figure = document.createElement('div') 
-    figure.style.cssText = `position:absolute; top:${posY}px; left:${posX}px; width:${random(100, 300)}px; height:${random(100, 300)}px; border-radius:${random(5, 50)}%; background:${color}`
- 
-    document.body.append(figure)
-
-    setTimeout(() => {
-      animation.style.opacity = '0'
-      setTimeout(() => {
-        figure.remove()
-      }, 400)
-    }, 10000)
+    this.show(figure)
+    document.body.append(figure) 
+    this.remove(figure) 
   }
 
   init(){
@@ -91,4 +94,41 @@ export class ShapeModule extends Module {
     document.head.append(script) 
   }
 
+  remove(elem){
+    setTimeout(() => {
+      elem.style.opacity = '0'
+      setTimeout(() => {
+        elem.remove()
+      }, 400)
+    }, 5000)
+  }
+
+  show(elem){
+    setTimeout(()=> {
+      elem.style.opacity = '1'
+      elem.style.transform = 'scale(1)'
+    },1)
+  }
+
+  getCP(){
+    const MAX = 600
+    const MIN = 100
+    const { width, height } = document.body.getBoundingClientRect()  
+    const figureWidth = random(MIN, MAX)
+    const figureHeight = random(MIN, MAX)
+    const posX = width - figureWidth
+    const posY = height - figureHeight
+
+    return { 
+      posX: posX,
+      posY: posY,
+      figureWidth: figureWidth,
+      figureHeight: figureHeight  
+    }
+
+  }
+
+  getRandomColor(){
+    return `rgb(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})` 
+  }
 }
