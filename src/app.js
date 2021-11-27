@@ -2,13 +2,14 @@ import './styles.css';
 import {
   ContextMenu
 } from './menu';
-import {
-  SoundModule
-} from './modules/sound.module';
+import { BackgroundModule } from './modules/background.module';
+// import {
+//   SoundModule
+// } from './modules/sound.module';
 
 const menu = new ContextMenu('#menu');
 
-const modules = [new SoundModule('sound', 'Случайный звук')];
+const modules = [new SoundModule('sound', 'Случайный звук'), new BackgroundModule('background', 'Случайный фон')];
 
 menu.add(modules);
 
