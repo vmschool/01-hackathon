@@ -8,19 +8,19 @@ export class ContextMenu extends Menu {
 
   open(event) {
     event.preventDefault();
-    this.el.classList.add("open");
+    this.el.classList.add('open');
     this.el.style.top = `${event.clientY + 10}px`;
     this.el.style.left = `${event.clientX + 10}px`;
   }
 
   close() {
-    this.el.classList.remove("open");
+    this.el.classList.remove('open');
   }
 
   add(module) {
-    this.el.insertAdjacentHTML("beforeend", module.toHTML());
+    this.el.insertAdjacentHTML('beforeend', module.toHTML());
 
-    this.el.addEventListener("click", (event) => {
+    this.el.addEventListener('click', (event) => {
       module.type === event.target.dataset.type ? module.trigger() : false;
     })
   }
