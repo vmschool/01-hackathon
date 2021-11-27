@@ -2,8 +2,11 @@ import { Module } from '../core/module';
 import { random } from '../utils';
 
 export class AudioModule extends Module {
-  constructor(type, text) {
-    super(type, text);
+  static type = 'AudioModule';
+  static text = 'Воспроизвести звук';
+
+  constructor() {
+    super(AudioModule.type, AudioModule.text);
   }
 
   trigger() {
