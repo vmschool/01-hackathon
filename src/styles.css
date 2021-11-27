@@ -1,25 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
 
+:root {
+	--main-background: #2b2b2b;
+	--default-text-color: #ffffff;
+	--menu-background: #3c3f41;
+	--menu-text-color: #f3fff9;
+	--menu-background-hover: #4b6eaf;
+	--menu-border-color: #515151;
+}
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	user-select: none;
 }
 
 body {
-	font-size: 14px;
-	font-family: 'Roboto', sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	height: 100vh;
-	width: 100%;
-	padding: 2rem;
+	color: var(--default-text-color);
+	background: var(--main-background);
+	font-family: 'Roboto', sans-serif;
+	font-size: 28px;
 }
 
 .menu {
 	position: fixed;
 	z-index: 1000;
 	width: 270px; /* if you need change this, change MENU_WIDTH_IN_PIXELS as well */ 
-	background: #1b1a1a;
+	background: var(--menu-background);
 	border-radius: 5px;
+	border: 1px solid var(--menu-border-color);
 	display: none;
 	list-style: none;
 	white-space: nowrap;
@@ -32,13 +46,82 @@ body {
 .menu .menu-item {
 	height: 36px; /* if you need change this, change MENU_ITEM_HEIGHT_IN_PIXELS as well */
 	padding: 8px 10px;
-	font-size: 1rem;
-	color: #eee;
+	font-size: .5em;
+	color: var(--default-text-color);
 	cursor: pointer;
 	transition: background-color .2s ease-in;
-	border-radius: inherit;
+}
+
+.menu .menu-item:first-child {
+	border-radius: 5px 5px 0 0;
+}
+
+.menu .menu-item:last-child {
+	border-radius: 0 0 5px 5px;
 }
 
 .menu .menu-item:hover {
-	background: #343434;
+	background: var(--menu-background-hover);
+}
+
+.team-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	width: 90%;
+	height: 60%;
+}
+
+h1 {
+	font-size: 2em;
+	font-weight: 100;
+	margin: 0.4em;
+}
+
+h2 {
+	font-size: 1em;
+	font-weight: 400;
+	margin-bottom: 0.3em;
+}
+
+h3 {
+	font-size: .8em;
+	font-weight: 100;
+}
+
+.teammate {
+	box-shadow: 0 0 15px #000000;
+	border-radius: 10px;
+	overflow: hidden;
+	background: #171717;
+}
+
+.teammate img {
+	width: 11vw;
+}
+
+.teammate-name {
+	font-size: 1vw;
+	text-align: center;
+	padding: 10px 0;
+}
+
+.teammate-contacts {
+	text-align: center;
+}
+
+.teammate-contacts img {
+	width: 1.2em;
+	height: 1.2em;
+}
+
+.teammate-contacts a:nth-child(4) img {
+	background: rgba(255,255,255,0.4);
+	border-radius: 50%;
+}
+
+.teammate-contacts img:hover {
+	transform: scale(1.2);
+	transition: all .3s ease;
 }
