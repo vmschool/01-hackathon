@@ -2,18 +2,22 @@ import './styles.css';
 import {
   ContextMenu
 } from './menu';
+
 // import {
 //   SoundModule
 // } from './modules/sound.module';
 // import {Timer} from './modules/timer.module';
-import {ShapeModule} from './modules/shape.module';
+// import {ShapeModule} from './modules/shape.module';
+import { BackgroundModule } from './modules/background.module';
 
 const menu = new ContextMenu('#menu');
 
 const modules = [
   // new SoundModule('sound', 'Рандомный звук'),
   // new Timer('timer', 'Таймер'),
-  new ShapeModule('shape', 'Случайная фигура'),
+  // new ShapeModule('shape', 'Случайная фигура'),
+  new BackgroundModule('background', 'Случайный фон'),
+ 
 ];
 
 menu.add(modules);
