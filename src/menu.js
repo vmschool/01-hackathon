@@ -9,6 +9,8 @@ export class ContextMenu extends Menu {
   open(event) {
     event.preventDefault();
     this.el.classList.add("open");
+    this.el.style.top = `${event.clientY + 10}px`;
+    this.el.style.left = `${event.clientX + 10}px`;
   }
 
   close() {
