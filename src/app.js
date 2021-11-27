@@ -6,13 +6,14 @@ import {
 //   SoundModule
 // } from './modules/sound.module';
 // import {Timer} from './modules/timer.module';
+import {ShapeModule} from './modules/shape.module';
 
 const menu = new ContextMenu('#menu');
 
 const modules = [
   // new SoundModule('sound', 'Рандомный звук'),
   // new Timer('timer', 'Таймер'),
-  new Timer('timer', 'Таймер'),
+  new ShapeModule('shape', 'Случайная фигура'),
 ];
 
 menu.add(modules);
