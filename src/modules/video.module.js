@@ -1,8 +1,11 @@
 import { Module } from '../core/module';
 
 export class VideoModule extends Module {
-  constructor(type, text) {
-    super(type, text);
+  static type = 'VideoModule';
+  static text = 'Воспроизвести видео';
+
+  constructor() {
+    super(VideoModule.type, VideoModule.text);
   }
 
   trigger() {
