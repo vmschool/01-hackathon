@@ -1,5 +1,5 @@
-import {Module} from '../core/module';
+import { Menu } from '../core/menu';
 
-export class MainMenu extends Module {
+export class MainMenu extends Menu {
 
 }
