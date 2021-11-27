@@ -1,7 +1,9 @@
 .timer__items {
     display: flex;
     justify-content: center;
+    align-items: center;
     font-size: 48px;
+    min-height: 50px;
 }
 .timer__item {
     position: relative;

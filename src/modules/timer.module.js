@@ -14,6 +14,7 @@ export class TimerModule extends Module {
 
     trigger() {
         console.log('Start timer');
+        this.#timeLeft = +prompt('Сколько секунд поставить?');
         const popup = new Popup(this.#render(), "I'm timer, yeah man!");
         popup.open();
         this.#countdownTimer();
