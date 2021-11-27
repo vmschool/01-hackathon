@@ -1,6 +1,10 @@
 import { Module } from '../core/module';
 
 export class VideoModule extends Module {
+  constructor(type, text) {
+    super(type, text);
+  }
+
   trigger() {
     const videoBlock = document.createElement('div');
     videoBlock.id = 'video';
