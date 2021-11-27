@@ -14,20 +14,23 @@ export class ShapeModule extends Module{
     createHTML(){
         const container = document.createElement('div')
         container.id = 'elementId'
-        container.className = 'container-block blue'
-      container.style.zIndex = '-1';
-        const containerWhite = document.createElement('div')
-        containerWhite.id = 'elementId2'
-        containerWhite.className = 'container white'
+        container.className = 'container-block '
+        container.style.zIndex = '-1';
         const clickAnywhere = document.createElement('div')
         clickAnywhere.className = 'clickAnywhere'
         clickAnywhere.textContent = 'Click Anywhere'
-
-        this.body.append(container,clickAnywhere)
+        const exit = document.createElement('a')
+        exit.href = '#'
+        exit.className = 'exit'
+        // exit.onclick = closeTab()
+        this.body.append(container,clickAnywhere, exit)
         document.addEventListener("click", this.mouseDown);
 
+       // <a href="#" class="close"></a>
     }
-
+    // closeTab(){
+    //   container.removeChild
+    // }
      mouseDown(e) {
         let cursorX = e.pageX;
         let cursorY = e.pageY;
@@ -41,14 +44,8 @@ export class ShapeModule extends Module{
         obj.innerHTML = objHTML;
 
         document.getElementById("elementId").append(obj);
-        let h = document.getElementById('elementId2').offsetHeight;
-        const obj2 = obj.cloneNode(true);
-        obj2.style.cssText = 'top:' + (cursorY - 25 - h) + 'px;left:' + (cursorX - 25) + 'px;';
-        obj2.innerHTML = objHTML;
-
-        document.getElementById("elementId2").append(obj2);
     }
-
+    
     trigger(){
         this.createHTML()
     }
