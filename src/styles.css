@@ -40,3 +40,23 @@ body {
 .menu .menu-item:hover {
     background: #343434;
 }
+
+.world {
+    padding-bottom: 5px;
+}
+
+.world__table {
+    background-color: whitesmoke;
+}
+
+.cell {
+    border: 1px solid darkgray;
+    width: 10px;
+    height: 10px;
+}
+td.dead {
+    background-color: transparent;
+}
+td.alive {
+    background-color: #2971b4;
+}
