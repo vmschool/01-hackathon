@@ -40,3 +40,28 @@ body {
 .menu .menu-item:hover {
     background: #343434;
 }
+.main-title {
+    text-align: center;
+
+}
+.title {
+    text-align: center;
+}
+.all-btn {
+    text-align: center;
+    margin-top:50px
+}
+.btn-time {
+    margin-left:20px;
+    padding: 10px 20px;
+    background-color: rgb(240, 252, 255);
+    border-color:rgb(230, 250, 255);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+.btn-time:hover {
+    transform: scale(1.1);
+}
+.btn-time:first-child{
+    margin-left: 0;
+}
