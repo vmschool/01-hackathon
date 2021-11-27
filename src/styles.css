@@ -40,3 +40,11 @@ body {
 .menu .menu-item:hover {
     background: #343434;
 }
+
+.show-menu,
+.menu-item:hover > .menu {
+opacity: 1;
+-webkit-transform: translate(0, 0) scale(1);
+transform: translate(0, 0) scale(1);
+pointer-events: auto;
+}
