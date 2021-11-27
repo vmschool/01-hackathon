@@ -56,6 +56,9 @@ export class ClicksModule extends Module {
         divClicksResult.append(singleClicksResult, doubleClicksResult, wheelClicksResult, allClicksResult);
         divMain.append(divClicksResult);
         body.append(divMain);
+        setTimeout(() => {
+            divMain.remove();
+        }, 5000);
     }
 
     #timeRequest() {
