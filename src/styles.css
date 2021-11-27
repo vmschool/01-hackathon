@@ -17,11 +17,12 @@ body {
 .menu {
 	position: fixed;
 	z-index: 1000;
-	width: 150px;
+	width: 270px; /* if you need change this, change MENU_WIDTH_IN_PIXELS as well */ 
 	background: #1b1a1a;
 	border-radius: 5px;
 	display: none;
 	list-style: none;
+	white-space: nowrap;
 }
 
 .menu.open {
@@ -29,6 +30,7 @@ body {
 }
 
 .menu .menu-item {
+	height: 36px; /* if you need change this, change MENU_ITEM_HEIGHT_IN_PIXELS as well */
 	padding: 8px 10px;
 	font-size: 1rem;
 	color: #eee;
