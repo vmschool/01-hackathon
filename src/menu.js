@@ -9,7 +9,7 @@ export class ContextMenu extends Menu {
     event.preventDefault();
     this.el.style.top = `${event.clientY + 10}px`;
     this.el.style.left = `${event.clientX + 10}px`;
-    this.el.classList.add = "open";
+    this.el.classList.add("open");
   }
 
   close() {
@@ -18,5 +18,9 @@ export class ContextMenu extends Menu {
 
   add(module) {
     this.el.insertAdjacentHTML("afterbegin", module.toHTML());
+    const element = this.el.querySelector(".menu-item");
+    element.addEventListener("click", () => {
+      module.trigger();
+    });
   }
 }

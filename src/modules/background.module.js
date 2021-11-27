@@ -8,8 +8,4 @@ export class BackgroundModule extends Module {
   trigger() {
     alert("Change your background test");
   }
-
-  toHTML() {
-    return `<li class="menu-item" data-type="${this.type}">${this.text}</li>`;
-  }
 }

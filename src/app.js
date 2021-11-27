@@ -6,8 +6,8 @@ import { BackgroundModule } from "./modules/background.module";
 const contextMenu = new ContextMenu("#menu");
 
 // добавляем слушатели для вызова контекстного меню и его закрытия
-document.addEventListener("contextmenu", (event) => {
-  document.contextMenu.open(event);
+document.body.addEventListener("contextmenu", (event) => {
+  contextMenu.open(event);
 });
 document.body.addEventListener("click", (event) => {
   contextMenu.close(event);
