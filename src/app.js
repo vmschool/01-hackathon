@@ -8,7 +8,7 @@ import {
 
 const menu = new ContextMenu('#menu');
 
-const modules = [new SoundModule('sound', 'Случайный звук'), new SoundModule('sound', 'Boom')];
+const modules = [new SoundModule('sound', 'Случайный звук')];
 
 menu.add(modules);
 
