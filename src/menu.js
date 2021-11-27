@@ -34,7 +34,9 @@ export class ContextMenu extends Menu {
         document.body.addEventListener('contextmenu', (event) => {
             event.preventDefault();
             const { clientX, clientY } = event;
-            this.open(clientX, clientY);
+            if (event.target === document.body) {
+                this.open(clientX, clientY);
+            }
         });
     }
 }
