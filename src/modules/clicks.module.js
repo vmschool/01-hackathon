@@ -15,7 +15,7 @@ export default class ClicksModule extends Module {
 	}
 
 	resetState() {
-		this.#clicksTimeoutInSeconds = 3;		
+		this.#clicksTimeoutInSeconds = 3;
 		this.#numberOfClicks = 0;
 		this.#isActive = false;
 	}
@@ -26,7 +26,7 @@ export default class ClicksModule extends Module {
 			if (event.detail === 1) {								
 				this.#timerSingleClick = setTimeout(() => {
 					this.clickProcessing();
-				}, 100)
+				}, 200)
 			}	
 		});
 
@@ -39,7 +39,7 @@ export default class ClicksModule extends Module {
 	clickProcessing() {
 		if(this.#isActive) {
 			this.#numberOfClicks++;
-			console.log('Number of clicks:', this.#numberOfClicks - 1);
+			console.log('Number of clicks:', this.#numberOfClicks);
 		}
 	}
 	
@@ -54,6 +54,6 @@ export default class ClicksModule extends Module {
 
 	clickTimeout() {
 		this.#isActive = false;
-		alert(`Кол-во кликов ${this.#numberOfClicks - 1} за ${this.#clicksTimeoutInSeconds} cек.`)
+		alert(`Кол-во кликов ${this.#numberOfClicks} за ${this.#clicksTimeoutInSeconds} cек.`)
 	}	
 }
