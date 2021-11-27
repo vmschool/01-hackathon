@@ -3,6 +3,9 @@ import { Menu } from "./core/menu";
 export class ContextMenu extends Menu {
   constructor(selector) {
     super(selector);
+    this.moduleDiv = document.createElement("div");
+    this.moduleDiv.className = "module-container";
+    document.body.append(this.moduleDiv);
   }
 
   open(event) {
@@ -17,9 +20,10 @@ export class ContextMenu extends Menu {
   }
 
   add(module) {
-    this.el.insertAdjacentHTML("beforeend", module.toHTML());
+    this.el.insertAdjacentHTML("afterbegin", module.toHTML());
     const element = this.el.querySelector(".menu-item");
     element.addEventListener("click", () => {
+      this.moduleDiv.innerHTML = "";
       module.trigger();
     });
   }
