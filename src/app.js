@@ -1,3 +1,4 @@
+import { Popup } from './components/popup';
 import { ContextMenu } from './menu';
 import { BackgroundModule } from './modules/background.module';
 import { ClicksModule } from './modules/clicks.module';

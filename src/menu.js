@@ -1,9 +1,11 @@
 import { Menu } from './core/menu';
 
 export class ContextMenu extends Menu {
+    #modules;
+
     constructor(selector) {
         super(selector);
-        this.modules = [];
+        this.#modules = [];
     }
 
     open(clientX, clientY) {
@@ -17,7 +19,7 @@ export class ContextMenu extends Menu {
     }
 
     add(...currentModules) {
-        this.modules.push(...currentModules);
+        this.#modules.push(...currentModules);
         currentModules.forEach((module) => {
             const currentLi = new DOMParser().parseFromString(module.toHTML(), 'text/html').body.firstChild;
             this.el.append(currentLi);
