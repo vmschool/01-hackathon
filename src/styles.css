@@ -40,18 +40,19 @@ body {
 .menu .menu-item:hover {
     background: #343434;
 }
-.main-title {
+/*---------Start clicks-module---------*/
+.main-title-click {
     text-align: center;
 
 }
-.title {
+.title-click {
     text-align: center;
 }
-.all-btn {
+.all-btn-click {
     text-align: center;
     margin-top:50px
 }
-.btn-time {
+.btn-time-click {
     margin-left:20px;
     padding: 10px 20px;
     background-color: rgb(240, 252, 255);
@@ -59,9 +60,10 @@ body {
     border-radius: 2px;
     transition: all 0.3s ease;
 }
-.btn-time:hover {
+.btn-time-click:hover {
     transform: scale(1.1);
 }
-.btn-time:first-child{
+.btn-time-click:first-child{
     margin-left: 0;
 }
+/*----------End-clicks-module----------*/

@@ -1,55 +1,77 @@
 import {Module} from '../core/module'
-import { createElement } from '../utils'
+
 
 export class ClicksModule extends Module {
     constructor(type, text) {
-        super(type,text)
+        super(type,'Clicks module')
+        
+        this.container = document.createElement('div')
+        this.container.classList = 'all-btn-click'
 
-        this.container = createElement('div', 'all-btn')
-        this.mainTitle = createElement('h1','main-title', 'Сделайте ваш выбор') 
+        this.mainTitle = document.createElement('h1')
+        this.mainTitle.className = 'main-title-click'
+        this.mainTitle.textContent = 'Сделайте ваш выбор'
     }
+    
     start(time) {
         let counter = 0
-        this.title =  createElement('h1','title',  time < 10?` 00:0${time}`:` 00:${time}`)
+      
+        this.title = document.createElement('h1')
+        this.title.className = 'title-click'
+        this.title.textContent =  time < 10?` 00:0${time}`:` 00:${time}`
      
         document.body.append(this.title)
       
         document.addEventListener('click', () => {
              time === 0? counter: counter++
         })
-
-        function finish() {
-         const title = document.querySelector('.title')
-       
-         title.textContent = `Количество кликов: ${counter}`
-
-         setTimeout(() => {
-            title.remove()
-         },5000)
-        }
-        setInterval(()=> {
-            time === 0? finish():
+     
+        const int = setInterval(()=> {
+            if(time === 0) {
+                clearInterval(int)
+            }
+            time === 0? this.finish(counter):
             time > 10? this.title.textContent = ` 00:${--time}`:
             this.title.textContent = ` 00:0${--time}`
+            
         },1000)      
     } 
+    finish(count) {
+        const title = document.querySelector('.title-click')
+        title.textContent = `Количество кликов: ${count}`
+
+        setTimeout(() => {
+           title.remove()
+        },2000)
+       }
     chooseTime() {
-        this.container.append(
-            createElement('button', 'btn-time', '5 секунд', '5'),
-            createElement('button', 'btn-time', '10 секунд', '10'),
-            createElement('button', 'btn-time', '15 секунд', '15'),
-        )
+        const btn_1 = document.createElement('button')
+        btn_1.className = 'btn-time-click'
+        btn_1.textContent = '5 секунд'
+        btn_1.dataset.time = '5'
+
+        const btn_2 = document.createElement('button')
+        btn_2.className = 'btn-time-click'
+        btn_2.textContent = '10 секунд'
+        btn_2.dataset.time = '10'
+
+        const btn_3 = document.createElement('button')
+        btn_3.className = 'btn-time-click'
+        btn_3.textContent = '15 секунд'
+        btn_3.dataset.time = '15'
+
+        this.container.append(btn_1,btn_2,btn_3)
         document.body.append(this.mainTitle ,this.container)
 
-        const btnContainer = document.querySelector('.all-btn')
+        const btnContainer = document.querySelector('.all-btn-click')
        
-        btnContainer.addEventListener('click', (evt) => {
+        btnContainer.addEventListener('click', (event) => {
             
-             if(evt.target.classList.contains('btn-time')){
+             if(event.target.classList.contains('btn-time-click')){
                  this.mainTitle.remove()
                  this.container.remove()
                  
-                 this.start(evt.target.dataset.time)
+                 this.start(event.target.dataset.time)
              }
         })
     } 
