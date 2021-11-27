@@ -14,8 +14,9 @@ export class CustomMessage extends Module {
     customMessageText.className = 'custom-message-text'
     customMessageText.innerHTML = this.addMessage()
     this.customMessageBlock.append(customMessageText)
+    this.customMessageContainer.append(this.customMessageBlock)
     this.deleteCustomMessage()
-    return this.customMessageBlock
+    return this.customMessageContainer
   }
 
   addMessage() {
@@ -35,7 +36,7 @@ export class CustomMessage extends Module {
 
   deleteCustomMessage() {
     setTimeout(() => {
-      this.customMessageContainer.remove('custom-message-block')
+      this.customMessageContainer.remove(this.customMessageBlock)
     }, 4000)
   }
 
