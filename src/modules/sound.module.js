@@ -24,12 +24,17 @@ export default class SoundModule extends Module {
 		const soundNumber = random(0, 4);
 		audio.src = this.#sounds[soundNumber];
 
-		// container.innerHTML = `<audio src="${sound2}" autoplay type="audio/mp3" ></audio>`;
+		const message = document.createElement('h2');
+		message.textContent = 'Включи звук!';
+		message.style = 'margin: auto';
+		body.append(message);
+
 		body.append(audio);
 
 		function deleteModule() {
 			audio.pause();
 			audio.remove();
+			message.remove();
 		}
 
 		setTimeout(deleteModule, 3000);
