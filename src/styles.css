@@ -44,50 +44,45 @@ body {
 /* Start custom-message */
 
 .custom-message {
-	position: absolute;
-	bottom: 0;
-	right: 15px;
-	padding: 15px;
-	border: 1px solid #ddd;
-	background: #f6f6f6;
-	border-radius: 5px;
-	min-width: 200px;
-	max-width: 300px;
-	opacity: 0;
-	visibility: hidden;
-	transition: .3s;
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background: #f6f6f6;
+    border-radius: 5px;
+    min-width: 200px;
+    max-width: 300px;
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
 }
 
 .custom-message.show {
-	bottom: 15px;
-	opacity: 1;
-	visibility: visible;
+    bottom: 15px;
+    opacity: 1;
+    visibility: visible;
 }
 
-.block__btn {
-	position: absolute;
-	top: 0;
-	right: 0;
-	background: none;
-	border: none;
-	padding: 0;
-	font-size: 1rem;
-	cursor: pointer;
-	transition: .3s;
-	width: 20px;
-	height: 20px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+.custom-close__btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: .3s;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.block__title {
-	font-weight: bold;
-	margin-bottom: .5em;
-}
-
-.block__message {
-	font-size: 1rem;
+.custom-message__message {
+    font-size: 1rem;
 }
 
 /* End custom-message */

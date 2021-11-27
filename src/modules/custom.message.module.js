@@ -2,10 +2,10 @@ import {Module} from '../core/module'
 import {random} from '../utils'
 
 export class CustomMessage extends Module {
-  constructor() {
+  constructor(type) {
     //container
     this.customMessageContainer = document.createElement('div')
-    this.customMessageContainer.className = 'container-message'
+    this.customMessageContainer.className = 'container-custom-message'
     //messageBlock
     this.customMessageBlock = document.createElement('div')
     this.customMessageBlock.className = 'custom-message'
@@ -14,12 +14,10 @@ export class CustomMessage extends Module {
     this.closeCustomMessage.className = 'block__btn'
     this.closeCustomMessage.innerHTML = '&times;' 
     //пока не могу понять, как инициадизировать type
-    super()
+    super(type, 'Кастомное сообщение')
   }
     
-    
-
-  renderCustomMessage () {
+  trigger() {
     //renderHTML
     this.customMessageBlock.classList.add('show')
     this.customMessageContainer.style.display = 'block'
@@ -36,7 +34,7 @@ export class CustomMessage extends Module {
 
     return this.customMessageContainer
   }
-
+    
   addMessage() {
     //textMessage
     const mockMessages = [
@@ -44,12 +42,8 @@ export class CustomMessage extends Module {
       'Добро пожаловать!',
       'Еще увидимся!'
     ]
-    return mockMessages[random(0,2)]
+    return mockMessages[random(0, mockMessages.length - 1)]
     
-  }
-
-  trigger() {
-    this.renderCustomMessage()
   }
 
   deleteCustomMessage() {
