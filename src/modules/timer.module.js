@@ -1,4 +1,6 @@
-class Timer {
+import {Module} from '../core/module';
+
+export class Timer extends Module {
   constructor() {
   }
   trigger() {
@@ -88,5 +90,3 @@ class Timer {
   }
 }
 
-const startTime = new Timer();
-startTime.trigger();
