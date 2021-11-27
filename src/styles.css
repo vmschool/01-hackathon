@@ -40,3 +40,13 @@ body {
 .menu .menu-item:hover {
     background: #343434;
 }
+.clicksAnalytics {
+  text-align: center;
+}
+
+.clicksAnalytics-div {
+  padding: 10px;
+  display: inline-block;
+  background: #1b1a1a;
+  color: #eee;
+}
