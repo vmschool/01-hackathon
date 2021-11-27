@@ -6,7 +6,13 @@ export class ShapeModule extends Module {
     super("shape-module", "Произвольная фигура");
     this.width = 100;
     this.height = 100;
-    this.color = "red";
+    this.color = 'blue';
+  }
+
+  changeColor(){
+ 
+    this.color = `rgb(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})`
+    return this.color;
   }
 
   render() {
@@ -15,7 +21,7 @@ export class ShapeModule extends Module {
     figureRootDiv.className = "figure-root";
     figureRootDiv.style.width = this.width + "px";
     figureRootDiv.style.height = this.height + "px";
-    figureRootDiv.style.backgroundColor = this.color;
+    figureRootDiv.style.backgroundColor = this.changeColor();
     bodyHTML.append(figureRootDiv);
   }
   addFigure() {
@@ -23,7 +29,10 @@ export class ShapeModule extends Module {
     figureToHTML.addEventListener("click", (event) => {
       const isShapeModule = event.target.closest("[data-type='shape-module']")
      if(isShapeModule){
-      this.render() 
+      this.render()
+      setTimeout(() => {
+        document.querySelector(".figure-root").remove()
+      }, 300000);
      }
     })
   }
