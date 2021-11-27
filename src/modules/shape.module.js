@@ -1,5 +1,13 @@
-import {Module} from '../core/module'
+import { Module } from '../core/module'
 
-export class ShapeModule extends Module {
+export default class ShapeModule extends Module {
+	
+	constructor(text) {
+		super('Shape', text);
+	}
+
+	trigger() {
+		console.log('Shape triggered');
+	}
 
 }
