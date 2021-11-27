@@ -6,6 +6,7 @@ import {SoundModule} from './modules/sound.module';
 import {Timer} from './modules/timer.module';
 import {ShapeModule} from './modules/shape.module';
 import {BackgroundModule} from './modules/background.module';
+import { RandomtextModule } from './modules/randomtext.module';
 
 const menu = new ContextMenu('#menu');
 
@@ -14,6 +15,7 @@ const modules = [
   new Timer('timer', 'Таймер'),
   new ShapeModule('shape', 'Случайная фигура'),
   new BackgroundModule('background', 'Случайный фон'),
+  new RandomtextModule('randomtext', 'Случайная цитата'),
 ];
 
 menu.add(modules);
