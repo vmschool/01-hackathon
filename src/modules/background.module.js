@@ -1,4 +1,5 @@
 import { Module } from "../core/module";
+import { random } from "../utils";
 
 export class BackgroundModule extends Module {
   constructor(type, text) {
@@ -6,6 +7,10 @@ export class BackgroundModule extends Module {
   }
 
   trigger() {
-    alert("Change your background test");
+    document.body.style.background = `RGB(${random(0, 255)}, ${random(
+      0,
+      255
+    )}, ${random(0, 255)})`;
+    // alert("Change your background test");
   }
 }
