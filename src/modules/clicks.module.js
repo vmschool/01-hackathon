@@ -8,7 +8,7 @@ export class ClicksModule extends Module {
   running //запущен ли сейчас слушатель нажатий
   listener //функция-обработчик событий
   static TYPE = 'ClickModule'
-  static TEXT = 'click counter'
+  static TEXT = 'Считать клики (за 3 секунды)'
   constructor() {
     super(ClicksModule.TYPE, ClicksModule.TEXT)
     this.time = 3 //количество отведённых секунд
