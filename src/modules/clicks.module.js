@@ -10,14 +10,12 @@ export default class ClicksModule extends Module {
 	constructor(text) {
 		super('Clicks', text);		
 
-		this.#clicksTimeoutInSeconds = 3;
-		this.#numberOfClicks = 0;
-		this.#isActive = false;
-
+		this.resetState();
 		this.setupEventListeners();
 	}
 
 	resetState() {
+		this.#clicksTimeoutInSeconds = 3;		
 		this.#numberOfClicks = 0;
 		this.#isActive = false;
 	}
