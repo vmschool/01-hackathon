@@ -1,11 +1,10 @@
-class Timer {
-  constructor() {
+import {Module} from '../core/module';
 
-  }
+export class Timer extends Module {
   trigger() {
-    const timer = document.createElement('div');
-    timer.classList = 'timer'
-    timer.innerHTML = `      
+  const timer = document.createElement('div');
+  timer.classList = 'timer'
+  timer.innerHTML = `      
   <div class="timer__background">
     <div class="timer__display">
       <div class="display minute"></div>
