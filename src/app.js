@@ -2,13 +2,18 @@ import './styles.css';
 import {
   ContextMenu
 } from './menu';
-import {
-  SoundModule
-} from './modules/sound.module';
+// import {
+//   SoundModule
+// } from './modules/sound.module';
+// import {Timer} from './modules/timer.module';
 
 const menu = new ContextMenu('#menu');
 
-const modules = [new SoundModule('sound', 'Рандомный звук')];
+const modules = [
+  // new SoundModule('sound', 'Рандомный звук'),
+  // new Timer('timer', 'Таймер'),
+  new Timer('timer', 'Таймер'),
+];
 
 menu.add(modules);
 
