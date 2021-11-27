@@ -7,9 +7,10 @@ export class ClicksModule extends Module {
   body //вся область страницы
   running //запущен ли сейчас слушатель нажатий
   listener //функция-обработчик событий
-
-  constructor(type, text) {
-    super(type, text)
+  static TYPE = 'ClickModule'
+  static TEXT = 'click counter'
+  constructor() {
+    super(ClicksModule.TYPE, ClicksModule.TEXT)
     this.time = 3 //количество отведённых секунд
     this.clicks = 0
     this.body = document.querySelector('body')
