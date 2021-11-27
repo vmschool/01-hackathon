@@ -17,6 +17,23 @@ export class Popup {
         this.#header = header;
     }
 
+    update(content, header) {
+        if (header) {
+            this.setHeader(header);
+        }
+        if (content) {
+            this.setContent(content);
+        }
+
+        const overlay = document.querySelector('.overlay');
+
+        const popupHeader = overlay.querySelector('.popup__header-text');
+        popupHeader.textContent = header;
+
+        const popupContent = overlay.querySelector('.popup__content');
+        popupContent.innerHTML = content;
+    }
+
     close() {
         const overlay = document.querySelector('.overlay');
         if (overlay) {
