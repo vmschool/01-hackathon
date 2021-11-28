@@ -6,10 +6,12 @@ import { doc } from 'prettier';
 export class TimerModule extends Module {
     #timeLeft;
     #timerId;
+    #runAfterEnd;
 
     constructor() {
         super('timerModule', 'Start timer');
         this.#timeLeft = 10;
+        this.#runAfterEnd = null;
     }
 
     startTimer() {
@@ -61,8 +63,16 @@ export class TimerModule extends Module {
         if (this.#timeLeft < 0) {
             clearInterval(this.#timerId);
             document.querySelector('.timer__items').textContent = 'Time is up!';
+            if (this.#runAfterEnd) {
+                this.#runAfterEnd();
+            }
         }
+
         this.#timeLeft--;
+    }
+
+    setRunAfterEnd(func) {
+        this.#runAfterEnd = func;
     }
 
     #generateForm() {
