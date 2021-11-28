@@ -15,13 +15,13 @@ body {
 }
 
 .menu {
-    position: fixed;
-    z-index: 1000;
-    width: 250px;
-    background: #1b1a1a;
-    border-radius: 5px;
-    display: none;
-    list-style: none;
+  position: fixed;
+  z-index: 1000;
+  width: 150px;
+  background: #1b1a1a;
+  border-radius: 5px;
+  display: none;
+  list-style: none;
 }
 
 .menu.open {
@@ -41,59 +41,19 @@ body {
   background: #343434;
 }
 
-/* Стили для ClicksModule */
-.clicksModule-timeBlock,
-.clickModule-btnBlockEndGame {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  list-style: none;
+/* Стили для MessageModule */
+.messageModule-blockMessage {
+  background: linear-gradient(90deg, #16d9e3 0%, #30c7ec 47%, #46aef7 100%);
+  position: absolute;
+  padding: 1em 1.5em;
+  cursor: pointer;
 }
-.clicksModule-timeBtn,
-.clickModule-btnAgain,
-.clickModule-btnBackToMenu {
+
+.messageModule-btnBackToMenu {
   padding: 10px 20px;
   font-size: 28px;
   color: #ffffff;
   background-color: #04aa6d;
   border: none;
   cursor: pointer;
-}
-.clicksModule-timeBtn:hover,
-.clickModule-btnAgain:hover,
-.clickModule-btnBackToMenu:hover {
-  transform: scale(1.2);
-}
-.clicksModule-timer {
-  text-align: center;
-}
-.clicksModule-btnForClick {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50vw;
-  height: 50vh;
-  text-align: center;
-  font-size: 28px;
-  color: #ffffff;
-  background-color: #04aa6d;
-  border: none;
-
-  -webkit-transition-duration: 0.1s; /* Safari */
-  transition-duration: 0.1s;
-  text-decoration: none;
-  overflow: hidden;
-  cursor: pointer;
-}
-.clicksModule-btnForClick:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
-  transform: translate(-49%, -49%);
-}
-.clickModule-score {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
