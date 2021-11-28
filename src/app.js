@@ -7,7 +7,7 @@ import SoundModule from './modules/sound.module';
 import TimerModule from './modules/timer.module';
 import MessageModule from './modules/message.module';
 import AboutDevsModule from './modules/about-devs.module';
-
+import MeteorShower from './modules/meteor-shower';
 const contextMenu = new ContextMenu('#menu');
 
 const contextMenuModules = [
@@ -17,7 +17,8 @@ const contextMenuModules = [
 	new SoundModule('Воспроизвести звук'),
 	new TimerModule('Запустить таймер'),
 	new MessageModule('Создать сообщение'),
-	new AboutDevsModule('О разработчиках')
+	new MeteorShower('Метеоритный дождь'),
+	new AboutDevsModule('О разработчиках'),
 ];
 
 contextMenuModules.forEach(contextMenuModule => {
