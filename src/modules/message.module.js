@@ -18,7 +18,7 @@ export class CustomMessage extends Module {
   }
     
   trigger() {
-  	const isCustomMessage  = document.querySelector('.custom-message.show')
+    const isCustomMessage  = document.querySelector('.custom-message.show')
     if(isCustomMessage) {
     	isCustomMessage.classList.remove('show')
     }
@@ -28,6 +28,10 @@ export class CustomMessage extends Module {
     document.body.append(this.customMessageContainer)
     customMessageHTML.classList.add('custom-animate')
     this.deleteCustomMessage()
+    
+    setTimeout(() => {
+      this.customMessageContainer.remove()
+    },5000)
 
     return this.customMessageContainer
   }
