@@ -9,15 +9,28 @@ export class ClicksModule extends Module {
   listener //функция-обработчик событий
   static TYPE = 'ClickModule'
   static TEXT = 'Считать клики (за 3 секунды)'
-  counterDiv
+  counterDiv //отображение блока счётчика кликов
   constructor() {
     super(ClicksModule.TYPE, ClicksModule.TEXT)
     this.time = 3 //количество отведённых секунд
     this.clicks = 0
+
+    //стили для body
     this.body = document.querySelector('body')
+    this.body.style.display = 'flex'
+    this.body.style.alignItems = 'flex-end'
+    this.body.style.justifyContent = 'center'
+
     this.running = false
+
+    //стили для блока кликов
     this.counterDiv = document.createElement('div')
     this.counterDiv.classList.add('blockCounter')
+    this.counterDiv.style.color = 'blue'
+    this.counterDiv.style.backgroundColor = 'coral'
+    this.counterDiv.style.fontSize = '2rem'
+    this.counterDiv.style.fontWeight = 'bold'
+
     this.listener = () => {
       if (this.running) {
         this.clicks++
@@ -36,7 +49,6 @@ export class ClicksModule extends Module {
     //запуск обратного отсчёта
     this.timer = setInterval(() => {
       if (curretntTime === 0) {
-        //this.body.remove(counterDiv)
         this.finish()
       } else {
         curretntTime-- //после 1 секунды уменьшаем оставшееся время на 1
