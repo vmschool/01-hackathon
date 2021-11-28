@@ -19,12 +19,11 @@ export class ContextMenu extends Menu {
     }
     render(){
         const arrModules = Object.values(this.#modules)
+        arrModules.forEach(item => {this.add(item)})
         
         document.body.addEventListener('contextmenu',(event)=>{
             event.preventDefault()
             this.menuClick(event)
-            arrModules.forEach(item => {this.add(item)})
-            arrModules.length = 0
             this.open()
         })
 
