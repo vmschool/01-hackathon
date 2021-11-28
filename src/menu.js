@@ -2,8 +2,7 @@ import {Menu} from './core/menu'
 import {BackgroundModule} from './modules/background.module'
 import {ClicksModule} from './modules/clicks.module'
 import {ShapeModule} from './modules/shape.module'
-import {RandomSoundModule} from './modules/sound.module'
-import {CustomMessage} from './modules/message.module'
+import {Module} from './core/module'
 
 
 export class ContextMenu extends Menu {
@@ -16,8 +15,6 @@ export class ContextMenu extends Menu {
             background: new BackgroundModule('background', 'Поменять цвет'),
             clicks: new ClicksModule('clicks', 'Считать клики'),
             shape: new ShapeModule('shape', 'Создать фигуру'),
-            sound: new RandomSoundModule('sound', 'Случайный звук'),
-            message: new CustomMessage ('message', 'Кастомное сообщение')
         }
     }
     render(){
@@ -26,9 +23,9 @@ export class ContextMenu extends Menu {
         document.body.addEventListener('contextmenu',(event)=>{
             event.preventDefault()
             this.menuClick(event)
-            this.add(arrModules)
+            arrModules.forEach(item => {this.add(item)})
+            arrModules.length = 0
             this.open()
-
         })
 
         this.#menu.addEventListener('click',(event)=>{
@@ -47,13 +44,12 @@ export class ContextMenu extends Menu {
         this.#menu.classList.remove('open')
     }
     
-    add(arr) {
-        arr.forEach(item=>{
+    add(item) {
+        if(item instanceof Module){
             const liElem = document.createElement('li')
             liElem.innerHTML = item.toHTML()
             this.#menu.append(liElem)
-        })
-        arr.length = 0
+        }
     }
     menuClick(event){
         let topValue = 0
