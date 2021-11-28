@@ -10,6 +10,7 @@ export class PrintModule extends Module {
   createInfoMessage() {
     const ourMessage = document.createElement('div')
     ourMessage.textContent = '{ Данная функция нужна для людей пожилого возраста }'
+    ourMessage.id = 'info-msg'
     ourMessage.style.fontSize = 'x-large'
     ourMessage.style.width = '100%'
     ourMessage.style.textAlign = 'center'
@@ -18,7 +19,9 @@ export class PrintModule extends Module {
   }
 
   displayInfoMessage() {
-    if (!document.body.ourMessage) {
+    const msg = document.querySelector('#info-msg')
+
+    if (!msg) {
       document.body.append(this.createInfoMessage())
     }
   }
