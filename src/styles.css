@@ -165,3 +165,26 @@ h3 {
 		height: initial;
 	}
 }
+
+.message {
+	background: var(--menu-background-hover);
+	color: var(--default-text-color);
+	padding: 20px 20px;
+	font-family: "Roboto", sans-serif;
+	font-size: 16px;
+	max-width: 400px;
+	max-height: 200px;
+
+	border-radius: 5px;
+	text-align: center;
+	margin-bottom: 5px;
+	margin-right: 5px;
+}
+
+.container-messages {
+	max-width: 400px;
+	max-height: 1000px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
