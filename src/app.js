@@ -19,12 +19,3 @@ contextMenu.add(backgroundModule);
 
 const randomSound = new RandomSound('randomSound', 'To generate random sound');
 contextMenu.add(randomSound);
-
-
-
-
-
-
-
-
-
