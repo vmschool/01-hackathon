@@ -36,7 +36,7 @@ export class ClicksModule extends Module {
     }
   }
   finish() {
-    clearInterval(this.timer) //останавливаем таймер
+    clearInterval(this.#timer) //останавливаем таймер
     this.#running = false //остановка подсчётов
     document.body.removeEventListener('click', this.#listener) //удаление обработчика
     this.toHTML() //вывод сообщения
