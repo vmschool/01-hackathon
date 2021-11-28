@@ -2,8 +2,10 @@ import { Module } from '../core/module';
 import { random } from '../utils';
 import { Popup } from '../components/popup';
 export class QuotesModule extends Module {
+    #popup
     constructor() {
         super('quotesModule', 'Random Quote');
+        this.#popup = new Popup(null, '');
     }
     async trigger() {
         try {
@@ -11,8 +13,9 @@ export class QuotesModule extends Module {
             const request = await fetch(URL);
             const result = await request.json();
             const { text, author } = result[random(0, result.length)];
-            const popup = new Popup(this.createQuote(text, author), 'Remember this!');
-            popup.open();
+            this.#popup.setHeader('Remember this');
+            this.#popup.setContent(this.createQuote(text, author));
+            this.#popup.open();
         } catch (error) {
             console.log(error);
         }
