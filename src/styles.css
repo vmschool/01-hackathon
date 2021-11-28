@@ -41,6 +41,63 @@ body {
   background: #343434;
 }
 
+/* Стили для ClicksModule */
+.clicksModule-timeBlock,
+.clickModule-btnBlockEndGame {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+.clicksModule-timeBtn,
+.clickModule-btnAgain {
+  padding: 10px 20px;
+  font-size: 28px;
+  color: #ffffff;
+  background-color: #04aa6d;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.clicksModule-timeBtn:hover,
+.clickModule-btnAgain:hover {
+  transform: scale(1.1);
+}
+.clicksModule-timer {
+  text-align: center;
+}
+.clicksModule-btnForClick {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50vw;
+  height: 50vh;
+  text-align: center;
+  font-size: 28px;
+  color: #ffffff;
+  background-color: #04aa6d;
+  border: none;
+  border-radius: 1em;
+
+  -webkit-transition-duration: 0.1s; /* Safari */
+  transition-duration: 0.1s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+.clicksModule-btnForClick:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translate(-49%, -49%);
+}
+.clickModule-score {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* Стили для MessageModule */
 .messageModule-blockMessage {
   background: linear-gradient(90deg, #16d9e3 0%, #30c7ec 47%, #46aef7 100%);
@@ -55,7 +112,7 @@ body {
     transform: rotate(45deg) translate(-10%, -10%);
   }
   50% {
-    transform: rotate(140deg) translate(5%, 0%);
+    transform: rotate(140deg) translate(0%, 0%);
   }
   100% {
     transform: rotate(225deg) translate(10%, 10%);
@@ -74,16 +131,22 @@ body {
   }
 }
 
-.backgroundModule-block {
-  position: relative;
-  top: 20%;
-  left: 15%;
+.backgroundModule-container {
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60vw;
-  height: 60vw;
-  animation: block 4s infinite linear;
+}
+
+.backgroundModule-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  height: 50vw;
+  border-radius: 5%;
+  animation: block 6s infinite linear;
 }
 .backgroundModule-blockInBlock {
   display: flex;
@@ -91,22 +154,23 @@ body {
   align-items: center;
   width: 50%;
   height: 50%;
+  border-radius: 5%;
   animation: blockInBlock 2s infinite linear;
 }
-.backgroundModule-btnBlock {
+
+.backgroundModule-btnBack {
   position: absolute;
   top: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.backgroundModule-btnBack,
-.backgroundModule-btnBackToMenu {
+  left: 50%;
+  transform: translateX(-50%);
   padding: 10px 20px;
   font-size: 28px;
   color: #ffffff;
   background-color: #04aa6d;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
+}
+.backgroundModule-btnBack:hover {
+  transform: translateX(-50%) scale(1.1);
 }

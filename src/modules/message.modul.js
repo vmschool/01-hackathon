@@ -1,5 +1,5 @@
 import { Module } from "../core/module";
-import { random } from "../utils";
+import { random, allIntervals, clearAllIntervals } from "../utils";
 
 export class MessageModule extends Module {
   #messages;
@@ -8,15 +8,17 @@ export class MessageModule extends Module {
     this.#messages = [];
   }
   async trigger() {
+    document.body.innerHTML = "";
+    clearAllIntervals();
     await this.#getRandomMessage();
     this.#renderBlockMessage();
-    document.body.append(this.#createBtnBlock());
 
     // Перерендываривает блок с сообщением с опредененним интервалом
-    setInterval(() => {
+    const rerenderMessageInterval = setInterval(() => {
       document.querySelector("#blockMessage")?.remove();
       this.#renderBlockMessage();
     }, 2000);
+    allIntervals.push(rerenderMessageInterval);
   }
 
   // Создает блок рандомного сообщения
@@ -32,23 +34,6 @@ export class MessageModule extends Module {
     blockMessage.append(textMessage);
 
     return blockMessage;
-  }
-
-  // Создает кнопку возврата в меню
-  #createBtnBlock() {
-    const btnBackToMenu = document.createElement("button");
-    btnBackToMenu.className = "messageModule-btnBackToMenu";
-    btnBackToMenu.textContent = "Вернутся в меню";
-    btnBackToMenu.style.position = "absolute";
-    btnBackToMenu.style.top = "50%";
-    btnBackToMenu.style.left = "50%";
-    btnBackToMenu.style.transform = "translate(-50%, -50%)";
-    btnBackToMenu.style.zIndex = "999";
-    btnBackToMenu.addEventListener("click", () => {
-      console.log("btnBackToMenu");
-    });
-
-    return btnBackToMenu;
   }
 
   // Рандомно выбирает позицию для блока с сообщением

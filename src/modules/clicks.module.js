@@ -1,4 +1,5 @@
 import { Module } from "../core/module.js";
+import { allIntervals, clearAllIntervals } from "../utils";
 
 export class ClicksModule extends Module {
   #time;
@@ -10,6 +11,8 @@ export class ClicksModule extends Module {
   }
 
   trigger() {
+    document.body.innerHTML = "";
+    clearAllIntervals();
     document.body.append(this.#createTimeBlock());
   }
 
@@ -80,7 +83,7 @@ export class ClicksModule extends Module {
     return score;
   }
 
-  // Создает блок с кнопками повторного запуска и возврата в главное меню
+  // Создает блок с кнопками повторного запуска
   #createBtnBlockEndGame() {
     const btnBlockEndGame = document.createElement("div");
     btnBlockEndGame.className = "clickModule-btnBlockEndGame";
@@ -140,6 +143,7 @@ export class ClicksModule extends Module {
         this.#finishTimer(timerId);
       }
     }, 1000);
+    allIntervals.push(timerId);
 
     return spanOfTime;
   }
