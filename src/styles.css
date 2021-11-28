@@ -126,18 +126,20 @@ h3 {
   transition: all 0.3s ease;
 }
 
-.block-with-message {
-  background-color: rgb(255, 48, 8);
-  color: #feeff4;
+.message {
+  background: var(--menu-background-hover);
+  color: var(--default-text-color);
   padding: 20px 20px;
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   max-width: 400px;
   max-height: 200px;
   overflow: hidden;
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  border-radius: 15px;
+  position: static;
+  bottom: 10%;
+  right: 10%;
+
+  border-radius: 5px;
   text-align: center;
+  margin-bottom: 5px;
 }
