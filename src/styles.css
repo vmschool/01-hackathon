@@ -42,6 +42,35 @@ body {
 }
 
 
+/*---------Start clicks-module---------*/
+.clicks__main__title {
+    text-align: center;
+
+}
+.clicks__title {
+    text-align: center;
+}
+.clicks__btn__container {
+    text-align: center;
+    margin-top:50px
+}
+.clicks__btn__time {
+    margin-left:20px;
+    padding: 10px 20px;
+    background-color: rgb(240, 252, 255);
+    border-color:rgb(230, 250, 255);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+.clicks__btn__time:hover {
+    transform: scale(1.1);
+}
+.clicks__btn__time:first-child{
+    margin-left: 0;
+}
+/*----------End-clicks-module----------*/
+
+
 /* Start custom-message */
 .custom-message {
     position: absolute;
@@ -199,4 +228,3 @@ body {
     top: 65%;
 }
 /* End shape */
-
