@@ -1,0 +1,13 @@
+.message {
+    width: 150px;
+    height: 66px;
+    border: 1px solid #eee;
+    box-shadow: 4px 4px 9px rgba(198, 198, 198, 0.36);
+    border-radius: 10px;
+    background: #f7f6f7;
+    padding: 0.8rem 1rem;
+    background: linear-gradient(90deg, #ff85e4 0%, #229efd 179.25%);
+    text-align: center;
+    color: #f7f6f7;
+    position: absolute;
+}
