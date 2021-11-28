@@ -24,6 +24,7 @@ body {
 	background: var(--main-background);
 	font-family: 'Roboto', sans-serif;
 	font-size: 28px;
+	height: 100vh;
 }
 
 .menu {
@@ -158,5 +159,9 @@ h3 {
 	
 	h3 {
 		text-align: center;
+	}
+	
+	body {
+		height: initial;
 	}
 }
