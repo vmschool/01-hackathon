@@ -33,10 +33,10 @@ export class CustomMessage extends Module {
     this.#deleteCustomMessage()
     
     setTimeout(() => {
-      this.customMessageContainer.remove()
+      this.#customMessageContainer.remove()
     },5000)
 
-    return this.customMessageContainer
+    return this.#customMessageContainer
   }
     
   #generateBlockMessage() {
@@ -55,7 +55,7 @@ export class CustomMessage extends Module {
 
   #deleteCustomMessage() {
     this.closeCustomMessage.addEventListener('click', () => {
-      this.customMessageContainer.remove()
+      this.#customMessageContainer.remove()
     	}
     )
   }
