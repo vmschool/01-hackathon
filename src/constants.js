@@ -1,4 +1,4 @@
 export const golGrit = {
-  rows: 40,
-  cols: 40,
+  rows: 25,
+  cols: 25,
 };
