@@ -9,10 +9,15 @@ export class TimerModule extends Module {
 
     constructor() {
         super('timerModule', 'Start timer');
-        this.#timeLeft = 20;
+        this.#timeLeft = 10;
     }
 
     startTimer() {
+        if (document.querySelector('.timer__items')) {
+            const popup = new Popup(this.#generateWarn(), 'WARNING');
+            popup.open();
+            return;
+        }
         const timer = this.#createTimer();
         document.body.append(timer);
         this.#countdownTimer();
@@ -25,8 +30,19 @@ export class TimerModule extends Module {
 
     trigger() {
         console.log('Start timer');
-        const popup = new Popup(this.#generateForm(), "I'm a super timer, yeah man! =)");
-        popup.open();
+        if (document.querySelector('.timer__items')) {
+            const popup = new Popup(this.#generateWarn(), 'WARNING');
+            popup.open();
+        } else {
+            const popup = new Popup(this.#generateForm(), "I'm a super timer, yeah man! =)");
+            popup.open();
+        }
+    }
+
+    #generateWarn() {
+        const warn = document.createElement('p');
+        warn.textContent = 'The timer has already started!';
+        return warn;
     }
 
     #countdownTimer() {
@@ -38,8 +54,8 @@ export class TimerModule extends Module {
         minutesHTML.textContent = minutes < 10 ? '0' + minutes : minutes;
         secondsHTML.textContent = seconds < 10 ? '0' + seconds : seconds;
 
-        minutesHTML.dataset.title = this.#declensionNum(minutes, ['минута', 'минуты', 'минут']);
-        secondsHTML.dataset.title = this.#declensionNum(seconds, ['секунда', 'секунды', 'секунд']);
+        minutesHTML.dataset.title = minutes === 1 ? 'minute' : 'minutes';
+        secondsHTML.dataset.title = seconds === 1 ? 'second' : 'seconds';
 
         // console.log(this.#timeLeft);
         if (this.#timeLeft < 0) {
@@ -47,10 +63,6 @@ export class TimerModule extends Module {
             document.querySelector('.timer__items').textContent = 'Time is up!';
         }
         this.#timeLeft--;
-    }
-
-    #declensionNum(num, words) {
-        return words[num % 100 > 4 && num % 100 < 20 ? 2 : [2, 0, 1, 1, 1, 2][num % 10 < 5 ? num % 10 : 5]];
     }
 
     #generateForm() {
