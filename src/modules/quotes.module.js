@@ -9,8 +9,7 @@ export class QuotesModule extends Module {
     }
     async trigger() {
         try {
-            const URL = require('../api/keys.json').quotesUrl;
-            const request = await fetch(URL);
+            const request = await fetch('http://type.fit/api/quotes');
             const result = await request.json();
             const { text, author } = result[random(0, result.length)];
             this.#popup.setHeader('Remember this');
