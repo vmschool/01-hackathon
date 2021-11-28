@@ -50,23 +50,12 @@ export class BackgroundModule extends Module {
   // Логика смены цвета фона
   #changeBgColorBlocks() {
     document.querySelector("#container").style.backgroundColor =
-      this.#getRandomColor();
+      Utils.randomColor()
 
     document.querySelector("#block").style.backgroundColor =
-      this.#getRandomColor();
+      Utils.randomColor()
 
     document.querySelector("#blockInBlock").style.backgroundColor =
-      this.#getRandomColor();
-  }
-
-  // Генерирует случайный цвет
-  #getRandomColor() {
-    const letters = "0123456789ABCDEF";
-    let color = "#";
-    for (let i = 0; i < 6; i++) {
-      color += letters[Utils.random(0, letters.length - 1)]; 
-    }
-    
-    return color;
+      Utils.randomColor()
   }
 }

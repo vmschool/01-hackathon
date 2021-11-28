@@ -174,3 +174,61 @@ body {
 .backgroundModule-btnBack:hover {
   transform: translateX(-50%) scale(1.1);
 }
+
+.square{
+	width: 150px;
+	height: 150px;
+}
+.rectangle{
+	width: 200px;
+	height: 150px;
+}
+.circle {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+}
+.oval{
+	width: 200px;
+	height: 150px;
+	border-radius: 50%;
+}
+.triangle-up{
+	width: 0;
+	height: 0;
+	border-left: 100px solid #fff;
+	border-right: 100px solid #fff;
+	border-bottom: 200px solid transparent;
+}
+.triangle-down{
+	width: 0;
+	height: 0;
+	border-left: 100px solid #fff;
+	border-right: 100px solid #fff;
+	border-top: 200px solid transparent;
+}
+.triangle-left{
+	width: 0;
+	height: 0;
+	border-top: 100px solid #fff;
+	border-bottom: 100px solid #fff;
+	border-right: 200px solid transparent;
+}
+.triangle-right{
+	width: 0;
+	height: 0;
+	border-top: 100px solid #fff;
+	border-bottom: 100px solid #fff;
+	border-left: 200px solid transparent;
+}
+.parallelogram{
+	width: 200px;
+	height: 100px;
+	transform: skew(20deg);
+}
+.trapezoid{
+	width: 200px;
+	border-left: 30px solid #fff;
+	border-right: 30px solid #fff;
+	border-bottom: 150px solid transparent;
+}
