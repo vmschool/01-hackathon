@@ -28,8 +28,10 @@ export class MessageModule extends Module {
         messageBlock.textContent = MessageModule.#messagesArray[randomIndex];
         const winWidth = window.innerWidth;
         const winHeight = window.innerHeight;
-        const randomTop = random(0, winHeight - 100);
-        const randomLeft = random(0, winWidth - 100);
+
+        const randomTop = random(0, winHeight - 66);
+        const randomLeft = random(0, winWidth - 150);
+
         messageBlock.style.top = randomTop + 'px';
         messageBlock.style.left = randomLeft + 'px';
 
