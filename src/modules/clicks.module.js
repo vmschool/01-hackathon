@@ -1,6 +1,7 @@
 import { Result } from 'postcss';
 import { Popup } from '../components/popup';
 import { Module } from '../core/module';
+import { TimerModule } from './timer.module';
 
 export class ClicksModule extends Module {
     #popup;
@@ -11,6 +12,14 @@ export class ClicksModule extends Module {
         super('clickModule', 'Click counter');
         this.#counterClicks = 0;
         this.#counterDblClicks = 0;
+    }
+
+    get counterDblClicks() {
+        return this.#counterDblClicks;
+    }
+
+    get counterClicks() {
+        return this.#counterClicks;
     }
 
     #generateForm() {
@@ -68,7 +77,7 @@ export class ClicksModule extends Module {
         this.#popup.open();
     }
 
-    #clickHandler() {
+    #clickHandler(event) {
         this.#counterClicks++;
     }
 
@@ -79,20 +88,36 @@ export class ClicksModule extends Module {
 
     #startCounter(timer, event) {
         this.#popup.close(event);
-        document.body.addEventListener('click', this.#clickHandler.bind(this));
-        document.body.addEventListener('dblclick', this.#dblClickHandler.bind(this));
-        setTimeout(() => {
-            document.body.removeEventListener('click', this.#clickHandler);
-            document.body.removeEventListener('dblclick', this.#dblClickHandler);
+
+        const bindedHandler = this.#clickHandler.bind(this);
+        const bindedDblHandler = this.#dblClickHandler.bind(this);
+
+        document.body.addEventListener('click', bindedHandler);
+        document.body.addEventListener('dblclick', bindedDblHandler);
+
+        const timerModule = new TimerModule();
+
+        timerModule.setRunAfterEnd(() => {
+            document.body.removeEventListener('click', bindedHandler);
+            document.body.removeEventListener('dblclick', bindedDblHandler);
+
             this.#showResult();
-        }, timer * 1000);
+        });
+
+        timerModule.startTimer(timer);
+
+        // setTimeout(() => {
+        //     document.body.removeEventListener('click', this.#clickHandler);
+        //     document.body.removeEventListener('dblclick', this.#dblClickHandler);
+        //     this.#showResult();
+        // }, timer * 1000);
     }
 
     trigger() {
         const form = this.#generateForm();
         this.#popup = new Popup(form, 'Click counter');
         this.#popup.open();
-        this.#counterClicks = 0;
+        this.#counterClicks = -1;
         this.#counterDblClicks = 0;
     }
 }
