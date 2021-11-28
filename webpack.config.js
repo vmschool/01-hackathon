@@ -1,50 +1,46 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = (env, argv) => {
-  const isProd = argv.mode === 'production'
-  const isDev = !isProd
+  const isProd = argv.mode === "production";
+  const isDev = !isProd;
 
-  console.log('isProd', isProd)
-  console.log('isDev', isDev)
+  console.log("isProd", isProd);
+  console.log("isDev", isDev);
 
   const filename = (ext) =>
-    isProd ? `[name].[contenthash].bundle.${ext}` : `[name].bundle.${ext}`
+    isProd ? `[name].[contenthash].bundle.${ext}` : `[name].bundle.${ext}`;
 
   return {
-    target: 'web',
-    context: path.resolve(__dirname, 'src'),
+    target: "web",
+    context: path.resolve(__dirname, "src"),
     entry: {
-      main: [
-        'core-js/stable',
-        'regenerator-runtime/runtime',
-        './app.js'
-      ],
+      main: ["core-js/stable", "regenerator-runtime/runtime", "./app.js"],
     },
     output: {
-      path: path.resolve(__dirname, 'dist'),
-      filename: filename('js'),
-      clean: true
+      path: path.resolve(__dirname, "dist"),
+      filename: filename("js"),
+      clean: true,
     },
     resolve: {
-      extensions: ['.js'],
+      extensions: [".js"],
       alias: {
-        '@': path.resolve(__dirname, 'src')
-      }
+        "@": path.resolve(__dirname, "src"),
+      },
     },
     devServer: {
-      port: '3000',
+      port: "3000",
       open: true,
       hot: true,
     },
-    devtool: isDev ? 'source-map' : false,
+    devtool: isDev ? "source-map" : false,
     plugins: [
       new HtmlWebpackPlugin({
-        template: './index.html'
+        template: "./index.html",
       }),
       new MiniCssExtractPlugin({
-        filename: filename('css')
+        filename: filename("css"),
       }),
     ],
     module: {
@@ -59,11 +55,15 @@ module.exports = (env, argv) => {
           use: {
             loader: "babel-loader",
             options: {
-              presets: ['@babel/preset-env']
-            }
-          }
-        }
+              presets: ["@babel/preset-env"],
+            },
+          },
+        },
+        {
+          test: /\.(gif|png|jpe?g|svg|xml|ogg|wav|mp3)$/i,
+          use: "file-loader",
+        },
       ],
-    }
-  }
-}
+    },
+  };
+};
