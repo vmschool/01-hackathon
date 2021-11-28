@@ -1,27 +1,43 @@
 import { Module } from "../core/module";
+import { clearAllIntervals, random } from "../utils";
+import alarmSoung from "../assets/alarm.wav";
+import armsSoung from "../assets/arms.mp3";
+import pingSoung from "../assets/ping.mp3";
+import smsSoung from "../assets/sms.mp3";
+import beepSoung from "../assets/beep.mp3";
 
-export let audio = [new Audio('../assets/alarm.wav'),
-new Audio('../assets/ping.mp3'),
-new Audio('../assets/sms.mp3'),
-new Audio('../assets/arms.mp3'),
-new Audio('../assets/beep.mp3')];
+export class TrackModule extends Module {
+  #audio;
+  constructor(type, text) {
+    super(type, text);
+    this.#audio = [
+      new Audio(alarmSoung),
+      new Audio(armsSoung),
+      new Audio(pingSoung),
+      new Audio(smsSoung),
+      new Audio(beepSoung),
+    ];
+  }
 
-export let currentAudio;
+  trigger() {
+    document.body.innerHTML = "";
+    clearAllIntervals();
 
-import { Module } from "../core/module";
+    document.body.append(this.#createButtonPlayRandomSound());
+  }
 
-export class TimerModule extends Module {
-	constructor (type, text) {
-		super(type, text) 
-	}
+  #createButtonPlayRandomSound() {
+    const buttonPlayRandomSound = document.createElement("button");
+    buttonPlayRandomSound.className = "trackModule-buttonPlayRandomSound";
+    buttonPlayRandomSound.textContent = "Воиспроизвести рандомный звук";
 
-	trigger(task) {
+    buttonPlayRandomSound.addEventListener("click", () => {
+      this.#playRandomSound();
+    });
 
-    if(task == 'play'){
-        currentAudio = Math.round(Math.random()*audio.length + 0.5);        
-        audio[currentAudio].play();
-    }
-    if(task == 'stop'){
-        audio[currentAudio].pause();
-    }
-};
+    return buttonPlayRandomSound;
+  }
+  #playRandomSound() {
+    this.#audio[random(0, this.#audio.length - 1)].play();
+  }
+}
