@@ -38,7 +38,7 @@ export class ContextMenu extends Menu {
     this.el.addEventListener('click', (event) => {
       const {target} = event;
 
-      if (target?.dataset.name === Module.DATA_NAME) {
+      if (target.tagName === 'LI') {
         const currentType = target.dataset.type;
         const clickedModuleInstance = this.modules.filter(moduleInstance => moduleInstance.type === currentType)[0];
   
