@@ -42,6 +42,7 @@ body {
 }
 
 /* Start sound-module */
+
 .image__sound {
    position: absolute;
    top: 50vh;
@@ -64,3 +65,5 @@ body {
       width: 0;
     }
 }
+
+/* End sound-module */
