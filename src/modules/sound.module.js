@@ -12,32 +12,37 @@ const sounds = [sound1, sound2, sound3, sound4, sound5];
 export default class SoundModule extends Module {
 	constructor(text) {
 		super('Sound', text);
+		this.isRun = false;
 	}
 
 	trigger() {
-		console.log('Sound triggered');
-		const body = document.querySelector('body');
-		const audio = new Audio();
-		audio.dataset.module = 'rsound';
-		audio.setAttribute('autoplay', '');
-		audio.type = 'audio/mp3';
-		const soundNumber = random(0, (sounds.length - 1));
-		audio.src = sounds[soundNumber];
+		if (!this.isRun) {
+			const body = document.querySelector('body');
+			const audio = new Audio();
+			audio.dataset.module = 'rsound';
+			audio.setAttribute('autoplay', '');
+			audio.type = 'audio/mp3';
+			const soundNumber = random(0, (sounds.length - 1));
+			audio.src = sounds[soundNumber];
 
-		const message = document.createElement('h2');
-		message.textContent = 'Включи звук!';
-		message.style = 'margin: auto';
-		body.append(message);
+			const message = document.createElement('h2');
+			message.textContent = 'Включи звук!';
+			message.style = 'margin: auto';
+			body.append(message);
 
-		body.append(audio);
+			body.append(audio);
 
-		function deleteModule() {
-			audio.pause();
-			audio.remove();
-			message.remove();
+			function deleteModule() {
+				audio.pause();
+				audio.remove();
+				message.remove();
+				this.isRun = false;
+			}
+
+			setTimeout(deleteModule.bind(this), 3000);
+			this.isRun = true;
 		}
 
-		setTimeout(deleteModule, 3000);
 	}
 
 }
