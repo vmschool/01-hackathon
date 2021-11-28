@@ -7,11 +7,6 @@ import roman from '../assets/roman.jpg';
 import alexy from '../assets/alexey.jpg';
 import darya from '../assets/darya.jpg';
 
-import vk from '../assets/vk.png';
-import telegram from '../assets/telegram.png';
-import github from '../assets/github.png';
-import instagram from '../assets/instagram.png';
-
 export default class AboutDevsModule extends Module {
 	#isModuleRendered;
 	#isModuleDisplayed;
@@ -23,7 +18,7 @@ export default class AboutDevsModule extends Module {
 		this.#isModuleRendered = false;
 		this.#isModuleDisplayed = false;
 	}
-
+	
 	trigger() {
 		if (!this.#isModuleRendered) {
 			this.#isModuleRendered = true;
@@ -33,6 +28,7 @@ export default class AboutDevsModule extends Module {
 				this.teamContainer.insertAdjacentHTML('beforeend', teammateHTML);
 				document.body.append(this.teamContainer);
 			});
+			document.body.insertAdjacentHTML('beforeEnd', this.#getRadialGradientForInstagramLogo());
 		}
 		
 		if (this.#isModuleDisplayed) {
@@ -42,7 +38,20 @@ export default class AboutDevsModule extends Module {
 		}
 		this.#isModuleDisplayed = !this.#isModuleDisplayed;
 	}
-
+	
+	#getRadialGradientForInstagramLogo() {
+		return `
+			<svg width="0" height="0">
+				<radialGradient id="insta-gradient" r="150%" cx="30%" cy="107%">
+					<stop stop-color="#fdf497" offset="0" />
+					<stop stop-color="#fdf497" offset="0.05" />
+					<stop stop-color="#fd5949" offset="0.45" />
+					<stop stop-color="#d6249f" offset="0.6" />
+					<stop stop-color="#285AEB" offset="0.9" />
+				</radialGradient>
+			</svg>
+		`;
+	}
 }
 
 class Teammate {
@@ -52,7 +61,7 @@ class Teammate {
 	#github;
 	#vk;
 	#instagram;
-
+	
 	constructor(name, avaUrl, telegram, github, vk, instagram) {
 		this.#name = name;
 		this.#avaUrl = avaUrl;
@@ -61,16 +70,18 @@ class Teammate {
 		this.#vk = vk;
 		this.#instagram = instagram;
 	}
-
+	
 	toHTML() {
 		return `<div class="teammate">
 			<img src="${this.#avaUrl}" alt="${this.#name}'s ava" />
 			<div class='teammate-name'>${this.#name}</div>
 			<div class="teammate-contacts">
-				<a target="_blank" href="https://t.me/${this.#telegram}"><img src="${telegram}" alt="telegram" /></a>
-				<a target="_blank" href="https://www.instagram.com/${this.#instagram}"><img src="${instagram}" alt="instagram" /></a>
-				<a target="_blank" href="http://vk.com/${this.#vk}"><img src="${vk}" alt="vk" /></a>
-				<a target="_blank" href="https://github.com/${this.#github}"><img src="${github}" alt="github" /></a>
+				<a target="_blank" href="https://t.me/${this.#telegram}"><i class="fab fa-telegram-plane"></i></a>
+				<a target="_blank" href="https://www.instagram.com/${this.#instagram}">
+					<i class="fab fa-instagram"></i>
+				</a>
+				<a target="_blank" href="https://vk.com/${this.#vk}"><i class="fab fa-vk"></i></a>
+				<a target="_blank" href="https://github.com/${this.#github}"><i class="fab fa-github"></i></a>
 			</div>
 		</div>`;
 	}
