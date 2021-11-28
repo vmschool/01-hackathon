@@ -45,7 +45,35 @@ body {
 .menu .menu-item:hover {
     background: #343434;
 }
-
+.quote {
+    margin: 0;
+    background: #f0f0f1;
+    color: #333334;
+    padding: 20px 30px;
+    position: relative;
+    border-left: 35px solid #dfdede;
+    font-family: 'Lato', sans-serif;
+}
+.quote:before {
+    content: '\201C';
+    font-family: serif;
+    position: absolute;
+    left: -29px;
+    top: 5px;
+    color: #bcbcbc;
+    font-size: 50px;
+    text-shadow: 1px 2px 0 white;
+}
+.quote p {
+    margin: 0 0 16px;
+    font-size: 20px;
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+}
+.quote .author {
+    font-style: normal;
+    font-weight: 300;
+}
 /* ============
  popup
 
