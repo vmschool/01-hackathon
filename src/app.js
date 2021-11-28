@@ -7,6 +7,7 @@ import { ShapeModule } from './modules/shapeGenerator/shape.module';
 import { WeatherModule } from './modules/weather.module';
 import { QuotesModule } from './modules/quotes.module';
 import { RandomGameModule } from './modules/randomGame.module';
+import { CocktailModule } from './modules/cocktail.module';
 
 const menu = new ContextMenu('.menu');
 menu.init();
@@ -18,5 +19,15 @@ const timerModule = new TimerModule();
 const weatherModule = new WeatherModule();
 const quotesModule = new QuotesModule();
 const randomGameModule = new RandomGameModule();
+const cocktailModule = new CocktailModule();
 
-menu.add(backgroundModule, clicksModule, shapeModule, weatherModule, quotesModule, timerModule, randomGameModule);
+menu.add(
+    backgroundModule,
+    clicksModule,
+    shapeModule,
+    weatherModule,
+    quotesModule,
+    timerModule,
+    randomGameModule,
+    cocktailModule
+);
