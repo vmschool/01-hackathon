@@ -63,10 +63,6 @@ module.exports = (env, argv) => {
                   }
                }
             },
-            {
-               test: /\.mp3$/,
-               use: ['file-loader'],
-            }
          ],
       }
    }
