@@ -1,30 +1,33 @@
-import {Module} from '../core/module'
-import {random} from '../utils'
-
-const colors = ['#7CAD44FF', '#AD7544FF', '#c922e6', '#22dfe6', '#C922E6FF']
+import { Module } from '../core/module';
+import { bgColors } from '../sourceData';
+import { random } from '../utils';
 
 export class BackgroundModule extends Module {
+    #colors;
+
     constructor() {
         super('BackgroundModule', 'Background switcher');
-        this.body = document.querySelector('body')
-
+        this.body = document.querySelector('body');
+        this.#colors = bgColors;
     }
 
     trigger() {
-        this.setColor(this.body)
+        this.setColor(this.body);
     }
 
     setColor(element) {
-        const color = this.getRandomColor()
-        element.style.backgroundColor = color
-       element.style.boxShadow = `0 0 2px ${color}, 0 0 10px ${color}`
+        let className = this.getRandomColor();
+        while (element.className === className) {
+            className = this.getRandomColor();
+        }
+        element.className = '';
+        element.classList.add(className);
     }
-     getRandomColor() {
-         let randomNumber = random(1,colors.length)
-
-         const index = Math.floor(randomNumber)
-         console.log(index)
-        return colors[index]
+    getRandomColor() {
+        let randomNumber = random(0, this.#colors.length - 1);
+        const color = this.#colors[randomNumber];
+        randomNumber = random(1, 9);
+        const className = `bg-${color}-${randomNumber * 100}`;
+        return className;
     }
-
 }

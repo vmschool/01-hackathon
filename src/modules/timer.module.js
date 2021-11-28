@@ -1,18 +1,30 @@
-import './timer.css';
 import { Module } from '../core/module';
 import { Popup } from '../components/popup';
-import { doc } from 'prettier';
 
 export class TimerModule extends Module {
     #timeLeft;
     #timerId;
+    #runAfterEnd;
 
     constructor() {
         super('timerModule', 'Start timer');
-        this.#timeLeft = 20;
+        this.#timeLeft = 10;
+        this.#runAfterEnd = null;
     }
 
-    startTimer() {
+    startTimer(time) {
+        if (document.querySelector('.timer__items')) {
+            this.#generateWarn('The timer has already started!');
+            return;
+        } else if (time <= 0) {
+            this.#generateWarn('Time parameter must be above zero');
+            return;
+        } else if (time > 3600) {
+            this.#generateWarn('Maximum time value - 60 min (3600 sec)');
+            return;
+        }
+
+        this.setTimeLeft(time);
         const timer = this.#createTimer();
         document.body.append(timer);
         this.#countdownTimer();
@@ -24,8 +36,14 @@ export class TimerModule extends Module {
     }
 
     trigger() {
-        console.log('Start timer');
         const popup = new Popup(this.#generateForm(), "I'm a super timer, yeah man! =)");
+        popup.open();
+    }
+
+    #generateWarn(message) {
+        const warn = document.createElement('p');
+        warn.textContent = message;
+        const popup = new Popup(warn, 'WARNING');
         popup.open();
     }
 
@@ -38,19 +56,25 @@ export class TimerModule extends Module {
         minutesHTML.textContent = minutes < 10 ? '0' + minutes : minutes;
         secondsHTML.textContent = seconds < 10 ? '0' + seconds : seconds;
 
-        minutesHTML.dataset.title = this.#declensionNum(minutes, ['минута', 'минуты', 'минут']);
-        secondsHTML.dataset.title = this.#declensionNum(seconds, ['секунда', 'секунды', 'секунд']);
+        minutesHTML.dataset.title = minutes === 1 ? 'minute' : 'minutes';
+        secondsHTML.dataset.title = seconds === 1 ? 'second' : 'seconds';
 
         // console.log(this.#timeLeft);
         if (this.#timeLeft < 0) {
             clearInterval(this.#timerId);
-            document.querySelector('.timer__items').textContent = 'Time is up!';
+            const timerItems = document.querySelector('.timer__items');
+            timerItems.textContent = 'Time is up!';
+            setTimeout(() => {
+                timerItems.remove();
+            }, 1500);
+            this.#runAfterEnd?.();
         }
+
         this.#timeLeft--;
     }
 
-    #declensionNum(num, words) {
-        return words[num % 100 > 4 && num % 100 < 20 ? 2 : [2, 0, 1, 1, 1, 2][num % 10 < 5 ? num % 10 : 5]];
+    setRunAfterEnd(func) {
+        this.#runAfterEnd = func;
     }
 
     #generateForm() {
@@ -85,15 +109,10 @@ export class TimerModule extends Module {
 
         button.addEventListener('click', (event) => {
             event.preventDefault();
-            this.setTimeLeft(+input.value);
-            // console.log(this.#timeLeft);
+            const time = +input.value;
 
             document.querySelector('.overlay')?.remove();
-            this.startTimer();
-            setTimeout(() => {
-                console.log('end');
-                document.querySelector('.timer__items')?.remove();
-            }, this.#timeLeft * 1000 + 3500);
+            this.startTimer(time);
         });
 
         return form;

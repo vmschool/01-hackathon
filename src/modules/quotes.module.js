@@ -2,14 +2,14 @@ import { Module } from '../core/module';
 import { random } from '../utils';
 import { Popup } from '../components/popup';
 export class QuotesModule extends Module {
-    #popup
+    #popup;
     constructor() {
         super('quotesModule', 'Random Quote');
         this.#popup = new Popup(null, '');
     }
     async trigger() {
         try {
-            const request = await fetch('http://type.fit/api/quotes');
+            const request = await fetch('https://type.fit/api/quotes');
             const result = await request.json();
             const { text, author } = result[random(0, result.length)];
             this.#popup.setHeader('Remember this');
