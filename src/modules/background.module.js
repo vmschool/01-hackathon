@@ -4,6 +4,7 @@ import {random} from '../utils'
 export class BackgroundModule extends Module {
   static TYPE = 'BackgroundModule'
   static TEXT = 'Случайный фон'
+
   #backgroundColors
 
   constructor() {
@@ -19,6 +20,7 @@ export class BackgroundModule extends Module {
   getRandomColor() {
     const index = random(0, this.#backgroundColors.length - 1)
     return this.#backgroundColors[index]
+
   }
 
   trigger() {
