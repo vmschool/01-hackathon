@@ -1,7 +1,6 @@
 import './timer.css';
 import { Module } from '../core/module';
 import { Popup } from '../components/popup';
-import { doc } from 'prettier';
 
 export class TimerModule extends Module {
     #timeLeft;

@@ -17,21 +17,17 @@ export class Popup {
         this.#header = header;
     }
 
-    update(content, header) {
-        if (header) {
-            this.setHeader(header);
-        }
-        if (content) {
-            this.setContent(content);
-        }
+    update(content = this.#content, header = this.#header) {
+        this.setHeader(header);
+        this.setContent(content);
 
         const overlay = document.querySelector('.overlay');
 
         const popupHeader = overlay.querySelector('.popup__header-text');
-        popupHeader.textContent = header;
+        popupHeader.textContent = this.#header;
 
         const popupContent = overlay.querySelector('.popup__content');
-        popupContent.innerHTML = content;
+        popupContent.innerHTML = this.#content;
     }
 
     close(event) {
