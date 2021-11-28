@@ -18,9 +18,9 @@ export class CustomMessage extends Module {
   }
     
   trigger() {
-    const isCustomMessage  = document.querySelector('.custom-message.show')
-    if(isCustomMessage) {
-    	isCustomMessage.classList.remove('show')
+    const isActiveBlock = document.querySelector('.container-custom-message')
+    if(isActiveBlock) {
+      isActiveBlock.remove()
     }
     this.customMessageContainer.style.display = 'block'
     const customMessageHTML = this.generateBlockMessage()

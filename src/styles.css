@@ -94,8 +94,8 @@ body {
 
 .block--alert {
     border-color: red;
-    background: rgba(255,0,0,.3);
-    color: darkred;
+    background: ff0000ab;
+    color: #000;
     font-style: italic;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 1),
     -23px 0 20px -23px rgba(0, 0, 0, .8),
@@ -103,11 +103,11 @@ body {
     0 0 40px rgba(0, 0, 0, .1) inset;
 }
 .block--alert .custom-close__btn {
-    color: darkred;
+    color: #fff;
 }
 
 .block--bye .custom-close__btn {
-    color: #fff;
+    color: #000;
 }
 
 .block--lorem .custom-close__btn {
