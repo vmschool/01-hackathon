@@ -15,7 +15,6 @@ export class SoundModule extends Module {
       new Audio('../../assets/sounds/rooster.mp3'),
     ];
     const rand = random(0, audio.length-1);
-    console.log(rand);
     audio[rand].play();
   }
 }

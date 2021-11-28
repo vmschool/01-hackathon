@@ -46,7 +46,7 @@ export class ClicksModule extends Module {
             buttonStart.removeEventListener('click', ClicksModule.initialParams.func);
             this.#time = value || ClicksModule.initialParams.time;
             this.#toggleModal();
-            console.log(this.#time);
+            // console.log(this.#time);
             setTimeout(() => this.#finish(), this.#time * 1000); 
             ClicksModule.body.addEventListener('click', this.#countFunctions.single);
             ClicksModule.body.addEventListener('dblclick', this.#countFunctions.double);
