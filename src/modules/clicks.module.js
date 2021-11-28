@@ -105,12 +105,6 @@ export class ClicksModule extends Module {
         });
 
         timerModule.startTimer(timer);
-
-        // setTimeout(() => {
-        //     document.body.removeEventListener('click', this.#clickHandler);
-        //     document.body.removeEventListener('dblclick', this.#dblClickHandler);
-        //     this.#showResult();
-        // }, timer * 1000);
     }
 
     trigger() {
