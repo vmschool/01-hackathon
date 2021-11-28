@@ -40,3 +40,44 @@ body {
 .menu .menu-item:hover {
     background: #343434;
 }
+
+
+/* Start shape */
+.shape {
+    position: absolute;
+    z-index: 1;
+    background: green;
+}
+
+.shape:before {
+    content: attr(data-time);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: #f3f3f3;
+    font-size: 20px;
+}
+
+.shape:after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+}
+
+.shape--circle {
+    border-radius: 50%;
+}
+
+.shape--rhombus {
+    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+
+.shape--triangle {
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.shape--triangle:before {
+    top: 65%;
+}
+/* End shape */
