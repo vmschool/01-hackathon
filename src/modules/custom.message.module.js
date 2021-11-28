@@ -2,58 +2,54 @@ import {Module} from '../core/module'
 import {random} from '../utils'
 
 export class CustomMessage extends Module {
-  constructor(type) {
-    super(type, 'Кастомное сообщение')
-    //container
+  constructor(type, text) {
+    super(type, text)
+    this.blockMap = [
+    {class: 'block--alert', text: 'Что-то пошло не так..'},
+    {class: 'block--hello', text: 'Добро пожаловать!'},
+    {class: 'block--bye', text: 'Скоро увидимся! Заходи еще!'},
+    {class: 'block--lorem', text: 'Lorem ipsum nirum'},
+    ]
     this.customMessageContainer = document.createElement('div')
     this.customMessageContainer.className = 'container-custom-message'
-    //messageBlock
-    this.customMessageBlock = document.createElement('div')
-    this.customMessageBlock.className = 'custom-message'
-    //closeElement
     this.closeCustomMessage = document.createElement('button')
     this.closeCustomMessage.className = 'custom-close__btn'
     this.closeCustomMessage.innerHTML = '&times;' 
-    //пока не могу понять, как инициадизировать type
   }
     
   trigger() {
-    //renderHTML
-    this.customMessageBlock.classList.add('show')
+  	const isCustomMessage  = document.querySelector('.custom-message.show')
+    if(isCustomMessage) {
+    	isCustomMessage.classList.remove('show')
+    }
     this.customMessageContainer.style.display = 'block'
-    //message
-    const customMessageText = document.createElement('div')
-    customMessageText.className = 'custom-message__message'
-    //addRandomMessage
-    customMessageText.textContent = this.addMessage()
-    //add HTMLelements
-    this.customMessageBlock.append(this.closeCustomMessage, customMessageText)
-    this.customMessageContainer.append(this.customMessageBlock)
+    const customMessageHTML = this.generateBlockMessage()
+    this.customMessageContainer.append(customMessageHTML)
     document.body.append(this.customMessageContainer)
-    //Listenner
+    customMessageHTML.classList.add('custom-animate')
     this.deleteCustomMessage()
 
     return this.customMessageContainer
   }
     
-  addMessage() {
-    //textMessage
-    const mockMessages = [
-      'Что-то пошло не так..',
-      'Добро пожаловать!',
-      'Еще увидимся!'
-    ]
-    return mockMessages[random(0, mockMessages.length - 1)]
-    
+  generateBlockMessage() {
+     //messageBlock
+    const customMessageBlock = document.createElement('div')
+    customMessageBlock.className = "custom-message"
+    customMessageBlock.classList.add('show')
+    const randomCustomBlock = this.blockMap[random(0, this.blockMap.length -1)]
+    customMessageBlock.classList.add(randomCustomBlock.class)
+    const customMessageText = document.createElement('div')
+    customMessageText.className = 'custom-message__message'
+    customMessageText.textContent = randomCustomBlock.text
+    customMessageBlock.append(this.closeCustomMessage, customMessageText)
+    return customMessageBlock
   }
 
   deleteCustomMessage() {
     this.closeCustomMessage.addEventListener('click', () => {
-      this.customMessageContainer.style.display = 'none'
-      setTimeout(() => {
-        this.customMessageContainer.remove()
-      }, 0)
-    }
+      this.customMessageContainer.remove()
+    	}
     )
   }
 }

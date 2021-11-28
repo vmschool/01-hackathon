@@ -56,6 +56,62 @@ body {
     opacity: 0;
     visibility: hidden;
     transition: .3s;
+    animation: animate_motion 5s 1.5s both infinite;
+}
+
+.block--bye {
+    border: 1px solid #000080;
+    background: #000080;
+    color: #fff;
+    font-style: italic;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 1),
+    -23px 0 20px -23px rgba(0, 0, 0, .8),
+    23px 0 20px -23px rgba(0, 0, 0, .8),
+    0 0 40px rgba(0, 0, 0, .1) inset;
+}
+
+.block--lorem {
+    border: 1px solid #008000;
+    background: #228B22;
+    color: #fff;
+    font-style: italic;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 1),
+    -23px 0 20px -23px rgba(0, 0, 0, .8),
+    23px 0 20px -23px rgba(0, 0, 0, .8),
+    0 0 40px rgba(0, 0, 0, .1) inset;
+}
+
+.block--hello {
+    border: 1px solid blue;
+    background: #009aff;
+    color: #fff;
+    font-style: italic;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 1),
+    -23px 0 20px -23px rgba(0, 0, 0, .8),
+    23px 0 20px -23px rgba(0, 0, 0, .8),
+    0 0 40px rgba(0, 0, 0, .1) inset;
+}
+
+.block--alert {
+    border-color: red;
+    background: rgba(255,0,0,.3);
+    color: darkred;
+    font-style: italic;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 1),
+    -23px 0 20px -23px rgba(0, 0, 0, .8),
+    23px 0 20px -23px rgba(0, 0, 0, .8),
+    0 0 40px rgba(0, 0, 0, .1) inset;
+}
+.block--alert .custom-close__btn {
+    color: darkred;
+}
+
+.block--bye .custom-close__btn {
+    color: #fff;
+}
+
+.block--lorem .custom-close__btn {
+    color: #fff;
 }
 
 .custom-message.show {
@@ -71,7 +127,7 @@ body {
     background: none;
     border: none;
     padding: 0;
-    font-size: 1rem;
+    font-size: 1.5rem;
     cursor: pointer;
     transition: .3s;
     width: 20px;
@@ -80,9 +136,16 @@ body {
     align-items: center;
     justify-content: center;
 }
+.custom-close__btn:hover {
+    color: red;
+}
+
+.block--alert .custom-close__btn:hover {
+    color: #fff;
+}
 
 .custom-message__message {
     font-size: 1rem;
+    padding: 5px;
 }
-
 /* End custom-message */
