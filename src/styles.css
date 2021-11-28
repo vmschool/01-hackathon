@@ -165,3 +165,45 @@ h3 {
 		height: initial;
 	}
 }
+
+.timer_container {
+	margin: 10px;
+	padding: 1%;
+	height: 200px;
+	width: 400px;
+	background-color: #f1f1f1;
+	border-radius: 20px;
+}
+
+.button_start {
+	margin: 5px;
+	background-color: #6da870;
+	border: none;
+	color: white;
+	padding: 4px 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 13px;
+	border-radius: 20px;
+}
+
+.timer_input_hours,
+.timer_input_min,
+.timer_input_sec {
+	display: inline-block;
+	width: 20%;
+	line-height: 1.5;
+	color: #212529;
+	background-color: #fff;
+	border: 1px solid #bdbdbd;
+	border-radius: 10px;
+}
+
+.time_countdown_container {
+	margin: auto;
+	padding: 70px 60px;
+	font-size: 20px;
+	font-family: Impact, fantasy;
+	color: black;
+}
