@@ -1,19 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
 
 :root {
-  --main-background: #2b2b2b;
-  --default-text-color: #ffffff;
-  --menu-background: #3c3f41;
-  --menu-text-color: #f3fff9;
-  --menu-background-hover: #4b6eaf;
-  --menu-border-color: #515151;
+	--main-background: #2b2b2b;
+	--default-text-color: #ffffff;
+	--menu-background: #3c3f41;
+	--menu-text-color: #f3fff9;
+	--menu-background-hover: #4b6eaf;
+	--menu-border-color: #515151;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  user-select: none;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	user-select: none;
 }
 
 body {
@@ -28,40 +28,40 @@ display: flex;
 }
 
 .menu {
-  position: fixed;
-  z-index: 1000;
-  width: 270px; /* if you need change this, change MENU_WIDTH_IN_PIXELS as well */
-  background: var(--menu-background);
-  border-radius: 5px;
-  border: 1px solid var(--menu-border-color);
-  display: none;
-  list-style: none;
-  white-space: nowrap;
+	position: fixed;
+	z-index: 1000;
+	width: 270px; /* if you need change this, change MENU_WIDTH_IN_PIXELS as well */
+	background: var(--menu-background);
+	border-radius: 5px;
+	border: 1px solid var(--menu-border-color);
+	display: none;
+	list-style: none;
+	white-space: nowrap;
 }
 
 .menu.open {
-  display: block;
+	display: block;
 }
 
 .menu .menu-item {
-  height: 36px; /* if you need change this, change MENU_ITEM_HEIGHT_IN_PIXELS as well */
-  padding: 8px 10px;
-  font-size: 0.5em;
-  color: var(--default-text-color);
-  cursor: pointer;
-  transition: background-color 0.2s ease-in;
+	height: 36px; /* if you need change this, change MENU_ITEM_HEIGHT_IN_PIXELS as well */
+	padding: 8px 10px;
+	font-size: 0.5em;
+	color: var(--default-text-color);
+	cursor: pointer;
+	transition: background-color 0.2s ease-in;
 }
 
 .menu .menu-item:first-child {
-  border-radius: 5px 5px 0 0;
+	border-radius: 5px 5px 0 0;
 }
 
 .menu .menu-item:last-child {
-  border-radius: 0 0 5px 5px;
+	border-radius: 0 0 5px 5px;
 }
 
 .menu .menu-item:hover {
-  background: var(--menu-background-hover);
+	background: var(--menu-background-hover);
 }
 
 .team-container {
@@ -74,15 +74,15 @@ display: flex;
 }
 
 h1 {
-  font-size: 2em;
-  font-weight: 100;
-  margin: 0.4em;
+	font-size: 2em;
+	font-weight: 100;
+	margin: 0.4em;
 }
 
 h2 {
-  font-size: 1em;
-  font-weight: 400;
-  margin-bottom: 0.3em;
+	font-size: 1em;
+	font-weight: 400;
+	margin-bottom: 0.3em;
 }
 
 h3 {
@@ -174,7 +174,6 @@ font-size: .8em;
 	font-size: 16px;
 	max-width: 400px;
 	max-height: 200px;
-
 	border-radius: 5px;
 	text-align: center;
 	margin-bottom: 5px;
