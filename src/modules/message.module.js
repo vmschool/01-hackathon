@@ -2,16 +2,19 @@ import {Module} from '../core/module'
 import {random} from '../utils'
 
 export class CustomMessage extends Module {
+  #customMessageContainer
+  #blockMap
+
   constructor(type, text) {
     super(type, text)
-    this.blockMap = [
+    this.#blockMap = [
     {class: 'block--alert', text: 'Что-то пошло не так..'},
     {class: 'block--hello', text: 'Добро пожаловать!'},
     {class: 'block--bye', text: 'Скоро увидимся! Заходи еще!'},
     {class: 'block--lorem', text: 'Lorem ipsum nirum'},
     ]
-    this.customMessageContainer = document.createElement('div')
-    this.customMessageContainer.className = 'container-custom-message'
+    this.#customMessageContainer = document.createElement('div')
+    this.#customMessageContainer.className = 'container-custom-message'
     this.closeCustomMessage = document.createElement('button')
     this.closeCustomMessage.className = 'custom-close__btn'
     this.closeCustomMessage.innerHTML = '&times;' 
@@ -22,12 +25,12 @@ export class CustomMessage extends Module {
     if(isActiveBlock) {
       isActiveBlock.remove()
     }
-    this.customMessageContainer.style.display = 'block'
-    const customMessageHTML = this.generateBlockMessage()
-    this.customMessageContainer.append(customMessageHTML)
-    document.body.append(this.customMessageContainer)
+    this.#customMessageContainer.style.display = 'block'
+    const customMessageHTML = this.#generateBlockMessage()
+    this.#customMessageContainer.append(customMessageHTML)
+    document.body.append(this.#customMessageContainer)
     customMessageHTML.classList.add('custom-animate')
-    this.deleteCustomMessage()
+    this.#deleteCustomMessage()
     
     setTimeout(() => {
       this.customMessageContainer.remove()
@@ -36,12 +39,12 @@ export class CustomMessage extends Module {
     return this.customMessageContainer
   }
     
-  generateBlockMessage() {
+  #generateBlockMessage() {
      //messageBlock
     const customMessageBlock = document.createElement('div')
     customMessageBlock.className = "custom-message"
     customMessageBlock.classList.add('show')
-    const randomCustomBlock = this.blockMap[random(0, this.blockMap.length -1)]
+    const randomCustomBlock = this.#blockMap[random(0, this.#blockMap.length -1)]
     customMessageBlock.classList.add(randomCustomBlock.class)
     const customMessageText = document.createElement('div')
     customMessageText.className = 'custom-message__message'
@@ -50,7 +53,7 @@ export class CustomMessage extends Module {
     return customMessageBlock
   }
 
-  deleteCustomMessage() {
+  #deleteCustomMessage() {
     this.closeCustomMessage.addEventListener('click', () => {
       this.customMessageContainer.remove()
     	}
