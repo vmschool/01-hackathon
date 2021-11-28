@@ -1,4 +1,3 @@
-import './timer.css';
 import { Module } from '../core/module';
 import { Popup } from '../components/popup';
 

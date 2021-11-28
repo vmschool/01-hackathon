@@ -3,7 +3,7 @@ import { ContextMenu } from './menu';
 import { BackgroundModule } from './modules/background.module';
 import { ClicksModule } from './modules/clicks.module';
 import { TimerModule } from './modules/timer.module';
-import {ShapeModule} from './modules/shapeGenerator/shape.module';
+import { ShapeModule } from './modules/shapeGenerator/shape.module';
 import { WeatherModule } from './modules/weather.module';
 import { QuotesModule } from './modules/quotes.module';
 import { RandomGameModule } from './modules/randomGame.module';

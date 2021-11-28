@@ -12,7 +12,7 @@ export class WeatherModule extends Module {
 
     createLoader() {
         const loader = document.createElement('div');
-        loader.className = "lds-ripple";
+        loader.className = 'lds-ripple';
         loader.innerHTML = '<div></div><div></div>';
 
         return loader;
@@ -20,7 +20,7 @@ export class WeatherModule extends Module {
 
     async requestData(lat, long) {
         const resp = await fetch(
-          `https://api.weatherapi.com/v1/current.json?key=${keys.weatherKey}&q=${lat},${long}&aqi=no`
+            `https://api.weatherapi.com/v1/current.json?key=${keys.weatherKey}&q=${lat},${long}&aqi=no`
         );
         if (!resp.ok) throw new Error('request failed');
         const data = await resp.json();
@@ -64,7 +64,7 @@ export class WeatherModule extends Module {
     }
 
     showMistake() {
-        this.#popup.update('You browser doesn\'t support geolocation data');
+        this.#popup.update("You browser doesn't support geolocation data");
     }
 
     trigger() {
