@@ -40,6 +40,8 @@ body {
 .menu .menu-item:hover {
     background: #343434;
 }
+
+
 /*---------Start clicks-module---------*/
 .clicks__main__title {
     text-align: center;
@@ -67,3 +69,162 @@ body {
     margin-left: 0;
 }
 /*----------End-clicks-module----------*/
+
+
+/* Start custom-message */
+.custom-message {
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background: #f6f6f6;
+    border-radius: 5px;
+    min-width: 200px;
+    max-width: 300px;
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+    animation: animate_motion 5s 1.5s both infinite;
+}
+
+.block--bye {
+    border: 1px solid #000080;
+    background: #000080;
+    color: #fff;
+    font-style: italic;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 1),
+    -23px 0 20px -23px rgba(0, 0, 0, .8),
+    23px 0 20px -23px rgba(0, 0, 0, .8),
+    0 0 40px rgba(0, 0, 0, .1) inset;
+}
+
+.block--lorem {
+    border: 1px solid #008000;
+    background: #228B22;
+    color: #fff;
+    font-style: italic;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 1),
+    -23px 0 20px -23px rgba(0, 0, 0, .8),
+    23px 0 20px -23px rgba(0, 0, 0, .8),
+    0 0 40px rgba(0, 0, 0, .1) inset;
+}
+
+.block--hello {
+    border: 1px solid blue;
+    background: #009aff;
+    color: #fff;
+    font-style: italic;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 1),
+    -23px 0 20px -23px rgba(0, 0, 0, .8),
+    23px 0 20px -23px rgba(0, 0, 0, .8),
+    0 0 40px rgba(0, 0, 0, .1) inset;
+}
+
+.block--alert {
+    border-color: red;
+    background: rgba(255,0,0,.3);
+    color: darkred;
+    font-style: italic;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 1),
+    -23px 0 20px -23px rgba(0, 0, 0, .8),
+    23px 0 20px -23px rgba(0, 0, 0, .8),
+    0 0 40px rgba(0, 0, 0, .1) inset;
+}
+.block--alert .custom-close__btn {
+    color: darkred;
+}
+
+.block--bye .custom-close__btn {
+    color: #fff;
+}
+
+.block--lorem .custom-close__btn {
+    color: #fff;
+}
+
+.custom-message.show {
+    bottom: 15px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.custom-close__btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: .3s;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.custom-close__btn:hover {
+    color: red;
+}
+
+.block--alert .custom-close__btn:hover {
+    color: #fff;
+}
+
+.custom-message__message {
+    font-size: 1rem;
+    padding: 5px;
+}
+
+.container-custom-message .custom-animate {
+    transform: translateY(150%);
+    animation: ani 0.5s forwards;
+  }
+@keyframes ani {
+    0% {transform: translateY(150%);}
+    100% {transform: translateY(0);}
+  }
+/* End custom-message */
+
+
+/* Start shape */
+.shape {
+    position: absolute;
+    z-index: 1;
+    background: green;
+}
+
+.shape:before {
+    content: attr(data-time);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: #f3f3f3;
+    font-size: 20px;
+}
+
+.shape:after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+}
+
+.shape--circle {
+    border-radius: 50%;
+}
+
+.shape--rhombus {
+    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+
+.shape--triangle {
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.shape--triangle:before {
+    top: 65%;
+}
+/* End shape */
