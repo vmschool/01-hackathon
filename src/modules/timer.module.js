@@ -79,17 +79,18 @@ export class TimerModule extends Module {
 
     #generateForm() {
         const form = document.createElement('form');
-        form.className = 'timer';
+        form.className = 'ask-timer';
 
         const text = document.createElement('p');
-        text.className = 'timer__text';
+        text.className = 'ask-timer__text text-gray-700';
         text.textContent = 'How much time do you need?';
 
         const inputBox = document.createElement('div');
-        inputBox.className = 'timer__input-box';
+        inputBox.className = 'ask-timer__input-box flex items-center mt-3';
 
         const input = document.createElement('input');
-        input.className = 'timer__input';
+        input.className =
+            'ask-timer__input border-2 border-gray-200 p-1 rounded flex-1 outline-none text-gray-700 focus:border-blue-400';
         input.name = 'timeleft';
         input.type = 'number';
         input.value = '0';
@@ -97,11 +98,11 @@ export class TimerModule extends Module {
 
         const span = document.createElement('span');
         span.textContent = ' seconds';
-        span.className = '.timer__seconds';
+        span.className = 'ask-timer__seconds flex-1 pl-2 text-gray-700';
 
         const button = document.createElement('button');
         button.type = 'submit';
-        button.className = 'btn';
+        button.className = 'btn rounded bg-blue-400 px-2 py-1 mt-5 hover:bg-blue-300 text-white w-full transition-all';
         button.textContent = 'Start';
 
         inputBox.append(input, span);

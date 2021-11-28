@@ -1,8 +1,3 @@
-.timer__input {
-    width: 50px;
-    text-align: center;
-}
-
 .timer__items {
     display: flex;
     justify-content: center;
