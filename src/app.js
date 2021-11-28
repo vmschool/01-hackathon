@@ -7,6 +7,10 @@ import SoundModule from './modules/sound.module';
 import TimerModule from './modules/timer.module';
 import MessageModule from './modules/message.module';
 import AboutDevsModule from './modules/about-devs.module';
+import '@fortawesome/fontawesome-free/js/fontawesome';
+import '@fortawesome/fontawesome-free/js/solid';
+import '@fortawesome/fontawesome-free/js/regular';
+import '@fortawesome/fontawesome-free/js/brands';
 
 const contextMenu = new ContextMenu('#menu');
 
