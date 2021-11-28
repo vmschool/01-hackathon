@@ -166,6 +166,51 @@ font-size: .8em;
 	}
 }
 
+.timer_container {
+	margin: 10px;
+	padding: 1%;
+	height: 65px;
+	width: 400px;
+	background-color: #f1f1f1;
+	border-radius: 20px;
+	text-align: center;
+}
+
+.button_start {
+	margin: 5px;
+	background-color: #6da870;
+	border: none;
+	color: white;
+	padding: 8px 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 13px;
+	border-radius: 20px;
+}
+
+.timer_input_hours,
+.timer_input_min,
+.timer_input_sec {
+	display: inline-block;
+	width: 20%;
+	line-height: 1.5;
+	color: #212529;
+	background-color: #fff;
+	border: 1px solid #bdbdbd;
+	border-radius: 10px;
+	padding: 5px;
+}
+
+.time_countdown_container {
+	margin: auto;
+	padding: 10px 20px;
+	font-size: 20px;
+	font-family: Impact, fantasy;
+	color: black;
+	text-align: center;
+}
+
 .message {
 	background: var(--menu-background-hover);
 	color: var(--default-text-color);
