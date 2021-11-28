@@ -9,7 +9,6 @@ export default class TimerModule extends Module {
     trigger() {
         console.log('Timer triggered');
 
-
         const timer = document.createElement('div');
         timer.className = 'timer_container';
 
@@ -42,9 +41,6 @@ export default class TimerModule extends Module {
             let timerSec = Number(timerInputSec.value);
             let timerMin = Number(timerInputMin.value);
             let timerHours = Number(timerInputHours.value);
-            console.log(timerSec);
-            console.log(timerMin);
-            console.log(timerHours);
             const endDate = new Date();
             endDate.setHours((endDate.getHours() + timerHours), (endDate.getMinutes() + timerMin), (endDate.getSeconds() + timerSec + 1));
 
@@ -70,7 +66,7 @@ export default class TimerModule extends Module {
                         let element = document.querySelector('.timer_container');
                         document.body.removeChild(element)
                         clearInterval(endingFunc)
-                    }, 3000);
+                    }, 2000);
                 }
             }, 1000);
         })
