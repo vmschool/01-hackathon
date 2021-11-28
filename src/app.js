@@ -2,6 +2,8 @@ import './styles.css'
 import {ContextMenu} from './menu';
 import { BackgroundModule } from './modules/background.module';
 import { RandomSound } from './modules/randomSound.module';
+import { ImgModule } from './modules/img.module';
+
 
 
 const contextMenu = new ContextMenu('.menu');
@@ -19,3 +21,6 @@ contextMenu.add(backgroundModule);
 
 const randomSound = new RandomSound('randomSound', 'To generate random sound');
 contextMenu.add(randomSound);
+
+const imgModule = new ImgModule('imgModule', 'To generate image');
+contextMenu.add(imgModule);
