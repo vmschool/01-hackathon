@@ -1,5 +1,5 @@
 import { Module } from '../core/module'
-import './clicks.module.css'
+import styles from './clicks.module.css'
 
 export default class ClicksModule extends Module {
 
@@ -10,14 +10,20 @@ export default class ClicksModule extends Module {
 	#timerSingleClick;
 
 	constructor(text) {
-		super('Clicks', text);		
-
+		super('Clicks', text);
 		this.#resetState();
 		this.#setupEventListeners();
 	}
+	
+	trigger() {
+		console.log('Clicks triggered');		
+		this.#resetState();
+		this.#createHtml();
+		this.#startTimer();
+	}
 
 	#resetState() {
-		this.#clicksTimeoutInSeconds = 3;
+		this.#clicksTimeoutInSeconds = 5;
 		this.#numberOfSingleClicks = 0;
 		this.#numberOfDoubleClicks = 0;
 		this.#isActive = false;
@@ -25,7 +31,6 @@ export default class ClicksModule extends Module {
 
 	#setupEventListeners() {
 		document.body.addEventListener('click', (event) => {			
-			this.#isActive = true;
 			if (event.detail === 1) {
 				this.#timerSingleClick = setTimeout(() => {
 					this.#clickProcessing(true);
@@ -50,59 +55,68 @@ export default class ClicksModule extends Module {
 			}
 			this.#updateAnalyticsOfClicks();
 		}
-	}
-	
-	trigger() {
-		console.log('Clicks triggered');
-		
-		this.#resetState();
-		this.#createHtml();
-		setTimeout(() => {			
-			this.#updateAnalyticsOfClicks();
-			this.#isActive = false;
-		},  this.#clicksTimeoutInSeconds * 1000);
 	}	
 
+	#startTimer() {		
+		this.#isActive = true;
+		setTimeout(() => {						
+			this.#isActive = false;
+		},  this.#clicksTimeoutInSeconds * 1000);		
+	}
+
 	#updateAnalyticsOfClicks() {				
-		let singleClicks = document.querySelector('#clicks-module-single-counter');
+		let singleClicks = document.querySelector('#clicks-module-single-counter-number');
 		if(singleClicks) {
-			singleClicks.textContent = `Кол-во одиночных кликов: ${this.#numberOfSingleClicks}`;
+			singleClicks.textContent = `${this.#numberOfSingleClicks}`;
 		}
 
-		let doubleClicks = document.querySelector('#clicks-module-double-counter');
+		let doubleClicks = document.querySelector('#clicks-module-double-counter-number');
 		if(doubleClicks) {
-			doubleClicks.textContent = `Кол-во двойных кликов: ${this.#numberOfDoubleClicks}`;
+			doubleClicks.textContent = `${this.#numberOfDoubleClicks}`;
 		}
-
-		//alert(`Кол-во одиночных кликов ${this.#numberOfSingleClicks}\nКол-во двойных кликов ${this.#numberOfDoubleClicks}`)
 	}	
 
 	#createHtml() {
-
 		const body = document.getElementsByTagName('body')[0];
 
-		let oldDiv = document.querySelector('.root-clicks-module');
-		if(oldDiv) {			
-			body.removeChild(oldDiv);
+		let root = document.querySelector('.root-clicks-module');
+		if(root) {			
+			body.removeChild(root);
 		}
-
-		console.log('oldDiv', oldDiv);
 
 		let div = document.createElement("div");
 		div.className = 'root-clicks-module';
 		
+		let singleClickBox = document.createElement("div");
+		singleClickBox.className = 'clicks-module-box';
+
+		let doubleClickBox = document.createElement("div");
+		doubleClickBox.className = 'clicks-module-box';
+
 		let singleClickCaption = document.createElement("div");
-		singleClickCaption.className = 'clicks-module-counter-caption'
-		singleClickCaption.id = 'clicks-module-single-counter-caption';		
+		singleClickCaption.className = 'clicks-module-counter-caption';
+		singleClickCaption.textContent = 'Кол-во одиночных кликов:';
 		
 		let doubleClickCaption = document.createElement("div");
 		doubleClickCaption.className = 'clicks-module-counter-caption';
-		doubleClickCaption.id = 'clicks-module-double-counter-caption';
+		doubleClickCaption.textContent = 'Кол-во двойных кликов:';
 
-		// let 
+		let singleClickCounter = document.createElement("div");
+		singleClickCounter.className = 'clicks-module-counter-number';
+		singleClickCounter.id = 'clicks-module-single-counter-number';
 
-		div.appendChild(singleClickCaption);
-		div.appendChild(doubleClickCaption);
+		let doubleClickCounter = document.createElement("div");
+		doubleClickCounter.className = 'clicks-module-counter-number';
+		doubleClickCounter.id = 'clicks-module-double-counter-number';
+
+		singleClickBox.appendChild(singleClickCaption);
+		singleClickBox.appendChild(singleClickCounter);
+
+		doubleClickBox.appendChild(doubleClickCaption);
+		doubleClickBox.appendChild(doubleClickCounter);
+
+		div.appendChild(singleClickBox);
+		div.appendChild(doubleClickBox);
 		
 		body.append(div);
 
