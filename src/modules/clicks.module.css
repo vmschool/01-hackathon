@@ -1,0 +1,19 @@
+.clicks-module-counter-caption {	
+	display: flex;
+	align-items:center;
+    justify-content:center;
+	text-align: center;	
+	color: #000;
+	width: 100%;
+	height: 40px;
+	border: 1px solid #00ff00;
+}
+
+.root-clicks-module {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+	width: 100%;
+	height: 80px;
+	border: 1px solid #ff0000;
+}
