@@ -41,6 +41,9 @@ export class Popup {
     }
 
     open() {
+        const checkContextMenuOpen = document.querySelector('.open');
+        checkContextMenuOpen?.classList.remove('open');
+
         let overlay = document.querySelector('.overlay');
 
         const popup = document.createElement('div');
