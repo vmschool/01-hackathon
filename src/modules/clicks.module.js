@@ -2,8 +2,8 @@ import {Module} from '../core/module'
 
 
 export class ClicksModule extends Module {
-    constructor(type) {
-        super(type,'Cчитать клики')
+    constructor(type,text) {
+        super(type,text)
        
         this.container = document.createElement('div')
         this.container.className = 'clicks__btn__container'
