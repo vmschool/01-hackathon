@@ -20,9 +20,6 @@ export class AudioModule extends Module {
     const randIndex = random(0, playList.length - 1);
     const audio = new Audio(playList[randIndex]);
     document.body.append(audio);
-
-    setTimeout(() => {
-      audio.play();
-    }, 1000);
+    audio.play();
   }
 }
