@@ -34,16 +34,18 @@ export class Popup {
         popupContent.innerHTML = content;
     }
 
-    close() {
-        const overlay = document.querySelector('.overlay');
-        if (overlay) {
+    close(event) {
+        let popup = event.target.closest('.popup');
+        popup.remove();
+        popup = document.querySelector('.popup');
+        if (!popup) {
+            const overlay = document.querySelector('.overlay');
             overlay.remove();
         }
     }
 
     open() {
-        const overlay = document.createElement('div');
-        overlay.className = 'overlay';
+        let overlay = document.querySelector('.overlay');
 
         const popup = document.createElement('div');
         popup.className = 'popup';
@@ -62,18 +64,23 @@ export class Popup {
 
         closeBtn.addEventListener('click', (event) => {
             event.preventDefault();
-            this.close();
+            this.close(event);
         });
 
-        overlay.addEventListener('click', (event) => {
-            if (event.target === overlay) {
-                this.close();
-            }
-        });
+        // overlay.addEventListener('click', (event) => {
+        //     if (event.target === overlay) {
+        //         this.close();
+        //     }
+        // });
 
         const contentElem = document.createElement('div');
         contentElem.className = 'popup__content';
         contentElem.append(this.#content);
+
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.className = 'overlay';
+        }
 
         header.append(h2, closeBtn);
         popup.append(header, contentElem);

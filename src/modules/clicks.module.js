@@ -26,7 +26,7 @@ export class ClicksModule extends Module {
 
         const input = document.createElement('input');
         input.className = 'ask-timer__input';
-        input.type = 'text';
+        input.type = 'number';
         input.placeholder = 'Enter number for timer';
 
         const span = document.createElement('span');
@@ -43,7 +43,7 @@ export class ClicksModule extends Module {
 
         button.addEventListener('click', (event) => {
             event.preventDefault();
-            this.#startCounter(+input.value);
+            this.#startCounter(+input.value, event);
         });
 
         return form;
@@ -77,8 +77,8 @@ export class ClicksModule extends Module {
         this.#counterClicks -= 2;
     }
 
-    #startCounter(timer) {
-        this.#popup.close();
+    #startCounter(timer, event) {
+        this.#popup.close(event);
         document.body.addEventListener('click', this.#clickHandler.bind(this));
         document.body.addEventListener('dblclick', this.#dblClickHandler.bind(this));
         setTimeout(() => {
