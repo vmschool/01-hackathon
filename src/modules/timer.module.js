@@ -46,7 +46,7 @@ export default class TimerModule extends Module {
             console.log(timerMin);
             console.log(timerHours);
             const endDate = new Date();
-            endDate.setHours((endDate.getHours() + timerHours), (endDate.getMinutes() + timerMin), (endDate.getSeconds() + timerSec+1));
+            endDate.setHours((endDate.getHours() + timerHours), (endDate.getMinutes() + timerMin), (endDate.getSeconds() + timerSec + 1));
 
             timer.innerHTML = timeCountdownContainerHTML;
 
@@ -60,14 +60,19 @@ export default class TimerModule extends Module {
                     let mins = Math.floor((deltaTime % (1000 * 60 * 60)) / (1000 * 60));
                     let secs = Math.floor((deltaTime % (1000 * 60)) / 1000);
 
-                    document.getElementById('timer-hours').innerHTML = ('0' + hours).slice(-2) + '<span class="label">HR(S)</span>';
-                    document.getElementById('timer-mins').innerHTML = ('0' + mins).slice(-2) + '<span class="label">MIN(S)</span>';
-                    document.getElementById('timer-secs').innerHTML = ('0' + secs).slice(-2) + '<span class="label">SEC(S)</span>';
+                    document.getElementById('timer-hours').innerHTML = ('0' + hours).slice(-2) + '<span class="label"> hour(s) </span>';
+                    document.getElementById('timer-mins').innerHTML = ('0' + mins).slice(-2) + '<span class="label"> min(s) </span>';
+                    document.getElementById('timer-secs').innerHTML = ('0' + secs).slice(-2) + '<span class="label"> sec(s) </span>';
                 } else {
                     document.getElementById('timer').innerHTML = 'TIME IS OVER';
+                    clearInterval(timerFunc)
+                    const endingFunc = setTimeout(() => {
+                        let element = document.querySelector('.timer_container');
+                        document.body.removeChild(element)
+                        clearInterval(endingFunc)
+                    }, 3000);
                 }
             }, 1000);
-
         })
     }
 
