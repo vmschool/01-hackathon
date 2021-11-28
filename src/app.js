@@ -16,7 +16,7 @@ import '@fortawesome/fontawesome-free/js/brands';
 const contextMenu = new ContextMenu('#menu');
 
 const contextMenuModules = [
-	new ClicksModule('Аналитика кликов за 3 секунды'),
+	new ClicksModule('Аналитика кликов за 5 секунд'),
 	new BackgroundModule('Поменять фон'),
 	new ShapeModule('Создать фигуру'),
 	new SoundModule('Воспроизвести звук'),
