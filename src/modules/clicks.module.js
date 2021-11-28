@@ -2,76 +2,76 @@ import {Module} from '../core/module'
 
 
 export class ClicksModule extends Module {
-    constructor(type, text) {
-        super(type,'Clicks module')
-        
+    constructor(type) {
+        super(type,'Cчитать клики')
+       
         this.container = document.createElement('div')
-        this.container.classList = 'all-btn-click'
+        this.container.className = 'clicks__btn__container'
 
         this.mainTitle = document.createElement('h1')
-        this.mainTitle.className = 'main-title-click'
+        this.mainTitle.className = 'clicks__main__title '
         this.mainTitle.textContent = 'Сделайте ваш выбор'
+
+        this.clickBtn_5 = document.createElement('button')
+        this.clickBtn_5.className = 'clicks__btn__time'
+        this.clickBtn_5.textContent = '5 секунд'
+        this.clickBtn_5.dataset.time = '5'
+
+        this.clickBtn_10  = document.createElement('button')
+        this.clickBtn_10.className = 'clicks__btn__time'
+        this.clickBtn_10.textContent = '10 секунд'
+        this.clickBtn_10.dataset.time = '10'
+
+        this.clickBtn_15 = document.createElement('button')
+        this.clickBtn_15.className = 'clicks__btn__time'
+        this.clickBtn_15.textContent = '15 секунд'
+        this.clickBtn_15.dataset.time = '15'
     }
     
-    start(time) {
+    #start(time) {
         let counter = 0
-      
-        this.title = document.createElement('h1')
-        this.title.className = 'title-click'
-        this.title.textContent =  time < 10?` 00:0${time}`:` 00:${time}`
-     
+        if(!this.title) {
+            this.title = document.createElement('h1')
+            this.title.className = 'clicks__title'
+            this.title.textContent =  time < 10?` 00:0${time}`:` 00:${time}`
+            this.title.style.webkitUserSelect = 'none'
+        }
         document.body.append(this.title)
       
         document.addEventListener('click', () => {
-             time === 0? counter: counter++
+             time === 0?counter:counter++
         })
      
         const int = setInterval(()=> {
             if(time === 0) {
                 clearInterval(int)
             }
-            time === 0? this.finish(counter):
-            time > 10? this.title.textContent = ` 00:${--time}`:
+            time === 0?this.#finish(counter):
+            time > 10?this.title.textContent = ` 00:${--time}`:
             this.title.textContent = ` 00:0${--time}`
             
         },1000)      
     } 
-    finish(count) {
-        const title = document.querySelector('.title-click')
+    #finish(count) {
+        const title = document.querySelector('.clicks__title')
         title.textContent = `Количество кликов: ${count}`
 
         setTimeout(() => {
            title.remove()
         },2000)
        }
-    chooseTime() {
-        const btn_1 = document.createElement('button')
-        btn_1.className = 'btn-time-click'
-        btn_1.textContent = '5 секунд'
-        btn_1.dataset.time = '5'
-
-        const btn_2 = document.createElement('button')
-        btn_2.className = 'btn-time-click'
-        btn_2.textContent = '10 секунд'
-        btn_2.dataset.time = '10'
-
-        const btn_3 = document.createElement('button')
-        btn_3.className = 'btn-time-click'
-        btn_3.textContent = '15 секунд'
-        btn_3.dataset.time = '15'
-
-        this.container.append(btn_1,btn_2,btn_3)
+    trigger() {
+        this.container.append(this.clickBtn_5,this.clickBtn_10,this.clickBtn_15)
         document.body.append(this.mainTitle ,this.container)
 
-        const btnContainer = document.querySelector('.all-btn-click')
+        const btnContainer = document.querySelector('.clicks__btn__container')
        
         btnContainer.addEventListener('click', (event) => {
-            
-             if(event.target.classList.contains('btn-time-click')){
+             if(event.target.classList.contains('clicks__btn__time')){
                  this.mainTitle.remove()
                  this.container.remove()
                  
-                 this.start(event.target.dataset.time)
+                 this.#start(event.target.dataset.time)
              }
         })
     } 

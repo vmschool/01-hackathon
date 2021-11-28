@@ -41,18 +41,18 @@ body {
     background: #343434;
 }
 /*---------Start clicks-module---------*/
-.main-title-click {
+.clicks__main__title {
     text-align: center;
 
 }
-.title-click {
+.clicks__title {
     text-align: center;
 }
-.all-btn-click {
+.clicks__btn__container {
     text-align: center;
     margin-top:50px
 }
-.btn-time-click {
+.clicks__btn__time {
     margin-left:20px;
     padding: 10px 20px;
     background-color: rgb(240, 252, 255);
@@ -60,10 +60,10 @@ body {
     border-radius: 2px;
     transition: all 0.3s ease;
 }
-.btn-time-click:hover {
+.clicks__btn__time:hover {
     transform: scale(1.1);
 }
-.btn-time-click:first-child{
+.clicks__btn__time:first-child{
     margin-left: 0;
 }
 /*----------End-clicks-module----------*/
