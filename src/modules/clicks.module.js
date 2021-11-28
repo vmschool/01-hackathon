@@ -27,24 +27,24 @@ export class ClicksModule extends Module {
         form.className = 'ask-timer';
 
         const text = document.createElement('p');
-        text.className = 'ask-timer__text';
+        text.className = 'ask-timer__text text-gray-700';
         text.textContent = 'This is a click counter App. Please fill free to enter number of seconds for timer';
 
         const inputBox = document.createElement('div');
-        inputBox.className = 'ask-timer__input-box';
+        inputBox.className = 'ask-timer__input-box flex items-center mt-3';
 
         const input = document.createElement('input');
-        input.className = 'ask-timer__input';
+        input.className = 'ask-timer__input border-2 border-gray-200 p-1 rounded flex-1 outline-none text-gray-700 focus:border-blue-400';
         input.type = 'number';
         input.placeholder = 'Enter number for timer';
 
         const span = document.createElement('span');
-        span.textContent = ' seconds';
-        span.className = '.ask-timer__seconds';
+        span.textContent = 'seconds';
+        span.className = 'ask-timer__seconds flex-1 pl-2 text-gray-700';
 
         const button = document.createElement('button');
         button.action = 'submit';
-        button.className = 'btn';
+        button.className = 'btn rounded bg-blue-400 px-2 py-1 mt-5 hover:bg-blue-300 text-white w-full transition-all';
         button.textContent = 'Confirm';
 
         inputBox.append(input, span);
@@ -60,7 +60,7 @@ export class ClicksModule extends Module {
 
     #generateResult() {
         const resultBox = document.createElement('div');
-        resultBox.className = 'result-box';
+        resultBox.className = 'result-box text-gray-700';
         const result1 = document.createElement('p');
         result1.textContent = `Number of clicks: ${this.#counterClicks}`;
         const result2 = document.createElement('p');

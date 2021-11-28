@@ -1,5 +1,3 @@
-import './popup.css';
-
 export class Popup {
     #header;
     #content;
@@ -47,17 +45,17 @@ export class Popup {
         let overlay = document.querySelector('.overlay');
 
         const popup = document.createElement('div');
-        popup.className = 'popup';
+        popup.className = 'popup mx-auto mb-8 p-6 flex flex-col relative rounded bg-white w-1/3';
 
         const header = document.createElement('div');
-        header.className = 'popup__header';
+        header.className = 'popup__header flex items-center justify-between mb-1';
 
         const h2 = document.createElement('h2');
-        h2.className = 'popup__header-text';
+        h2.className = 'popup__header-text text-xl';
         h2.textContent = this.#header;
 
         const closeBtn = document.createElement('a');
-        closeBtn.className = 'popup__close';
+        closeBtn.className = 'popup__close text-gray-700 hover:text-blue-400 transition-all';
         closeBtn.href = '#';
         closeBtn.innerHTML = '&times;';
 
@@ -66,14 +64,8 @@ export class Popup {
             this.close(event);
         });
 
-        // overlay.addEventListener('click', (event) => {
-        //     if (event.target === overlay) {
-        //         this.close();
-        //     }
-        // });
-
         const contentElem = document.createElement('div');
-        contentElem.className = 'popup__content';
+        contentElem.className = 'popup__content ';
         contentElem.append(this.#content);
 
         if (!overlay) {

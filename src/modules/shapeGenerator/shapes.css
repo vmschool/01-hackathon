@@ -1,9 +1,3 @@
-body {
-    background: #f8f8f8;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
 .container-block {
     height: 100vh;
     background: red;
@@ -12,8 +6,8 @@ body {
 }
 .container-block.blue {
     background: #feb47b;
-    background: -moz-linear-gradient(top,#feb47b 0%,#ff7e5f 100%);
-    background: -webkit-linear-gradient(top,#feb47b 0%,#ff7e5f 100%);
+    background: -moz-linear-gradient(top, #feb47b 0%, #ff7e5f 100%);
+    background: -webkit-linear-gradient(top, #feb47b 0%, #ff7e5f 100%);
     background: linear-gradient(to bottom, #7bfed0 0%, #dcff5f 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#feb47b',endColorstr='#ff7e5f',GradientType=0);
 }
@@ -40,7 +34,7 @@ body {
 .clickAnywhere {
     position: fixed;
     height: 30px;
-    background: rgba(255,255,255,0.4);
+    background: rgba(255, 255, 255, 0.4);
     width: 120px;
     bottom: 40px;
     left: 0;
@@ -74,22 +68,22 @@ body {
     width: 32px;
     height: 32px;
     opacity: 0.3;
-  }
-  .exit:hover {
+}
+.exit:hover {
     opacity: 1;
-  }
-  .exit:before, .exit:after {
+}
+.exit:before,
+.exit:after {
     position: absolute;
     left: 15px;
     content: ' ';
     height: 33px;
     width: 2px;
     background-color: #333;
-  }
-  .exit:before {
+}
+.exit:before {
     transform: rotate(45deg);
-  }
-  .exit:after {
+}
+.exit:after {
     transform: rotate(-45deg);
-  }
-  
+}

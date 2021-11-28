@@ -4,6 +4,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
 
+@import 'styles/popup.css';
+@import 'styles/timer.css';
+
 * {
     margin: 0;
     padding: 0;
