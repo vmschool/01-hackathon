@@ -15,8 +15,13 @@ export class TimerModule extends Module {
 
     startTimer(time) {
         if (document.querySelector('.timer__items')) {
-            const popup = new Popup(this.#generateWarn(), 'WARNING');
-            popup.open();
+            this.#generateWarn('The timer has already started!');
+            return;
+        } else if (time <= 0) {
+            this.#generateWarn('Time parameter must be above zero');
+            return;
+        } else if (time > 3600) {
+            this.#generateWarn('Maximum time value - 60 min (3600 sec)');
             return;
         }
 
@@ -36,10 +41,11 @@ export class TimerModule extends Module {
         popup.open();
     }
 
-    #generateWarn() {
+    #generateWarn(message) {
         const warn = document.createElement('p');
-        warn.textContent = 'The timer has already started!';
-        return warn;
+        warn.textContent = message;
+        const popup = new Popup(warn, 'WARNING');
+        popup.open();
     }
 
     #countdownTimer() {
@@ -61,7 +67,7 @@ export class TimerModule extends Module {
             timerItems.textContent = 'Time is up!';
             setTimeout(() => {
                 timerItems.remove();
-            }, 3500);
+            }, 1500);
             this.#runAfterEnd?.();
         }
 
