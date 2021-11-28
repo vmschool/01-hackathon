@@ -18,4 +18,7 @@ export class ContextMenu extends Menu {
     menuEl.append(moduleEl);
     });
   }
+  removeListener(eventType, func) {
+    this.el.removeEventListener(eventType, func);
+  }
 }
