@@ -159,10 +159,15 @@ body {
 }
 
 .backgroundModule-btnBack {
+  cursor: pointer;
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
+  background-color: #04aa6d;
+  color: #fff;
+  border: none;
+  padding: 20px;
 }
 /* Стили для TimerModule */
 .timerModule-timerBlock {
@@ -171,9 +176,9 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 28px;
-  color: #04aa6d;
+  color: #fff;
   padding: 24px;
-  background-color: rgba(11, 37, 28, .9);
+  background-color: #04aa6d;
   border-radius: 20px;
 }
 
