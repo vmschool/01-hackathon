@@ -24,7 +24,7 @@ export class QuotesModule extends Module {
         const p = document.createElement('p');
         const span = document.createElement('span');
         const cite = document.createElement('cite');
-        blockQuote.className = 'quote';
+        blockQuote.className = 'quote rounded';
         cite.className = 'author';
         p.textContent = text;
         cite.textContent = author;

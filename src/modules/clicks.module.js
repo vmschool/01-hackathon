@@ -31,7 +31,7 @@ export class ClicksModule extends Module {
         text.textContent = 'This is a click counter App. Please fill free to enter number of seconds for timer';
 
         const inputBox = document.createElement('div');
-        inputBox.className = 'ask-timer__input-box flex items-center mt-3';
+        inputBox.className = 'ask-timer__input-box flex items-center mt-2';
 
         const input = document.createElement('input');
         input.className = 'ask-timer__input border-2 border-gray-200 p-1 rounded flex-1 outline-none text-gray-700 focus:border-blue-400';
@@ -44,7 +44,7 @@ export class ClicksModule extends Module {
 
         const button = document.createElement('button');
         button.action = 'submit';
-        button.className = 'btn rounded bg-blue-400 px-2 py-1 mt-5 hover:bg-blue-300 text-white w-full transition-all';
+        button.className = 'btn rounded bg-blue-400 px-2 py-1 mt-4 hover:bg-blue-300 text-white w-full transition-all';
         button.textContent = 'Confirm';
 
         inputBox.append(input, span);

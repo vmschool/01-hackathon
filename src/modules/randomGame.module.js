@@ -17,26 +17,36 @@ export class RandomGameModule extends Module {
 
         const text = document.createElement('p');
         text.textContent = `Guess number from ${min} to ${max}`;
+        text.className = 'text-gray-700 mb-2';
 
         const input = document.createElement('input');
         input.type = 'number';
         input.placeholder = 'number';
         input.min = min;
         input.max = max;
+        input.className = 'ask-timer__input border-2 border-gray-200 p-1 rounded flex-1 outline-none text-gray-700 w-6/12 focus:border-blue-400';
 
         const submitBtn = document.createElement('button');
         submitBtn.textContent = 'guess';
+        submitBtn.className = 'btn rounded bg-blue-400 px-2 py-1 mt-4 hover:bg-blue-300 text-white w-full transition-all';
         submitBtn.addEventListener('click', () => {
             const inputValue = Number(input.value);
+
+            const text = document.createElement('p');
+            text.className = 'text-gray-700 text-lg';
+
             if (inputValue < min || inputValue > max) {
-                this.#popup.update('You have entered incorrect number');
+                text.textContent = 'You have entered incorrect number'
+                this.#popup.update(text.outerHTML);
                 return;
             }
 
             if (randomNumber === inputValue) {
-                this.#popup.update(`You have guessed number ${randomNumber}`);
+                text.textContent = `You have guessed number ${randomNumber}`;
+                this.#popup.update(text.outerHTML);
             } else {
-                this.#popup.update(`Sorry, you didn\'t guess number ${randomNumber}`);
+                text.textContent = `Sorry, you didn\'t guess number ${randomNumber}`;
+                this.#popup.update(text.outerHTML);
             }
         });
 

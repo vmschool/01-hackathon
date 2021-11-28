@@ -86,7 +86,7 @@ export class TimerModule extends Module {
         text.textContent = 'How much time do you need?';
 
         const inputBox = document.createElement('div');
-        inputBox.className = 'ask-timer__input-box flex items-center mt-3';
+        inputBox.className = 'ask-timer__input-box flex items-center mt-2';
 
         const input = document.createElement('input');
         input.className =
@@ -102,7 +102,7 @@ export class TimerModule extends Module {
 
         const button = document.createElement('button');
         button.type = 'submit';
-        button.className = 'btn rounded bg-blue-400 px-2 py-1 mt-5 hover:bg-blue-300 text-white w-full transition-all';
+        button.className = 'btn rounded bg-blue-400 px-2 py-1 mt-4 hover:bg-blue-300 text-white w-full transition-all';
         button.textContent = 'Start';
 
         inputBox.append(input, span);

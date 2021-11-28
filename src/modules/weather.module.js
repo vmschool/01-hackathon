@@ -11,11 +11,18 @@ export class WeatherModule extends Module {
     }
 
     createLoader() {
+        const loaderContainer = document.createElement('div');
+        loaderContainer.className = 'flex flex-row items-center mt-1';
+        const loaderText = document.createElement('p');
+        loaderText.className = 'text-lg text-gray-700';
+        loaderText.textContent = 'Getting data';
         const loader = document.createElement('div');
         loader.className = 'lds-ripple';
         loader.innerHTML = '<div></div><div></div>';
 
-        return loader;
+        loaderContainer.append(loader, loaderText);
+
+        return loaderContainer;
     }
 
     async requestData(lat, long) {
@@ -30,14 +37,16 @@ export class WeatherModule extends Module {
 
     createContent(data) {
         const container = document.createElement('div');
-        container.classList.add('flex');
+        container.className = 'flex mt-2';
 
         const img = document.createElement('img');
         img.src = data.current.condition.icon;
-        img.classList.add('block');
+        img.className = 'block';
 
         const text = document.createElement('div');
+        text.className = 'text-gray-700 ml-2';
         const state = document.createElement('h3');
+        state.className = 'text-lg';
         state.textContent = data.current.condition.text;
 
         const temp = document.createElement('p');

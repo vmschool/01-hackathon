@@ -26,7 +26,7 @@ export class BackgroundModule extends Module {
     getRandomColor() {
         let randomNumber = random(0, this.#colors.length - 1);
         const color = this.#colors[randomNumber];
-        randomNumber = random(1, 9);
+        randomNumber = random(1, 7);
         const className = `bg-${color}-${randomNumber * 100}`;
         return className;
     }
