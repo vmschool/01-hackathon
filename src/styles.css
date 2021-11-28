@@ -148,4 +148,13 @@ body {
     font-size: 1rem;
     padding: 5px;
 }
+
+.container-custom-message .custom-animate {
+    transform: translateY(150%);
+    animation: ani 0.5s forwards;
+  }
+@keyframes ani {
+    0% {transform: translateY(150%);}
+    100% {transform: translateY(0);}
+  }
 /* End custom-message */
