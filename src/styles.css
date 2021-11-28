@@ -136,11 +136,12 @@ body {
     height: 300px;
     background: #000;
     color: #ffffff;
-    border-radius: 50%;
+    border-radius: 40px;
     padding: 40px;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
     text-align: center;
+    /* border: 2px solid #ffe003; */
 }
 .timer__display {
     display: -webkit-box;
@@ -156,7 +157,7 @@ body {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: distribute;
-        justify-content: space-around;
+        justify-content: space-between;
     margin-top: 20px;
 }
 .input__container {
@@ -173,6 +174,8 @@ body {
     background: #000000;
     color: #ffffff;
     text-align: center;
+    border: 1px solid #eeeeee;
+    border-radius: 5px ;
 }
 .input__container input:focus {
     border: none;
@@ -189,22 +192,60 @@ body {
 .input__container input:-ms-input-placeholder {
     color: #ffffff;
 }
-.start {
-    font-size: 40px;
+.start, .reset {
+    font-size: 30px;
     border-radius: 10px;
     color: #000000;
     -webkit-box-shadow: none;
             box-shadow: none;
     border: none;
     background: #ffe003;
-    padding: 10px 20px;
+    padding: 10px 15px;
     margin: 10px 0;
+    width: 100px;
+
 }
-.start:hover {
+.start:hover,
+.reset:hover {
     background: #ffe003b5;
 }
 .end_time {
     font-size: 40px;
     padding: 0;
 }
+
 /* timer.module */
+
+.timer__close{
+    position: absolute;
+    background: #ffe003;
+    border-radius: 10px;
+    top: -10px;
+    right: 10px;
+    width: 45px;
+    height: 45px;
+}
+
+.timer__close::after{
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 4px;
+    top:20px;
+    right: 10px;
+    background: #000000;
+    transform: rotate(45deg);
+    border-radius: 10px;
+
+}
+.timer__close::before{
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 4px;
+    top:20px;
+    right: 10px;
+    background: #000000;
+    transform: rotate(135deg);
+    border-radius: 10px;
+}
