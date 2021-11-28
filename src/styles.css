@@ -40,7 +40,7 @@ body {
 .menu .menu-item:hover {
     background: #343434;
 }
-
+/* Позиционирование меню на месте клика*/
 .show-menu,
 .menu-item:hover > .menu {
 opacity: 1;
@@ -48,3 +48,4 @@ opacity: 1;
 transform: translate(0, 0) scale(1);
 pointer-events: auto;
 }
+/*Конец позиционирования меню на месте клика*/

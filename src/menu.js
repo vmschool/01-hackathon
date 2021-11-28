@@ -2,30 +2,31 @@ import {Menu} from './core/menu'
 import {BackgroundModule} from './modules/background.module'
 import {ClicksModule} from './modules/clicks.module'
 import {ShapeModule} from './modules/shape.module'
+import {RandomSoundModule} from './modules/sound.module'
 import * as Utils from './utils'
 
 export class ContextMenu extends Menu {
-
+    #menu
+    #modules
     constructor(){
-        super()
-        this.backgroundModule = new BackgroundModule()
-        this.clicksModule = new ClicksModule()
-        this.shapeModule = new ShapeModule()
-        this.modules =[]
-        
+        super('#menu')
+        this.#menu = document.querySelector('#menu')
+        this.#modules = {
+            background: new BackgroundModule('background', 'Поменять цвет'),
+            clicks: new ClicksModule('clicks', 'Считать клики'),
+            shape: new ShapeModule('shape', 'Создать фигуру'),
+            sound: new RandomSoundModule('sound', 'Случайный звук')
+        }
     }
     render(){
-        createModuleArray()
         const ulElem = document.querySelector('ul')
-        this.modules.forEach(item=>{
-            const liElem = document.createElement('li')
-            liElem.className = 'menu-item'
-            liElem.dataset.type = item.id
-            liElem.textContent = item.text
-            ulElem.append(this.liElem)
-        })
         
-        document.body.append(this.ulElem)
+        const arrModules = Object.values(this.#modules)
+        arrModules.forEach(item =>{
+            const liElem = document.createElement('li')
+            liElem.innerHTML = item.toHTML()
+            ulElem.append(liElem)
+        })
         
         document.body.addEventListener('contextmenu',(event)=>{
             event.preventDefault()
@@ -36,57 +37,26 @@ export class ContextMenu extends Menu {
             event.preventDefault
             this.close()
         })
-        this.liElem.addEventListener('click',(event)=>{
-            event.preventDefault
-            const type = event.target.dataset
-            this.add(type)
+        this.#menu.addEventListener('click',(event)=>{
+            event.preventDefault()
+            const moduleType = event.target.getAttribute('data-type')
+            this.#modules[moduleType].trigger()
+            this.close()
         })
         Utils.menuClick()
         console.log(document.body.innerHTML)
     }
     open(){
-        this.ulElem.style.display = 'block';
+        this.#menu.style.display = 'block';
         console.log('open')
     }
     close() {
-        this.ulElem.style.display = 'none';
+        this.#menu.style.display = 'none';
         console.log('close')
     }
     
-    add(value) {
-       if (+value === 1){
-        this.clicksModule.trigger()
-       }
-       if (+value === 2){
-        this.shapeModule.trigger()
-       }
-       if (+value === 3){
-        this.backgroundModule.trigger()
-       }
-       
-    }
-    createModuleArray(){
-        const r = /\d/
-        const reg = /\>([^<]+)</
-        const obj = {
-            id: 0,
-            text: ''
-        }
-        if(this.backgroundModule instanceof Module){
-            obj.id = r.exec(this.backgroundModule.toHTML()[0])
-            obj.text = reg.exec(this.backgroundModule.toHTML()[1])
-            this.modules.push(obj)
-        }
-        if(this.clicksModule instanceof Module){
-            obj.id = r.exec(this.clicksModule.toHTML()[0])
-            obj.text = reg.exec(this.clicksModule.toHTML()[1])
-            this.modules.push(obj)
-        }
-        if(this.shapeModule instanceof Module){
-            obj.id = r.exec(this.shapeModule.toHTML()[0])
-            obj.text = reg.exec(this.shapeModule.toHTML()[1])
-            this.modules.push(obj)
-        }    
+    add() {
+
     }
 
 }
