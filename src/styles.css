@@ -20,7 +20,6 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	height: 100vh;
 	color: var(--default-text-color);
 	background: var(--main-background);
 	font-family: 'Roboto', sans-serif;
@@ -67,9 +66,9 @@ body {
 .team-container {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: center;
-	width: 90%;
+	width: 88%;
 	height: 60%;
 }
 
@@ -88,40 +87,76 @@ h2 {
 h3 {
 	font-size: .8em;
 	font-weight: 100;
+	margin-bottom: 2em;
 }
 
 .teammate {
 	box-shadow: 0 0 15px #000000;
-	border-radius: 10px;
+	border-radius: 1vh;
 	overflow: hidden;
 	background: #171717;
+	max-width: 11vw;
 }
 
 .teammate img {
-	width: 11vw;
+	width: 100%;
+	max-width: 100%;
 }
 
 .teammate-name {
 	font-size: 1vw;
 	text-align: center;
-	padding: 10px 0;
+	margin: 1vh;
 }
 
 .teammate-contacts {
-	text-align: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	margin: 1vh;
 }
 
-.teammate-contacts img {
-	width: 1.2em;
-	height: 1.2em;
+.teammate-contacts svg {
+	max-width: 100%;
 }
 
-.teammate-contacts a:nth-child(4) img {
-	background: rgba(255,255,255,0.4);
-	border-radius: 50%;
+.teammate-contacts svg:hover {
+	transform: scale(1.12);
+	transition: all .2s ease;
 }
 
-.teammate-contacts img:hover {
-	transform: scale(1.2);
-	transition: all .3s ease;
+.teammate-contacts a:nth-child(1) svg {
+	color: #0fa6f3;
+}
+
+.teammate-contacts a:nth-child(2) svg * {
+	fill: url(#insta-gradient);
+}
+
+.teammate-contacts a:nth-child(3) svg {
+	color: #5181b8;
+}
+
+.teammate-contacts a:nth-child(4) svg {
+	color: #ffffff;
+}
+
+@media(max-width: 720px) {
+	.team-container {
+		flex-direction: column;
+		width: 80%;
+	}
+	
+	.teammate {
+		max-width: 100%;
+		margin-bottom: 7vh;
+	}
+	
+	.teammate-name {
+		font-size: 1em;
+	}
+	
+	h3 {
+		text-align: center;
+	}
 }

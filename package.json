@@ -23,6 +23,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"@fortawesome/fontawesome-free": "^5.15.4",
 		"core-js": "^3.15.2",
 		"regenerator-runtime": "^0.13.9"
 	}
