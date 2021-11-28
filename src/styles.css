@@ -169,10 +169,11 @@ h3 {
 .timer_container {
 	margin: 10px;
 	padding: 1%;
-	height: 200px;
+	height: 65px;
 	width: 400px;
 	background-color: #f1f1f1;
 	border-radius: 20px;
+	text-align: center;
 }
 
 .button_start {
@@ -203,8 +204,9 @@ h3 {
 
 .time_countdown_container {
 	margin: auto;
-	padding: 70px 60px;
+	padding: 10px 20px;
 	font-size: 20px;
 	font-family: Impact, fantasy;
 	color: black;
+	text-align: center;
 }
