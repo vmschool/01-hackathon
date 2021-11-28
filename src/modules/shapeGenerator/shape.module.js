@@ -5,32 +5,39 @@ import './shapes.css';
 
 export class ShapeModule extends Module{
     appendSeconds
-
+    bindedHandler
     constructor() {
       super('shape','Generate Shape')
+        this.container = document.createElement('div')
+        this.container.id = 'elementId'
+        this.container.className = 'container-block '
         this.body = document.querySelector('body')
     }
-
+    
     createHTML(){
-        const container = document.createElement('div')
-        container.id = 'elementId'
-        container.className = 'container-block '
-        container.style.zIndex = '-1';
+        
         const clickAnywhere = document.createElement('div')
         clickAnywhere.className = 'clickAnywhere'
         clickAnywhere.textContent = 'Click Anywhere'
-        const exit = document.createElement('a')
+        const exit = document.createElement('button')
         exit.href = '#'
         exit.className = 'exit'
-        // exit.onclick = closeTab()
-        this.body.append(container,clickAnywhere, exit)
-        document.addEventListener("click", this.mouseDown);
-
-       // <a href="#" class="close"></a>
+        exit.onclick = this.closeTab.bind(this)
+        this.container.append(clickAnywhere,exit)
+        this.body.append(this.container)
+        this.bindedHandler = this.clickHandler.bind(this);
+        this.container.addEventListener("click", this.bindedHandler);
     }
-    // closeTab(){
-    //   container.removeChild
-    // }
+    clickHandler(e){
+      if(e.target === this.container)
+      {this.mouseDown(e)}
+    }
+    closeTab(){
+      this.container.removeEventListener("click", this.bindedHandler);
+      console.log(this)
+      this.container.remove()
+    }
+    
      mouseDown(e) {
         let cursorX = e.pageX;
         let cursorY = e.pageY;
@@ -39,7 +46,7 @@ export class ShapeModule extends Module{
         let objHTML = Shapes[randomNumber]
 
         const obj = document.createElement('div');
-        obj.className = "boxWrapper boxWrapper";
+        obj.className = "boxWrapper";
         obj.style.cssText = 'top:' + (cursorY - 25) + 'px;left:' + (cursorX - 25) + 'px;';
         obj.innerHTML = objHTML;
 
