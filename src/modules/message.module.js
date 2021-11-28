@@ -21,9 +21,10 @@ export class CustomMessage extends Module {
   }
     
   trigger() {
-    const isActiveBlock = document.querySelector('.container-custom-message')
+    let customMessage = document.querySelector('.custom-message')
+    let isActiveBlock = document.querySelector('.container-custom-message')
     if(isActiveBlock) {
-      isActiveBlock.remove()
+      customMessage.remove()
     }
     this.#customMessageContainer.style.display = 'block'
     const customMessageHTML = this.#generateBlockMessage()
@@ -32,11 +33,9 @@ export class CustomMessage extends Module {
     customMessageHTML.classList.add('custom-animate')
     this.#deleteCustomMessage()
     
-    setTimeout(() => {
-      this.#customMessageContainer.remove()
-    },5000)
-
-    return this.#customMessageContainer
+    // setTimeout(() => {
+    //   this.#customMessageContainer.remove()
+    // },5000)
   }
     
   #generateBlockMessage() {
@@ -55,6 +54,11 @@ export class CustomMessage extends Module {
 
   #deleteCustomMessage() {
     this.closeCustomMessage.addEventListener('click', () => {
+      let customMessage = document.querySelector('.custom-message')
+      let isActiveBlock = document.querySelector('.container-custom-message')
+        if(isActiveBlock) {
+          customMessage.remove()
+        }
       this.#customMessageContainer.remove()
     	}
     )
