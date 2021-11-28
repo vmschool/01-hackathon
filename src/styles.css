@@ -1,42 +1,234 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+
+:root {
+	--main-background: #2b2b2b;
+	--default-text-color: #ffffff;
+	--menu-background: #3c3f41;
+	--menu-text-color: #f3fff9;
+	--menu-background-hover: #4b6eaf;
+	--menu-border-color: #515151;
+}
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	user-select: none;
 }
 
 body {
-    font-size: 14px;
-    font-family: 'Roboto', sans-serif;
-    height: 100vh;
-    width: 100%;
-    padding: 2rem;
+display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: var(--default-text-color);
+	background: var(--main-background);
+	font-family: 'Roboto', sans-serif;
+	font-size: 28px;
+	height: 100vh;
 }
 
 .menu {
-    position: fixed;
-    z-index: 1000;
-    width: 150px;
-    background: #1b1a1a;
-    border-radius: 5px;
-    display: none;
-    list-style: none;
+	position: fixed;
+	z-index: 1000;
+	width: 270px; /* if you need change this, change MENU_WIDTH_IN_PIXELS as well */
+	background: var(--menu-background);
+	border-radius: 5px;
+	border: 1px solid var(--menu-border-color);
+	display: none;
+	list-style: none;
+	white-space: nowrap;
 }
 
 .menu.open {
-    display: block;
+	display: block;
 }
 
 .menu .menu-item {
-    padding: 8px 10px;
-    font-size: 1rem;
-    color: #eee;
-    cursor: pointer;
-    transition: background-color .2s ease-in;
-    border-radius: inherit;
+	height: 36px; /* if you need change this, change MENU_ITEM_HEIGHT_IN_PIXELS as well */
+	padding: 8px 10px;
+	font-size: 0.5em;
+	color: var(--default-text-color);
+	cursor: pointer;
+	transition: background-color 0.2s ease-in;
+}
+
+.menu .menu-item:first-child {
+	border-radius: 5px 5px 0 0;
+}
+
+.menu .menu-item:last-child {
+	border-radius: 0 0 5px 5px;
 }
 
 .menu .menu-item:hover {
-    background: #343434;
+	background: var(--menu-background-hover);
+}
+
+.team-container {
+display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 88%;
+	height: 40%;
+}
+
+h1 {
+	font-size: 2em;
+	font-weight: 100;
+	margin: 0.4em;
+}
+
+h2 {
+	font-size: 1em;
+	font-weight: 400;
+	margin-bottom: 0.3em;
+}
+
+h3 {
+font-size: .8em;
+	font-weight: 100;
+	margin-bottom: 2em;
+}
+
+.teammate {
+	box-shadow: 0 0 15px #000000;
+	border-radius: 1vh;
+	overflow: hidden;
+	background: #171717;
+	max-width: 11vw;
+}
+
+.teammate img {
+	width: 100%;
+	max-width: 100%;
+}
+
+.teammate-name {
+	font-size: 1vw;
+	text-align: center;
+	margin: 1vh;
+}
+
+.teammate-contacts {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	margin: 1vh;
+}
+
+.teammate-contacts svg {
+	max-width: 100%;
+}
+
+.teammate-contacts svg:hover {
+	transform: scale(1.12);
+	transition: all .2s ease;
+}
+
+.teammate-contacts a:nth-child(1) svg {
+	color: #0fa6f3;
+}
+
+.teammate-contacts a:nth-child(2) svg * {
+	fill: url(#insta-gradient);
+}
+
+.teammate-contacts a:nth-child(3) svg {
+	color: #5181b8;
+}
+
+.teammate-contacts a:nth-child(4) svg {
+	color: #ffffff;
+}
+
+@media(max-width: 720px) {
+	.team-container {
+		flex-direction: column;
+		width: 80%;
+	}
+	
+	.teammate {
+		max-width: 100%;
+		margin-bottom: 7vh;
+	}
+	
+	.teammate-name {
+		font-size: 1em;
+	}
+	
+	h3 {
+		text-align: center;
+	}
+	
+	body {
+		height: initial;
+	}
+}
+
+.timer_container {
+	margin: 10px;
+	padding: 1%;
+	height: 65px;
+	width: 400px;
+	background-color: #f1f1f1;
+	border-radius: 20px;
+	text-align: center;
+}
+
+.button_start {
+	margin: 5px;
+	background-color: #6da870;
+	border: none;
+	color: white;
+	padding: 8px 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 13px;
+	border-radius: 20px;
+}
+
+.timer_input_hours,
+.timer_input_min,
+.timer_input_sec {
+	display: inline-block;
+	width: 20%;
+	line-height: 1.5;
+	color: #212529;
+	background-color: #fff;
+	border: 1px solid #bdbdbd;
+	border-radius: 10px;
+	padding: 5px;
+}
+
+.time_countdown_container {
+	margin: auto;
+	padding: 10px 20px;
+	font-size: 20px;
+	font-family: Impact, fantasy;
+	color: black;
+	text-align: center;
+}
+
+.message {
+	background: var(--menu-background-hover);
+	color: var(--default-text-color);
+	padding: 20px 20px;
+	font-family: "Roboto", sans-serif;
+	font-size: 16px;
+	max-width: 400px;
+	max-height: 200px;
+	border-radius: 5px;
+	text-align: center;
+	margin-bottom: 5px;
+	margin-right: 5px;
+}
+
+.container-messages {
+	max-width: 400px;
+	max-height: 1000px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
 }
