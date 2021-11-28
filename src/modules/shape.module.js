@@ -4,16 +4,18 @@ import { random } from '../utils'
 export class ShapeModule extends Module {
   #shapes
   #colorSymbols
-  #shapeLife = 3000
-  #shapeSize = {
-    min: 40,
-    max: 170,
-  }
+  #shapeLife
+  #shapeSize
 
   constructor(type, text) {
     super(type, text)
     this.#shapes = ['square', 'circle', 'rhombus', 'triangle']
     this.#colorSymbols = ['0','1','3','4','5','6','7','8','9','a','b','c','d','e','f']
+    this.#shapeLife = 3000
+    this.#shapeSize = {
+      min: 40,
+      max: 170,
+    }
   }
 
   trigger() {
