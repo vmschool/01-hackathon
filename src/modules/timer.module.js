@@ -62,7 +62,7 @@ export class Timer extends Module {
 
       start.addEventListener("click", () => {
         start.setAttribute('disabled', 'disabled')
-        music.play()
+        // music.play()
         totalTime = inpMinutes.value * 60 + inpSeconds.value * 1
         if (inpMinutes.value != "" || inpSeconds.value != "") {
           interval = setInterval(() => {
