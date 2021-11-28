@@ -17,8 +17,8 @@ export class AudioModule extends Module {
       'https://zvukogram.com/mp3/cats/2722/knopka-klik-aktivnyii-blizkii-chetkii.mp3',
       'https://zvukogram.com/mp3/cats/1386/gonochnyiy-avtomobil-na-beshennoy-skorosti-skryilsya-za-povorotom.mp3',
     ];
-    const randNumber = random(0, playList.length);
-    const audio = new Audio(playList[randNumber]);
+    const randIndex = random(0, playList.length - 1);
+    const audio = new Audio(playList[randIndex]);
     document.body.append(audio);
 
     setTimeout(() => {
