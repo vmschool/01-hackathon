@@ -12,13 +12,14 @@ export default class ClicksModule extends Module {
 	constructor(text) {
 		super('Clicks', text);
 		this.#resetState();
-		this.#setupEventListeners();
+		//this.#setupEventListeners();
 	}
 	
 	trigger() {
 		console.log('Clicks triggered');		
 		this.#resetState();
 		this.#createHtml();
+		this.#setupEventListeners();
 		this.#startTimer();
 	}
 
@@ -29,19 +30,25 @@ export default class ClicksModule extends Module {
 		this.#isActive = false;
 	}
 
-	#setupEventListeners() {
-		document.body.addEventListener('click', (event) => {			
-			if (event.detail === 1) {
-				this.#timerSingleClick = setTimeout(() => {
-					this.#clickProcessing(true);
-				}, 200)
-			}	
-		});
+	#singleClickHandler = function(event) {
+		if (event.detail === 1) {
+			this.#timerSingleClick = setTimeout(() => {
+				this.#clickProcessing(true);
+			}, 200)
+		}	
+	}
 
-		document.body.addEventListener('dblclick', () => {			
-			clearTimeout(this.#timerSingleClick);
-			this.#clickProcessing(false);
-		});
+	#doubleClickHandler = function() {
+		clearTimeout(this.#timerSingleClick);
+		this.#clickProcessing(false);
+	}
+
+	#setupEventListeners() {
+		document.body.removeEventListener('click', this.#singleClickHandler);
+		document.body.addEventListener('click', this.#singleClickHandler.bind(this));
+
+		document.body.removeEventListener('dblclick', this.#doubleClickHandler);
+		document.body.addEventListener('dblclick', this.#doubleClickHandler.bind(this));
 	}
 
 	#clickProcessing(isSingleClick) {
@@ -76,12 +83,10 @@ export default class ClicksModule extends Module {
 		}
 	}	
 
-	#createHtml() {
-		const body = document.getElementsByTagName('body')[0];
-
+	#createHtml() {		
 		let root = document.querySelector('.root-clicks-module');
 		if(root) {			
-			body.removeChild(root);
+			document.body.removeChild(root);
 		}
 
 		let div = document.createElement("div");
@@ -118,7 +123,7 @@ export default class ClicksModule extends Module {
 		div.appendChild(singleClickBox);
 		div.appendChild(doubleClickBox);
 		
-		body.append(div);
+		document.body.append(div);
 
 		this.#updateAnalyticsOfClicks();
 	}
