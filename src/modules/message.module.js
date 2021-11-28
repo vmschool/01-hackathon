@@ -1,4 +1,5 @@
 import { Module } from "../core/module";
+import { random } from "../utils";
 
 // массив сообщений
 const messages = [
@@ -11,25 +12,26 @@ const messages = [
 	"Чем отличается программист от политика? Программисту платят деньги за работающие программы.",
 	"- Доктор, я себя чувствую, как C++. - Это как? - Меня никто не понимает, все боятся, и говорят, что я больше не нужен...",
 	"Когда появятся беспилотные самолеты, первыми в них откажутся летать программисты.",
-	"Закрой трех программистов в одной комнате и они создадут какой-нибудь проект.Закрой трех бухгалтеров - и они в 18:00 уйдут домой.",
-	"Почему кошки очень любят программистов?	Потому что у них руки мышами пахнут.",
+	"Закрой трех программистов в одной комнате и они создадут какой-нибудь проект. Закрой трех бухгалтеров - и они в 18:00 уйдут домой.",
+	"Почему кошки очень любят программистов? Потому что у них руки мышами пахнут."
 ];
-
-const randomMessage = messages[Math.floor(Math.random() * messages.length)];
 
 export default class MessageModule extends Module {
 	constructor(text) {
 		super("Message", text);
+		this.container = document.createElement("div");
+		this.container.className = "container-messages";
+		document.body.append(this.container);
 	}
 
 	trigger() {
 		//случайный выбор сообщения из массива
-
+		const randomMessage =  messages[random(0, messages.length - 1)];
 		//верстка блока с сообщением
 		const messageBlock = document.createElement("div");
 		messageBlock.textContent = randomMessage;
-		messageBlock.className = "block-with-message";
-		document.body.append(messageBlock);
+		messageBlock.className = "message";
+		this.container.append(messageBlock);
 
 		// Удаление блока через некоторое время
 		setTimeout(function () {
