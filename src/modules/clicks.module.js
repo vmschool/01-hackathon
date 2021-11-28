@@ -9,16 +9,19 @@ export class ClicksModule extends Module {
   listener //функция-обработчик событий
   static TYPE = 'ClickModule'
   static TEXT = 'Считать клики (за 3 секунды)'
+  counterDiv //отображение блока счётчика кликов
   constructor() {
     super(ClicksModule.TYPE, ClicksModule.TEXT)
     this.time = 3 //количество отведённых секунд
     this.clicks = 0
     this.body = document.querySelector('body')
     this.running = false
-
+    this.counterDiv = document.createElement('div')
+    this.counterDiv.classList.add('blockCounter')
     this.listener = () => {
       if (this.running) {
         this.clicks++
+        this.counterDiv.textContent = `Сделано кликов: ${this.clicks}`
       }
     }
   }
@@ -27,6 +30,9 @@ export class ClicksModule extends Module {
     this.running = true
     let curretntTime = this.time //текущее количество секунд
     this.body.addEventListener('click', this.listener) //запускаем слушатель
+
+    this.body.append(this.counterDiv)
+
     //запуск обратного отсчёта
     this.timer = setInterval(() => {
       if (curretntTime === 0) {
@@ -51,5 +57,6 @@ export class ClicksModule extends Module {
   toHTML() {
     //вывод сообщения пользователю
     alert(`За ${this.time} секунды было сделано ${this.clicks} кликов`)
+    this.body.removeChild(this.counterDiv)
   }
 }
