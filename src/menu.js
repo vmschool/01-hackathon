@@ -10,8 +10,23 @@ export class ContextMenu extends Menu {
 
     open(clientX, clientY) {
         this.el.classList.add('open');
-        this.el.style.top = `${clientY}px`;
-        this.el.style.left = `${clientX}px`;
+
+        let top = clientY;
+        let left = clientX;
+
+        if (clientX + this.el.offsetWidth > window.innerWidth) {
+            left = clientX - this.el.offsetWidth;
+        }
+
+        if (clientY + this.el.offsetHeight > window.innerHeight) {
+            top = clientY - this.el.offsetHeight;
+        }
+
+        top = top + 'px';
+        left = left + 'px';
+
+        this.el.style.top = top;
+        this.el.style.left = left;
     }
 
     close() {
