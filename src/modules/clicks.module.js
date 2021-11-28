@@ -1,5 +1,5 @@
 import { Module } from "../core/module.js";
-import { allIntervals, clearAllIntervals } from "../utils";
+import * as Utils from "../utils";
 
 export class ClicksModule extends Module {
   #time;
@@ -11,14 +11,12 @@ export class ClicksModule extends Module {
   }
 
   trigger() {
-    document.body.innerHTML = "";
-    clearAllIntervals();
     document.body.append(this.#createTimeBlock());
   }
 
   // Создает блок с кнопками для выбора врени таймера
   #createTimeBlock() {
-    const arrTimes = [5, 10, 15, 20];
+    const arrTimes = [15, 30, 45, 60];
 
     const timeBlock = document.createElement("ul");
     timeBlock.className = "clicksModule-timeBlock";
@@ -59,7 +57,7 @@ export class ClicksModule extends Module {
     const btnForClick = document.createElement("button");
     btnForClick.id = "btn-click";
     btnForClick.className = "clicksModule-btnForClick";
-    btnForClick.textContent = "ЖМИ СЮДА";
+    btnForClick.textContent = "Попади";
 
     btnForClick.addEventListener("click", () =>
       this.#addPointToScore("single")
@@ -69,6 +67,19 @@ export class ClicksModule extends Module {
     );
 
     return btnForClick;
+  }
+  //блок будет перемещаться
+  #moveBlock () {
+    const btnForClick = document.querySelector('#btn-click');
+    const btnHeight = btnForClick.offsetHeight;
+    const btnWidth = btnForClick.offsetWidth;
+
+    const rerenderBtn = setInterval(() => {
+      btnForClick.style.top = `${Utils.random(0, Utils.DOCUMENT_HEIGHT() - btnHeight)}px`
+      btnForClick.style.left = `${Utils.random(0, Utils.DOCUMENT_WIDTH() - btnWidth)}px`
+    }, 1000);
+
+    Utils.allIntervals.push(rerenderBtn);
   }
 
   // Создайт блок с конечным счётом юзера после окончания таймера
@@ -100,7 +111,7 @@ export class ClicksModule extends Module {
     btnBlockEndGame.append(btnAgain);
     return btnBlockEndGame;
   }
-
+  //удаляем блоки
   #removeAllBlock() {
     document.querySelector("#time-block")?.remove();
     document.querySelector("#timer")?.remove();
@@ -118,6 +129,7 @@ export class ClicksModule extends Module {
     this.#removeAllBlock();
     document.body.append(this.#createTimer());
     document.body.append(this.#createBtnForClick());
+    this.#moveBlock()
   }
 
   // Останавливает таймер и рендерит блок с выбором времени и результат кликов
@@ -143,13 +155,14 @@ export class ClicksModule extends Module {
         this.#finishTimer(timerId);
       }
     }, 1000);
-    allIntervals.push(timerId);
+    Utils.allIntervals.push(timerId);
 
     return spanOfTime;
   }
 
   // Добавляет 1-о очко в определенный счёт кликов
   #addPointToScore(score) {
+    console.log(score)
     if (score === "single") {
       this.#score.single += 1;
     }

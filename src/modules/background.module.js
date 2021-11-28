@@ -1,5 +1,5 @@
 import { Module } from "../core/module";
-import { allIntervals, clearAllIntervals } from "../utils";
+import * as Utils from "../utils";
 
 export class BackgroundModule extends Module {
   constructor(type, text) {
@@ -7,15 +7,13 @@ export class BackgroundModule extends Module {
   }
 
   trigger() {
-    document.body.innerHTML = "";
-    clearAllIntervals();
     document.body.append(this.#createBlock(), this.#createBtnBlock());
     this.#changeBgColorBlocks();
 
     const changeBgColorIntervalId = setInterval(() => {
       this.#changeBgColorBlocks();
     }, 5000);
-    allIntervals.push(changeBgColorIntervalId);
+    Utils.allIntervals.push(changeBgColorIntervalId);
   }
 
   // Создает квадраты
@@ -41,7 +39,7 @@ export class BackgroundModule extends Module {
   #createBtnBlock() {
     const btnChangeBgColor = document.createElement("button");
     btnChangeBgColor.className = "backgroundModule-btnBack";
-    btnChangeBgColor.textContent = "Помнять цвет";
+    btnChangeBgColor.textContent = "Помeнять цвет";
     btnChangeBgColor.addEventListener("click", () => {
       this.#changeBgColorBlocks();
     });
@@ -66,8 +64,9 @@ export class BackgroundModule extends Module {
     const letters = "0123456789ABCDEF";
     let color = "#";
     for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
+      color += letters[Utils.random(0, letters.length - 1)]; 
     }
-    return color.toLowerCase();
+    
+    return color;
   }
 }
