@@ -42,7 +42,6 @@ export class CustomMessage extends Module {
         this.#customMessageContainer.remove()
       },5000)
     }
-  }
     
   #generateBlockMessage() {
      //messageBlock
