@@ -49,7 +49,60 @@ body {
   cursor: pointer;
 }
 
-.messageModule-btnBackToMenu {
+/* Стили для BackgroundModule */
+@keyframes block {
+  0% {
+    transform: rotate(45deg) translate(-10%, -10%);
+  }
+  50% {
+    transform: rotate(140deg) translate(5%, 0%);
+  }
+  100% {
+    transform: rotate(225deg) translate(10%, 10%);
+  }
+}
+
+@keyframes blockInBlock {
+  0% {
+    transform: rotate(-45deg);
+  }
+  50% {
+    transform: rotate(-135deg);
+  }
+  100% {
+    transform: rotate(-225deg);
+  }
+}
+
+.backgroundModule-block {
+  position: relative;
+  top: 20%;
+  left: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60vw;
+  height: 60vw;
+  animation: block 4s infinite linear;
+}
+.backgroundModule-blockInBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 50%;
+  animation: blockInBlock 2s infinite linear;
+}
+.backgroundModule-btnBlock {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.backgroundModule-btnBack,
+.backgroundModule-btnBackToMenu {
   padding: 10px 20px;
   font-size: 28px;
   color: #ffffff;

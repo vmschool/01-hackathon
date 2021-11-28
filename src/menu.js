@@ -43,6 +43,7 @@ export class ContextMenu extends Menu {
     startElementTriger(eventType){
         const element = this.#elementsMenu.find(element =>element.type === eventType)
         element.trigger()
+        this.close()
     }
 
 }
