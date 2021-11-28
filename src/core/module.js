@@ -1,6 +1,4 @@
 export class Module {
-  static DATA_NAME = 'menu-item';
-
   constructor(type, text) {
     if (!type) {
       throw new Error('Please specify "type" param');
@@ -19,6 +17,6 @@ export class Module {
   }
 
   toHTML() {
-    return `<li class="menu-item" data-name="${Module.DATA_NAME}" data-type="${this.type}">${this.text}</li>`;
+    return `<li class="menu-item" data-type="${this.type}">${this.text}</li>`;
   }
 }
