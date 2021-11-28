@@ -11,6 +11,18 @@ export class BackgroundModule extends Module {
       0,
       255
     )}, ${random(0, 255)})`;
-    // alert("Change your background test");
+    document.body.style.background = `linear-gradient(${random(
+      0,
+      359
+    )}deg, rgba(${random(0, 255)}, ${random(0, 255)}, ${random(
+      0,
+      255
+    )},1) 0%, rgba(${random(0, 255)}, ${random(0, 255)}, ${random(
+      0,
+      255
+    )},1) 50%, rgba(${random(0, 255)}, ${random(0, 255)}, ${random(
+      0,
+      255
+    )},1) 100%)`;
   }
 }
