@@ -14,12 +14,14 @@ export class TimerModule extends Module {
         this.#runAfterEnd = null;
     }
 
-    startTimer() {
+    startTimer(time) {
         if (document.querySelector('.timer__items')) {
             const popup = new Popup(this.#generateWarn(), 'WARNING');
             popup.open();
             return;
         }
+
+        this.setTimeLeft(time);
         const timer = this.#createTimer();
         document.body.append(timer);
         this.#countdownTimer();
@@ -31,14 +33,8 @@ export class TimerModule extends Module {
     }
 
     trigger() {
-        console.log('Start timer');
-        if (document.querySelector('.timer__items')) {
-            const popup = new Popup(this.#generateWarn(), 'WARNING');
-            popup.open();
-        } else {
-            const popup = new Popup(this.#generateForm(), "I'm a super timer, yeah man! =)");
-            popup.open();
-        }
+        const popup = new Popup(this.#generateForm(), "I'm a super timer, yeah man! =)");
+        popup.open();
     }
 
     #generateWarn() {
@@ -62,10 +58,12 @@ export class TimerModule extends Module {
         // console.log(this.#timeLeft);
         if (this.#timeLeft < 0) {
             clearInterval(this.#timerId);
-            document.querySelector('.timer__items').textContent = 'Time is up!';
-            if (this.#runAfterEnd) {
-                this.#runAfterEnd();
-            }
+            const timerItems = document.querySelector('.timer__items');
+            timerItems.textContent = 'Time is up!';
+            setTimeout(() => {
+                timerItems.remove();
+            }, 3500);
+            this.#runAfterEnd?.();
         }
 
         this.#timeLeft--;
@@ -107,15 +105,10 @@ export class TimerModule extends Module {
 
         button.addEventListener('click', (event) => {
             event.preventDefault();
-            this.setTimeLeft(+input.value);
-            // console.log(this.#timeLeft);
+            const time = +input.value;
 
             document.querySelector('.overlay')?.remove();
-            this.startTimer();
-            setTimeout(() => {
-                console.log('end');
-                document.querySelector('.timer__items')?.remove();
-            }, this.#timeLeft * 1000 + 3500);
+            this.startTimer(time);
         });
 
         return form;
