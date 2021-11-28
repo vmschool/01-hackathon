@@ -4,9 +4,7 @@
     overflow: hidden;
     position: relative;
 }
-<<<<<<< HEAD
 
-=======
 .container-block.blue {
     background: #feb47b;
     background: -moz-linear-gradient(top, #feb47b 0%, #ff7e5f 100%);
@@ -17,7 +15,7 @@
 .container-block.white {
     background: #ec7d7d;
 }
->>>>>>> 371fba7a4b8b436fc165aeaf7de4bca443c3a949
+
 .container-block .boxWrapper {
     position: absolute;
     width: 50px;
