@@ -14,7 +14,7 @@ export class TimerModule extends Module {
 
     startTimer() {
         const timer = this.#createTimer();
-        document.querySelector('.popup__content').append(timer);
+        document.body.append(timer);
         this.#countdownTimer();
         this.#timerId = setInterval(this.#countdownTimer.bind(this), 1000);
     }
@@ -87,8 +87,13 @@ export class TimerModule extends Module {
             event.preventDefault();
             this.setTimeLeft(+input.value);
             // console.log(this.#timeLeft);
-            document.querySelector('.popup__content').textContent = '';
+
+            document.querySelector('.overlay')?.remove();
             this.startTimer();
+            setTimeout(() => {
+                console.log('end');
+                document.querySelector('.timer__items')?.remove();
+            }, this.#timeLeft * 1000 + 3500);
         });
 
         return form;
