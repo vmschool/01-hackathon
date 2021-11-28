@@ -127,16 +127,17 @@ h3 {
 }
 
 .block-with-message {
-  background-color: rgb(43, 43, 43);
-  border: 6px solid #feeff4;
+  background-color: rgb(255, 48, 8);
   color: #feeff4;
   padding: 20px 20px;
-  font-family: "Lato", sans-serif;
-  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
   max-width: 400px;
   max-height: 200px;
   overflow: hidden;
   position: absolute;
-  right: 0;
-  bottom: 0;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 15px;
+  text-align: center;
 }
