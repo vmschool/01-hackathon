@@ -18,7 +18,7 @@ const messages = [
 
 export default class MessageModule extends Module {
 	constructor(text) {
-		super("Message", text);
+    super('Message', text);
 		this.container = document.createElement("div");
 		this.container.className = "container-messages";
 		document.body.append(this.container);
@@ -26,7 +26,8 @@ export default class MessageModule extends Module {
 
 	trigger() {
 		//случайный выбор сообщения из массива
-		const randomMessage =  messages[random(0, messages.length - 1)];
+    const randomMessage =  messages[random(0, messages.length - 1)];
+    
 		//верстка блока с сообщением
 		const messageBlock = document.createElement("div");
 		messageBlock.textContent = randomMessage;
@@ -36,7 +37,7 @@ export default class MessageModule extends Module {
 		// Удаление блока через некоторое время
 		setTimeout(function () {
 			if (messageBlock) {
-				messageBlock.remove();
+			messageBlock.remove();
 			}
 		}, 5000);
 	}
