@@ -45,7 +45,7 @@ export class Popup {
         let overlay = document.querySelector('.overlay');
 
         const popup = document.createElement('div');
-        popup.className = 'popup mx-auto mb-8 p-6 flex flex-col relative rounded bg-white w-1/3';
+        popup.className = 'popup mx-auto mb-8 p-6 flex flex-col relative rounded bg-white md:w-1/3 w-full';
 
         const header = document.createElement('div');
         header.className = 'popup__header flex items-center justify-between mb-1';
@@ -65,12 +65,12 @@ export class Popup {
         });
 
         const contentElem = document.createElement('div');
-        contentElem.className = 'popup__content ';
+        contentElem.className = 'popup__content leading-normal';
         contentElem.append(this.#content);
 
         if (!overlay) {
             overlay = document.createElement('div');
-            overlay.className = 'overlay';
+            overlay.className = 'overlay px-10';
         }
 
         header.append(h2, closeBtn);
