@@ -47,6 +47,7 @@ export class Timer extends Module {
       // Additional Variables
       disMinutes.innerHTML = "00"
       disSeconds.innerHTML = "00"
+
       // making the timer
       let interval;
       let totalTime;
@@ -54,12 +55,13 @@ export class Timer extends Module {
       const textCorrection = (element, value) => {
         element.innerHTML = value < 10 ? "0" + value : value;
       }
-  
+
       timerClose.addEventListener("click", () => {
         timer.remove()
       })
-  
+
       start.addEventListener("click", () => {
+        start.setAttribute('disabled', 'disabled')
         music.play()
         totalTime = inpMinutes.value * 60 + inpSeconds.value * 1
         if (inpMinutes.value != "" || inpSeconds.value != "") {
@@ -73,6 +75,7 @@ export class Timer extends Module {
             if (totalTime > 0) {
               totalTime--;
               reset.addEventListener("click", () => {
+                start.removeAttribute('disabled', 'disabled')
                 disMinutes.innerHTML = "00"
                 disSeconds.innerHTML = "00"
                 inpMinutes.value = ''
@@ -82,13 +85,13 @@ export class Timer extends Module {
             } 
             else {
               clearInterval(interval)
-              music.play()
-              console.log (music)
               timerDisplay.remove()
+              setTimeout(() => music.play(), 0)
               start.remove()
+              reset.remove()
               timer.innerHTML = `<p class="end_time">
                     time is over</p>`    
-              setTimeout(() => timer.remove(), 5000)
+              setTimeout(() => timer.remove(), 3000)
             }
           }, 1000);
         }
