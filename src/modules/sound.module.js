@@ -7,11 +7,11 @@ import sound3 from '../assets/sounds/volk.mp3';
 import sound4 from '../assets/sounds/slon.mp3';
 import sound5 from '../assets/sounds/tigr.mp3';
 
+const sounds = [sound1, sound2, sound3, sound4, sound5];
+
 export default class SoundModule extends Module {
-	#sounds;
 	constructor(text) {
 		super('Sound', text);
-		this.#sounds = [sound1, sound2, sound3, sound4, sound5];
 	}
 
 	trigger() {
@@ -21,8 +21,8 @@ export default class SoundModule extends Module {
 		audio.dataset.module = 'rsound';
 		audio.setAttribute('autoplay', '');
 		audio.type = 'audio/mp3';
-		const soundNumber = random(0, 4);
-		audio.src = this.#sounds[soundNumber];
+		const soundNumber = random(0, (sounds.length - 1));
+		audio.src = sounds[soundNumber];
 
 		const message = document.createElement('h2');
 		message.textContent = 'Включи звук!';
