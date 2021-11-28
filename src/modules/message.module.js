@@ -33,9 +33,15 @@ export class CustomMessage extends Module {
     customMessageHTML.classList.add('custom-animate')
     this.#deleteCustomMessage()
     
-    // setTimeout(() => {
-    //   this.#customMessageContainer.remove()
-    // },5000)
+    let timerId = setTimeout(() => {
+      let customMessage = document.querySelector('.custom-message')
+        let isActiveBlock = document.querySelector('.container-custom-message')
+          if(isActiveBlock) {
+            customMessage.remove()
+          }
+        this.#customMessageContainer.remove()
+      },5000)
+    }
   }
     
   #generateBlockMessage() {
