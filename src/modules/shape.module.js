@@ -3,8 +3,6 @@ import * as Utils from '../utils';
 
 export class ShapeModule extends Module {
     #colors
-    #widthShape
-    #heightShape
 
     static TYPE = 'ShapeModule';
     static TEXT = 'Создать фигуру';
@@ -12,15 +10,15 @@ export class ShapeModule extends Module {
     constructor() {
     super(ShapeModule.TYPE, ShapeModule.TEXT)
     this.#colors = ['#E6D72A', '#5BC8AC', '#98DBC6', 
-                    '#FEFE22', '#fi62ff', '#ffcce7', 
+                    '#FEFE22', '#f162ff', '#ffcce7', 
                     '#fe3a9e', '#FBA0E3', '#FF00FF', 
-                    '#DA70D6', '#EEBEF1', '#CD00CD'];
-    this.#widthShape = Utils.random(20, 60);
-    this.#heightShape = this.#widthShape * 1.5;               
+                    '#DA70D6', '#EEBEF1', '#CD00CD',];
+                   
     }
 
-    getRendomColor = () => {
+    getRandomColor = () => {
         const index = Utils.random(0, this.#colors.length - 1);
+        console.log('index', index);
         return this.#colors[index];
     }
 
@@ -31,19 +29,20 @@ export class ShapeModule extends Module {
         newShape.display = 'block';
         newShape.style.webkitBorderRadius = '63px 63px 63px 63px / 108px 108px 72px 72px';
         newShape.style.borderRadius = '50% 50% 50% 50% / 60% 60% 40% 40%' ;
+
+        const widthShape = Utils.random(50, 260);
+        const heightShape = widthShape * 1.5;
+        const top = Utils.random(heightShape, window.innerHeight - (heightShape + 50));
+        const left = Utils.random(widthShape, window.innerWidth - (widthShape + 50));
+
+        newShape.style.marginTop = `${top}px`;
+        newShape.style.marginLeft = `${left}px`;
+
+        newShape.style.width = `${widthShape}px`; 
+        newShape.style.height = `${heightShape}px`;
     
-        const top = Utils.random(0, 50);
-        const left = Utils.random(0, 100);
-        newShape.style.marginTop = `${top}%`;
-        newShape.style.marginLeft = `${left}%`;
-    
-        this.#widthShape = Utils.random(20, 60);
-        this.#heightShape = widthShape * 1.5;
-        
-        newShape.style.width = `${this.#widthShape}rem`; 
-        newShape.style.height = `${this.#heightShape}rem`;
-    
-        newShape.style.backgroundColor = this.getRendomColor();
+        newShape.style.backgroundColor = this.getRandomColor();
+        console.log('color', newShape.style.backgroundColor);
 
         return newShape;
     }
@@ -53,13 +52,12 @@ export class ShapeModule extends Module {
     }
 
     trigger() {
-        document.body.addEventListener('click',() => {
-            const oldShape = document.querySelector('#shape');
-            if(oldShape){
-                oldShape.remove();
-            }
-        
-            this.displayNewShape();
-        })
+        const oldShape = document.querySelector('#shape');
+
+        if(oldShape){
+            oldShape.remove();
+        }
+    
+        this.displayNewShape();
     }
 }
