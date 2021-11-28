@@ -1,8 +1,7 @@
 import './styles.css'
 
-/*
 //в продакшене можно удалить этот тест кликов
-
+/*
 import { ClicksModule } from './modules/clicks.module'
 
 const body = document.querySelector('body')
