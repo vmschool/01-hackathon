@@ -3,14 +3,19 @@ export class ContextMenu extends Menu {
     #contextMenu
     #elementsMenu
 
-    constructor(){
-        super()
+    constructor(selector){
+        super(selector)
         this.#contextMenu = document.querySelector('#menu')
         this.#elementsMenu = []
     }
-    
 
+    #cleanBody () {
+        document.body.innerHTML = ``
+        document.body.append(this.#contextMenu)
+    }
+    
     open(positionX, positionY){
+        this.#cleanBody ()
         this.#contextMenu.classList.add('open')
 
         const windowsScreenWidth = window.innerWidth

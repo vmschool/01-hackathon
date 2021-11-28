@@ -2,7 +2,7 @@ import './styles.css'
 import { ContextMenu } from './menu'
 import { ClicksModule } from "./modules/clicks.module.js";
 
-const contextMenu = new ContextMenu('ul')
+const contextMenu = new ContextMenu('#menu')
 const menuConatainer = document.querySelector('#menu')
 
 
