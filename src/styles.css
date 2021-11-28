@@ -40,3 +40,27 @@ body {
 .menu .menu-item:hover {
     background: #343434;
 }
+
+/* Start sound-module */
+.image__sound {
+   position: absolute;
+   top: 50vh;
+   left: auto;
+   z-index: 8;
+   animation: hiding 1.5s forwards;
+}
+@keyframes hiding {
+   0% {
+      opacity: 1;
+    }
+    99% {
+      opacity: 0;
+      height: 200px;
+      width: 200px;
+    }
+    100% {
+      opacity: 0;
+      height: 0;
+      width: 0;
+    }
+}
