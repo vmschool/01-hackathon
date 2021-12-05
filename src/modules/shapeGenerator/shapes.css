@@ -1,0 +1,91 @@
+.container-block {
+    height: 100vh;
+    background: transparent;
+    overflow: hidden;
+    position: relative;
+}
+
+.container-block.blue {
+    background: #feb47b;
+    background: -moz-linear-gradient(top, #feb47b 0%, #ff7e5f 100%);
+    background: -webkit-linear-gradient(top, #feb47b 0%, #ff7e5f 100%);
+    background: linear-gradient(to bottom, #7bfed0 0%, #dcff5f 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#feb47b',endColorstr='#ff7e5f',GradientType=0);
+}
+.container-block.white {
+    background: #ec7d7d;
+}
+
+.container-block .boxWrapper {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+}
+.container-block .boxWrapper svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 50%;
+    width: 100%;
+    transform: translateX(-50%) translateY(-50%);
+    margin: 50% auto auto 50%;
+    height: 100%;
+}
+.clickAnywhere {
+    position: fixed;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.4);
+    width: 120px;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding-top: 7px;
+    margin: auto;
+    border-radius: 7px;
+}
+
+.svg-icon {
+    width: 1em;
+    height: 1em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+    fill: #4691f6;
+}
+
+.svg-icon circle {
+    stroke: #4691f6;
+    stroke-width: 1;
+}
+
+.exit {
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    width: 32px;
+    height: 32px;
+    opacity: 0.3;
+}
+.exit:hover {
+    opacity: 1;
+}
+.exit:before,
+.exit:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color: #333;
+}
+.exit:before {
+    transform: rotate(45deg);
+}
+.exit:after {
+    transform: rotate(-45deg);
+}

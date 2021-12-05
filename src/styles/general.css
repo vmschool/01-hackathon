@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    width: 100%;
+    /*padding: 2rem;*/
+    transition: background-color 300ms linear;
+}

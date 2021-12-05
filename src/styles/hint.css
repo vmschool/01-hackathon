@@ -1,0 +1,7 @@
+.hint::after {
+    content: "<ul><li>hello</li><li>hhh</li></ul>";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: red;
+}
