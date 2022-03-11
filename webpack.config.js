@@ -45,7 +45,7 @@ module.exports = (env, argv) => {
       }),
       new MiniCssExtractPlugin({
         filename: filename('css')
-      }),
+      })
     ],
     module: {
       rules: [
