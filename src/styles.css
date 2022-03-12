@@ -41,6 +41,21 @@ body {
     background: #343434;
 }
 
+
+.shape {
+    opacity: 1;
+    position: absolute;
+    transition: opacity 0.5s;
+}
+
+.shape__inner {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+
 @keyframes showPostItem {
     0% {transform: translateX(-150%);}
     100% {transform: translateY(0);}
@@ -54,4 +69,5 @@ body {
     transform: translateX(-150%);
     animation: showPostItem 0.8s forwards;
     margin-bottom: 10px;
+
 }
