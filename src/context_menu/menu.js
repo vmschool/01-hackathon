@@ -6,6 +6,8 @@ import { RandomSound } from "@/context_menu/modules/random_sound.module";
 import { TimerModule } from "@/context_menu/modules/timer.module";
 import { CustomText } from "@/context_menu/modules/custom_text.module";
 
+const shapeModule =  new ShapeModule('shapeModule', 'Случайная фигура');
+
 export class ContextMenu extends Menu {
     constructor(selector) {
         super(selector);
@@ -35,7 +37,7 @@ export class ContextMenu extends Menu {
         const contextMenuItems = [
             new RandomBackgroundModule('randomBackground', 'Случайный фон'),
             new ClicksModule('clickModule', 'Аналитика кликов'),
-            new ShapeModule('shapeModule', 'Случайная фигура'),
+            shapeModule,
             new CustomText('customText', 'Кастомное сообщение'),
             new RandomSound('randomSound', 'Случайный звук'),
             new TimerModule('timer', 'Таймер отчёта')
@@ -59,5 +61,8 @@ export class ContextMenu extends Menu {
         // contextMenu.insertAdjacentHTML('beforeend', randomSound.toHTML());
         // contextMenu.insertAdjacentHTML('beforeend', timer.toHTML());
 
+    }
+    trigger() {
+        shapeModule.trigger();
     }
 }

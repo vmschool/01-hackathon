@@ -4,3 +4,4 @@ const contextMenu = new ContextMenu();
 
 contextMenu.add();
 contextMenu.open();
+contextMenu.trigger()

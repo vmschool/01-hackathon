@@ -7,4 +7,7 @@ export class ShapeModule extends Module {
     toHTML() {
         return super.toHTML();
     }
+    trigger() {
+        console.log('123');
+    }
 }
