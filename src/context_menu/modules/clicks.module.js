@@ -3,7 +3,6 @@ import {Module} from '@/core/module';
 export class ClicksModule extends Module {
     constructor(type, text) {
         super(type, text);
-        this.modal = document.querySelector('.modalItem');
         this.clickCounter = 0;
         this.dblClickCounter = 0;
         this.time = 10;
@@ -17,7 +16,6 @@ export class ClicksModule extends Module {
             clickModalItem.addEventListener('click', (event) => {
                 event.preventDefault()
                 const modals = document.querySelectorAll('.modalItem');
-                console.log(modals)
                 this.time = 10;
                 this.clickCounter = 0;
                 this.dblClickCounter = 0;
@@ -25,7 +23,6 @@ export class ClicksModule extends Module {
                     modals.forEach((el) => {
                         el.remove();
                     })
-                    console.log('MODAL!')
                     this.removeModal()
                     this.counter()
                 } else {
@@ -38,8 +35,6 @@ export class ClicksModule extends Module {
         this.render(`Анализ кликов за 10 секунд.\n`);
         this.startTimer();
         const modal = document.querySelector('.modalItem');
-        console.log(modal)
-
         modal.addEventListener('click', () => {
             this.time === 0 ? this.clickCounter : this.clickCounter++;
         })
