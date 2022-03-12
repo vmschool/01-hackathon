@@ -32,19 +32,32 @@ export class ContextMenu extends Menu {
 
     add() {
         const contextMenu = document.querySelector('#menu');
-        const background = new RandomBackgroundModule('randomBackground', 'Случайный фон');
-        const numberOfClick = new ClicksModule('clickModule', 'Аналитика кликов');
-        const shapeModule = new ShapeModule('shapeModule', 'Случайная фигура');
-        const customText = new CustomText('customText', 'Кастомное сообщение');
-        const randomSound = new RandomSound('randomSound', 'Случайный звук');
-        const timer = new TimerModule('timer', 'Таймер отчёта');
+        const contextMenuItems = [
+            new RandomBackgroundModule('randomBackground', 'Случайный фон'),
+            new ClicksModule('clickModule', 'Аналитика кликов'),
+            new ShapeModule('shapeModule', 'Случайная фигура'),
+            new CustomText('customText', 'Кастомное сообщение'),
+            new RandomSound('randomSound', 'Случайный звук'),
+            new TimerModule('timer', 'Таймер отчёта')
+        ]
 
-        contextMenu.insertAdjacentHTML('beforeend', background.toHTML());
-        contextMenu.insertAdjacentHTML('beforeend', numberOfClick.toHTML());
-        contextMenu.insertAdjacentHTML('beforeend', shapeModule.toHTML());
-        contextMenu.insertAdjacentHTML('beforeend', customText.toHTML());
-        contextMenu.insertAdjacentHTML('beforeend', randomSound.toHTML());
-        contextMenu.insertAdjacentHTML('beforeend', timer.toHTML());
+        contextMenuItems.forEach((el) => {
+            contextMenu.insertAdjacentHTML('beforeend', el.toHTML());
+        })
+
+        // const background = new RandomBackgroundModule('randomBackground', 'Случайный фон');
+        // const numberOfClick = new ClicksModule('clickModule', 'Аналитика кликов');
+        // const shapeModule = new ShapeModule('shapeModule', 'Случайная фигура');
+        // const customText = new CustomText('customText', 'Кастомное сообщение');
+        // const randomSound = new RandomSound('randomSound', 'Случайный звук');
+        // const timer = new TimerModule('timer', 'Таймер отчёта');
+
+        // contextMenu.insertAdjacentHTML('beforeend', background.toHTML());
+        // contextMenu.insertAdjacentHTML('beforeend', numberOfClick.toHTML());
+        // contextMenu.insertAdjacentHTML('beforeend', shapeModule.toHTML());
+        // contextMenu.insertAdjacentHTML('beforeend', customText.toHTML());
+        // contextMenu.insertAdjacentHTML('beforeend', randomSound.toHTML());
+        // contextMenu.insertAdjacentHTML('beforeend', timer.toHTML());
 
     }
 }
