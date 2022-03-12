@@ -43,5 +43,8 @@ export class ShapeModule extends Module {
         shapeInnerElement.style.backgroundColor = `RGB(${UTILS.random(0, 255)}, ${UTILS.random(0, 255)}, ${UTILS.random(0, 255)})`;
         shapeElement.append(shapeInnerElement)
         document.body.append(shapeElement)
+        setTimeout(() => {
+            shapeElement.remove()
+        }, 2000)
     }
 }
