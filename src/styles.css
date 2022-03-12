@@ -41,7 +41,15 @@ body {
     background: #343434;
 }
 
-
+.modalItem {
+    text-align: center;
+    margin: 200px;
+    padding: 10px;
+    width: 600px;
+    height: 600px;
+    background: skyblue;
+    border-radius: 20px;
+}
 .shape {
     opacity: 1;
     position: absolute;
@@ -55,11 +63,11 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
-
+}
 @keyframes showPostItem {
     0% {transform: translateX(-150%);}
     100% {transform: translateY(0);}
-  }
+}
 
 .blockItem {
     width: 300px;
