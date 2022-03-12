@@ -1,4 +1,5 @@
 import {Module} from '@/core/module';
+import * as UTILS from "@/core/utils";
 
 
 export class RandomSound extends Module {
@@ -9,13 +10,32 @@ export class RandomSound extends Module {
         return super.toHTML();
     }
     trigger() {
-        console.log('123456')
-        // return new Promise(() => {
-        //     const soundModule = document.querySelector("[data-type = 'randomSound']");
-        //     soundModule.addEventListener('click', () => {
-        //         console.log('123456')
-        //     })
-        // })
+        return new Promise(() => {
+            const soundModule = document.querySelector("[data-type = 'randomSound']");
+            soundModule.addEventListener('click', () => {
+                const sound = document.querySelector('.sound')
+                if(sound) {
+                    sound.forEach(item => {
+                        item.remove()
+                    })
+                    this.createElement()
+                } else {
+                    this.createElement()
+                }
 
+            })
+
+        })
+    }
+
+    createElement() {
+        const audioElement = document.createElement('audio')
+        audioElement.src = `../src/audio/${UTILS.random(1, 8)}.mp3`
+        audioElement.classList = 'sound'
+        audioElement.autoplay = true
+        document.body.append(audioElement)
+        setTimeout(()=> {
+            audioElement.remove()
+        },10000)
     }
 }
