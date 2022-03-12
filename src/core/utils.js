@@ -8,7 +8,7 @@ export function render(text) {
   menu.append(menuItem);
 }
 export let counter = 0;
-export let time = 0;
+export let time = 10;
 export const menu = document.querySelector('#menu');
 export function renderModal (title, input, text) {
 

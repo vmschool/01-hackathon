@@ -56,8 +56,8 @@ export class ContextMenu extends Menu {
         shapeModule.trigger();
         changeBackground.trigger();
         clickModule.trigger();
-        customText.trigger();
-        timerModule.trigger();
-        randomSound.trigger();
+        // customText.trigger();
+        // timerModule.trigger();
+        // randomSound.trigger();
     }
 }

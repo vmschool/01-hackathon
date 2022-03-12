@@ -40,3 +40,12 @@ body {
 .menu .menu-item:hover {
     background: #343434;
 }
+.modalItem {
+    text-align: center;
+    margin: 200px;
+    padding: 10px;
+    width: 600px;
+    height: 600px;
+    background: skyblue;
+    border-radius: 20px;
+}
