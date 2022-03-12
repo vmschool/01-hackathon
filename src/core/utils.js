@@ -7,3 +7,8 @@ export function render(text) {
   menuItem.textContent = `${text}`;
   menu.append(menuItem);
 }
+export let counter = 0;
+export const menu = document.querySelector('#menu');
+export function renderModule (module) {
+
+}
