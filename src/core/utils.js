@@ -9,6 +9,6 @@ export function render(text) {
 }
 export let counter = 0;
 export const menu = document.querySelector('#menu');
-export function renderModule (module) {
+export function renderModule (input, text) {
 
 }

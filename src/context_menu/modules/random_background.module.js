@@ -1,4 +1,5 @@
 import {Module} from '@/core/module';
+import * as UTILS from "@/core/utils";
 
 export class RandomBackgroundModule extends Module {
     constructor(type, text) {
@@ -11,9 +12,7 @@ export class RandomBackgroundModule extends Module {
        return new Promise(() => {
            const menuList = document.querySelector("[data-type = 'randomBackground']");
            menuList.addEventListener('click', () => {
-               const colorsBackground = ['#FED6BC', '#FFFADD', '#DEF7FE', '#E7ECFF', '#C3FBD8', '#FDEED9', '#B5F2EA', '#C6D8FF'];
-               const color = Math.floor(Math.random() * colorsBackground.length);
-               document.body.style.background = colorsBackground[color];
+               document.body.style.background = `RGB(${UTILS.random(0, 255)}, ${UTILS.random(0, 255)}, ${UTILS.random(0, 255)})`;
                document.body.style.transition = 'background 1s ease';
            })
        })
