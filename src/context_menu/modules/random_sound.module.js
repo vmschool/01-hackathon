@@ -15,9 +15,7 @@ export class RandomSound extends Module {
             soundModule.addEventListener('click', () => {
                 const sound = document.querySelector('.sound')
                 if(sound) {
-                    sound.forEach(item => {
-                        item.remove()
-                    })
+                    sound.remove()
                     this.createElement()
                 } else {
                     this.createElement()
