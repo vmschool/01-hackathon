@@ -40,6 +40,7 @@ body {
 .menu .menu-item:hover {
     background: #343434;
 }
+
 .modalItem {
     text-align: center;
     margin: 200px;
@@ -48,4 +49,33 @@ body {
     height: 600px;
     background: skyblue;
     border-radius: 20px;
+
+.shape {
+    opacity: 1;
+    position: absolute;
+    transition: opacity 0.5s;
+}
+
+.shape__inner {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+
+@keyframes showPostItem {
+    0% {transform: translateX(-150%);}
+    100% {transform: translateY(0);}
+  }
+
+.blockItem {
+    width: 300px;
+    padding: 15px;
+    background: rgb(211, 211, 211, 70%);
+    border-radius: 10px;
+    transform: translateX(-150%);
+    animation: showPostItem 0.8s forwards;
+    margin-bottom: 10px;
+
 }
