@@ -4,6 +4,7 @@ import { randomOpenConextMenu, createItemsContextMenu, closeContextMenu } from '
 export class ContextMenu extends Menu {
     constructor(selector) {
         super(selector);
+                
     }
 
     open() {
@@ -14,7 +15,7 @@ export class ContextMenu extends Menu {
         closeContextMenu();
     }
 
-    add() {
-        createItemsContextMenu();
+    add(type, text) {
+        createItemsContextMenu(type, text);
     }
 }

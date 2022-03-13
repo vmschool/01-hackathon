@@ -9,6 +9,10 @@ export class RandomPhotoModule extends Module {
 
         const apiKey = 'Brm2rD7WdfexyK5hTjvVkvKcb_ZK9UhMdBFP8fgcAo8'
         const PHOTO_URL = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=1`;
+        const isContainer = document.querySelector('.container');
+        if (isContainer) {
+            isContainer.remove();
+        }
 
         function setPhoto(url, name, author) {
             const body = document.querySelector('body');
