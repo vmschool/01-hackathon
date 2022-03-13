@@ -1,10 +1,10 @@
 import './styles.css'
 import './randomPhotoModule.css'
-import { ContextMenu } from './menu'
 
+import { ContextMenu } from './menu'
 import { BackgroundModule } from './modules/background.module';
 import { ClicksModule } from './modules/clicks.module';
-import {RandomPhotoModule} from './modules/show.random.photo.module';
+import { RandomPhotoModule } from './modules/show.random.photo.module';
 import { RandomSoundModule } from './modules/randomsound.module'
 
 let bgChange = new BackgroundModule('backgroundChange', 'Замена фона');

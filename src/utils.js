@@ -8,7 +8,7 @@ export function randomOpenConextMenu() {
     menu.style.top = `${event.clientY}px`;
     menu.style.left = `${event.clientX}px`;
     menu.classList.add('open');
-})
+  })
 }
 
 export function createItemsContextMenu() {
@@ -42,9 +42,10 @@ export function createItemsContextMenu() {
 export function closeContextMenu() {
   document.body.addEventListener('click', event => {
     menu.classList.remove('open');
-}, false)
+  }, false)
+}
   
-export  function getRandomColor() {
+export function getRandomColor() {
   const letters = '0123456789ABCDEF';
   let color = '#';
   for (let i = 0; i < 6; i++) {
