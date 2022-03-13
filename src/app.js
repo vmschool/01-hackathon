@@ -1,5 +1,6 @@
-import './styles.css';
+import './styles.css'
 import './randomPhotoModule.css'
+import { ContextMenu } from './menu'
 
 import { BackgroundModule } from './modules/background.module';
 import { ClicksModule } from './modules/clicks.module';
@@ -13,3 +14,7 @@ let randomSoundModule = new RandomSoundModule('sound', 'Случайный зв�
 
 showRandomPhoto.trigger();
 randomSoundModule.trigger();
+
+const contextMenu = new ContextMenu();
+contextMenu.open();
+contextMenu.add();
