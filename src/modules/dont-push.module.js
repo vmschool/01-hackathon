@@ -38,7 +38,7 @@ export class DontPush extends Module {
             this.moan.play()
             document.body.prepend(this.img)
 
-            setTimeout(() => {
+            setTimeout(( ) => {
                 this.img.remove()
             }, 800)
         }
