@@ -23,24 +23,33 @@ export class ClicksModule extends Module {
                     modals.forEach((el) => {
                         el.remove();
                     })
-                    this.removeModal()
-                    this.counter()
+                    this.removeModal();
+                    this.render(`Анализ кликов за 10 секунд.\n`);
+                    this.startButton();
                 } else {
-                    this.counter()
+                    this.render(`Анализ кликов за 10 секунд.\n`);
+                    this.startButton();
                 }
             })
         })
     }
+    startButton () {
+        const startButton = document.querySelector('.startButton');
+        startButton.addEventListener('click', () => {
+            startButton.style.opacity = 0;
+            this.counter();
+        })
+    }
+
     counter () {
-        this.render(`Анализ кликов за 10 секунд.\n`);
-        this.startTimer();
-        const modal = document.querySelector('.modalItem');
-        modal.addEventListener('click', () => {
-            this.time === 0 ? this.clickCounter : this.clickCounter++;
-        })
-        modal.addEventListener('dblclick', () => {
-            this.time === 0 ? this.dblClickCounter : this.dblClickCounter++;
-        })
+            this.startTimerForRemoveModal();
+            const modal = document.querySelector('.modalItem');
+            modal.addEventListener('click', () => {
+                this.time === 0 ? this.clickCounter : this.clickCounter++;
+            })
+            modal.addEventListener('dblclick', () => {
+                this.time === 0 ? this.dblClickCounter : this.dblClickCounter++;
+            })
     }
 
     setTime (value) {
@@ -53,16 +62,16 @@ export class ClicksModule extends Module {
         count.innerHTML = `<br><br>Количество одинарных кликов: ${this.clickCounter}<br>Количество двойных кликов: ${this.dblClickCounter}`
     }
 
-    startTimer () {
+    startTimerForRemoveModal () {
         const timer = setInterval(() => {
             if (this.time === 0) {
-                clearInterval(timer)
-                this.setCount()
+                clearInterval(timer);
+                this.setCount();
                 setTimeout(() => {
-                   this.removeModal()
+                   this.removeModal();
                 }, 2500)
             } else {
-                this.decreaseTimer()
+                this.decreaseTimer();
             }
         }, 1000)
     }
@@ -73,18 +82,25 @@ export class ClicksModule extends Module {
     }
 
     render (title) {
+        const cardForContextMenu = document.querySelector('.cardForContextMenu');
         const modal = document.createElement('div');
         modal.className = 'modalItem';
-        const titleInModal = document.createElement('h1');
+        const titleInModal = document.createElement('div');
         titleInModal.id = 'titleInModal'
-        titleInModal.innerHTML = `${title}<br>Осталось <strong><span id="timer">10</span></strong> секунд<br><span id="count"></span>`;
-        modal.appendChild(titleInModal)
-        document.body.appendChild(modal)
+        const titleInModalH1 = document.createElement('h1');
+        titleInModalH1.innerHTML = `${title}<br>Осталось <strong><span id="timer">10</span></strong> секунд<br><span id="count"></span>`;
+        titleInModal.appendChild(titleInModalH1);
+        const startButton = document.createElement('button');
+        startButton.className = 'startButton';
+        startButton.innerHTML = `<strong>Пуск</strong>`;
+        modal.append(titleInModal, startButton);
+        cardForContextMenu.appendChild(modal);
     }
+
     removeModal () {
-        const modal = document.querySelectorAll('.modalItem')
+        const modal = document.querySelectorAll('.modalItem');
         modal.forEach((el) => {
-            el.remove()
+            el.remove();
         })
     }
 }
