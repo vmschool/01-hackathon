@@ -12,7 +12,7 @@ export class RandomSound extends Module {
      this.audioElement = document.createElement('audio')
  }
 
- trigger() {
+ trigger( ) {
      const randomNumber = random(0, 3)
      const sounds = [sound1, sound2, sound3, sound4]
      this.audioElement.src = sounds[randomNumber]
