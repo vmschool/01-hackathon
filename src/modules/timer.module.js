@@ -1,42 +1,53 @@
-let seconds = 5;
-function timer() {
-    let minutesLeft = Math.floor(seconds / 60);
-    let secondsLeft = seconds % 60;
+import { Module } from '../core/module.js'
 
-    function pad(n) {
-        return (n < 10 ? "0" + n : n);
-    }
+export class TimerModule extends Module {
+    constructor(type, text) {
+        super(type, text)
 
-    const bodyTag = document.querySelector('body');
-    const divTag = document.createElement('div');
-    bodyTag.append(divTag);
-    divTag.className = 'timer';
-    const timerDiv = document.querySelector('.timer');
-    timerDiv.style.width = '300px';
-    timerDiv.style.textAlign = 'center';
-    timerDiv.style.margin = '0 auto';
-    timerDiv.style.color = '#ffff00';
-    timerDiv.style.border = '2px dashed #ffff00';
-    timerDiv.style.borderRadius = '15px';
-    timerDiv.style.backgroundColor = '#868611';
-    timerDiv.style.padding = '20px';
-    timerDiv.style.fontSize = '25px';
+    };
 
-    timerDiv.innerHTML = `${pad(minutesLeft)} : ${pad(secondsLeft)}`;
+    trigger() {
+        let seconds = 5;
+        function timer() {
+            let minutesLeft = Math.floor(seconds / 60);
+            let secondsLeft = seconds % 60;
 
-    if (seconds == 0) {
-        clearInterval(countdownTimer);
-        timerDiv.innerHTML = "Таймер завершён!";
+            function pad(n) {
+                return (n < 10 ? "0" + n : n);
+            }
 
-        setTimeout(delDiv, 3000);
+            const bodyTag = document.querySelector('body');
+            const divTag = document.createElement('div');
+            bodyTag.append(divTag);
+            divTag.className = 'timer';
+            const timerDiv = document.querySelector('.timer');
+            timerDiv.style.width = '300px';
+            timerDiv.style.textAlign = 'center';
+            timerDiv.style.margin = '0 auto';
+            timerDiv.style.color = '#ffff00';
+            timerDiv.style.border = '2px dashed #ffff00';
+            timerDiv.style.borderRadius = '15px';
+            timerDiv.style.backgroundColor = '#868611';
+            timerDiv.style.padding = '20px';
+            timerDiv.style.fontSize = '25px';
 
-        function delDiv() {
-            timerDiv.remove();
+            timerDiv.innerHTML = `${pad(minutesLeft)} : ${pad(secondsLeft)}`;
+
+            if (seconds == 0) {
+                clearInterval(countdownTimer);
+                timerDiv.innerHTML = "Таймер завершён!";
+
+                setTimeout(delDiv, 3000);
+
+                function delDiv() {
+                    timerDiv.remove();
+                }
+
+            } else {
+                seconds--;
+            }
         }
 
-    } else {
-        seconds--;
+        let countdownTimer = setInterval('timer()', 1000);
     }
 }
-
-let countdownTimer = setInterval('timer()', 1000);
