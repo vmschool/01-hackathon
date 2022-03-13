@@ -12,3 +12,7 @@ let showRandomPhoto = new RandomPhotoModule('showRandomPhoto', 'Показать
 showRandomPhoto.trigger();
 
 
+import { RandomSoundModule } from './modules/randomsound.module'
+
+const randomSoundModule = new RandomSoundModule('sound', 'Случайный звук');
+randomSoundModule.trigger();
