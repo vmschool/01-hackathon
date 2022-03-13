@@ -12,15 +12,16 @@ let clickModule = new ClicksModule('clickModule', 'Подсчет кликов')
 let showRandomPhoto = new RandomPhotoModule('showRandomPhoto', 'Показать рандомное фото');
 let randomSoundModule = new RandomSoundModule('randomSoundModule', 'Случайный звук');
 const menuItems = [bgChange, clickModule, showRandomPhoto, randomSoundModule];
-// showRandomPhoto.trigger();
-// randomSoundModule.trigger();
 
 const contextMenu = new ContextMenu('.menu');
 contextMenu.open();
+
+// Собираем менюшку
 menuItems.forEach(item => {
     contextMenu.add(item.type, item.text)
 });
 
+//Слушаем клики, вызываем правильный триггер
 contextMenu.el.addEventListener('click', (event) => {
     menuItems.forEach(item => {
         if (event.target.id === item.type) {
@@ -29,8 +30,3 @@ contextMenu.el.addEventListener('click', (event) => {
     })
     
 })
-
-
-
-
-console.log(bgChange.type);
