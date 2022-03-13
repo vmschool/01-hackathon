@@ -1,0 +1,55 @@
+
+.timerModal{
+    display:flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+
+    margin: 30px;
+    height: 100px;
+    width: 200px;
+
+    border-radius: 6px;
+    background-color: rgba(236, 8, 8, 0.8);
+    color: white;
+
+    font-weight: 900;
+    animation: true 3s infinite;
+    
+    top: 100px;
+    left: 100px;
+
+    
+}
+
+.timerModal:hover{
+    background-color: rgba(236, 8, 8);
+   
+}
+
+@keyframes true{
+    0%{
+        left: 250px;  
+        transform: rotate(-7deg);
+        top: 0px;
+        
+    }
+    15%{
+        left: -35px;
+        transform: rotate(5deg);
+
+    }
+    30%{
+        left: 180px;
+        transform: rotate(-5deg);
+    }
+    50%{
+        left: 0px;
+        transform: rotate(2deg);
+    }
+
+    100%{
+        top: 40vh;
+    }
+
+}
