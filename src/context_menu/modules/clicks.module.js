@@ -7,9 +7,11 @@ export class ClicksModule extends Module {
         this.dblClickCounter = 0;
         this.time = 10;
     }
+
     toHTML() {
         return super.toHTML();
     }
+
     trigger() {
         return new Promise(() => {
             const clickModalItem = document.querySelector("[data-type = 'clickModule']");
@@ -23,7 +25,7 @@ export class ClicksModule extends Module {
                     modals.forEach((el) => {
                         el.remove();
                     })
-                    this.removeModal();
+
                     this.render(`Анализ кликов за 10 секунд.\n`);
                     this.startButton();
                 } else {
@@ -33,11 +35,12 @@ export class ClicksModule extends Module {
             })
         })
     }
+
     startButton () {
         const startButton = document.querySelector('.startButton');
         startButton.addEventListener('click', () => {
-            startButton.style.opacity = 0;
             this.counter();
+            startButton.remove();
         })
     }
 
@@ -71,7 +74,10 @@ export class ClicksModule extends Module {
                    this.removeModal();
                 }, 2500)
             } else {
-                this.decreaseTimer();
+                const startButton = document.querySelector('.startButton');
+                if (!startButton) {
+                    this.decreaseTimer();
+                }
             }
         }, 1000)
     }
