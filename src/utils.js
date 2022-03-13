@@ -11,32 +11,15 @@ export function randomOpenConextMenu() {
   })
 }
 
-export function createItemsContextMenu() {
+export function createItemsContextMenu(menuItem, name) {
   const menu = document.querySelector('.menu');
 
   const item = document.createElement('li');
   item.classList.add('menu-item');
-  item.textContent = 'Считать клики (за 3 секунды)';
-  item.id = '1';
+  item.textContent = name;
+  item.id = menuItem;
   menu.append(item);
 
-  const item1 = document.createElement('li');
-  item1.classList.add('menu-item');
-  item1.textContent = 'Создать фигуру';
-  item1.id = '2';
-  menu.append(item1);
-
-  const item2 = document.createElement('li');
-  item2.classList.add('menu-item');
-  item2.textContent = 'Поменять цвет';
-  item2.id = '3';
-  menu.append(item2);
-
-  const item3 = document.createElement('li');
-  item3.classList.add('menu-item');
-  item3.textContent = 'Вызвать сообщение';
-  item3.id = '4';
-  menu.append(item3);
 }
 
 export function closeContextMenu() {
