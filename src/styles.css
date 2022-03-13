@@ -18,10 +18,11 @@ body {
     position: fixed;
     z-index: 1000;
     width: 250px;
-    background: #1b1a1a;
+    background: #4ba7ef;
     border-radius: 15px;
     display: none;
     list-style: none;
+    border: 1px solid #000000;
 }
 
 .menu.open {
@@ -31,8 +32,8 @@ body {
 .menu .menu-item {
     padding: 8px 10px;
     font-size: 1rem;
-    color: #eee;
-    cursor: pointer;
+    color: #000000;
+    cursor: url("./assets/cursor.cur"), pointer;
     transition: background-color .2s ease-in;
     border-radius: inherit;
 }
@@ -46,7 +47,7 @@ body {
     margin: 100px;
     width: 600px;
     height: 600px;
-    background: skyblue;
+    background: #4ba7ef;
     border-radius: 20px;
 }
 .shape {
@@ -71,7 +72,7 @@ body {
 .blockItem {
     width: 300px;
     padding: 15px;
-    background: rgb(211, 211, 211, 70%);
+    background: #4ba7ef;
     border-radius: 10px;
     transform: translateX(-150%);
     animation: showPostItem 0.8s forwards;
@@ -87,7 +88,7 @@ body {
 .card {
     width: 400px;
     height: 170px;
-    background: skyblue;
+    background: #4ba7ef;
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 20px;
@@ -116,14 +117,16 @@ body {
     margin-top: 5px;
 }
 #titleInModal {
+    padding-top: 10px;
     height: 250px;
 }
+
 .startButton {
     width: 150px;
     height: 50px;
     margin-top: 10px;
-    background: chartreuse;
+    background: #4bda9a;
     border-radius: 20px;
     border: none;
-    box-shadow: 0 0 5px 2px red;
+    box-shadow: 0 0 5px 2px #ff5900;
 }

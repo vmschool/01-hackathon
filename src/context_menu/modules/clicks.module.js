@@ -94,7 +94,7 @@ export class ClicksModule extends Module {
         const titleInModal = document.createElement('div');
         titleInModal.id = 'titleInModal'
         const titleInModalH1 = document.createElement('h1');
-        titleInModalH1.innerHTML = `${title}<br>Осталось <strong><span id="timer">10</span></strong> секунд<br><span id="count"></span>`;
+        titleInModalH1.innerHTML = `${title}<br>Осталось <strong><span id="timer">10</span></strong> секунд(ы)<br><span id="count"></span>`;
         titleInModal.appendChild(titleInModalH1);
         const startButton = document.createElement('button');
         startButton.className = 'startButton';

@@ -28,7 +28,7 @@ export class RandomSound extends Module {
 
     createElement() {
         const audioElement = document.createElement('audio')
-        audioElement.src = `../src/audio/${UTILS.random(1, 8)}.mp3`
+        audioElement.src = `../src/assets/audio/${UTILS.random(1, 8)}.mp3`
         audioElement.classList = 'sound'
         audioElement.autoplay = true
         document.body.append(audioElement)
