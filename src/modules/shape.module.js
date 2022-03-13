@@ -7,7 +7,7 @@ export class ShapeModule extends Module {
         this.shape = document.createElement("div");
     }
 
-    trigger() {
+    trigger( ) {
         let shapeWidth = random(20, 200);
         let shapeHeight = random(20, 200);
         let shapeX = random(
