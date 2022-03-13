@@ -1,9 +1,8 @@
-import { Module } from '../core/module.js'
+import { Module } from '../core/module'
 
 export class TimerModule extends Module {
     constructor(type, text) {
         super(type, text)
-
     };
 
     trigger() {
@@ -18,9 +17,11 @@ export class TimerModule extends Module {
 
             const bodyTag = document.querySelector('body');
             const divTag = document.createElement('div');
+            const timerDiv = document.querySelector('.timer');
+
             bodyTag.append(divTag);
             divTag.className = 'timer';
-            const timerDiv = document.querySelector('.timer');
+
             timerDiv.style.width = '300px';
             timerDiv.style.textAlign = 'center';
             timerDiv.style.margin = '0 auto';
@@ -33,7 +34,7 @@ export class TimerModule extends Module {
 
             timerDiv.innerHTML = `${pad(minutesLeft)} : ${pad(secondsLeft)}`;
 
-            if (seconds == 0) {
+            if (seconds === 0) {
                 clearInterval(countdownTimer);
                 timerDiv.innerHTML = "Таймер завершён!";
 
