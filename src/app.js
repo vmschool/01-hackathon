@@ -11,31 +11,22 @@ let bgChange = new BackgroundModule('bgChange', 'Замена фона');
 let clickModule = new ClicksModule('clickModule', 'Подсчет кликов');
 let showRandomPhoto = new RandomPhotoModule('showRandomPhoto', 'Показать рандомное фото');
 let randomSoundModule = new RandomSoundModule('randomSoundModule', 'Случайный звук');
-
-// showRandomPhoto.trigger();
-// randomSoundModule.trigger();
+const menuItems = [bgChange, clickModule, showRandomPhoto, randomSoundModule];
 
 const contextMenu = new ContextMenu('.menu');
 contextMenu.open();
-contextMenu.add(bgChange.type, bgChange.text);
-contextMenu.add(clickModule.type, clickModule.text);
-contextMenu.add(showRandomPhoto.type, showRandomPhoto.text);
-contextMenu.add(randomSoundModule.type, randomSoundModule.text);
 
-console.log('context', contextMenu.el);
+// Собираем менюшку
+menuItems.forEach(item => {
+    contextMenu.add(item.type, item.text)
+});
+
+//Слушаем клики, вызываем правильный триггер
 contextMenu.el.addEventListener('click', (event) => {
-    if (event.target.id === 'bgChange') {
-        bgChange.trigger();
-    } else if (event.target.id === 'clickModule') {
-        clickModule.trigger();
-    } else if (event.target.id === 'showRandomPhoto') {
-        showRandomPhoto.trigger();
-    } else if (event.target.id === 'randomSoundModule') {
-        randomSoundModule.trigger();
-    }
+    menuItems.forEach(item => {
+        if (event.target.id === item.type) {
+            item.trigger();
+        }
+    })
+    
 })
-
-
-
-
-console.log(bgChange.type);
