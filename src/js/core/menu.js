@@ -1,12 +1,22 @@
+/* eslint no-unused-vars: "off" */
+
 export default class Menu {
-  constructor(selector) {
-    this.el = document.querySelector(selector);
+  constructor() {
+    this.el = document.createElement('ul');
 
     document.body.addEventListener('click', (event) => {
       if (event.target.offsetParent !== this.el) {
         this.close();
       }
     });
+  }
+
+  setPosition(top, left) {
+    throw new Error('"setPosition" method should be implemented in Menu"');
+  }
+
+  get isOpen() {
+    throw new Error('"isOpen" method should be implemented in Menu"');
   }
 
   open() {
@@ -19,5 +29,9 @@ export default class Menu {
 
   add() {
     throw new Error('"add" method should be implemented in Menu"');
+  }
+
+  render() {
+    throw new Error('"render" method should be implemented in Menu"');
   }
 }

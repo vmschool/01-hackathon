@@ -10,7 +10,7 @@ export default class Module {
     this.text = text;
 
     this.el = document.createElement('li');
-    this.el.classList.add('manu-item');
+    this.el.classList.add('menu-item');
     this.el.dataset.type = this.type;
     this.el.textContent = this.text;
   }
@@ -20,6 +20,6 @@ export default class Module {
   }
 
   get element() {
-    return this.el
+    return this.el;
   }
 }
