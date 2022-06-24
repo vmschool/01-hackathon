@@ -8,10 +8,11 @@ export default class Module {
     }
     this.type = type;
     this.text = text;
-    this.el = document.querySelector('li');
+
+    this.el = document.createElement('li');
     this.el.classList.add('manu-item');
-    this.el.dataset.type = `${this.type}`;
-    this.el.textContent = `${this.text}`;
+    this.el.dataset.type = this.type;
+    this.el.textContent = this.text;
   }
 
   trigger() {
