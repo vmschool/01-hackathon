@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+.menu {
+  padding: 0;
+}
+
 body {
   font-size: 14px;
   font-family: "Roboto", sans-serif;

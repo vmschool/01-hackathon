@@ -3,6 +3,8 @@ import ContextMenu from "./menu";
 import { Menu } from "./core/menu";
 
 const headMenu = new Menu("body");
+import { ClicksModule } from "./modules/clicks.module";
+import "bootstrap/dist/css/bootstrap.css";
 
 const contextMenuItems = [
   "Фон",
@@ -13,3 +15,5 @@ const contextMenuItems = [
 ];
 const menu = new ContextMenu("body", ".menu", contextMenuItems);
 menu.render();
+const clicksModule = new ClicksModule(".menu");
+clicksModule.render();
