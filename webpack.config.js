@@ -19,7 +19,7 @@ module.exports = (env, argv) => {
       main: [
         'core-js/stable',
         'regenerator-runtime/runtime',
-        './app.js'
+        './js/app.js'
       ],
     },
     output: {
@@ -30,7 +30,7 @@ module.exports = (env, argv) => {
     resolve: {
       extensions: ['.js'],
       alias: {
-        '@': path.resolve(__dirname, 'src')
+        '@': path.resolve(__dirname, 'src', 'js')
       }
     },
     devServer: {
