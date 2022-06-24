@@ -1,5 +1,8 @@
 import "./styles.css";
 import ContextMenu from "./menu";
+import { Menu } from "./core/menu";
+
+const headMenu = new Menu("body");
 
 const contextMenuItems = [
   "Фон",
