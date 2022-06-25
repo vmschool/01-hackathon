@@ -43,4 +43,4 @@ clicksModule.trigger();
 
 const shapeItem = contextMenuItems.find((item) => item.id === "1");
 const shapeModule = new ShapeModule(".menu", shapeItem);
-shapeModule.addShapeInHTML();
+shapeModule.trigger();
