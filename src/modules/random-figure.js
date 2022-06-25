@@ -1,6 +1,6 @@
 import {Module} from '../core/module'
 
-export class randomFigure extends Module {
+export class RandomFigure extends Module {
     #fictureContainer
     #newElement
     #randomColor
@@ -26,9 +26,8 @@ export class randomFigure extends Module {
           return '#' + Math.floor(Math.random()*16777215).toString(16)
     }
 
-    random() {
+    trigger() {
         this.#updateForm();
-
 
         this.#randomColor = this.#generateColor();
 
@@ -45,9 +44,5 @@ export class randomFigure extends Module {
         ctx.beginPath();
         ctx.arc(this.#randomInteger_size + this.#randomInteger_width, this.#randomInteger_size + this.#randomInteger_height, this.#randomInteger_size, 0, 2 * Math.PI);
         ctx.fill();
-    }
-
-    trigger() {
-        this.random();
     }
 }
