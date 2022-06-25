@@ -4,9 +4,9 @@ import { getRandomColor, random } from "../utils";
 
 
 export class RandomWords extends Module {
-	constructor(number) {
-		this.number = number;
-	}
+	constructor(type, text) {
+        super(type, text);
+      }
 
 	trigger() {
 		const words = [
@@ -82,6 +82,8 @@ export class RandomWords extends Module {
 			}
 		];
 
+        const randomNumber = random(0, words.length);
+
 		const element = document.createElement("div");
 		element.className = "words-container";
 		element.style.cssText = `
@@ -95,14 +97,20 @@ export class RandomWords extends Module {
             top: ${random(20, 400)}px;
         `;
 
-		element.innerHTML = `
-        <blockquote>
-            <p style='padding: 10px'>${words[this.number].text}</p>
-            <cite style='display: block; text-align: right; margin-top: 10px; margin-left: auto; margin-right: 15px; margin-bottom: 5px;'>${
-													words[this.number].name
-												}</cite>
-        </blockquote>    
-    `;
+        element.innerHTML = `
+            <blockquote>
+                <p style='padding: 10px'>${words[randomNumber].text}</p>
+                <cite 
+                    style = '
+                            display: block; 
+                            text-align: right; 
+                            margin-top: 10px; 
+                            margin-left: auto; 
+                            margin-right: 15px; 
+                            margin-bottom: 5px;
+                        '> ${words[randomNumber].name}</cite>
+            </blockquote>    
+        `;
 
 		document.body.append(element);
 		const deleteElement = document.querySelector(".words-container");
