@@ -4,6 +4,7 @@ import { Module } from './core/module';
 export class ContextMenu extends Menu {
     constructor(selector) {
         super(selector);
+        this.modules = [];
     }
 
     open() {
@@ -17,11 +18,7 @@ export class ContextMenu extends Menu {
     add(module) {
         if (module instanceof Module) {
             this.el.innerHTML += module.toHTML();
-            const newModule = document.querySelector(`[data-type="${module.type}"]`);
-            newModule.addEventListener('click', (event) => {
-                module.trigger();
-                this.close();
-            })
+            this.modules.push(module);
         }
-    }
+    } 
 }
