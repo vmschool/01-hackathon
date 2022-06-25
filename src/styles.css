@@ -61,17 +61,18 @@ body {
   visibility: hidden;
 }
 
-.timer-container {
+/* .timer-container {
   position: absolute;
   top: 0;
   right: 0;
   margin: 10px;
   font-family: inherit;
-}
+} */
 
 .timer-span {
   color: #646464;
   font-size: 30px;
+  display: inline-block;
 }
 .timer-button {
   display: inline-block;

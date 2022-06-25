@@ -21,7 +21,10 @@ document.body.addEventListener('contextmenu', (event) => {
   menu.open(event);
 });
 
-menuHTML.addEventListener('click', (event) =>
-  handleMenuClick(event, menuModules, menuHTML)
-);
+menuHTML.addEventListener('click', (event) => {
+  document
+    .querySelectorAll(`body > *:not(${MENU_SELECTOR})`)
+    .forEach((e) => e.remove());
+  handleMenuClick(event, menuModules, menuHTML);
+});
 //#endregion

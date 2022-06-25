@@ -37,3 +37,52 @@ export const ELEMENTS = [
   },
 ];
 //#endregion
+
+export const timerElements = [
+  {
+    tag: 'form',
+    content: '',
+    attr: {
+      class: 'timer-input_form',
+    },
+    parent: 'cont',
+  },
+  {
+    tag: 'input',
+    content: '',
+    attr: {
+      id: 'timer-input',
+      type: 'time',
+      step: '1',
+      value: '00:00:00',
+      name: 'timerInput',
+    },
+    parent: 'form',
+  },
+  {
+    tag: 'button',
+    content: 'Старт',
+    attr: {
+      class: 'timer-button',
+      type: 'submit',
+    },
+    parent: 'form',
+  },
+  {
+    tag: 'button',
+    content: 'Отмена',
+    attr: {
+      class: 'canсel-button',
+      type: 'button',
+    },
+    parent: 'form',
+  },
+  {
+    tag: 'span',
+    content: '',
+    attr: {
+      class: 'timer-span hidden',
+    },
+    parent: 'cont',
+  },
+];
