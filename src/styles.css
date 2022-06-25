@@ -44,3 +44,26 @@ body {
 .menu .menu-item:hover {
   background: #343434;
 }
+
+.clicks-timer-element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -125px 0 0 -125px;
+  background-color: #1b1a1a;
+  transition: 1s;
+}
+
+.clicks-timer-element:hover {
+  border-radius: 200px;
+}
+
+.timer-name-head {
+  font-size: 100px;
+  color: #fff;
+}

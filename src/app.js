@@ -2,6 +2,8 @@ import "./styles.css";
 import ContextMenu from "./menu";
 import RandomSounds from "./modules/random.sound";
 import { Module } from "./core/module";
+import { ClicksModule } from "./modules/clicks.module";
+import "bootstrap/dist/css/bootstrap.css";
 
 const contextMenuItems = [
 	{ name: "Аналитика кликов", id: 1 },
@@ -28,7 +30,7 @@ const menuList = document.querySelector('.menu')
 menuList.addEventListener('click', event => {
 	const { target } = event
 
-	if (target.dataset.type === "4") {
+	if (target.dataset.type === 4) {
 
 		const randomSound = new RandomSounds('mp3', 'audio')
 		randomSound.trigger()
@@ -37,5 +39,6 @@ menuList.addEventListener('click', event => {
 
 
 
-
-
+const clickItem = contextMenuItems.find((item) => item.id === "2");
+const clicksModule = new ClicksModule(".menu", clickItem);
+clicksModule.trigger();
