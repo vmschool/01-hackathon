@@ -95,3 +95,21 @@ body {
     width: 100px;
     height: 102.67px;
 }
+
+
+
+.timer {
+    /* background: rebeccapurple;
+    z-index: 5; */
+    display: none;
+}
+
+.custom-message {
+    /* background: #343434;
+    z-index: 5; */
+    display: none;
+}
+
+.active {
+    display: block;
+}
