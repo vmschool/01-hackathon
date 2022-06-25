@@ -10,3 +10,15 @@ export function getRandomColor() {
   }
   return color
 }
+
+export const soundsLinks = [
+  'https://rpg.hamsterrepublic.com/wiki-images/d/d7/Oddbounce.ogg',
+  'https://rpg.hamsterrepublic.com/wiki-images/7/72/Metal_Hit.ogg',
+  'https://rpg.hamsterrepublic.com/wiki-images/d/db/Crush8-Bit.ogg',
+  'https://rpg.hamsterrepublic.com/wiki-images/2/21/Collision8-Bit.ogg',
+  'http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/explosion.ogg',
+  'http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/missile.ogg',
+  'http://commondatastorage.googleapis.com/codeskulptor-demos/pyman_assets/extralife.ogg',
+  'http://commondatastorage.googleapis.com/codeskulptor-demos/pyman_assets/eatpellet.ogg',
+  'http://commondatastorage.googleapis.com/codeskulptor-assets/jump.ogg'
+]
