@@ -1,13 +1,13 @@
 import "./styles.css";
 
 import { ContextMenu } from "./menu";
-// import { TimerModule } from "./modules/timer.module";
+import { TimerModule } from "./modules/timer.module";
 import { ClicksModule } from "./modules/clicks.module";
 
 const contextMenu = new ContextMenu("ul");
 // const timerModule = new TimerModule("timer", "Обратный отсчёт");
-const clicks = new ClicksModule("clicker", "Счетчик сликов");
-contextMenu.add(timerModule);
+const clicks = new ClicksModule("click", "Счетчик кликов");
+contextMenu.add(clicks);
 
 document.body.addEventListener("contextmenu", (event) => {
   event.preventDefault();
