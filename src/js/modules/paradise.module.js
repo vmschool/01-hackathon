@@ -1,5 +1,5 @@
 import Module from '../core/module';
-import AudioBoxScene from './paradise/audiobox.scene';
+import AudioBoxScene from '../core/audiobox.scene';
 import AUDIO from '../../audio/stas-mikhajjlov-vsjo-dlja-tebja.mp3';
 import STAS_IMG from '../../img/stas/stas_1.jpg';
 import FLOWERS_IMG from '../../img/flowers.jpg';

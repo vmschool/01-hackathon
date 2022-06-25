@@ -16,3 +16,18 @@ export function resizeRendererToDisplaySize(renderer) {
   }
   return needResize;
 }
+
+export function moveAndResizeElement(element, top, left, height = 0, width = 0) {
+  const { style } = element;
+  style.height = `${height}px`;
+  style.width = `${width}px`;
+
+  style.top = `${top - height / 2}px`;
+  style.left = `${left - width / 2}px`;
+}
+
+export function moveElement(element, top, left) {
+  const { style } = element;
+  style.top = `${top}px`;
+  style.left = `${left}px`;
+}

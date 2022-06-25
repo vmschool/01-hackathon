@@ -3,16 +3,14 @@
 export default class Menu {
   constructor() {
     this.el = document.createElement('ul');
-
-    document.body.addEventListener('click', (event) => {
-      if (event.target.offsetParent !== this.el) {
-        this.close();
-      }
-    });
   }
 
   setPosition(top, left) {
     throw new Error('"setPosition" method should be implemented in Menu"');
+  }
+
+  isModuleTarget(module) {
+    throw new Error('"isModuleTarget" method should be implemented in Menu"');
   }
 
   get isOpen() {

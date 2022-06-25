@@ -53,3 +53,16 @@ body {
 .position-absolute {
   position: absolute;
 }
+
+.click-effect {
+  z-index: 10000;
+  position: absolute;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.background-transparent {
+  background-color: transparent;
+}

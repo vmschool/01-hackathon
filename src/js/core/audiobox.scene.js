@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { resizeRendererToDisplaySize } from '../../utils';
+import { resizeRendererToDisplaySize } from '../utils';
 
 export default class AudioBoxScene {
   constructor(cubeTexture, skyBoxTextures, audio) {
