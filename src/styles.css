@@ -40,3 +40,46 @@ body {
 .menu .menu-item:hover {
   background: #343434;
 }
+
+.timer-input_form {
+  display: block;
+  font-size: 30px;
+  color: red;
+  font-family: inherit;
+  margin: auto;
+}
+
+#timer-input {
+  display: block;
+  color: #5b5b5b;
+  border: none;
+  font-size: 30px;
+  font-family: inherit;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.timer-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  font-family: inherit;
+}
+
+.timer-span {
+  color: #646464;
+  font-size: 30px;
+}
+.timer-button {
+  display: inline-block;
+  font-size: 20px;
+}
+
+.cansel-button {
+  display: inline-block;
+  margin-left: 20px;
+  font-size: 20px;
+}

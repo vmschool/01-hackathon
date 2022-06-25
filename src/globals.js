@@ -22,7 +22,7 @@ export const ELEMENTS = [
   },
   {
     name: 'timer',
-    text: 'Считать клики (за&nbsp;7&nbsp;секунд)',
+    text: 'Таймер отсчета',
     type: TimerModule,
   },
   {
