@@ -7,11 +7,11 @@ import { ContextMenu } from './menu';
 import { BackgroundModule } from './modules/background.module';
 import { ClicksModule } from './modules/clicks.module';
 import { ShapeModule } from './modules/shape.module';
-import { randomFigure } from './modules/random-figure';
+import { RandomFigure } from './modules/random-figure';
 
 const contextMenu = new ContextMenu('.menu');
 
-contextMenu.add(new randomFigure());                 
+contextMenu.add(new RandomFigure());                 
 
 // contextMenu.add(new BackgroundModule());
 // contextMenu.add(new ClicksModule());
