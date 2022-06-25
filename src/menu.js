@@ -11,14 +11,14 @@ export class ContextMenu extends Menu {
         this.#addedModules = {}
     }
 
-    #open() {
+    open() {
         const menuPosition = getPosition()
         this.el.style.left = `${menuPosition.x}px`
         this.el.style.top = `${menuPosition.y}px`
         this.el.style.display = 'block'
     }
 
-    #close() {
+    close() {
         this.el.style.display = 'none'
     }
 
@@ -30,7 +30,7 @@ export class ContextMenu extends Menu {
     #showMenu() {
         document.body.addEventListener('contextmenu', (event) => {
             event.preventDefault()
-            this.#open()
+            this.open()
         })
     }
 
@@ -38,7 +38,7 @@ export class ContextMenu extends Menu {
         this.el.addEventListener('click', (event) => {
             const selectedModule = event.target.dataset.type
             this.#addedModules[selectedModule].trigger()
-            this.#close()
+            this.close()
         })
     }
 }
