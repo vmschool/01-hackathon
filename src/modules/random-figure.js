@@ -1,8 +1,6 @@
-import { Module } from '../core/module'
-import { random } from "../utils";
+import {Module} from '../core/module'
 
-
-export class randomFictureModule extends Module {
+export class randomFigure extends Module {
     #fictureContainer
     #newElement
     #randomColor
@@ -11,6 +9,7 @@ export class randomFictureModule extends Module {
     #randomInteger_height
 
     constructor() {
+        super('figure', 'Создать фигура');
         this.#fictureContainer = document.querySelector('body');
     }
 
@@ -19,23 +18,17 @@ export class randomFictureModule extends Module {
         this.#newElement.id = 'canvas';
         this.#fictureContainer.append(this.#newElement);
     }
-    // #randomInteger(min, max) {
-    //     const rand = min - 0.5 + Math.random() * (max - min + 1);
-    //     return Math.round(rand);
-    // }
-    // #generateColor() {
-    //       return '#' + Math.floor(Math.random()*16777215).toString(16)
-    // }
-    toHTML() {
-        const uList = document.querySelector('#menu');
-        const newElement = uList.insertAdjacentHTML(
-          "afterend",
-          `<li id="color" class="menu-item" data-type="${this.type}">${this.text}</li>`
-        );
-        return newElement;
+    #randomInteger(min, max) {
+        const rand = min - 0.5 + Math.random() * (max - min + 1);
+        return Math.round(rand);
     }
-    randomFigure() {
+    #generateColor() {
+          return '#' + Math.floor(Math.random()*16777215).toString(16)
+    }
+
+    random() {
         this.#updateForm();
+
 
         this.#randomColor = this.#generateColor();
 
@@ -53,10 +46,8 @@ export class randomFictureModule extends Module {
         ctx.arc(this.#randomInteger_size + this.#randomInteger_width, this.#randomInteger_size + this.#randomInteger_height, this.#randomInteger_size, 0, 2 * Math.PI);
         ctx.fill();
     }
+
     trigger() {
-        const btn = document.querySelector("body");
-        btn.addEventListener("click", () => {
-          document.body.style.backgroundColor = randomFigure();
-        });
+        this.random();
     }
 }
