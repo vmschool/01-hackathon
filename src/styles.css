@@ -41,3 +41,8 @@ body {
 .menu .menu-item:hover {
     background: #343434;
 }
+
+#box-conteiner {
+    transform: scale();
+    transition: transform .3s ease-in-out;
+}
