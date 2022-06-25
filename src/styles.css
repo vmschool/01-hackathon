@@ -45,9 +45,7 @@ body {
     padding: 20px;
     display: flex;
     position: fixed;
-    /* border: 1px solid #5776b9; */
     border-radius: 5px;
-    /* box-shadow: 0 0 2px #5776b9, 0 0 10px #5776b9; */
 }
 
 .timer-text{
@@ -55,5 +53,16 @@ body {
     align-items: center;
     margin: 0 auto;
     font-size: 5rem;
-    /* text-shadow: 0 0 2px #5776b9, 0 0 5px #5776b9; */
+}
+
+.image-meme{
+    position: relative;
+    left: 50%;
+    display: block;
+    /* padding-right:  30px; */
+    /* margin: 0 auto; */
+}
+
+.hidden{
+    display: none;
 }

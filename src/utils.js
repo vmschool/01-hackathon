@@ -4,13 +4,12 @@ export function random(min, max) {
 
 export function randomColor() {
   const colors = ['#5776b9', '#d9051b', '#ffdb03', '#42a60b', '#fee610', '#fc614d', '#63bb43', '#71a9d8'];
-  // const index = Math.floor(Math.random() * colors.length);
   const index = random(0, colors.length);
   return colors[index];
 }
 
-export function addZero(number){
-  if (number<10){
+export function addZero(number) {
+  if (number < 10) {
     number = `0${number}`;
   }
   return number;
