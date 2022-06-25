@@ -114,9 +114,8 @@ export class RandomWords extends Module {
 
 		document.body.append(element);
 		const deleteElement = document.querySelector(".words-container");
-		let timerId;
 		if (deleteElement) {
-			timerId = setInterval(() => {
+			const timerId = setInterval(() => {
 				deleteElement.remove();
 				clearInterval(timerId);
 			}, 2500);		
