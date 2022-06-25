@@ -14,3 +14,7 @@ export function addZero(number) {
   }
   return number;
 }
+
+export function addEventContainer(){
+  const eventContainer = document.createElement('div');
+}
