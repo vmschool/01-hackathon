@@ -1,12 +1,12 @@
 
-import {Module} from '../core/module';
+import {Module} from "../core/module";
 import { getRandomColor, random } from "../utils";
 
 
 export class RandomWords extends Module {
 	constructor(type, text) {
         super(type, text);
-      }
+    }
 
 	trigger() {
 		const words = [
@@ -114,10 +114,15 @@ export class RandomWords extends Module {
 
 		document.body.append(element);
 		const deleteElement = document.querySelector(".words-container");
+		let timerId;
 		if (deleteElement) {
-			setInterval(() => {
+			timerId = setInterval(() => {
 				deleteElement.remove();
-			}, 2500);
+				clearInterval(timerId);
+			}, 2500);		
 		}
+
+		
+			
 	}
 }
