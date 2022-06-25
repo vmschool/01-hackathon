@@ -41,7 +41,6 @@ body {
   background: #343434;
 }
 
-<<<<<<< HEAD
 .scene {
   width: 100%;
   height: 100%;
@@ -51,8 +50,6 @@ body {
 .hide {
   display: none;
 }
-=======
 .position-absolute {
   position: absolute;
 }
->>>>>>> develop

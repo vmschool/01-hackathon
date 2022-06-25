@@ -5,7 +5,7 @@ import BackgroundModule from './modules/background.module';
 import ParadiseModule from './modules/paradise.module';
 import ShapesModule from './modules/shapes.module';
 
-const moduleNames = ['empty', 'changeBG', 'shapes'];
+const moduleNames = ['paradise', 'changeBG', 'shapes'];
 
 const moduleClasses = {
   changeBG: BackgroundModule,
@@ -15,7 +15,7 @@ const moduleClasses = {
 
 const moduleTexts = {
   changeBG: 'сменить фон',
-  paradise: 'попасть в рай или уйти',
+  paradise: 'попасть в рай или вернуться',
   shapes: 'создать фигуру',
 };
 
