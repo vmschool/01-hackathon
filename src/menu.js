@@ -19,6 +19,8 @@ export class ContextMenu extends Menu {
 
     document.body.innerHTML = ''
     document.body.style = 'default'
+    this.el.innerHTML = ''
+    this.render()
     document.body.append(this.el)
 
     this.el.classList.add('open')
