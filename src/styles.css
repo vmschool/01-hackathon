@@ -20,12 +20,13 @@ body {
     width: 150px;
     background: #1b1a1a;
     border-radius: 5px;
-    display: none;
     list-style: none;
+    visibility: hidden;
 }
 
 .menu.open {
     display: block;
+    visibility: visible;
 }
 
 .menu .menu-item {
