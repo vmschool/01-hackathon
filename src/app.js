@@ -5,17 +5,14 @@ import { TimerModule } from './modules/timer.module';
 import { CustomMessage } from './modules/custom_message.module';
 
 import { BackgroundModule } from './modules/background.module';
-import { addEventContainer } from './utils';
-import { clearEventContainer } from './utils';
-
 
 const contextMenu = new ContextMenu('ul');
 const timerModule = new TimerModule('timer', 'Обратный отсчёт');
-const cMessageModule = new CustomMessage('custom message', 'Кастомное сообщение');
+const cMessageModule = new CustomMessage('custom-message', 'Кастомное сообщение');
 contextMenu.add(timerModule);
 contextMenu.add(cMessageModule);
 
-const backgroundModule = new BackgroundModule('background', 'фон')
+const backgroundModule = new BackgroundModule('background', 'Фон')
 contextMenu.add(backgroundModule);
 
 document.body.addEventListener('contextmenu', (event) => {
@@ -29,12 +26,18 @@ document.body.addEventListener('contextmenu', (event) => {
 
 contextMenu.el.addEventListener('click', (event) => {
     const { target } = event;
-
-    clearEventContainer();
     const selectModule = target.dataset.type;
     const runApp = contextMenu.modules.find((module) => module.type === selectModule);
-    addEventContainer();
     runApp.trigger();
     contextMenu.close();
+    const previousContainer = document.querySelector('.active');
+    if (previousContainer) {
+        previousContainer.classList.remove('active');
+    }
+    const selectContainer = document.querySelector(`.${selectModule}`);
+    selectContainer.classList.add('active');
+
+    console.log(selectContainer);
+
 })
 

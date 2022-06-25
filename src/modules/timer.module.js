@@ -2,6 +2,7 @@ import { Module } from '../core/module'
 import { randomColor } from '../utils'
 import { addZero } from '../utils'
 import JS_MEME from '../assets/meme1.jpg'
+import { addEventContainer } from '../utils'
 
 export class TimerModule extends Module {
     #timerWindow
@@ -18,20 +19,19 @@ export class TimerModule extends Module {
         this.#minutes = '0';
         this.#seconds;
         this.#color = randomColor();
-        this.#image= document.createElement('img');
+        this.#image = document.createElement('img');
     }
 
     trigger() {
-        const hasTimerWindow = document.querySelector('.timer-window');
-        if (!hasTimerWindow) {
-            this.#render();
-            this.#decreaseTime();
-        }
+        addEventContainer(this.type);
+        this.#render();
+        this.#decreaseTime();
     }
 
     #render() {
         this.#seconds = '5';
-        const eventContainer = document.querySelector('.event-container');
+        const eventContainer = document.querySelector(`.${this.type}`);
+        console.log(eventContainer);
         eventContainer.style.background = `black`;
         this.#timerWindow.className = 'timer-window';
         this.#timerWindow.style.border = `1px solid ${this.#color}`;
@@ -44,7 +44,7 @@ export class TimerModule extends Module {
 
         this.#image.className = 'image-meme';
         this.#image.classList.add('hidden');
-        this.#image.src = JS_MEME;   
+        this.#image.src = JS_MEME;
 
         this.#timerWindow.append(this.#timerText);
         eventContainer.append(this.#timerWindow, this.#image);
@@ -53,7 +53,7 @@ export class TimerModule extends Module {
     #decreaseTime() {
         let time = setInterval(() => {
             --this.#seconds;
-            if(this.#seconds<=0){
+            if (this.#seconds <= 0) {
                 clearInterval(time);
                 console.log('завершено')
                 this.#image.classList.remove('hidden');

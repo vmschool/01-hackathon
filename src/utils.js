@@ -15,15 +15,12 @@ export function addZero(number) {
   return number;
 }
 
-export function addEventContainer() {
-  const eventContainer = document.createElement('div');
-  eventContainer.className = 'event-container';
-  document.body.append(eventContainer);
-}
-
-export function clearEventContainer() {
-  const eventContainer = document.querySelector('.event-container');
-  if (eventContainer) {
-    eventContainer.remove();
+export function addEventContainer(type) {
+  const container = document.querySelector(`.${type}`);
+  if (!container) {
+    const eventContainer = document.createElement('div');
+    eventContainer.className = 'event-container';
+    eventContainer.classList.add(type);
+    document.body.append(eventContainer);
   }
 }

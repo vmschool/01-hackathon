@@ -7,9 +7,15 @@
     box-sizing: border-box;
 }
 
-body, .event-container {
+body {
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    width: 100%;
+    /* padding: 2rem; */
+}
+
+.event-container{
     height: 100vh;
     width: 100%;
     padding: 2rem;
@@ -60,22 +66,21 @@ body, .event-container {
     position: relative;
     left: 50%;
     display: block;
-    /* padding-right:  30px; */
-    /* margin: 0 auto; */
 }
 
 .hidden{
     display: none;
 }
 
-.weather_block {
+.weather-block {
     font-family: 'Montserrat', sans-serif;
     width: 260px;
     background-color: rgb(255, 255, 255);
     box-shadow: 2px 2px 15px 1px rgb(220, 220, 220);
     border-radius: 15px;
     padding: 40px 40px;
-    margin: 20px;
+    margin: 0 auto;
+    margin-bottom: 20px;
 }
 
 .icon_and_temp_block {
@@ -89,4 +94,22 @@ body, .event-container {
 .weather_icon {
     width: 100px;
     height: 102.67px;
+}
+
+
+
+.timer {
+    /* background: rebeccapurple;
+    z-index: 5; */
+    display: none;
+}
+
+.custom-message {
+    /* background: #343434;
+    z-index: 5; */
+    display: none;
+}
+
+.active {
+    display: block;
 }
