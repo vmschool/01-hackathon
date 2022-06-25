@@ -1,6 +1,8 @@
 import {Menu} from './core/menu'
 import { renderMenu, closeMenu } from './utils'
 
+// import * as modules from './modules'
+
 // должен быть импорт всех модулей
 const modules = [
     { type: 1, text: 'BackgroundModule' },
@@ -11,24 +13,31 @@ const modules = [
 ]
 
 export class ContextMenu extends Menu {
+    constructor(selector) {
+        super(selector)
+
+        this.open()
+        this.close()
+    }
 
     open() {
         document.body.addEventListener('contextmenu', event => {
             event.preventDefault() // отключаем функционал
 
+            this.close()
+
             const { clientX: mouseX, clientY: mouseY } = event //позиции клика
 
-            closeMenu()
-
             renderMenu(modules, mouseX, mouseY)
+
         })
     }
 
     close() {
-        document.body.addEventListener('click', event => {
-            event.preventDefault()
+        const openMenu = document.body.getElementsByClassName('open')
 
-            closeMenu()
-        })
+        while (openMenu.length > 0) {
+            openMenu[0].remove() // закрываем открытое меню, если было открыто ранее
+        }
     }
 }

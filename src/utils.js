@@ -7,7 +7,6 @@ export function renderMenu(modules, positionX, positionY) {
     menuHTML.className = 'menu'
     menuHTML.classList.add('open')
     menuHTML.style.transform = 'scale(0)'
-    menuHTML.style.transformOrigin = 'top left'
 
   modules.forEach((el) => { // создаем элементы меню
     const modulesHTML = document.createElement('li')
@@ -19,24 +18,34 @@ export function renderMenu(modules, positionX, positionY) {
 
   menuHTML.style.top = `${positionY}px` // позиция появления по вертикали
   menuHTML.style.left = `${positionX}px` // позиция появления по горизонтали
+  menuHTML.style.transformOrigin = 'top left'
 
   document.body.append(menuHTML)
 
-  console.log('menuHTML.clientHeight',menuHTML.clientHeight) // нужно доработать
-  console.log('menuHTML.clientWidth',menuHTML.clientWidth)
-  console.log('innerHeight',window.innerHeight)
-  console.log('innerWidth',window.innerWidth)
+  /*Расчет позиции появления при наложении*/
 
   setTimeout(() => {
+
     menuHTML.style.transform = 'scale(1)'
     menuHTML.style.transition = 'transform 180ms ease-in-out' //добавляем плавность появления
+
+    const menuHeight = menuHTML.clientHeight
+    const menuWidth = menuHTML.clientWidth
+    const windowWidth = window.innerWidth
+    const windowHeight = window.innerHeight
+
+    if ((menuHeight + positionY) > windowHeight && (menuWidth + positionX) > windowWidth) {
+        menuHTML.style.top = `${positionY - menuHeight}px`
+        menuHTML.style.left = `${positionX - menuWidth}px`
+        menuHTML.style.transformOrigin = 'bottom right'
+
+    } else if ((menuHeight + positionY) > windowHeight) {
+        menuHTML.style.top = `${positionY - menuHeight}px`
+        menuHTML.style.transformOrigin = 'bottom left'
+
+    } else if ((menuWidth + positionX) > windowWidth) {
+        menuHTML.style.left = `${positionX - menuWidth}px`
+        menuHTML.style.transformOrigin = 'top right'
+    }
   },0)
-}
-
-export function closeMenu() {
-  const openMenu = document.body.getElementsByClassName('open')
-
-  while (openMenu.length > 0) {
-    openMenu[0].remove() // закрываем открытое меню, если было открыто ранее
-  }
 }
