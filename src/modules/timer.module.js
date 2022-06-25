@@ -17,19 +17,26 @@ export class TimerModule extends Module {
         this.#timerWindow = document.createElement('div');
         this.#timerText = document.createElement('span');
         this.#minutes = '0';
-        this.#seconds;
+        this.#seconds = '5';
         this.#color = randomColor();
         this.#image = document.createElement('img');
     }
 
     trigger() {
-        addEventContainer(this.type);
-        this.#render();
-        this.#decreaseTime();
+        console.log(this.#timerText.textContent);
+        const eventContainer = document.querySelector(`.${this.type}`);
+        console.log(eventContainer);
+        if (!eventContainer) {
+            this.#render();
+            this.#decreaseTime();
+        }
+        if (this.#timerText.textContent === 'time is up') {
+            this.#decreaseTime();
+        }
     }
 
     #render() {
-        this.#seconds = '5';
+        addEventContainer(this.type);
         const eventContainer = document.querySelector(`.${this.type}`);
         console.log(eventContainer);
         eventContainer.style.background = `black`;
@@ -43,7 +50,7 @@ export class TimerModule extends Module {
         this.#timerText.style.textShadow = `0 0 2px ${this.#color}, 0 0 5px ${this.#color}`;
 
         this.#image.className = 'image-meme';
-        this.#image.classList.add('hidden');
+        // this.#image.classList.add('hidden');
         this.#image.src = JS_MEME;
 
         this.#timerWindow.append(this.#timerText);
@@ -51,15 +58,17 @@ export class TimerModule extends Module {
     }
 
     #decreaseTime() {
+        this.#image.classList.add('hidden');
+        this.#seconds = '5';
         let time = setInterval(() => {
-            --this.#seconds;
             if (this.#seconds <= 0) {
                 clearInterval(time);
                 console.log('завершено')
                 this.#image.classList.remove('hidden');
                 this.#timerText.textContent = 'time is up';
             } else {
-                this.#timerText.textContent = `${addZero(this.#minutes)}:${addZero(this.#seconds)}`
+                this.#timerText.textContent = `${addZero(this.#minutes)}:${addZero(this.#seconds)}`;
+                --this.#seconds;
             }
         }, 1000)
     }
