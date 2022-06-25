@@ -6,12 +6,12 @@ import { ClicksModule } from "./modules/clicks.module";
 import "bootstrap/dist/css/bootstrap.css";
 
 const contextMenuItems = [
-	{ name: "Аналитика кликов", id: 1 },
-	{ name: "Случайная фигура", id: 2 },
-	{ name: "Случайный фон", id: 3 },
-	{ name: "Случайный звук", id: 4 },
-	{ name: "Кастомное сообщение", id: 5 },
-	{ name: "Таймер отсчета", id: 6 },
+	{ name: "Аналитика кликов", id: "1" },
+	{ name: "Случайная фигура", id: "2" },
+	{ name: "Случайный фон", id: "3" },
+	{ name: "Случайный звук", id: "4" },
+	{ name: "Кастомное сообщение", id: "5" },
+	{ name: "Таймер отсчета", id: "6" },
 ];
 
 contextMenuItems.forEach((item) => {
@@ -30,7 +30,7 @@ const menuList = document.querySelector('.menu')
 menuList.addEventListener('click', event => {
 	const { target } = event
 
-	if (target.dataset.type === 4) {
+	if (target.dataset.type === "4") {
 
 		const randomSound = new RandomSounds('mp3', 'audio')
 		randomSound.trigger()
