@@ -8,8 +8,10 @@ contextMenu.add(timerModule);
 
 document.body.addEventListener('contextmenu', (event) => {
     event.preventDefault();
-    contextMenu.el.style.top = `${event.clientY}px`;
-    contextMenu.el.style.left = `${event.clientX}px`;
+    let elemX = document.elementFromPoint(event.clientX + 150, event.clientY);
+    let elemY = document.elementFromPoint(event.clientX, event.clientY + 50);
+    elemX === null ? contextMenu.el.style.left = `${event.clientX - 150}px` : contextMenu.el.style.left = `${event.clientX}px`;
+    elemY === null ? contextMenu.el.style.top = `${event.clientY - 50}px` : contextMenu.el.style.top = `${event.clientY}px`;
     contextMenu.open();
 })
 
