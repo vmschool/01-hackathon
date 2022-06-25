@@ -9,8 +9,7 @@ module.exports = (env, argv) => {
   console.log('isProd', isProd);
   console.log('isDev', isDev);
 
-  const filename = (ext) =>
-    isProd ? `[name].[contenthash].bundle.${ext}` : `[name].bundle.${ext}`;
+  const filename = (ext) => (isProd ? `[name].[contenthash].bundle.${ext}` : `[name].bundle.${ext}`);
 
   return {
     target: 'web',
@@ -48,6 +47,18 @@ module.exports = (env, argv) => {
         {
           test: /\.css$/i,
           use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        },
+        {
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          type: 'asset/resource',
+        },
+        {
+          test: /\.mp3$/i,
+          use: [
+            {
+              loader: 'file-loader',
+            },
+          ],
         },
         {
           test: /\.m?js$/,

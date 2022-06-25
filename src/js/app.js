@@ -1,19 +1,19 @@
 import Application from './application';
 import ModuleFactory from './module.factory';
 import ContextMenu from './menu';
-import EmptyModule from './modules/empty.module';
 import BackgroundModule from './modules/background.module';
+import ParadiseModule from './modules/paradise.module';
 
-const moduleNames = ['empty', 'changeBG'];
+const moduleNames = ['changeBG', 'paradise'];
 
 const moduleClasses = {
-  empty: EmptyModule,
   changeBG: BackgroundModule,
+  paradise: ParadiseModule,
 };
 
 const moduleTexts = {
-  empty: 'пустой',
   changeBG: 'сменить фон',
+  paradise: 'попасть в рай или уйти',
 };
 
 const moduleFactory = new ModuleFactory(moduleClasses, moduleTexts);
