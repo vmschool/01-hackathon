@@ -1,32 +1,43 @@
 import { Module } from '../core/module';
 import { randomShape } from '../assets/shape';
 import { addEventContainer } from '../utils';
+import { random } from '../utils';
 
 export class ShapeModule extends Module {
+    #body
+    #width
+    #height
     constructor(type, text) {
         super(type, text)
+        this.#body = document.querySelector('body');
+        this.#width = document.documentElement.clientWidth;
+        this.#height = document.documentElement.clientHeight;
     }
 
     #createFigure() {
-        const eventContainer = document.querySelector(`.${this.type}`);
+
+        const eventContainer = this.#body.querySelector(`.${this.type}`);
         const svgContainer = document.createElement('div');
 
         svgContainer.setAttribute('id', 'svg-container');
         svgContainer.className = 'wrapper-svg  exmpl-svg ';
         svgContainer.innerHTML = randomShape();
+        svgContainer.style.left = `${random(30, this.#width - 300)}px`;
+        svgContainer.style.top = `${random(30, this.#height - 300)}px`;
+        
 
         return eventContainer.append(svgContainer);
     }
 
-    #remove() {
-        const eventContainer = document.querySelector(`.${this.type}`);
+    #autoRemove() {
+        const eventContainer = this.#body.querySelector(`.${this.type}`);
         setTimeout(() => {
             eventContainer.remove()
         }, 3000)
     }
 
-    #toggle() {
-        const svgContainer = document.querySelector('#svg-container');
+    #showFugure() {
+        const svgContainer = this.#body.querySelector('#svg-container');
         if (svgContainer) {
             svgContainer.remove();
             this.#createFigure();
@@ -37,7 +48,7 @@ export class ShapeModule extends Module {
 
     trigger() {
         addEventContainer(this.type);
-        this.#toggle();
-        this.#remove();
+        this.#showFugure();
+        this.#autoRemove();
     }
 }
