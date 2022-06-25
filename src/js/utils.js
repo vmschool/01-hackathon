@@ -3,7 +3,7 @@ export function random(min, max) {
 }
 
 export function getRandomStringRGB() {
-  return `rgb(${random(255, 0)}, ${random(255, 0)}, ${random(255, 0)})`;
+  return `rgb(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})`;
 }
 
 export function resizeRendererToDisplaySize(renderer) {
