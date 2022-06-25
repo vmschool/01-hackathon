@@ -22,18 +22,17 @@ export class ShapeModule extends Module {
         svgContainer.setAttribute('id', 'svg-container');
         svgContainer.className = 'wrapper-svg  exmpl-svg ';
         svgContainer.innerHTML = randomShape();
-        svgContainer.style.left = `${random(30, this.#width - 300)}px`;
-        svgContainer.style.top = `${random(30, this.#height - 300)}px`;
+        svgContainer.style.left = `${random(30, this.#width - 150)}px`;
+        svgContainer.style.top = `${random(30, this.#height - 150)}px`;
         
-
         return eventContainer.append(svgContainer);
     }
 
     #autoRemove() {
         const eventContainer = this.#body.querySelector(`.${this.type}`);
         setTimeout(() => {
-            eventContainer.remove()
-        }, 3000)
+            eventContainer.remove();
+        }, 4000)
     }
 
     #showFugure() {
