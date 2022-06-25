@@ -23,7 +23,7 @@ export class ShapeModule extends Module {
     return block;
   }
 
-  addShapeInHTML() {
+  trigger() {
     this.itemsList.addEventListener("click", (event) => {
       const { target } = event;
       if (target.dataset.type === this.item.id) {
