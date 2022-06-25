@@ -18,8 +18,19 @@ export class ShapeModule extends Module {
         return eventContainer.append(svgContainer);
     }
 
+    #toggle() {
+        const svgContainer = document.querySelector('#svg-container');
+
+        if (svgContainer) {
+            svgContainer.remove();
+            this.#createFigure();
+        } else {
+            this.#createFigure();
+        }
+    }
+
     trigger() {
         addEventContainer(this.type);
-        this.#createFigure();
+        this.#toggle();
     }
 }
