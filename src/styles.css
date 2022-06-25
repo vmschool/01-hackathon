@@ -7,7 +7,7 @@
     box-sizing: border-box;
 }
 
-body {
+body, .event-container {
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
     height: 100vh;

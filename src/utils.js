@@ -14,3 +14,16 @@ export function addZero(number) {
   }
   return number;
 }
+
+export function addEventContainer() {
+  const eventContainer = document.createElement('div');
+  eventContainer.className = 'event-container';
+  document.body.append(eventContainer);
+}
+
+export function clearEventContainer() {
+  const eventContainer = document.querySelector('.event-container');
+  if (eventContainer) {
+    eventContainer.remove();
+  }
+}

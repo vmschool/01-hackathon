@@ -16,7 +16,7 @@ export class TimerModule extends Module {
         this.#timerWindow = document.createElement('div');
         this.#timerText = document.createElement('span');
         this.#minutes = '0';
-        this.#seconds = '5';
+        this.#seconds;
         this.#color = randomColor();
         this.#image= document.createElement('img');
     }
@@ -30,7 +30,9 @@ export class TimerModule extends Module {
     }
 
     #render() {
-        document.body.style.background = `black`;
+        this.#seconds = '5';
+        const eventContainer = document.querySelector('.event-container');
+        eventContainer.style.background = `black`;
         this.#timerWindow.className = 'timer-window';
         this.#timerWindow.style.border = `1px solid ${this.#color}`;
         this.#timerWindow.style.boxShadow = `0 0 2px ${this.#color}, 0 0 10px ${this.#color}`
@@ -45,25 +47,20 @@ export class TimerModule extends Module {
         this.#image.src = JS_MEME;   
 
         this.#timerWindow.append(this.#timerText);
-        document.body.append(this.#timerWindow, this.#image);
+        eventContainer.append(this.#timerWindow, this.#image);
     }
 
     #decreaseTime() {
-        let time;
-        time = setInterval(() => {
-            this.#timerText.textContent = this.#setTime();
+        let time = setInterval(() => {
+            --this.#seconds;
+            if(this.#seconds<=0){
+                clearInterval(time);
+                console.log('завершено')
+                this.#image.classList.remove('hidden');
+                this.#timerText.textContent = 'time is up';
+            } else {
+                this.#timerText.textContent = `${addZero(this.#minutes)}:${addZero(this.#seconds)}`
+            }
         }, 1000)
-    }
-
-    #setTime() {
-        if (this.#seconds === 0) {
-            clearInterval(8);
-            console.log("конец");
-            this.#image.classList.remove('hidden');
-            return 'time is up';
-        } else {
-            let current = --this.#seconds;
-            return `${addZero(this.#minutes)}:${addZero(current)}`;
-        }
     }
 }
