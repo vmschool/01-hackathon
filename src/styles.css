@@ -22,6 +22,9 @@ body {
     border-radius: 5px;
     display: none;
     list-style: none;
+    /* delete */
+    /* height: 300px; */
+    /* delete */
 }
 
 .menu.open {
