@@ -106,3 +106,20 @@ body, .event-container {
 .active {
     display: block;
 }
+
+.wrapper-svg {
+    width: 300px;
+    height: 300px;
+}
+.exmpl-svg  {
+overflow: hidden;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+svg {
+min-width: 100%;
+min-height: 100%;
+flex-shrink: 0;
+}
