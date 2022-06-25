@@ -2,6 +2,8 @@ import './styles.css'
 import { ContextMenu } from './menu';
 import { TimerModule } from './modules/timer.module';
 import { BackgroundModule } from './modules/background.module';
+import { addEventContainer } from './utils';
+import { clearEventContainer } from './utils';
 
 const contextMenu = new ContextMenu('ul');
 const timerModule = new TimerModule('timer', 'Обратный отсчёт');
@@ -21,8 +23,11 @@ document.body.addEventListener('contextmenu', (event) => {
 
 contextMenu.el.addEventListener('click', (event) => {
     const { target } = event;
+
+    clearEventContainer();
     const selectModule = target.dataset.type;
     const runApp = contextMenu.modules.find((module) => module.type === selectModule);
+    addEventContainer();
     runApp.trigger();
     contextMenu.close();
 })
