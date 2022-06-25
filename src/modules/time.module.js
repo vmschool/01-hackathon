@@ -134,5 +134,13 @@ export class TimeModule extends Module {
         }
 
         timer('.timer', '2022-12-31');
+
+        const deleteElement = document.querySelector(".timer-container");
+        if(timerContainer) {
+            const timerId = setInterval(() => {
+				deleteElement.remove();
+				clearInterval(timerId);
+			}, 5000);	
+        }
     }
 }
