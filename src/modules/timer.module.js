@@ -31,6 +31,7 @@ export class TimerModule extends Module {
 
     #render() {
         this.#seconds = '5';
+        
         const eventContainer = document.querySelector('.event-container');
         eventContainer.style.background = `black`;
         this.#timerWindow.className = 'timer-window';

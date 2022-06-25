@@ -15,7 +15,7 @@ const cMessageModule = new CustomMessage('custom message', 'Кастомное �
 contextMenu.add(timerModule);
 contextMenu.add(cMessageModule);
 
-const backgroundModule = new BackgroundModule('background', 'фон')
+const backgroundModule = new BackgroundModule('background', 'Фон')
 contextMenu.add(backgroundModule);
 
 document.body.addEventListener('contextmenu', (event) => {

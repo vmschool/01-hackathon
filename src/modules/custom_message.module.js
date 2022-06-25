@@ -9,13 +9,14 @@ export class CustomMessage extends Module {
     async trigger() {
         try {
                 const W_URL = `https://api.openweathermap.org/data/2.5/weather?q=${randomCity()}&appid=3574141fd05c9364f6d45f88f3898d1d&units=metric`
+                const eventContainer = document.querySelector('.event-container');
 
                 const response = await fetch(W_URL)
                 const weather = await response.json()
                 const temp = Math.round(weather.main.temp)
     
                 const weatherBlock = document.createElement('div')
-                weatherBlock.className = 'weather_block'
+                weatherBlock.className = 'weather-block'
     
                 const weatherH2 =  document.createElement('h2')
                 
@@ -34,7 +35,8 @@ export class CustomMessage extends Module {
                 weatherIcon.setAttribute('src', `http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`)
                 weatherDescription.textContent = `${weather.weather[0].description}`
                 
-                document.body.prepend(weatherBlock)
+                eventContainer.prepend(weatherBlock);
+                // document.body.prepend(weatherBlock);
                 weatherBlock.append(weatherH2, iconAndTempBlock, weatherDescription)
                 iconAndTempBlock.append(weatherIcon, tempPara)
     
