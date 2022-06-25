@@ -16,6 +16,7 @@ body {
   height: 100vh;
   width: 100%;
   padding: 2rem;
+  position: relative;
 }
 
 .menu {
@@ -66,4 +67,42 @@ body {
 .timer-name-head {
   font-size: 100px;
   color: #fff;
+}
+
+.comment-block {
+	position: absolute;
+	width: 100% - 2rem;
+	height: 100% - 2rem;
+	top: 2rem;
+	left: 2rem;
+	padding: 0.5rem;
+	background-color: transparent;
+	animation-duration: 1s;
+	animation-name: showComment;
+	animation-iteration-count: 1;
+}
+
+.comment-block__title {
+	max-width: 18rem;
+	font-size: 14px;
+	font-weight: 600;
+
+}
+.comment-block__content {
+	max-width: 20rem;
+	font-size: 10px;
+
+}
+
+@keyframes showComment {
+	0% {
+		margin-left: 100%;
+		width: 300%;
+		opacity: 0;
+	}
+	100% {
+		margin-left: 0%;
+		width: 100%;
+		opacity: 1;
+	}
 }
