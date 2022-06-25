@@ -66,3 +66,224 @@ body {
 .hidden{
     display: none;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+  width: 100%;
+  padding: 2rem;
+}
+
+.menu {
+  position: fixed;
+  z-index: 1000;
+  width: 150px;
+  background: #1b1a1a;
+  border-radius: 5px;
+  display: none;
+  list-style: none;
+}
+
+.menu.open {
+  display: block;
+}
+
+.menu .menu-item {
+  padding: 8px 10px;
+  font-size: 1rem;
+  color: #eee;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in;
+  border-radius: inherit;
+}
+
+.menu .menu-item:hover {
+  background: #343434;
+}
+
+/* Container */
+
+.count-numbers {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.container {
+  min-width: 1440px;
+  margin: 0 auto;
+}
+
+.count-container {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.count-container__title,
+.description__title {
+  font-weight: bold;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.description {
+  display: none;
+}
+
+.description__info {
+  max-width: 1000px;
+  font-size: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.description-container {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.game,
+.game-sub {
+  max-width: 200px;
+  width: 100%;
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px 30px;
+  background: #ffc7c7;
+  border-radius: 5px;
+  color: white;
+  font-size: 30px;
+  letter-spacing: 4px;
+  overflow: hidden;
+  border: 2px solid red;
+  cursor: pointer;
+}
+
+.game span,
+.game-sub span {
+  position: relative;
+  z-index: 1;
+}
+
+.game::before,
+.game-sub::before {
+  content: "";
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  width: 0;
+  height: 0;
+  background: red;
+  border-radius: 50%;
+  transition: width 0.5s, height 0.5s;
+  transform: translate(-50%, -50%);
+}
+
+.game:hover::before,
+.game-sub:hover::before {
+  width: 50px;
+  height: 50px;
+}
+
+.block-container {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.block-game {
+  cursor: none;
+  width: 1000px;
+  height: 1000px;
+  position: relative;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px 30px;
+  background: white;
+  border-radius: 5px;
+  color: white;
+  font-size: 30px;
+  letter-spacing: 4px;
+  overflow: hidden;
+  border: 5px solid red;
+  margin-bottom: 20px;
+}
+
+.block-game span {
+  position: relative;
+  z-index: 1;
+}
+
+.block-game::before {
+  content: "";
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  width: 0;
+  height: 0;
+  background: red;
+  border-radius: 50%;
+  transition: width 0.5s, height 0.5s;
+  transform: translate(-50%, -50%);
+}
+
+.block-game:hover::before {
+  width: 100px;
+  height: 100px;
+}
+
+.clicks {
+  max-width: 400px;
+  width: 100%;
+  font-size: 30px;
+  font-weight: bold;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.timer-block {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.info {
+  display: none;
+  max-width: 400px;
+  width: 100%;
+  font-size: 20px;
+}
+
+.timer {
+  display: none;
+  font-size: 20px;
+}

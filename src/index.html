@@ -1,15 +1,52 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Context Menu</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Context Menu</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="menu.js" defer></script>
+  </head>
+  <body>
+    <ul class="menu" id="menu"></ul>
+    <section class="count-numbers">
+      <div class="container count-container">
+        <h1 class="count-container__title">СЫГРАЕМ В ИГРУ?</h1>
+        <button class="game"><span>ДА</span></button>
+      </div>
+    </section>
+    <section class="description">
+      <div id="container" class="container description-container">
+        <p class="description__info">
+          Твоя задача очень проста: как только ты нажмешь на кнопку, игра запустится, и тебе нужно
+          будет кликать в появившийся квадрат. Каждый удачный клик в квадрат будет засчитан, и когда
+          игра закончится на экран выведется твой резуьтат. Засчитываются любые клики
+          <strong>"ЛЕВОЙ"</strong> кнопки мыши! У тебя будет ровно <strong>ОДНА</strong> минута, с
+          того момента как ты нажмешь кнопку "Начать".
+        </p>
+        <h2 class="description__title">ИТАК, ТЫ ГОТОВ?!</h2>
+        <button class="game-sub"><span>НАЧАТЬ</span></button>
+      </div>
+    </section>
+    <section class="block">
+      <div class="container block-container">
+        <div class="block-game"></div>
+        <div class="timer-block">
+          <div class="info">ВРЕМЕНИ ОСТАЛОСЬ:</div>
+          <div class="timer">5</div>
+        </div>
 
-<ul class="menu" id="menu"></ul>
-
-</body>
+        <div class="clicks"></div>
+      </div>
+    </section>
+    <section class="result">
+      <div class="container result-container">
+        <div id="result"></div>
+      </div>
+    </section>
+  </body>
 </html>
