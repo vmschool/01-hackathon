@@ -8,15 +8,6 @@ export class ContextMenu extends Menu {
     this.open();
     this.close();
   }
-
-  render() {
-    this.menuItems.forEach((item) => {
-      const menuItem = document.createElement("li");
-      menuItem.className = "menu-item";
-      menuItem.innerHTML = item;
-      this.menuList.append(menuItem);
-    });
-  }
 }
 
 export default ContextMenu;
