@@ -18,9 +18,15 @@ export class ShapeModule extends Module {
         return eventContainer.append(svgContainer);
     }
 
+    #remove() {
+        const eventContainer = document.querySelector(`.${this.type}`);
+        setTimeout(() => {
+            eventContainer.remove()
+        }, 3000)
+    }
+
     #toggle() {
         const svgContainer = document.querySelector('#svg-container');
-
         if (svgContainer) {
             svgContainer.remove();
             this.#createFigure();
@@ -32,5 +38,6 @@ export class ShapeModule extends Module {
     trigger() {
         addEventContainer(this.type);
         this.#toggle();
+        this.#remove();
     }
 }
