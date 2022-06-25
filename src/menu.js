@@ -66,3 +66,4 @@ function deleteSizes(el) {
   el.style.bottom = ''
   el.style.left = ''
 }
+
