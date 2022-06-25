@@ -95,6 +95,7 @@ export class ClicksModule extends Module {
 
   gameStart() {
     clickCount();
+    console.log(123);
     this.btn2.addEventListener("click", () => {
       this.description.style.display = "none";
       this.block.style.display = "inline-flex";
