@@ -13,7 +13,7 @@ export class ContextMenu extends Menu {
     this.menuItems.forEach((item) => {
       const menuItem = document.createElement("li");
       menuItem.className = "menu-item";
-      menuItem.innerHTML = item;
+      menuItem.textContent = item.name;
       this.menuList.append(menuItem);
     });
   }
