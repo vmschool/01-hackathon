@@ -7,6 +7,7 @@ import { ClicksModule } from "./modules/clicks.module";
 import "bootstrap/dist/css/bootstrap.css";
 import { ShapeModule } from "./modules/shape.module";
 import RandomComment from './modules/random.comment'
+import Balloon from './modules/balloon'
 
 const contextMenuItems = [
 	{ name: "Случайная фигура", id: "1" },
@@ -16,6 +17,7 @@ const contextMenuItems = [
 	{ name: "Кастомное сообщение", id: "5" },
 	{ name: "Таймер отсчета", id: "6" },
 	{ name: "Случайный комментарий", id: "7" },
+	{ name: "Воздушный шарик", id: "8" },
 ];
 
 contextMenuItems.forEach((item) => {
@@ -41,6 +43,11 @@ menuList.addEventListener("click", (event) => {
 	if (target.dataset.type === "7") {
 		const randomComment = new RandomComment('comment', 'comment')
 		randomComment.trigger()
+	}
+
+	if (target.dataset.type === "8") {
+		const balloon = new Balloon('balloon', 'balloon')
+		balloon.trigger()
 	}
 })
 
