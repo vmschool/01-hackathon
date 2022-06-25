@@ -22,8 +22,8 @@ export class ShapeModule extends Module {
         svgContainer.setAttribute('id', 'svg-container');
         svgContainer.className = 'wrapper-svg  exmpl-svg ';
         svgContainer.innerHTML = randomShape();
-        svgContainer.style.left = `${random(30, this.#width - 150)}px`;
-        svgContainer.style.top = `${random(30, this.#height - 150)}px`;
+        svgContainer.style.left = `${random(30, this.#width - 190)}px`;
+        svgContainer.style.top = `${random(30, this.#height - 190)}px`;
         
         return eventContainer.append(svgContainer);
     }
