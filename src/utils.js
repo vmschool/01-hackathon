@@ -11,3 +11,28 @@ export const getRandomColor = () => {
 
   return color
 }
+
+export const getPosition = (event) => {
+  let posX = 0;
+  let posY = 0;
+
+  if (!event) {
+    event = window.event
+  }
+
+  if (event.pageX || event.pageY) {
+    posX = event.pageX;
+    posY = event.pageY;
+  } else if (event.clientX || event.clientY) {
+    posX = event.clientX + document.body.scrollLeft +
+        document.documentElement.scrollLeft;
+    posY = event.clientY + document.body.scrollTop +
+        document.documentElement.scrollTop;
+  }
+
+  return {
+    x: posX,
+    y: posY
+  }
+}
+
