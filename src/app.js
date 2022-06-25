@@ -1,15 +1,16 @@
 import './styles.css'
 import { ContextMenu } from './menu';
 import { TimerModule } from './modules/timer.module';
-
+import { ShapeModule } from './modules/shape.module';
 import { CustomMessage } from './modules/custom_message.module';
-
 import { BackgroundModule } from './modules/background.module';
 
 const contextMenu = new ContextMenu('ul');
+const shapeModule = new ShapeModule('shape', 'Создать фигуру');
 const timerModule = new TimerModule('timer', 'Обратный отсчёт');
 const cMessageModule = new CustomMessage('custom-message', 'Кастомное сообщение');
 contextMenu.add(timerModule);
+contextMenu.add(shapeModule);
 contextMenu.add(cMessageModule);
 
 const backgroundModule = new BackgroundModule('background', 'Фон')

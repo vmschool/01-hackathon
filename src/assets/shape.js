@@ -78,7 +78,7 @@ export const randomShape = () => {
     </svg>`]
     ];
 
-    const randomNumber = random(0, arr.length - 1);
+    const randomNumber = random(0, arrayWithSvg.length - 1);
 
     return arrayWithSvg[randomNumber];
 };
