@@ -1,42 +1,125 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-size: 14px;
-    font-family: 'Roboto', sans-serif;
-    height: 100vh;
-    width: 100%;
-    padding: 2rem;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .menu {
-    position: fixed;
-    z-index: 1000;
-    width: 150px;
-    background: #1b1a1a;
-    border-radius: 5px;
-    display: none;
-    list-style: none;
+  padding: 0;
+}
+
+body {
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+  width: 100%;
+  padding: 2rem;
+  position: relative;
+}
+
+.menu {
+  position: fixed;
+  z-index: 1000;
+  width: 150px;
+  background: #1b1a1a;
+  border-radius: 5px;
+  display: none;
+  list-style: none;
 }
 
 .menu.open {
-    display: block;
+  display: block;
 }
 
 .menu .menu-item {
-    padding: 8px 10px;
-    font-size: 1rem;
-    color: #eee;
-    cursor: pointer;
-    transition: background-color .2s ease-in;
-    border-radius: inherit;
+  padding: 8px 10px;
+  font-size: 1rem;
+  color: #eee;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in;
+  border-radius: inherit;
 }
 
 .menu .menu-item:hover {
-    background: #343434;
+  background: #343434;
+}
+
+.clicks-timer-element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -125px 0 0 -125px;
+  background-color: #1b1a1a;
+  transition: 1s;
+}
+
+.clicks-timer-element:hover {
+  border-radius: 200px;
+}
+
+.timer-name-head {
+  font-size: 100px;
+  color: #fff;
+}
+
+.comment-block {
+	position: absolute;
+	width: 100% - 2rem;
+	height: 100% - 2rem;
+	top: 2rem;
+	left: 2rem;
+	padding: 0.5rem;
+	background-color: transparent;
+	animation-duration: 1s;
+	animation-name: showComment;
+	animation-iteration-count: 1;
+}
+
+.comment-block__title {
+	max-width: 18rem;
+	font-size: 14px;
+	font-weight: 600;
+
+}
+.comment-block__content {
+	max-width: 20rem;
+	font-size: 10px;
+
+}
+
+@keyframes showComment {
+	0% {
+		margin-left: 100%;
+		width: 300%;
+		opacity: 0;
+	}
+	100% {
+		margin-left: 0%;
+		width: 100%;
+		opacity: 1;
+	}
+}
+
+.balloon-gif {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	top: -100%;
+	animation: balloon 10s linear;
+}
+
+@keyframes balloon {
+	0% {
+		top: 100vh;
+	}
+	100% {
+		top: -100%;
+	}
 }

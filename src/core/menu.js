@@ -1,23 +1,31 @@
 export class Menu {
-  constructor(selector) {
-    this.el = document.querySelector(selector)
+  constructor(selector, menuList) {
+    this.selector = document.querySelector(selector);
+    this.menuList = document.querySelector(menuList);
 
-    document.body.addEventListener('click', event => {
-      if (event.target.offsetParent !== this.el) {
-        this.close()
-      }
-    })
+    // document.body.addEventListener('click', event => {
+    //   if (event.target.offsetParent !== this.el) {
+    //     this.close()
+    //   }
+    // })
   }
 
   open() {
-    throw new Error(`"open" method should be implemented in Menu"`)
+    this.selector.addEventListener("contextmenu", (event) => {
+      event.preventDefault();
+      this.menuList.classList.add("open");
+      this.menuList.style.left = `${event.pageX}px`;
+      this.menuList.style.top = `${event.pageY}px`;
+    });
   }
 
   close() {
-    throw new Error(`"close" method should be implemented in Menu"`)
+    this.selector.addEventListener("click", (event) => {
+      this.menuList.classList.remove("open");
+    });
   }
 
   add() {
-    throw new Error(`"add" method should be implemented in Menu"`)
+    throw new Error(`"add" method should be implemented in Menu"`);
   }
 }

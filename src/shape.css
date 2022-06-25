@@ -1,0 +1,9 @@
+.shape-block {
+    position: fixed;
+    background-color: rgb(228, 139, 250);
+    transition: 0.3s;
+  }
+  
+  .shape-block:hover {
+    background-color: red;
+  }

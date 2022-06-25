@@ -1,5 +1,5 @@
-import {Module} from '../core/module'
+import { Module } from "../core/module";
 
 export class BackgroundModule extends Module {
-
+  constructor() {}
 }
