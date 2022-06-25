@@ -29,6 +29,13 @@ const sounds = [
 export default class RandomSounds extends Module {
 
 	trigger() {
+
+		const audioElement = document.querySelector('audio')
+
+		if (audioElement) {
+			audioElement.remove()
+		}
+
 		const randomNumber = random(0, sounds.length - 1)
 		const randomSound = sounds[randomNumber]
 
