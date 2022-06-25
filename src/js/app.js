@@ -1,21 +1,21 @@
 import Application from './application';
 import ModuleFactory from './module.factory';
 import ContextMenu from './menu';
-import EmptyModule from './modules/empty.module';
 import BackgroundModule from './modules/background.module';
-import ShapesModule from './modules/shapes.module'
+import ParadiseModule from './modules/paradise.module';
+import ShapesModule from './modules/shapes.module';
 
-const moduleNames = ['empty', 'changeBG', 'shapes'];
+const moduleNames = ['paradise', 'changeBG', 'shapes'];
 
 const moduleClasses = {
-  empty: EmptyModule,
   changeBG: BackgroundModule,
+  paradise: ParadiseModule,
   shapes: ShapesModule,
 };
 
 const moduleTexts = {
-  empty: 'пустой',
   changeBG: 'сменить фон',
+  paradise: 'попасть в рай или вернуться',
   shapes: 'создать фигуру',
 };
 

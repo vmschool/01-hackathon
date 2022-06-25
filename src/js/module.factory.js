@@ -5,6 +5,8 @@ export default class ModuleFactory {
   }
 
   createModule(name) {
+    console.log(this.moduleClasses);
+
     if (!(name in this.moduleClasses)) {
       throw new Error(`not found ${name} module class`);
     }
