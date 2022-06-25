@@ -40,3 +40,20 @@ body {
 .menu .menu-item:hover {
     background: #343434;
 }
+
+.timer-window {
+    padding: 20px;
+    display: flex;
+    position: fixed;
+    /* border: 1px solid #5776b9; */
+    border-radius: 5px;
+    /* box-shadow: 0 0 2px #5776b9, 0 0 10px #5776b9; */
+}
+
+.timer-text{
+    color: #5776b9;
+    align-items: center;
+    margin: 0 auto;
+    font-size: 5rem;
+    /* text-shadow: 0 0 2px #5776b9, 0 0 5px #5776b9; */
+}

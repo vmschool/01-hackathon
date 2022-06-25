@@ -20,6 +20,7 @@ export class ContextMenu extends Menu {
             const newModule = document.querySelector(`[data-type="${module.type}"]`);
             newModule.addEventListener('click', (event) => {
                 module.trigger();
+                this.close();
             })
         }
     }
