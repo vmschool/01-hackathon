@@ -1,5 +1,6 @@
 import {Module} from '../core/module'
 import { getRandomColor, random } from '../utils'
+const plural = require('plural-ru')
 
 export class TimerModule extends Module {
   #timerElement
@@ -38,10 +39,10 @@ export class TimerModule extends Module {
           this.#timerElement.style.justifyContent = 'center'
           this.#timerElement.style.alignItems = 'center'
           
-
+          const sec = plural(seconds, '%d секунду', '%d секунды', '%d секунд')
           this.#timerElement.innerHTML = `
             Отлично!<br>
-            Этот блок исчезнет через ${seconds} сек.
+            Этот блок исчезнет через ${sec}.
             `
           if (seconds === 0) {
             clearInterval(interval);
