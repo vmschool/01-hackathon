@@ -29,20 +29,19 @@ contextMenu.add(clicks);
 //>>>>>>>>   Отображение меню   <<<<<<<<<
 document.body.addEventListener("contextmenu", (event) => {
   event.preventDefault();
-  let elemX = document.elementFromPoint(event.clientX + 150, event.clientY);
-  let elemY = document.elementFromPoint(event.clientX, event.clientY + 50);
-
+  const elemX = document.elementFromPoint(event.clientX + 150, event.clientY);
   const windowHeight = document.documentElement.clientHeight;
   const menu = document.querySelector('.menu');
-  const menuHeight = menu.offsetHeight + 2;
-
-  elemX === null
-    ? (contextMenu.el.style.left = `${event.clientX - 150}px`)
-    : (contextMenu.el.style.left = `${event.clientX}px`);
-  ((windowHeight - event.clientY) < menuHeight)
-    ? contextMenu.el.style.top = `${windowHeight - menuHeight}px`
-    : contextMenu.el.style.top = `${event.clientY}px`;
+  
   contextMenu.open();
+  const menuHeight = menu.offsetHeight + 4;
+  elemX === null
+  ? (contextMenu.el.style.left = `${event.clientX - 150}px`)
+  : (contextMenu.el.style.left = `${event.clientX}px`);
+  
+  ((windowHeight - event.clientY) < menuHeight)
+  ? contextMenu.el.style.top = `${windowHeight - menuHeight}px`
+  : contextMenu.el.style.top = `${event.clientY}px`;
 });
 
 //>>>>>>>>   Обработка выбранного пункта меню   <<<<<<<<<
