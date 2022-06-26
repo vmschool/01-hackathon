@@ -15,6 +15,6 @@ contextMenu.add(new TestModule());
 contextMenu.add(new RandomFigure());
 contextMenu.add(new MessageModule());
 contextMenu.add(new RandomSound());
+contextMenu.add(new Countdown());
 contextMenu.add(new BackgroundModule());
 contextMenu.add(new ClicksModule());
-// contextMenu.add(new Countdown());

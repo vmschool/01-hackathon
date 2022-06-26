@@ -3,15 +3,21 @@ import { Module } from "../core/module";
 export class Countdown extends Module {
   #body;
   #formInputLabelInnerText;
+  #timerContainer;
 
   constructor() {
-    super("countdown", "таймер отсчета");
+    super("countdown", "Таймер отсчета");
     this.#body = document.querySelector("body");
     this.#formInputLabelInnerText = ["дней", "часов", "минут", "секунд"];
     this.days = 0;
     this.hours = 0;
     this.minets = 0;
     this.seconds = 0;
+  }
+
+  renderTimerContainer() {
+    this.#timerContainer = document.createElement("div");
+    this.#body.append(this.#timerContainer);
   }
 
   renderForm() {
@@ -47,7 +53,7 @@ export class Countdown extends Module {
     formButton.type = "submit";
     formButton.innerText = "Запустить таймер";
     form.append(formButton);
-    return this.#body.append(form);
+    return this.#timerContainer.append(form);
   }
 
   renderTimer() {
@@ -63,14 +69,17 @@ export class Countdown extends Module {
     childreenContainerTimer.id = "timer";
     timerContainer.append(childreenContainerTimer);
 
-    return this.#body.append(timerContainer);
+    return this.#timerContainer.append(timerContainer);
   }
 
   trigger() {
-    this.#buttonsFormTimer();
+    this.renderTimerContainer();
+    this.renderForm();
+    this.renderTimer();
+    this.buttonsFormTimer();
   }
 
-  #buttonsFormTimer() {
+  buttonsFormTimer() {
     const buttonFormTimerClick = document.querySelector(
       ".timer-form__submit-button"
     );
@@ -98,7 +107,6 @@ export class Countdown extends Module {
       const dataIdInput2 = document.querySelector('[data-id="1"]');
       const dataIdInput3 = document.querySelector(`[data-id="2"]`);
       const dataIdInput4 = document.querySelector(`[data-id="3"]`);
-
       this.seconds = dataIdInput4.value.trim();
       this.days = dataIdInput1.value.trim();
       this.hours = dataIdInput2.value.trim();
@@ -152,7 +160,7 @@ export class Countdown extends Module {
 
           if (diff < 1000) {
             clearInterval(timer);
-            timerItem.style.display = "none";
+            timerItem.innerHTML = "";
             alert("Отсчёт закончен");
           }
         }, 1000);
@@ -160,15 +168,9 @@ export class Countdown extends Module {
       if (errorMessageBlockFromDOM) {
         errorMessageBlockFromDOM.remove();
       }
-
-      this.removeEventListener("click", funcTimer);
+      buttonFormTimerClick.removeEventListener("click", funcTimer);
     }
 
-    buttonFormTimerClick.addEventListener("click", funcTimer);
+    buttonFormTimerClick.addEventListener("click", funcTimer.bind(this));
   }
 }
-
-// const timer = new Countdown();
-// timer.trigger();
-// timer.renderForm();
-// timer.renderTimer();
