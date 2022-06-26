@@ -17,6 +17,7 @@ export class Countdown extends Module {
   }
 
   trigger() {
+    if (this.#timerContainer) return;
     this.renderTimerContainer();
     this.renderForm();
     this.renderTimer();
@@ -56,6 +57,7 @@ export class Countdown extends Module {
       timerContainer.style.opacity = "0";
       setTimeout(() => {
         timerContainer.remove();
+        this.#timerContainer = null;
       }, 300);
     });
   }
@@ -147,8 +149,13 @@ export class Countdown extends Module {
 
       if (!this.days && !this.hours && !this.minets && !this.seconds) {
         const errorBlock = createErrorBlock("Введите значение");
+        errorMessage.innerHTML = "";
         errorMessage.append(errorBlock);
       } else if (this.days || this.hours || this.minets || this.seconds) {
+        const timerForm = document.querySelector(".timer-form");
+        timerForm.remove();
+
+        errorMessage.innerHTML = "";
         dataIdInput1.value = "";
         dataIdInput2.value = "";
         dataIdInput3.value = "";
@@ -163,7 +170,7 @@ export class Countdown extends Module {
         let ms = date.getTime() + (days + hours + minets + seconds);
         let maxDate = new Date(ms).toISOString();
 
-        let timer = setInterval(function updateTimer() {
+        function updateTimer() {
           let future = Date.parse(maxDate);
           let now = new Date();
           let diff = future - now;
@@ -195,8 +202,11 @@ export class Countdown extends Module {
             clearInterval(timer);
             timerItem.innerHTML = "";
             alert("Отсчёт закончен");
+            const timerContainer = document.querySelector(".timer-container");
+            timerContainer.append(timerForm);
           }
-        }, 1000);
+        }
+        let timer = setInterval(updateTimer, 500);
         this.timer = timer;
       }
       if (errorMessageBlockFromDOM) {

@@ -57,7 +57,7 @@ export class ClicksModule extends Module {
     clickInfo.style.position = "fixed";
     clickInfo.style.zIndex = "1000";
     clickInfo.style.top = "10%";
-    clickInfo.style.left = "40%";
+    clickInfo.style.right = "20%";
     clickInfo.style.opacity = "0";
     clickInfo.style.transition = "opacity .3s linear";
     clickInfo.classList.add("show");

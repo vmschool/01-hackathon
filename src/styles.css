@@ -45,6 +45,7 @@ body {
 .menu.open {
     display: block;
     visibility: visible;
+    z-index: 100000
 }
 
 .menu .menu-item {
@@ -80,7 +81,7 @@ body {
 .main_description {
     width: 50%;
     height: 100%;
-    padding: 0 210px;
+    padding: 0 7%;
 }
 
 .main_app-modules {
@@ -182,7 +183,7 @@ body {
 
 /* Timer */
 .timer-container {
-    width: 715px;
+    width: 500px;
     padding: 20px;
     background: #eee;
     border-radius: 10px;
@@ -275,8 +276,8 @@ body {
 }
 
 #total-amount {
-    font-size: 3rem;
-    line-height: 3rem;
+    font-size: 2rem;
+    line-height: 2rem;
 }
 
 .timer-form__donate-input {
@@ -290,8 +291,8 @@ body {
 }
 
 .timer-form__input-label {
-    font-size: 2rem;
-    line-height: 2rem;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
     display: flex;
     flex-direction: column;
 }
