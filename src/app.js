@@ -2,7 +2,9 @@ import "./styles.css";
 import "./shape.css";
 import "./fonts/icons-font/style.css"
 import "./time.css"
+import "./custom.css"
 import Timer from "./modules/time.module";
+import Message from "./modules/custom.module";
 import ContextMenu from "./menu";
 import RandomSounds from "./modules/random.sound";
 import { Module } from "./core/module";
@@ -43,6 +45,10 @@ menuList.addEventListener("click", (event) => {
 	if (target.dataset.type === "4") {
 		const randomSound = new RandomSounds("mp3", "audio");
 		randomSound.trigger();
+	}
+	if (target.dataset.type === "5") {
+		const message = new Message()
+		message.render()
 	}
 	if (target.dataset.type === "6") {
 		const timer = new Timer()
