@@ -3,7 +3,7 @@ export function random(min, max) {
 }
 export const createWrapper = () => {
   const wrapper = document.createElement('div')
-  wrapper.className = 'wrapper'
+  wrapper.className = 'wrapperc'
   wrapper.insertAdjacentHTML('beforeend', `
   <div class="icon-container"><i class="ic_close icon"></i></div>
   <p>select mode:</p>
@@ -195,8 +195,6 @@ function secondsToTime(timeSeconds, timeContainer) {
   timeContainer.textContent = `${trueArr[0]}d : ${trueArr[1]}h : ${trueArr[2]}m : ${trueArr[3]}s`
 
 }
-
-
 export function getRandomColor() {
   const colors = [
     "skyblue",
@@ -210,4 +208,68 @@ export function getRandomColor() {
   ];
   const random = Math.floor(Math.random() * colors.length);
   return colors[random];
+}
+
+
+
+
+
+
+
+export const createCustomContainer = () => {
+  document.querySelector('body').insertAdjacentHTML('afterbegin', `
+  <div class="buttons-custom">
+      <div class="add btn">add</div>
+      <div class="list btn">list</div>
+      <div class="closer btn">close</div>
+  </div>
+  <div class="custom-container"></div>
+  `)
+  return document.querySelector('.custom-container')
+}
+export function addHandleClick(arr, container) {
+  document.querySelector('.add').addEventListener('click', () => {
+    if (document.querySelector('.listItem')) {
+      document.querySelectorAll('.listItem').forEach(item => item.remove())
+    }
+    const randomNumber = Math.floor(0 + Math.random() * (arr.length - 0))
+    const item = arr[randomNumber]
+    item.flag = true
+    createItem(container, item.name, item.ref, item.description, item.color, item.id)
+    removeItem(item.id)
+  }
+
+  )
+}
+export function listHandleClick(arr, container) {
+  document.querySelector('.list').addEventListener('click', () => {
+    if (document.querySelector('.items')) {
+      document.querySelectorAll('.items').forEach(item => item.remove())
+    }
+    arr.forEach(item => {
+      createItem(container, item.name, item.ref, item.description, item.color, item.id, 'listItem')
+    })
+
+  }
+
+  )
+}
+function removeItem(id) {
+  const el = document.getElementById(`${id}`)
+  setTimeout(() => { el.style.opacity = '0' }, 4000)
+
+  setTimeout(() => {
+    el.remove()
+  }, 5050)
+}
+function createItem(container, name, ref, description, color, id, flag) {
+  container.insertAdjacentHTML('afterbegin', `
+  <div class="items ${flag}" id="${id}">
+          <div class="content-message">
+              <a class="ref" href=${ref}>${name}</a>
+              <p class="text">${description}</p>
+          </div>
+  </div>
+  `)
+  document.getElementById(`${id}`).style.backgroundColor = `${color}`
 }

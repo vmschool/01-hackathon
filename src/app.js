@@ -5,6 +5,7 @@ import "./fonts/icons-font/style.css";
 import "./time.css";
 import "./randomImage.css";
 import Timer from "./modules/time.module";
+import Message from "./modules/custom.module";
 import ContextMenu from "./menu";
 import RandomSounds from "./modules/random.sound";
 import { Module } from "./core/module";
@@ -43,10 +44,7 @@ const menuList = document.querySelector(".menu");
 menuList.addEventListener("click", (event) => {
   const { target } = event;
 
-  if (target.dataset.type === "3") {
-  }
-
-  if (target.dataset.type === "4") {
+if (target.dataset.type === "4") {
     const randomSound = new RandomSounds("mp3", "audio");
     randomSound.trigger();
   }
@@ -54,6 +52,16 @@ menuList.addEventListener("click", (event) => {
   if (target.dataset.type === "5") {
     const randomModule = new RandomModule();
     randomModule.trigger();
+  }
+
+  if (target.dataset.type === "6") {
+    const timer = new Timer();
+    timer.render();
+  }
+
+  if (target.dataset.type === "4") {
+    const randomSound = new RandomSounds("mp3", "audio");
+    randomSound.trigger();
   }
 
   if (target.dataset.type === "6") {
