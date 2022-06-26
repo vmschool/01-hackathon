@@ -1,10 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 
 body {
   font-size: 14px;
@@ -14,6 +17,21 @@ body {
   padding: 2rem;
   background-color: #1d212b;
   color: white;
+
+body,
+.event-container {
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    width: 100%;
+    /* padding: 2rem; */
+}
+
+.event-container {
+    /* height: 100vh;
+    width: 100%; */
+    padding: 2rem;
+    display: none;
 }
 
 .menu {
@@ -357,4 +375,74 @@ body {
 
 .timer {
   font-size: 60px;
+}
+
+    color: #5776b9;
+    align-items: center;
+    margin: 0 auto;
+    font-size: 5rem;
+}
+
+.image-meme {
+    position: relative;
+    left: 50%;
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+.weather-block {
+    font-family: 'Montserrat', sans-serif;
+    width: 260px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 2px 2px 15px 1px rgb(220, 220, 220);
+    border-radius: 15px;
+    padding: 40px 40px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.icon_and_temp_block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    font-weight: 100;
+}
+
+.weather_icon {
+    width: 100px;
+    height: 102.67px;
+}
+
+.custom-message {
+    /* display: flex; */
+    flex-direction: row;
+    background: #1b1a1a;
+}
+
+.active {
+    display: block;
+}
+
+.wrapper-svg {
+    display: block;
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+
+.exmpl-svg {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+svg {
+    min-width: 100%;
+    min-height: 100%;
+    flex-shrink: 0;
 }

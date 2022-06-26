@@ -14,3 +14,13 @@ export function addZero(number) {
   }
   return number;
 }
+
+export function addEventContainer(type) {
+  const container = document.querySelector(`.${type}`);
+  if (!container) {
+    const eventContainer = document.createElement('div');
+    eventContainer.className = 'event-container';
+    eventContainer.classList.add(type);
+    document.body.append(eventContainer);
+  }
+}
