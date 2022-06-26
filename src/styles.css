@@ -106,3 +106,20 @@ body {
 		opacity: 1;
 	}
 }
+
+.balloon-gif {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	top: -100%;
+	animation: balloon 10s linear;
+}
+
+@keyframes balloon {
+	0% {
+		top: 100vh;
+	}
+	100% {
+		top: -100%;
+	}
+}

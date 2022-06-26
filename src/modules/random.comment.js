@@ -27,8 +27,6 @@ export default class RandomComment extends Module {
 
 		} catch (err) {
 			console.log('error comment:', err);
-		} finally {
-			console.log('Finish');
 		}
 	}
 }

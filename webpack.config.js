@@ -66,7 +66,7 @@ module.exports = (env, argv) => {
 					}
 				},
 				{
-					test: /\.mp3$/,
+					test: /\.(mp3|gif)$/,
 					loader: 'file-loader',
 					options: {
 						name: '[path][name].[ext]'
