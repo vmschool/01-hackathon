@@ -1,30 +1,32 @@
-import { ClicksModule } from "./modules/clicks.module";
-
+//>>>>>>>>   Импорт стилей   <<<<<<<<<
 import './styles.css'
 import { ContextMenu } from './menu';
+
+//>>>>>>>>   Импорт модулей   <<<<<<<<<
+import { ClicksModule } from "./modules/clicks.module";
 import { TimerModule } from './modules/timer.module';
 import { ShapeModule } from './modules/shape.module';
 import { CustomMessage } from './modules/custom_message.module';
 import { BackgroundModule } from './modules/background.module';
 import { Soundmodule } from './modules/sound.module';
 
+//>>>>>>>>   Создание меню   <<<<<<<<<
 const contextMenu = new ContextMenu('ul');
 const shapeModule = new ShapeModule('shape', 'Создать фигуру');
 const timerModule = new TimerModule('timer', 'Обратный отсчёт');
 const cMessageModule = new CustomMessage('custom-message', 'Кастомное сообщение');
+const sound = new Soundmodule('sound', 'Случайный звук');
+const clicks = new ClicksModule("click", "Счетчик кликов");
+const backgroundModule = new BackgroundModule('background', 'Фон');
+
 contextMenu.add(timerModule);
 contextMenu.add(shapeModule);
 contextMenu.add(cMessageModule);
-const sound = new Soundmodule('sound', 'Случайный звук');
 contextMenu.add(sound);
-
-const backgroundModule = new BackgroundModule('background', 'Фон')
 contextMenu.add(backgroundModule);
-
-const clicks = new ClicksModule("click", "Счетчик кликов");
 contextMenu.add(clicks);
 
-
+//>>>>>>>>   Отображение меню   <<<<<<<<<
 document.body.addEventListener("contextmenu", (event) => {
   event.preventDefault();
   let elemX = document.elementFromPoint(event.clientX + 150, event.clientY);
@@ -38,6 +40,7 @@ document.body.addEventListener("contextmenu", (event) => {
   contextMenu.open();
 });
 
+//>>>>>>>>   Обработка выбранного пункта меню   <<<<<<<<<
 contextMenu.el.addEventListener('click', (event) => {
     const { target } = event;
     const selectModule = target.dataset.type;
@@ -52,5 +55,4 @@ contextMenu.el.addEventListener('click', (event) => {
     selectContainer.classList.add('active');
 
     console.log(selectContainer);
-
 })
