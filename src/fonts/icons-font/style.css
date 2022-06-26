@@ -1,0 +1,45 @@
+@font-face {
+  font-family: 'timer-i';
+  src:  url('fonts/timer-i.eot?iqedq3');
+  src:  url('fonts/timer-i.eot?iqedq3#iefix') format('embedded-opentype'),
+    url('fonts/timer-i.ttf?iqedq3') format('truetype'),
+    url('fonts/timer-i.woff?iqedq3') format('woff'),
+    url('fonts/timer-i.svg?iqedq3#timer-i') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'timer-i' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ic_refresh:before {
+  content: "\e900";
+}
+.ic_close:before {
+  content: "\e901";
+}
+.ic_pause:before {
+  content: "\e902";
+}
+.ic_play:before {
+  content: "\e904";
+}
+.ic_clock:before {
+  content: "\e905";
+}
+.ic_timer:before {
+  content: "\e906";
+}

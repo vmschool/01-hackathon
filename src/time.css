@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    font-size: 40px;
+    line-height: 0;
+
+}
+
+* {
+    box-sizing: border-box;
+}
+
+button {
+
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+
+
+}
+
+.wrapperc {
+    top: 50px;
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 900px;
+    height: auto;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: azure;
+    animation: my-animation ease-in-out 2s 1;
+    font-size: 50px;
+}
+
+.plugin-container {
+    margin: 50px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 500px;
+    max-width: 600px;
+    min-height: 84px;
+    height: auto;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #eee;
+    animation: container-animation ease-in-out 2s infinite;
+}
+
+.numbers {
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons {
+    padding: 20px 10px;
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
+}
+
+.input {
+    font-size: 15px;
+    width: 15%;
+    height: auto;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.set-numbers {
+    display: flex;
+    justify-content: space-around;
+}
+
+.icon:hover {
+    color: rgb(19, 126, 126);
+    cursor: pointer;
+}
+
+.icon-container {
+    position: absolute;
+    top: 0;
+    right: -7%;
+}
+
+
+.active {
+    transform: translatey(-10px);
+}
+
+.clock {
+    color: black;
+}
+
+.buttons__fotter {
+    background-color: #eee;
+    margin: 10px 0;
+    width: 50%;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: fit-content;
+}
+
+@keyframes my-animation {
+    0% {
+        top: -1000px;
+    }
+
+    100% {
+        top: 50px;
+    }
+}
