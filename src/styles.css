@@ -9,7 +9,8 @@
 }
 
 
-body, .event-container {
+body,
+.event-container {
   font-size: 14px;
   font-family: "Yanone Kaffeesatz", sans-serif;
   height: 100vh;
@@ -17,11 +18,22 @@ body, .event-container {
   /* padding: 2rem; */
   background-color: #1d212b;
   color: white;
+
+
+  /* body,
+.event-container {
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    width: 100%; */
+  /* padding: 2rem; */
 }
 
 .event-container {
-    padding: 2rem;
-    display: none;
+  /* height: 100vh;
+    width: 100%; */
+  padding: 2rem;
+  display: none;
 }
 
 .menu {
@@ -341,20 +353,25 @@ body, .event-container {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
 }
+
 @keyframes textColor {
   0% {
     color: #7e0fff;
   }
+
   50% {
     color: #0fffc1;
   }
+
   100% {
     color: #7e0fff;
   }
@@ -412,31 +429,48 @@ body, .event-container {
   font-size: 60px;
 }
 
-
 /* Custom Message */
 
+/* color: #5776b9;
+    align-items: center;
+    margin: 0 auto;
+    font-size: 5rem;
+} */
+
+.image-meme {
+  position: relative;
+  left: 50%;
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+
 .weather-block {
-    display: inline-block;
-    margin: 0 20px 0 0;
-    font-family: 'Montserrat', sans-serif;
-    width: 260px;
-    color: #1b1a1a;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 2px 2px 15px 1px rgb(220, 220, 220);
-    border-radius: 15px;
-    padding: 40px 40px;
-    margin-bottom: 20px;
+  display: inline-block;
+  overflow: hidden;
+  max-width: 260px;
+  max-height: 225px;
+  padding: 40px 40px;
+  margin: 10px;
+  color: #1b1a1a;
+  border-radius: 15px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 2px 2px 15px 1px rgb(220, 220, 220);
+  font-family: 'Montserrat', sans-serif;
 }
 
 .icon_and_temp_block {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2.5em;
-    font-weight: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
 }
 
 .weather_icon {
+
     width: 100px;
     height: 102.67px;
 }
@@ -447,24 +481,30 @@ body, .event-container {
 
 /* Shape Module */
 
+
+  width: 100px;
+  height: 102.67px;
+}
+
+
 .wrapper-svg {
-    display: block;
-    position: relative;
-    width: 150px;
-    height: 150px;
+  display: block;
+  position: relative;
+  width: 150px;
+  height: 150px;
 }
 
 .exmpl-svg {
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 svg {
-    min-width: 100%;
-    min-height: 100%;
-    flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
+  flex-shrink: 0;
 }
 
 .active {
