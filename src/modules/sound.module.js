@@ -15,14 +15,21 @@ trigger() {
     let logoHTML = document.createElement('logo');
     logoHTML.className = 'logo'
     
-    // eventContainer.style.display = 'block';
-    // eventContainer.style.justifyContent = 'center';
-    //eventContainer.style.width = '100%';
-    //eventContainer.style.background = '#1e1e1e';
-    // eventContainer.style.height = '170px';
+
+    eventContainer.style.display = 'flex';
+    eventContainer.style.justifyContent = 'center';
+    eventContainer.style.height = '170px';
+
+    let textHint = document.createElement('span');
+    textHint.style.display = 'flex';
+    textHint.style.justifyContent = 'center';
+    textHint.style.fontSize = '30px';
+    textHint.textContent = 'Pause - клик мышкой, Start - клик мышкой'
     
+    document.querySelector('body').append(textHint);
     eventContainer.prepend(logoHTML);
     eventContainer.prepend(audioHTML);
+    
     
     let logo = document.querySelector('.logo').style;
     
