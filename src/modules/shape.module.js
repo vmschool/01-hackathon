@@ -14,8 +14,8 @@ export class ShapeModule extends Module {
     const windowHeight = window.screen.height - 250;
     block.style.right = `${Math.random() * windowWidth}px`;
     block.style.top = `${Math.random() * windowHeight}px`;
-    block.style.width = "150px";
-    block.style.height = "200px";
+    block.style.width = `${Math.random() * 375}px`;
+    block.style.height = `${Math.random() * 500}px`;
     block.style.transform = `scale(${Math.random() * 2})`;
     block.style.transform = `rotate(${Math.random() * 360}deg)`;
     block.style.borderRadius = `${Math.random() * 100}px`;
@@ -32,3 +32,4 @@ export class ShapeModule extends Module {
     });
   }
 }
+
