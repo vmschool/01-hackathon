@@ -6,9 +6,7 @@ export class CustomMessage extends Module {
     eventContainer
     weatherBlockContainer
     constructor(type, text) {
-        super(type, text)
-        
-        
+        super(type, text)  
     }
 
     async trigger() {
@@ -21,11 +19,6 @@ export class CustomMessage extends Module {
             const weather = await response.json()
             const temp = Math.round(weather.main.temp)
             const eventContainer = document.querySelector(`.${this.type}`);
-
-
-            const response = await fetch(W_URL);
-            const weather = await response.json();
-            const temp = Math.round(weather.main.temp);
             
             const weatherBlock = document.createElement('div');
             weatherBlock.className = 'weather-block';
