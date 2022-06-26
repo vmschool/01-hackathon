@@ -8,6 +8,7 @@
   box-sizing: border-box;
 }
 
+
 body,
 .event-container {
   font-size: 14px;
@@ -17,6 +18,7 @@ body,
   /* padding: 2rem; */
   background-color: #1d212b;
   color: white;
+
 
   /* body,
 .event-container {
@@ -61,6 +63,8 @@ body,
   background: #343434;
 }
 
+/* Timer Module */
+
 .timer-window {
   padding: 20px;
   display: flex;
@@ -79,12 +83,55 @@ body,
   position: relative;
   left: 50%;
   display: block;
-  /* padding-right:  30px; */
-  /* margin: 0 auto; */
 }
 
 .hidden {
   display: none;
+}
+
+.user-input{
+  padding: 0 2%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  background-color:#7e0fff;
+  width: 30%;
+  height: 15vh;
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.limit-message{
+  padding: 10px;
+  height: 10vh;
+  font-size: 2rem;
+  background-color: #00ffdd;
+  margin: 0 auto;
+}
+
+.confirm {
+  width: 40%;
+}
+
+
+.user-button{
+  display: flex;
+  width: 20%;
+  height: 10vh;
+  background-color: #343434;
+  border-radius: 5px;
+  font-size: 2rem;
+  /* vertical-align:middle; */
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.confirm {
+  width: 30%;
 }
 
 /* Container */
@@ -369,20 +416,25 @@ body,
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
 }
+
 @keyframes textColor {
   0% {
     color: #7e0fff;
   }
+
   50% {
     color: #0fffc1;
   }
+
   100% {
     color: #7e0fff;
   }
@@ -441,6 +493,9 @@ body,
   font-size: 60px;
 }
 
+
+/* Custom Message */
+
 /* color: #5776b9;
     align-items: center;
     margin: 0 auto;
@@ -457,8 +512,10 @@ body,
   display: none;
 }
 
+
 .weather-block {
   display: inline-block;
+
   margin: 0 20px 0 0;
   font-family: "Montserrat", sans-serif;
   width: 260px;
@@ -468,12 +525,25 @@ body,
   border-radius: 15px;
   padding: 40px 40px;
   margin-bottom: 20px;
+
+  overflow: hidden;
+  max-width: 260px;
+  max-height: 225px;
+  padding: 40px 40px;
+  margin: 10px;
+  color: #1b1a1a;
+  border-radius: 15px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 2px 2px 15px 1px rgb(220, 220, 220);
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 .icon_and_temp_block {
   display: flex;
   justify-content: center;
   align-items: center;
+
   font-size: 2.5em;
   font-weight: 100;
 }
@@ -481,17 +551,30 @@ body,
 .weather_icon {
   width: 100px;
   height: 102.67px;
+
+  font-size: 30px;
+}
+
+.weather_icon {
+
+    width: 100px;
+    height: 102.67px;
+
 }
 
 .custom-message-container {
-  /* width: 100%;
-  height: 100%;
-  padding: 0; */
   display: flex;
-  /* flex-direction: row; */
-  /* background: #1b1a1a; */
 }
 
+
+/* Shape Module */
+
+
+  width: 100px;
+  height: 102.67px;
+}
+
+x
 .wrapper-svg {
   display: block;
   position: relative;
