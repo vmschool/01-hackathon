@@ -36,7 +36,7 @@ document.body.addEventListener("contextmenu", (event) => {
   contextMenu.open();
   const menuHeight = menu.offsetHeight + 4;
   elemX === null
-  ? (contextMenu.el.style.left = `${event.clientX - 150}px`)
+  ? (contextMenu.el.style.left = `${event.clientX - 310}px`)
   : (contextMenu.el.style.left = `${event.clientX}px`);
   
   ((windowHeight - event.clientY) < menuHeight)

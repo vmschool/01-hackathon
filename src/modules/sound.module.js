@@ -6,50 +6,48 @@ export class Soundmodule extends Module {
         this.logoHTML = document.createElement('logo');
         this.audioHTML = document.createElement('audio');
         this.textHint = document.createElement('span');
+        this.soundContainer = document.createElement('div');
     }
 
     trigger() {
         addEventContainer(this.type);
         const eventContainer = document.querySelector(`.${this.type}`);
         
-
         let context, analyser, src, array;
         const hasLogo = document.querySelector('.logo');
         if (hasLogo) {
             this.logoHTML.remove();
             this.audioHTML.remove();
             this.textHint.remove();
-            this.textHint = document.createElement('span');
+            this.textHint = document.createElement('div');
             this.logoHTML = document.createElement('logo');
             this.audioHTML = document.createElement('audio');
         }
-        // let audioHTML = document.createElement('audio');
+
         let random = Math.floor(Math.random() * 5 + 1);
         this.audioHTML.src = `src/assets/sound/${random}.mp3`;
         this.audioHTML.className = 'audio'
 
-        // let logoHTML = document.createElement('logo');
         this.logoHTML.className = 'logo'
 
-        eventContainer.style.display = 'flex';
-        eventContainer.style.justifyContent = 'center';
-        eventContainer.style.height = '170px';
+        this.soundContainer.style.display = 'flex';
+        this.soundContainer.style.justifyContent = 'center';
 
-        
-        this.textHint.style.display = 'flex';
-        this.textHint.style.justifyContent = 'center';
+        this.textHint.style.display = 'block';
+        this.textHint.style.position = 'relative';
+        this.textHint.style.textAlign = 'center';
         this.textHint.style.fontSize = '30px';
-        this.textHint.textContent = 'Pause/Resume - клик левой клавишей мышки'
+        this.textHint.style.marginBottom = '50px';
+        this.textHint.textContent = 'Pause/Resume - клик левой клавишей мышки';
 
-        document.querySelector('body').append(this.textHint);
-        eventContainer.prepend(this.logoHTML);
-        eventContainer.prepend(this.audioHTML);
+        this.soundContainer.prepend(this.logoHTML, this.audioHTML);
+        eventContainer.append(this.textHint, this.soundContainer);
 
         let logo = document.querySelector('.logo').style;
 
         let audio = document.querySelector('.audio');
 
-        window.onclick = function () {
+        this.logoHTML.onclick = function () {
             if (!context) {
                 preparation();
             }
