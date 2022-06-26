@@ -1,4 +1,5 @@
 import { Module } from "../core/module";
+import { getRandomColor } from "../utils";
 
 export class ClicksModule extends Module {
   constructor(itemsList, item) {
@@ -9,21 +10,6 @@ export class ClicksModule extends Module {
 
   handleDeleteWindow(modalWindow) {
     modalWindow.style.display = "none";
-  }
-
-  getRandomColor() {
-    const colors = [
-      "skyblue",
-      "yellow",
-      "green",
-      "#c1c1c1",
-      "orange",
-      "lime",
-      "aqua",
-      "fuchsia",
-    ];
-    const random = Math.floor(Math.random() * colors.length);
-    return colors[random];
   }
 
   getAnimation() {
@@ -91,7 +77,7 @@ export class ClicksModule extends Module {
           const newInterval = setInterval(() => {
             if (timeOfClicks) {
               timeOfClicks -= 1;
-              animationBlock.style.backgroundColor = this.getRandomColor();
+              animationBlock.style.backgroundColor = getRandomColor();
               animationBlock.querySelector("h1").textContent = timeOfClicks;
             } else {
               clearInterval(newInterval);
