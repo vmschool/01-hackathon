@@ -123,3 +123,7 @@ body {
 		top: -100%;
 	}
 }
+
+.default-theme-button {
+  margin: 0 auto;
+}
