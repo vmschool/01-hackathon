@@ -18,7 +18,7 @@ export class BackgroundModule extends Module {
       if (document.body.style.backgroundColor !== "") {
         if (!document.querySelector(".default-theme-button")) {
           const defaultThemeButton = document.createElement("button");
-          defaultThemeButton.className = "btn btn-primary";
+          defaultThemeButton.className = "btn btn-primary default-theme-button";
           defaultThemeButton.textContent = "Default theme";
           document.body.prepend(defaultThemeButton);
           defaultThemeButton.addEventListener("click", () => {
