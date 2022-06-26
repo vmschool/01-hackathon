@@ -1,5 +1,8 @@
 import "./styles.css";
 import "./shape.css";
+import "./fonts/icons-font/style.css"
+import "./time.css"
+import Timer from "./modules/time.module";
 import ContextMenu from "./menu";
 import RandomSounds from "./modules/random.sound";
 import { Module } from "./core/module";
@@ -41,6 +44,12 @@ menuList.addEventListener("click", (event) => {
     randomSound.trigger();
   }
 
+
+	if (target.dataset.type === "6") {
+		const timer = new Timer()
+		timer.render()
+	}
+})
   if (target.dataset.type === "7") {
     const randomComment = new RandomComment("comment", "comment");
     randomComment.trigger();
