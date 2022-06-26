@@ -15,12 +15,11 @@ trigger() {
     let logoHTML = document.createElement('logo');
     logoHTML.className = 'logo'
     
-    //let body = document.querySelector('body');
-    eventContainer.style.display = 'flex';
-    eventContainer.style.justifyContent = 'center';
+    // eventContainer.style.display = 'block';
+    // eventContainer.style.justifyContent = 'center';
     //eventContainer.style.width = '100%';
     //eventContainer.style.background = '#1e1e1e';
-    eventContainer.style.height = '170px';
+    // eventContainer.style.height = '170px';
     
     eventContainer.prepend(logoHTML);
     eventContainer.prepend(audioHTML);
