@@ -53,6 +53,4 @@ contextMenu.el.addEventListener('click', (event) => {
     }
     const selectContainer = document.querySelector(`.${selectModule}`);
     selectContainer.classList.add('active');
-
-    console.log(selectContainer);
 })

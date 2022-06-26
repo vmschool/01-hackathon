@@ -16,6 +16,13 @@ export class CustomMessage extends Module {
             const weather = await response.json()
             const temp = Math.round(weather.main.temp)
 
+            const customMessageContainer = document.querySelector('.custom-message-container');
+            if (!customMessageContainer){
+                const customMessageContainer = document.createElement('div');
+                customMessageContainer.className = 'custom-message-container';
+                eventContainer.prepend(customMessageContainer)    
+            }
+            
             const weatherBlock = document.createElement('div')
             weatherBlock.className = 'weather-block'
 
@@ -36,7 +43,7 @@ export class CustomMessage extends Module {
             weatherIcon.setAttribute('src', `http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`)
             weatherDescription.textContent = `${weather.weather[0].description}`
 
-            eventContainer.prepend(weatherBlock);
+            customMessageContainer.prepend(weatherBlock);
             weatherBlock.append(weatherH2, iconAndTempBlock, weatherDescription)
             iconAndTempBlock.append(weatherIcon, tempPara)
 
