@@ -12,6 +12,12 @@ export function randomColor() {
 }
 
 export function randomColorGradient() {
-  const hexGradient = `linear-gradient(to right, ${randomColor()}, ${randomColor()})`;
+  const hexGradient = `linear-gradient(${random(
+    0,
+    360
+  )}deg, ${randomColor()} ${random(0, 50)}%, ${randomColor()} ${random(
+    50,
+    100
+  )}%)`;
   return hexGradient;
 }
