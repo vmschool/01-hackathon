@@ -32,3 +32,4 @@ export class ShapeModule extends Module {
     });
   }
 }
+
