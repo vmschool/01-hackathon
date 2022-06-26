@@ -4,8 +4,8 @@ export class Countdown extends Module {
   #body;
   #formInputLabelInnerText;
 
-  constructor(type, text) {
-    super(type, text);
+  constructor() {
+    super("countdown", "таймер отсчета");
     this.#body = document.querySelector("body");
     this.#formInputLabelInnerText = ["дней", "часов", "минут", "секунд"];
     this.days = 0;
@@ -168,7 +168,7 @@ export class Countdown extends Module {
   }
 }
 
-const timer = new Countdown();
-timer.trigger();
-timer.renderForm();
-timer.renderTimer();
+// const timer = new Countdown();
+// timer.trigger();
+// timer.renderForm();
+// timer.renderTimer();
