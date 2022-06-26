@@ -36,3 +36,12 @@ export const getPosition = (event) => {
   }
 }
 
+export const getRandomPositionForElement = (elementWidth, elementHeight) => {
+  const html = document.querySelector("html");
+  const clientWidth = html.clientWidth;
+  const clientHeight = html.clientHeight;
+  return {
+    x: random(0, clientWidth - elementWidth),
+    y: random(0, clientHeight - elementHeight),
+  }
+}
