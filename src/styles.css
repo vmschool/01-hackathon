@@ -7,7 +7,8 @@
     box-sizing: border-box;
 }
 
-body, .event-container {
+body,
+.event-container {
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
     height: 100vh;
@@ -15,7 +16,7 @@ body, .event-container {
     /* padding: 2rem; */
 }
 
-.event-container{
+.event-container {
     /* height: 100vh;
     width: 100%; */
     padding: 2rem;
@@ -56,20 +57,20 @@ body, .event-container {
     border-radius: 5px;
 }
 
-.timer-text{
+.timer-text {
     color: #5776b9;
     align-items: center;
     margin: 0 auto;
     font-size: 5rem;
 }
 
-.image-meme{
+.image-meme {
     position: relative;
     left: 50%;
     display: block;
 }
 
-.hidden{
+.hidden {
     display: none;
 }
 
@@ -108,18 +109,21 @@ body, .event-container {
 }
 
 .wrapper-svg {
-    width: 300px;
-    height: 300px;
+    display: block;
+    position: relative;
+    width: 150px;
+    height: 150px;
 }
-.exmpl-svg  {
-overflow: hidden;
-display: flex;
-justify-content: center;
-align-items: center;
+
+.exmpl-svg {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 svg {
-min-width: 100%;
-min-height: 100%;
-flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%;
+    flex-shrink: 0;
 }
