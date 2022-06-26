@@ -1,37 +1,33 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = (env, argv) => {
-  const isProd = argv.mode === 'production'
-  const isDev = !isProd
+  const isProd = argv.mode === 'production';
+  const isDev = !isProd;
 
-  console.log('isProd', isProd)
-  console.log('isDev', isDev)
+  console.log('isProd', isProd);
+  console.log('isDev', isDev);
 
   const filename = (ext) =>
-    isProd ? `[name].[contenthash].bundle.${ext}` : `[name].bundle.${ext}`
+    isProd ? `[name].[contenthash].bundle.${ext}` : `[name].bundle.${ext}`;
 
   return {
     target: 'web',
     context: path.resolve(__dirname, 'src'),
     entry: {
-      main: [
-        'core-js/stable',
-        'regenerator-runtime/runtime',
-        './app.js'
-      ],
+      main: ['core-js/stable', 'regenerator-runtime/runtime', './app.js'],
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: filename('js'),
-      clean: true
+      clean: true,
     },
     resolve: {
       extensions: ['.js'],
       alias: {
-        '@': path.resolve(__dirname, 'src')
-      }
+        '@': path.resolve(__dirname, 'src'),
+      },
     },
     devServer: {
       port: '3000',
@@ -41,29 +37,29 @@ module.exports = (env, argv) => {
     devtool: isDev ? 'source-map' : false,
     plugins: [
       new HtmlWebpackPlugin({
-        template: './index.html'
+        template: './index.html',
       }),
       new MiniCssExtractPlugin({
-        filename: filename('css')
+        filename: filename('css'),
       }),
     ],
     module: {
       rules: [
         {
           test: /\.css$/i,
-          use: [MiniCssExtractPlugin.loader, "css-loader"],
+          use: [MiniCssExtractPlugin.loader, 'css-loader'],
         },
         {
           test: /\.m?js$/,
           exclude: /node_modules/,
           use: {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env']
-            }
-          }
-        }
+              presets: ['@babel/preset-env'],
+            },
+          },
+        },
       ],
-    }
-  }
-}
+    },
+  };
+};
