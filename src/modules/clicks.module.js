@@ -2,6 +2,7 @@ import { Module } from '../core/module'
 
 export class ClicksModule extends Module {
   #clickCount = 0;
+  #counterIsActive = false;
   constructor() {
     super("clicks", "Посчитать клики за три секунды");
   }
@@ -10,16 +11,20 @@ export class ClicksModule extends Module {
   }
 
   #getClicks() {
-    const handler = () => {
-      this.#clickGetter()
+    if (!this.#counterIsActive) {
+      this.#counterIsActive = true;
+      const handler = () => {
+        this.#clickGetter()
+      }
+      document.addEventListener("mousedown", handler);
+      
+      setTimeout(() => {
+        document.removeEventListener("mousedown", handler);
+        this.#clickCountPrint();
+        this.#clickReset();
+        this.#counterIsActive = false;
+      }, 3000);
     }
-    document.addEventListener("mousedown", handler);
-    
-    setTimeout(() => {
-      document.removeEventListener("mousedown", handler);
-      this.#clickCountPrint();
-      this.#clickReset();
-    }, 3000);
   }
 
   #clickGetter() {
