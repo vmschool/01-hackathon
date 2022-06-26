@@ -35,26 +35,21 @@ export class TimerModule extends Module {
     }
 
     trigger() {
-        // this.#eventContainer = document.querySelector(`.${this.type}`);
+        this.#eventContainer = document.querySelector(`.${this.type}`);
         const hasUserInput = document.querySelector('.user-input');
         if (!this.#eventContainer) {
             addEventContainer(this.type);
             this.#eventContainer = document.querySelector(`.${this.type}`);
-            // console.log(this.#eventContainer)
-            // this.#renderUserInput();
-            // this.#renderTimer();
-            // this.#decreaseTime();
         }
 
-        if (!hasUserInput || this.#timerText.textContent === 'time is up') {
-            // this.#userInput.innerHTML=``;
+        if (!hasUserInput) {
             this.#renderUserInput();
         }
-        // if (this.#timerText.textContent==='time is up'){
-        //     // console.log('clear')
-        //     this.#userInput.innerHTML=``;
-        //     this.#renderUserInput();
-        // }
+
+        if (this.#timerText.textContent === 'time is up') {
+            this.#userInput.innerHTML = ``;
+            this.#renderUserInput();
+        }
     }
 
     #renderUserInput() {
@@ -75,9 +70,6 @@ export class TimerModule extends Module {
 
         this.#confirmButton.className = 'user-button confirm';
         this.#confirmButton.textContent = 'Start';
-        // this.#confirmButton.addEventListener('click', (event)=>{
-        //     this.#decreaseTime();
-        // })
         this.#applyStyles(this.#confirmButton);
 
         this.#limitMessage.className = 'limit-message';
@@ -88,10 +80,6 @@ export class TimerModule extends Module {
 
         this.#userInput.append(this.#increaseTimer, this.#timerSpan, this.#decreaseTimer, this.#confirmButton);
         this.#eventContainer.append(this.#userInput, this.#image);
-        this.#confirmButton.addEventListener('click', () => {
-            this.#renderTimer();
-            this.#decreaseTime();
-        }, "once")
 
         this.#userInput.addEventListener('click', (event) => {
             const { target } = event;
@@ -122,10 +110,14 @@ export class TimerModule extends Module {
         this.#timerText.textContent = `${addZero(this.#minutes)}:${addZero(this.#seconds)}`;
 
         this.#userInput.append(this.#timerText);
+
+        this.#decreaseTime();
     }
 
     #decreaseTime() {
+        this.#renderTimer();
         this.#image.classList.add('hidden');
+
         let time = setInterval(() => {
             if (this.#seconds <= 0) {
                 clearInterval(time);
@@ -136,7 +128,7 @@ export class TimerModule extends Module {
                 this.#timerText.textContent = `${addZero(this.#minutes)}:${addZero(this.#seconds)}`;
                 --this.#seconds;
             }
-        }, 1000)
+        }, 1000);
     }
 
     #renderLimitMessage() {
