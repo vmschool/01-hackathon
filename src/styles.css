@@ -15,23 +15,12 @@ body,
   font-family: "Yanone Kaffeesatz", sans-serif;
   height: 100vh;
   width: 100%;
-  /* padding: 2rem; */
   background-color: #1d212b;
   color: white;
 
-
-  /* body,
-.event-container {
-    font-size: 14px;
-    font-family: 'Roboto', sans-serif;
-    height: 100vh;
-    width: 100%; */
-  /* padding: 2rem; */
 }
 
 .event-container {
-  /* height: 100vh;
-    width: 100%; */
   padding: 2rem;
   display: none;
 }
@@ -72,8 +61,6 @@ body,
 }
 
 .image-meme {
-  /* position: fixed; */
-  /* align-items: center; */
   left: 10%;
   display: block;
 }
@@ -83,6 +70,7 @@ body,
 }
 
 .user-input{
+  min-width: 400px;
   padding: 0 2%;
   display: flex;
   justify-content: space-between;
@@ -91,6 +79,8 @@ body,
   background-color:#343434;
   width: 30%;
   height: 15vh;
+  min-height:80px ;
+
   border-radius: 5px;
   text-align: center;
   color: white;
@@ -98,8 +88,11 @@ body,
 }
 
 .limit-message{
+  display:block;
+  width: 450px;
+  text-align: center;
   padding: 10px;
-  height: 10vh;
+  height: 50px;
   font-size: 2rem;
   background-color:#343434;
   margin: 0 auto;
@@ -110,6 +103,7 @@ body,
 }
 
 .user-button{
+  margin-right: 5px;
   display: flex;
   width: 20%;
   height: 10vh;
@@ -119,6 +113,8 @@ body,
   align-items: center;
   text-align: center;
   justify-content: center;
+  min-height: 50px;
+  min-width: 70px;
 }
 
 .confirm {
@@ -402,13 +398,26 @@ body,
   background-size: 200% 200%;
   animation: animateGlow 10s ease infinite;
 }
+
+
+ /* Sound Module */
 .logo{
   width: 300px;
   min-height: 10px;
   margin-top: 35vh;
   border-radius: 50%;
   background: rgb(30, 11, 197);
+  margin: 0 auto;
 }
+
+.sound{
+  /* display: flex; */
+  justify-content: center;
+  width: 100%;
+  background-color: #1e1e1e;
+  height: 170px;
+}
+
 .audio{
   margin:0;
   font-size: 3rem;

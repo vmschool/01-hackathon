@@ -15,6 +15,7 @@ trigger() {
     let logoHTML = document.createElement('logo');
     logoHTML.className = 'logo'
     
+
     eventContainer.style.display = 'flex';
     eventContainer.style.justifyContent = 'center';
     eventContainer.style.height = '170px';
