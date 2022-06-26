@@ -65,23 +65,16 @@ body,
 
 /* Timer Module */
 
-.timer-window {
-  padding: 20px;
-  display: flex;
-  position: fixed;
-  border-radius: 5px;
-}
-
 .timer-text {
-  color: #5776b9;
   align-items: center;
   margin: 0 auto;
   font-size: 5rem;
 }
 
 .image-meme {
-  position: relative;
-  left: 50%;
+  /* position: fixed; */
+  /* align-items: center; */
+  left: 10%;
   display: block;
 }
 
@@ -95,27 +88,26 @@ body,
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  background-color:#7e0fff;
+  background-color:#343434;
   width: 30%;
   height: 15vh;
   border-radius: 5px;
   text-align: center;
   color: white;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .limit-message{
   padding: 10px;
   height: 10vh;
   font-size: 2rem;
-  background-color: #00ffdd;
+  background-color:#343434;
   margin: 0 auto;
 }
 
 .confirm {
   width: 40%;
 }
-
 
 .user-button{
   display: flex;
@@ -124,7 +116,6 @@ body,
   background-color: #343434;
   border-radius: 5px;
   font-size: 2rem;
-  /* vertical-align:middle; */
   align-items: center;
   text-align: center;
   justify-content: center;
@@ -496,12 +487,6 @@ body,
 
 /* Custom Message */
 
-/* color: #5776b9;
-    align-items: center;
-    margin: 0 auto;
-    font-size: 5rem;
-} */
-
 .image-meme {
   position: relative;
   left: 50%;
@@ -569,12 +554,6 @@ body,
 
 /* Shape Module */
 
-
-  width: 100px;
-  height: 102.67px;
-}
-
-x
 .wrapper-svg {
   display: block;
   position: relative;
