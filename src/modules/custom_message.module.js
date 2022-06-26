@@ -19,7 +19,6 @@ export class CustomMessage extends Module {
             
             const weatherBlock = document.createElement('div');
             weatherBlock.className = 'weather-block';
-            weatherBlock.classList.add('weather-block__margin');
 
             const weatherH2 = document.createElement('h2');
             weatherH2.textContent = `${weather.name}, ${weather.sys.country} `;
@@ -28,7 +27,6 @@ export class CustomMessage extends Module {
             iconAndTempBlock.className = 'icon_and_temp_block';
 
             const weatherDescription = document.createElement('p');
-            weatherDescription.className = 'weather_description';
             weatherDescription.textContent = `${weather.weather[0].description}`;
 
             const tempPara = document.createElement('p');
