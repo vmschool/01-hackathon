@@ -19,6 +19,7 @@ body,
   background-color: #1d212b;
   color: white;
 
+
   /* body,
 .event-container {
     font-size: 14px;
@@ -62,6 +63,8 @@ body,
   background: #343434;
 }
 
+/* Timer Module */
+
 .timer-window {
   padding: 20px;
   display: flex;
@@ -80,12 +83,55 @@ body,
   position: relative;
   left: 50%;
   display: block;
-  /* padding-right:  30px; */
-  /* margin: 0 auto; */
 }
 
 .hidden {
   display: none;
+}
+
+.user-input{
+  padding: 0 2%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  background-color:#7e0fff;
+  width: 30%;
+  height: 15vh;
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.limit-message{
+  padding: 10px;
+  height: 10vh;
+  font-size: 2rem;
+  background-color: #00ffdd;
+  margin: 0 auto;
+}
+
+.confirm {
+  width: 40%;
+}
+
+
+.user-button{
+  display: flex;
+  width: 20%;
+  height: 10vh;
+  background-color: #343434;
+  border-radius: 5px;
+  font-size: 2rem;
+  /* vertical-align:middle; */
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.confirm {
+  width: 30%;
 }
 
 /* Container */
@@ -383,6 +429,8 @@ body,
   font-size: 60px;
 }
 
+/* Custom Message */
+
 /* color: #5776b9;
     align-items: center;
     margin: 0 auto;
@@ -398,6 +446,7 @@ body,
 .hidden {
   display: none;
 }
+
 
 .weather-block {
   display: inline-block;
@@ -421,9 +470,22 @@ body,
 }
 
 .weather_icon {
+
+    width: 100px;
+    height: 102.67px;
+}
+
+.custom-message-container {
+  display: flex;
+}
+
+/* Shape Module */
+
+
   width: 100px;
   height: 102.67px;
 }
+
 
 .wrapper-svg {
   display: block;
