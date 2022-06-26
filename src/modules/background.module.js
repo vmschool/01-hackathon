@@ -4,7 +4,7 @@ import { randomColorGradient } from "../utils";
 export class BackgroundModule extends Module {
   #body;
   constructor() {
-    super("background", "поменять фон");
+    super("background", "Поменять фон");
     this.#body = document.querySelector("body");
   }
 
