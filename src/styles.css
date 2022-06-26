@@ -445,7 +445,6 @@ body,
   padding-left: 20px;
   padding-right: 20px;
   position: fixed;
-  z-index: 1000;
   border-radius: 50%;
   list-style: none;
   background-color: #1d212b;
@@ -577,7 +576,6 @@ body,
   display: none;
 }
 
-
 .weather-block {
   display: inline-block;
   margin: 0 20px 20px 0;
@@ -609,10 +607,8 @@ body,
 }
 
 .weather_icon {
-
     width: 100px;
     height: 102.67px;
-
 }
 
 .custom-message-container {

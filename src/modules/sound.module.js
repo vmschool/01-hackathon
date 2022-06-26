@@ -13,7 +13,7 @@ export class Soundmodule extends Module {
     trigger() {
         addEventContainer(this.type);
         const eventContainer = document.querySelector(`.${this.type}`);
-        
+
         let context, analyser, src, array;
         const hasLogo = document.querySelector('.logo');
         if (hasLogo) {
@@ -23,13 +23,20 @@ export class Soundmodule extends Module {
             this.textHint = document.createElement('div');
             this.logoHTML = document.createElement('logo');
             this.audioHTML = document.createElement('audio');
-            
+
         }
 
         let random = Math.floor(Math.random() * 5 + 1);
         this.audioHTML.src = `src/assets/sound/${random}.mp3`;
         this.audioHTML.className = 'audio'
         this.audioHTML.setAttribute('controls', '');
+        this.audioHTML.setAttribute('autoplay', '');
+        // this.audioHTML.setAttribute('volume', 0.5);
+        this.audioHTML.volume =0.3;
+        // var audio = document.querySelector("audio");
+        // audio.volume = 0.5;
+        // var audio=document.querySelector("audio");
+        // audio.volume=0.5;
 
         this.logoHTML.className = 'logo'
 
@@ -41,15 +48,15 @@ export class Soundmodule extends Module {
         this.textHint.style.textAlign = 'center';
         this.textHint.style.fontSize = '30px';
         this.textHint.style.marginBottom = '50px';
-        this.textHint.textContent = 'Pause/Resume - клик левой клавишей мышки';
+        this.textHint.textContent = 'Клик по кругу запустит анимацию';
 
-        this.soundContainer.prepend(this.audioHTML, this.logoHTML );
+        this.soundContainer.prepend(this.audioHTML, this.logoHTML);
         eventContainer.append(this.textHint, this.soundContainer);
 
         let logo = document.querySelector('.logo').style;
 
         let audio = document.querySelector('.audio');
-                
+
         this.logoHTML.onclick = function () {
             if (!context) {
                 preparation();
