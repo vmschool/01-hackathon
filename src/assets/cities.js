@@ -202,7 +202,7 @@ export function randomCity() {
     'Harare',
   ];
 
-  return worldCapitals[random(0, 195)]
+  return worldCapitals[random(0, worldCapitals.length - 1)]
 
 
 }
