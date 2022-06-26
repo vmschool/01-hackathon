@@ -25,6 +25,10 @@ export default class RandomComment extends Module {
 
 			document.body.insertAdjacentElement('beforeend', comment)
 
+			setTimeout(() => {
+				comment.remove()
+			}, 5000)
+
 		} catch (err) {
 			console.log('error comment:', err);
 		}
