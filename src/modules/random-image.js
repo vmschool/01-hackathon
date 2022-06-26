@@ -28,8 +28,6 @@ export class RandomModule {
         const imageHTML = document.createElement("img");
         imageHTML.className = "random-image";
         imageHTML.src = images[randomNumber].url;
-        imageHTML.style.position = 'absolute'
-        imageHTML.style.zIndex = '-1'
         document.body.prepend(imageHTML);
         document.body.insertAdjacentHTML("afterbegin", `
         <i class="ic_close close_img"></i>
