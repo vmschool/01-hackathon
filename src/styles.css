@@ -77,8 +77,11 @@ body {
 }
 
 .main_app-modules {
+    display: flex;
+    flex-direction: column;
     width: 50%;
-    height: 200px;
+    height: auto;
+    margin-top: 50px;
 }
 
 /* Card-flip */

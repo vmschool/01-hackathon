@@ -38,32 +38,45 @@ export class RandomFigure extends Module {
     figureContent.id = "figure-content";
     figureShadow.id = "figure-shadow";
 
-    boxConteiner.style.width = this.#style.width;
-    boxConteiner.style.height = this.#style.height;
-    boxConteiner.style.position = this.#style.positionFixed;
-    boxConteiner.style.left = this.#style.left;
-    boxConteiner.style.right = this.#style.right;
-    boxConteiner.style.top = this.#style.top;
-    boxConteiner.style.bottom = this.#style.bottom;
-    boxConteiner.style.transform = "scale()";
-    boxConteiner.style.transition = 'transform .3s ease-in-out';
-
-    figureShadow.style.background = "rgb(0, 0, 0, 0.5)";
-    figureShadow.style.width = "100%";
-    figureShadow.style.height = "100%";
-    figureShadow.style.clipPath = this.#style.clipPath;
-    figureShadow.style.position = this.#style.positionAbsolute;
-    figureShadow.style.left = "10px";
-    figureShadow.style.right = "10px";
-
-    figureContent.style.background = this.#style.background;
-    figureContent.style.width = this.#style.width;
-    figureContent.style.height = this.#style.height;
-    figureContent.style.clipPath = this.#style.clipPath;
-
+    this.#randomStyles(this.#style, boxConteiner, figureContent, figureShadow);
+    this.#styles(boxConteiner, figureShadow);
     this.#getRemoveBoxConteiner(boxConteiner);
+
     boxConteiner.append(figureShadow, figureContent);
     return this.#bodyHTML.append(boxConteiner);
+  }
+
+  #styles(boxConteiner, figureShadow) {
+    boxConteiner.style.transform = "scale(0)";
+    boxConteiner.style.transition = "transform .3s ease-in-out";
+    boxConteiner.classList.add("show");
+    if (boxConteiner.className === "show") {
+      setTimeout(() => (boxConteiner.style.transform = "scale(1)"));
+    }
+
+    figureShadow.style.background = "rgb(0, 0, 0, 0.7)";
+    figureShadow.style.width = "100%";
+    figureShadow.style.height = "100%";
+    figureShadow.style.left = "10px";
+    figureShadow.style.right = "10px";
+  }
+
+  #randomStyles(data, boxConteiner, figureContent, figureShadow) {
+    boxConteiner.style.width = data.width;
+    boxConteiner.style.height = data.height;
+    boxConteiner.style.position = data.positionFixed;
+    boxConteiner.style.left = data.left;
+    boxConteiner.style.right = data.right;
+    boxConteiner.style.top = data.top;
+    boxConteiner.style.bottom = data.bottom;
+
+    figureShadow.style.clipPath = data.clipPath;
+    figureShadow.style.position = data.positionAbsolute;
+
+    figureContent.style.background = data.background;
+    figureContent.style.width = data.width;
+    figureContent.style.height = data.height;
+    figureContent.style.clipPath = data.clipPath;
   }
 
   #getRemoveBoxConteiner(boxConteiner) {
