@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap");
 
 * {
   margin: 0;
@@ -8,8 +8,8 @@
   box-sizing: border-box;
 }
 
-
-body, .event-container {
+body,
+.event-container {
   font-size: 14px;
   font-family: "Yanone Kaffeesatz", sans-serif;
   height: 100vh;
@@ -18,20 +18,20 @@ body, .event-container {
   background-color: #1d212b;
   color: white;
 
-/* body,
+  /* body,
 .event-container {
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
     height: 100vh;
     width: 100%; */
-    /* padding: 2rem; */
+  /* padding: 2rem; */
 }
 
 .event-container {
-    /* height: 100vh;
+  /* height: 100vh;
     width: 100%; */
-    padding: 2rem;
-    display: none;
+  padding: 2rem;
+  display: none;
 }
 
 .menu {
@@ -111,6 +111,7 @@ body, .event-container {
 
 .count-container__title,
 .description__title {
+  z-index: 1;
   font-size: 70px;
   letter-spacing: 1.5px;
   font-weight: bold;
@@ -140,8 +141,33 @@ body, .event-container {
   padding-bottom: 100px;
 }
 
+.result {
+  display: none;
+}
+
+.result-container {
+  display: none;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  z-index: 1;
+}
+
+.result-answers {
+  display: flex;
+  max-width: 700px;
+  width: 100%;
+  justify-content: space-between;
+}
+
 .game,
-.game-sub {
+.game-sub,
+.game-repeat,
+.game-delete {
+  z-index: 1;
   max-width: 300px;
   width: 100%;
   position: relative;
@@ -163,8 +189,8 @@ body, .event-container {
 }
 
 .game-shadow__one {
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 300px;
   position: absolute;
 }
 
@@ -174,7 +200,6 @@ body, .event-container {
   top: 0;
   left: 0;
   right: 0;
-  z-index: -1;
   height: 100%;
   width: 100%;
   margin: 0 auto;
@@ -190,7 +215,7 @@ body, .event-container {
 
 .game-shadow__two {
   width: 500px;
-  height: 500px;
+  height: 300px;
   position: absolute;
 }
 
@@ -200,7 +225,6 @@ body, .event-container {
   top: 10vw;
   left: 0;
   right: 0;
-  z-index: -1;
   height: 100%;
   width: 100%;
   margin: 0 auto;
@@ -215,13 +239,17 @@ body, .event-container {
 }
 
 .game span,
-.game-sub span {
+.game-sub span,
+.game_repeat span,
+.game_delete span {
   position: relative;
   z-index: 1;
 }
 
 .game::before,
-.game-sub::before {
+.game-sub::before,
+.game-repeat::before,
+.game-delete::before {
   content: "";
   position: absolute;
   top: var(--y);
@@ -233,12 +261,46 @@ body, .event-container {
   border-radius: 50%;
   transition: width 0.5s, height 0.5s;
   transform: translate(-50%, -50%);
+  z-index: -1;
 }
 
 .game:hover::before,
-.game-sub:hover::before {
+.game-sub:hover::before,
+.game-repeat:hover::before,
+.game-delete:hover::before {
   width: 50px;
   height: 50px;
+}
+
+.game-shadow__three {
+  width: 700px;
+  height: 300px;
+  position: absolute;
+}
+
+.game-shadow__three:after {
+  position: absolute;
+  content: "";
+  top: -2vw;
+  left: -10px;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.75);
+  -webkit-filter: blur(5vw);
+  -moz-filter: blur(5vw);
+  -ms-filter: blur(5vw);
+  filter: blur(5vw);
+  background: linear-gradient(270deg, #0fffc1, #7e0fff);
+  background-size: 200% 200%;
+  animation: animateGlow 10s ease infinite;
+}
+
+.qiestion {
+  font-size: 40px;
+  margin-bottom: 20px;
+  z-index: 1;
 }
 
 .block {
@@ -260,8 +322,8 @@ body, .event-container {
 
 .block-game {
   cursor: none;
-  width: 1000px;
-  height: 1000px;
+  width: 700px;
+  height: 700px;
   position: relative;
   display: none;
   overflow: hidden;
@@ -273,12 +335,14 @@ body, .event-container {
   margin-bottom: 20px;
   border: 5px solid #0fffc1;
   background-color: #151823;
-  z-index: 10;
+  z-index: 1;
+  transition: border 0.3s ease-in-out;
 }
 
 .block-game-bg {
-  width: 1000px;
-  height: 1000px;
+  display: none;
+  width: 700px;
+  height: 700px;
   position: absolute;
 }
 
@@ -288,7 +352,6 @@ body, .event-container {
   top: 5vw;
   left: 0;
   right: 0;
-  z-index: -1;
   height: 100%;
   width: 100%;
   margin: 0 auto;
@@ -350,6 +413,7 @@ body, .event-container {
 }
 
 .clicks {
+  display: none;
   max-width: 400px;
   width: 100%;
   font-size: 30px;
@@ -377,46 +441,46 @@ body, .event-container {
   font-size: 60px;
 }
 
-    /* color: #5776b9;
+/* color: #5776b9;
     align-items: center;
     margin: 0 auto;
     font-size: 5rem;
 } */
 
 .image-meme {
-    position: relative;
-    left: 50%;
-    display: block;
+  position: relative;
+  left: 50%;
+  display: block;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .weather-block {
-    display: inline-block;
-    margin: 0 20px 0 0;
-    font-family: 'Montserrat', sans-serif;
-    width: 260px;
-    color: #1b1a1a;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 2px 2px 15px 1px rgb(220, 220, 220);
-    border-radius: 15px;
-    padding: 40px 40px;
-    margin-bottom: 20px;
+  display: inline-block;
+  margin: 0 20px 0 0;
+  font-family: "Montserrat", sans-serif;
+  width: 260px;
+  color: #1b1a1a;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 2px 2px 15px 1px rgb(220, 220, 220);
+  border-radius: 15px;
+  padding: 40px 40px;
+  margin-bottom: 20px;
 }
 
 .icon_and_temp_block {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2.5em;
-    font-weight: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5em;
+  font-weight: 100;
 }
 
 .weather_icon {
-    width: 100px;
-    height: 102.67px;
+  width: 100px;
+  height: 102.67px;
 }
 
 .custom-message-container {
@@ -428,26 +492,24 @@ body, .event-container {
   /* background: #1b1a1a; */
 }
 
-
-
 .wrapper-svg {
-    display: block;
-    position: relative;
-    width: 150px;
-    height: 150px;
+  display: block;
+  position: relative;
+  width: 150px;
+  height: 150px;
 }
 
 .exmpl-svg {
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 svg {
-    min-width: 100%;
-    min-height: 100%;
-    flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
+  flex-shrink: 0;
 }
 
 .active {
