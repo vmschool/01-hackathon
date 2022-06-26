@@ -84,17 +84,26 @@ body, .event-container {
   align-items: center;
   margin: 0 auto;
   background-color:#7e0fff;
-  width: 20%;
+  width: 30%;
   height: 15vh;
   border-radius: 5px;
   text-align: center;
   color: white;
+  margin-bottom: 20px;
 }
 
+.limit-message{
+  padding: 10px;
+  height: 10vh;
+  font-size: 2rem;
+  background-color: #00ffdd;
+  margin: 0 auto;
+}
 
-/* .timer-span{
-  color: white;
-} */
+.confirm {
+  width: 40%;
+}
+
 
 .user-button{
   display: flex;
@@ -107,7 +116,10 @@ body, .event-container {
   align-items: center;
   text-align: center;
   justify-content: center;
+}
 
+.confirm {
+  width: 30%;
 }
 
 /* Container */
