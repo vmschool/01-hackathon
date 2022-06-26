@@ -12,7 +12,7 @@ export class TimerModule extends Module {
   trigger() {
     document.body.append(this.#timerElement)
     this.#timerElement.style.cssText = `
-                        width: 270px;
+                        width: 280px;
                         height: 75px;
                         padding: 10px;
                        `
@@ -27,7 +27,7 @@ export class TimerModule extends Module {
     this.#timerElement.style.borderRadius = random(0, 20) + 'px'
     this.#timerElement.style.position = 'absolute'
     this.#timerElement.style.top = random(0, (document.documentElement.clientHeight - 75)) + 'px'
-    this.#timerElement.style.left = random(0, (document.documentElement.clientWidth - 270)) + 'px'
+    this.#timerElement.style.left = random(0, (document.documentElement.clientWidth - 280)) + 'px'
 
     inputEl.addEventListener('keyup', (e) => {
       const { key } = e
