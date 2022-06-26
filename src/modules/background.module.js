@@ -8,8 +8,8 @@ export class BackgroundModule extends Module {
 	}
 
 	trigger() {
-		let colorOne = getRandomColor();
-		let colorTwo = getRandomColor();
+		const colorOne = getRandomColor();
+		const colorTwo = getRandomColor();
 	
 		document.body.style.background = `
 			linear-gradient(${random(0, 360)}deg, ${colorOne}, ${colorTwo})
