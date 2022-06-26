@@ -13,11 +13,51 @@ export class Countdown extends Module {
     this.hours = 0;
     this.minets = 0;
     this.seconds = 0;
+    this.timer = null;
+  }
+
+  trigger() {
+    this.renderTimerContainer();
+    this.renderForm();
+    this.renderTimer();
+    this.buttonsFormTimer();
   }
 
   renderTimerContainer() {
     this.#timerContainer = document.createElement("div");
+    this.#timerContainer.className = "timer-container";
+    const deletTimer = document.createElement("div");
+    deletTimer.className = "deletTimer";
+    this.#timerContainer.append(deletTimer);
+
+    this.styles(this.#timerContainer);
+    this.removeTimers(deletTimer, this.#timerContainer);
+
     this.#body.append(this.#timerContainer);
+  }
+
+  styles(timerContainer) {
+    timerContainer.style.position = "fixed";
+    timerContainer.style.top = "25%";
+    timerContainer.style.left = "45%";
+    timerContainer.style.zIndex = "1000";
+    timerContainer.style.opacity = "0";
+    timerContainer.style.transition = "opacity .3s linear";
+    timerContainer.classList.add("show");
+
+    if (timerContainer.className === "timer-container show") {
+      setTimeout(() => (timerContainer.style.opacity = "1"), 300);
+    }
+  }
+
+  removeTimers(deletTimer, timerContainer) {
+    deletTimer.addEventListener("click", () => {
+      clearInterval(this.timer);
+      timerContainer.style.opacity = "0";
+      setTimeout(() => {
+        timerContainer.remove();
+      }, 300);
+    });
   }
 
   renderForm() {
@@ -70,13 +110,6 @@ export class Countdown extends Module {
     timerContainer.append(childreenContainerTimer);
 
     return this.#timerContainer.append(timerContainer);
-  }
-
-  trigger() {
-    this.renderTimerContainer();
-    this.renderForm();
-    this.renderTimer();
-    this.buttonsFormTimer();
   }
 
   buttonsFormTimer() {
@@ -164,6 +197,7 @@ export class Countdown extends Module {
             alert("Отсчёт закончен");
           }
         }, 1000);
+        this.timer = timer;
       }
       if (errorMessageBlockFromDOM) {
         errorMessageBlockFromDOM.remove();

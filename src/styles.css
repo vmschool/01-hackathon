@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
+:root {
+    --main-background: #4666B1;
+    --primary-color: #4666B1;
+    --default-text-color: #ffffff;
+    --donate-item-text-color: #000000;
+    --default-border-color: #ffffff;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -172,4 +180,182 @@ body {
 }
 
 
+/* Timer */
+.timer-container {
+    width: 715px;
+    padding: 20px;
+    background: #eee;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .7);
+}
 
+.deletTimer {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    transition: transform .3s ease-in-out;
+}
+
+.deletTimer::before {
+    display: block;
+    content: '';
+    width: 100%;
+    height: 4px;
+
+    background: #000000;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+
+    transform: rotate(45deg);
+}
+
+.deletTimer::after {
+    display: block;
+    content: '';
+    width: 100%;
+    height: 4px;
+
+    background: #000000;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+
+    transform: rotate(-45deg);
+}
+
+.deletTimer:hover {
+    transform: rotate(90deg);
+}
+
+.timers-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.foo {
+    width: 100%;
+    height: auto;
+}
+
+.timers-container__title {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.timers-container .donate-item {
+    padding: 10px;
+}
+
+.timers-container .donate-item:nth-child(odd) {
+    background: #E1F1FF;
+}
+
+.timers-container .donate-item:nth-child(even) {
+    background: white;
+}
+
+.timer-item {
+    color: var(--donate-item-text-color);
+}
+
+.timer-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 75%;
+}
+
+#total-amount {
+    font-size: 3rem;
+    line-height: 3rem;
+}
+
+.timer-form__donate-input {
+    font-size: 2rem;
+    line-height: 2rem;
+    background: var(--primary-color);
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.timer-form__input-label {
+    font-size: 2rem;
+    line-height: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.timers-container__donates {
+    overflow: auto;
+    height: 100%;
+    flex-grow: 1;
+}
+
+.timer-form__submit-button {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    cursor: pointer;
+    border: 2px solid var(--default-border-color);
+    border-radius: 5px;
+    color: var(--default-text-color);
+    background: #4666B1;
+    transition: 0.3s ease;
+    box-shadow: none;
+    margin-top: 30px;
+}
+
+.timer-form__submit-button:hover {
+    color: #4666B1;
+    background: #ffffff;
+}
+
+.timer-form__submit-button:focus {
+    box-shadow: 0 0 0 2px var(--default-border-color);
+}
+
+.error-message-block {
+    font-size: 1.25rem;
+    line-height: 2rem;
+    font-weight: normal;
+    color: red;
+}
+
+#timer {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    font-size: 3em;
+    font-weight: 100;
+    color: white;
+    padding: 10px 30px;
+    color: white;
+}
+
+#timer div {
+    display: inline-block;
+    /* min-width: 90px; */
+    padding: 15px;
+    background: #020b43;
+    border-radius: 10px;
+    border: 2px solid #030d52;
+    margin: 15px;
+}
+
+#timer div span {
+    color: #ffffff;
+    display: block;
+    margin-top: 15px;
+    font-size: .35em;
+    font-weight: 400;
+}
