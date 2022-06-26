@@ -4,7 +4,7 @@ import { addEventContainer } from '../utils';
 
 export class CustomMessage extends Module {
     constructor(type, text) {
-        super(type, text)
+        super(type, text)  
     }
 
     async trigger() {
