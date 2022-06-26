@@ -35,19 +35,14 @@ export class TimerModule extends Module {
     }
 
     trigger() {
-        this.#eventContainer = document.querySelector(`.${this.type}`);
         const hasUserInput = document.querySelector('.user-input');
         if (!this.#eventContainer) {
             addEventContainer(this.type);
             this.#eventContainer = document.querySelector(`.${this.type}`);
         }
 
-        if (!hasUserInput) {
-            this.#renderUserInput();
-        }
-
-        if (this.#timerText.textContent === 'time is up') {
-            this.#userInput.innerHTML = ``;
+        if (!hasUserInput || this.#timerText.textContent === 'time is up') {
+            this.#userInput.textContent=``;
             this.#renderUserInput();
         }
     }
@@ -70,30 +65,42 @@ export class TimerModule extends Module {
 
         this.#confirmButton.className = 'user-button confirm';
         this.#confirmButton.textContent = 'Start';
+
         this.#applyStyles(this.#confirmButton);
 
         this.#limitMessage.className = 'limit-message';
+        this.#limitMessage.classList.add('hidden');
+        this.#applyStyles(this.#limitMessage);
 
         this.#image.className = 'image-meme';
         this.#image.src = JS_MEME;
         this.#image.classList.add('hidden');
 
         this.#userInput.append(this.#increaseTimer, this.#timerSpan, this.#decreaseTimer, this.#confirmButton);
-        this.#eventContainer.append(this.#userInput, this.#image);
+        this.#eventContainer.append(this.#userInput, this.#image,this.#limitMessage);
+        this.#confirmButton.addEventListener('click', () => {
+            this.#renderTimer();
+            this.#decreaseTime();
+        }, "once")
 
         this.#userInput.addEventListener('click', (event) => {
             const { target } = event;
             const currentTime = Number(this.#timerSpan.textContent);
             if (currentTime === 60 && target.classList.contains("increase")) {
-                this.#renderLimitMessage();
+                this.#limitMessage.textContent = 'Это максимальное возможное значение';
+                this.#limitMessage.classList.remove('hidden');
             }
+
             if (currentTime === 5 && target.classList.contains("decrease")) {
-                this.#renderLimitMessage();
+                this.#limitMessage.textContent = 'Это минимальное возможное значение';
+                this.#limitMessage.classList.remove('hidden');
             }
             if (currentTime >= 5 && currentTime <= 60) {
                 if (target.classList.contains("increase") && currentTime != 60) {
+                    this.#limitMessage.classList.add('hidden');
                     this.#timerSpan.textContent = currentTime + 5;
                 } else if (target.classList.contains("decrease") && currentTime != 5) {
+                    this.#limitMessage.classList.add('hidden');
                     this.#timerSpan.textContent = currentTime - 5;
                 }
             }
@@ -102,6 +109,7 @@ export class TimerModule extends Module {
 
     #renderTimer() {
         this.#userInput.innerHTML = ``;
+        this.#limitMessage.classList.add('hidden');
 
         this.#minutes = 0;
         this.#seconds = this.#timerSpan.textContent;
@@ -110,14 +118,10 @@ export class TimerModule extends Module {
         this.#timerText.textContent = `${addZero(this.#minutes)}:${addZero(this.#seconds)}`;
 
         this.#userInput.append(this.#timerText);
-
-        this.#decreaseTime();
     }
 
     #decreaseTime() {
-        this.#renderTimer();
         this.#image.classList.add('hidden');
-
         let time = setInterval(() => {
             if (this.#seconds <= 0) {
                 clearInterval(time);
@@ -128,20 +132,7 @@ export class TimerModule extends Module {
                 this.#timerText.textContent = `${addZero(this.#minutes)}:${addZero(this.#seconds)}`;
                 --this.#seconds;
             }
-        }, 1000);
-    }
-
-    #renderLimitMessage() {
-        this.#applyStyles(this.#limitMessage);
-        let info = '';
-        if (this.#timerSpan.textContent === "60") {
-            info = 'Это максимальное возможное значение';
-        }
-        if (this.#timerSpan.textContent === "5") {
-            info = 'Это минимальное возможное значение';
-        }
-        this.#limitMessage.textContent = info;
-        this.#eventContainer.append(this.#limitMessage);
+        }, 1000)
     }
 
     #applyStyles(element) {
