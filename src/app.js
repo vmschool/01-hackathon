@@ -31,6 +31,9 @@ document.body.addEventListener("contextmenu", (event) => {
   event.preventDefault();
   let elemX = document.elementFromPoint(event.clientX + 150, event.clientY);
   let elemY = document.elementFromPoint(event.clientX, event.clientY + 50);
+
+  const windowHeight = document.documentElement.clientHeight;
+
   elemX === null
     ? (contextMenu.el.style.left = `${event.clientX - 150}px`)
     : (contextMenu.el.style.left = `${event.clientX}px`);
@@ -38,6 +41,16 @@ document.body.addEventListener("contextmenu", (event) => {
     ? (contextMenu.el.style.top = `${event.clientY - 50}px`)
     : (contextMenu.el.style.top = `${event.clientY}px`);
   contextMenu.open();
+  
+  const menu = document.querySelector('.menu');
+
+  const menuHeight = menu.offsetHeight + 2;
+
+  if((windowHeight - event.clientY) < menuHeight) {
+    contextMenu.el.style.top =`${windowHeight - menuHeight}px`;
+  }else {
+    contextMenu.el.style.top = `${event.clientY}px`;
+  }
 });
 
 //>>>>>>>>   Обработка выбранного пункта меню   <<<<<<<<<
