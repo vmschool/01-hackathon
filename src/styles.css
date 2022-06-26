@@ -402,6 +402,15 @@ body,
   background-size: 200% 200%;
   animation: animateGlow 10s ease infinite;
 }
+.logo{
+  width: 300px;
+  min-height: 10px;
+  border-radius: 50%;
+  background: rgb(30, 11, 197);
+}
+.audio{
+  margin:0;
+}
 
 @keyframes animateGlow {
   0% {
