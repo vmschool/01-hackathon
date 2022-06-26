@@ -38,7 +38,7 @@ body.cursor-none {
 
 .menu .menu-item {
   padding: 8px 10px;
-  font-size: 1rem;
+  font-size: 13px;
   color: #eee;
   cursor: pointer;
   transition: background-color 0.2s ease-in;

@@ -1,12 +1,14 @@
-import * as functions from '../utils'
+import * as functions from "../utils";
 
 export default class Timer {
-    constructor() {
-        this.wrapper = functions.createWrapper()
-        this.container = functions.createContainer(this.wrapper)
-    }
-    renderTimer() {
-        this.container.insertAdjacentHTML('afterbegin', `
+  constructor() {
+    this.wrapper = functions.createWrapper();
+    this.container = functions.createContainer(this.wrapper);
+  }
+  renderTimer() {
+    this.container.insertAdjacentHTML(
+      "afterbegin",
+      `
         <div class="timer">
             <div class="numbers">
                 <p class="time">0</p>
@@ -23,65 +25,71 @@ export default class Timer {
             </form>
         </div>
         `
-        )
-        functions.timerHandleClick()
-    }
+    );
+    functions.timerHandleClick();
+  }
 
-    renderClock() {
-        this.container.insertAdjacentHTML('afterbegin', `
+  renderClock() {
+    this.container.insertAdjacentHTML(
+      "afterbegin",
+      `
         <div class="clock container__clock">
             <p class="time-units">...</p>
         </div>
-        `)
-        functions.createClock()
-    }
-    render() {
-        if (!document.querySelector('.wrapper')) {
-            document.querySelector('body').prepend(this.wrapper)
-            const wrapperBtns = this.wrapper.querySelectorAll('i')
-            wrapperBtns.forEach(btn => {
-                btn.addEventListener('click', (event) => {
-                    if (this.container.firstElementChild) { this.container.firstElementChild.remove() }
-                    if (event.target.classList.contains('ic_clock')) {
-                        if (this.wrapper.querySelector('.timer-title')) {
-                            this.wrapper.querySelector('.timer-title').remove()
-                        }
-                        if (!this.wrapper.querySelector('.clock-title')) {
-                            this.wrapper.querySelector('.clock-title')
-                        }
-                        this.wrapper.insertAdjacentHTML("afterbegin",
-                            `
+        `
+    );
+    functions.createClock();
+  }
+  render() {
+    if (!document.querySelector(".wrapper")) {
+      document.querySelector("body").prepend(this.wrapper);
+      const wrapperBtns = this.wrapper.querySelectorAll("i");
+      wrapperBtns.forEach((btn) => {
+        btn.addEventListener("click", (event) => {
+          if (this.container.firstElementChild) {
+            this.container.firstElementChild.remove();
+          }
+          if (event.target.classList.contains("ic_clock")) {
+            if (this.wrapper.querySelector(".timer-title")) {
+              this.wrapper.querySelector(".timer-title").remove();
+            }
+            if (!this.wrapper.querySelector(".clock-title")) {
+              this.wrapper.querySelector(".clock-title");
+            }
+            this.wrapper.insertAdjacentHTML(
+              "afterbegin",
+              `
                         <p class="clock-title">clock</p>
                         `
-                        )
-                        this.renderClock()
-                    } else if (event.target.classList.contains('ic_timer')) {
-                        if (this.wrapper.querySelector('.clock-title')) {
-                            this.wrapper.querySelector('.clock-title').remove()
-                        }
-                        if (!this.wrapper.querySelector('.timer-title')) {
-                            this.wrapper.insertAdjacentHTML("afterbegin",
-                                `
-                        <p class="timer-title">timer</p>
-                        `
-                            )
-                        }
-
-                        this.renderTimer()
-                    } else if (event.target.classList.contains('ic_close')) {
-                        this.wrapper.remove()
-                    }
-                })
-
-            })
-            this.renderTimer()
-            this.wrapper.insertAdjacentHTML("afterbegin",
+            );
+            this.renderClock();
+          } else if (event.target.classList.contains("ic_timer")) {
+            if (this.wrapper.querySelector(".clock-title")) {
+              this.wrapper.querySelector(".clock-title").remove();
+            }
+            if (!this.wrapper.querySelector(".timer-title")) {
+              this.wrapper.insertAdjacentHTML(
+                "afterbegin",
                 `
                         <p class="timer-title">timer</p>
                         `
-            )
-            this.wrapper.querySelector('.ic_play').click()
-        }
+              );
+            }
 
+            this.renderTimer();
+          } else if (event.target.classList.contains("ic_close")) {
+            this.wrapper.remove();
+          }
+        });
+      });
+      this.renderTimer();
+      this.wrapper.insertAdjacentHTML(
+        "afterbegin",
+        `
+                        <p class="timer-title">timer</p>
+                        `
+      );
+      this.wrapper.querySelector(".ic_play").click();
     }
+  }
 }
