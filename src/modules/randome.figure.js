@@ -1,20 +1,15 @@
 import { Module } from "../core/module";
+import * as Utils from "../utils";
 
 export class RandomFigure extends Module {
   #bodyHTML;
   #style;
-  #boxConteiner;
-  #figureContent;
-  #figureShadow;
 
   constructor() {
-    super("random-figure", "Создать фигуру");
+    super("randomFigure", "Создать фигуру");
 
     this.#bodyHTML = document.querySelector("body");
     this.#style = null;
-    this.#boxConteiner = null;
-    this.#figureContent = null;
-    this.#figureShadow = null;
   }
 
   trigger() {
@@ -23,78 +18,70 @@ export class RandomFigure extends Module {
 
   #render() {
     this.#style = {
-      background: this.#randomColor(),
-      width: `${this.#getRandom()}px`,
-      height: `${this.#getRandom()}px`,
+      background: Utils.randomColor(),
+      width: `${Utils.random(200, 400)}px`,
+      height: `${Utils.random(200, 400)}px`,
       clipPath: `${this.#randomClipPath()}`,
-      positionRelative: "revative",
       positionAbsolute: "absolute",
       positionFixed: "fixed",
-      left: `${this.#getRandom(0, 80)}%`,
-      right: `${this.#getRandom(0, 80)}%`,
+      left: `${Utils.random(0, 80)}%`,
+      right: `${Utils.random(0, 80)}%`,
+      top: `${Utils.random(0, 80)}%`,
+      bottom: `${Utils.random(0, 80)}%`,
     };
 
-    this.#boxConteiner = document.createElement("div");
-    this.#figureContent = document.createElement("div");
-    this.#figureShadow = document.createElement("div");
+    const boxConteiner = document.createElement("div");
+    const figureContent = document.createElement("div");
+    const figureShadow = document.createElement("div");
 
-    this.#boxConteiner.id = "box-conteiner";
-    this.#figureContent.id = "figureContent";
-    this.#figureShadow.id = "figureShadow";
+    boxConteiner.id = "box-conteiner";
+    figureContent.id = "figure-content";
+    figureShadow.id = "figure-shadow";
 
-    this.#boxConteiner.style.width = this.#style.width;
-    this.#boxConteiner.style.height = this.#style.height;
-    this.#boxConteiner.style.position = this.#style.positionFixed;
-    this.#boxConteiner.style.left = this.#style.left;
-    this.#boxConteiner.style.right = this.#style.right;
+    boxConteiner.style.width = this.#style.width;
+    boxConteiner.style.height = this.#style.height;
+    boxConteiner.style.position = this.#style.positionFixed;
+    boxConteiner.style.left = this.#style.left;
+    boxConteiner.style.right = this.#style.right;
+    boxConteiner.style.top = this.#style.top;
+    boxConteiner.style.bottom = this.#style.bottom;
+    boxConteiner.style.transform = "scale()";
+    boxConteiner.style.transition = 'transform .3s ease-in-out';
 
-    this.#figureShadow.style.background = "rgb(0, 0, 0, 0.5)";
-    this.#figureShadow.style.width = "100%";
-    this.#figureShadow.style.height = "100%";
-    this.#figureShadow.style.clipPath = this.#style.clipPath;
-    this.#figureShadow.style.position = this.#style.positionAbsolute;
-    this.#figureShadow.style.left = "10px";
-    this.#figureShadow.style.right = "10px";
+    figureShadow.style.background = "rgb(0, 0, 0, 0.5)";
+    figureShadow.style.width = "100%";
+    figureShadow.style.height = "100%";
+    figureShadow.style.clipPath = this.#style.clipPath;
+    figureShadow.style.position = this.#style.positionAbsolute;
+    figureShadow.style.left = "10px";
+    figureShadow.style.right = "10px";
 
-    this.#figureContent.style.background = this.#style.background;
-    this.#figureContent.style.width = this.#style.width;
-    this.#figureContent.style.height = this.#style.height;
-    this.#figureContent.style.clipPath = this.#style.clipPath;
+    figureContent.style.background = this.#style.background;
+    figureContent.style.width = this.#style.width;
+    figureContent.style.height = this.#style.height;
+    figureContent.style.clipPath = this.#style.clipPath;
 
-    this.#getRemoveBoxConteiner();
-    this.#boxConteiner.append(this.#figureShadow, this.#figureContent);
-    return this.#bodyHTML.append(this.#boxConteiner);
+    this.#getRemoveBoxConteiner(boxConteiner);
+    boxConteiner.append(figureShadow, figureContent);
+    return this.#bodyHTML.append(boxConteiner);
   }
 
-  #getRemoveBoxConteiner() {
+  #getRemoveBoxConteiner(boxConteiner) {
     setTimeout(() => {
-      this.#boxConteiner.style.transform = "scale(0)";
-    }, 10000);
+      boxConteiner.style.transform = "scale(0)";
+    }, 8000);
     setTimeout(() => {
-      this.#boxConteiner.remove();
-    }, 10500);
-  }
-
-  #getRandom(min = 200, max = 400) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+      boxConteiner.remove();
+    }, 8500);
   }
 
   #randomClipPath() {
     let value = "";
     for (let i = 0; i < 8; i++) {
-      value += `${this.#getRandom(0, 100)}% ${this.#getRandom(10, 80)}%,`;
+      value += `${Utils.random(0, 100)}% ${Utils.random(10, 80)}%,`;
     }
     value = value.slice(0, -1);
     const polygon = `polygon(${value})`;
     return polygon;
-  }
-
-  #randomColor() {
-    const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
-    let hexColor = "#";
-    for (let i = 0; i <= 5; i++) {
-      hexColor += hex[Math.floor(Math.random() * hex.length)];
-    }
-    return hexColor;
   }
 }
