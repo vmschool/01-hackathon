@@ -115,6 +115,7 @@ body,
   justify-content: center;
   min-height: 50px;
   min-width: 70px;
+  cursor: pointer;
 }
 
 .confirm {
