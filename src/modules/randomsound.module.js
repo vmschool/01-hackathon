@@ -10,7 +10,7 @@ export class RandomSound extends Module {
     "vladilen",
   ];
   constructor() {
-    super("sound", "sound");
+    super("sound", "Воспроизвести аудио");
   }
 
   trigger() {
