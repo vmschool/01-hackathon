@@ -18,12 +18,12 @@ body {
   background-color: #1d212b;
   color: white;
 
-body,
+/* body,
 .event-container {
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
     height: 100vh;
-    width: 100%;
+    width: 100%; */
     /* padding: 2rem; */
 }
 
@@ -377,11 +377,11 @@ body,
   font-size: 60px;
 }
 
-    color: #5776b9;
+    /* color: #5776b9;
     align-items: center;
     margin: 0 auto;
     font-size: 5rem;
-}
+} */
 
 .image-meme {
     position: relative;

@@ -21,8 +21,6 @@ contextMenu.add(sound);
 const backgroundModule = new BackgroundModule('background', 'Фон')
 contextMenu.add(backgroundModule);
 
-const contextMenu = new ContextMenu("ul");
-// const timerModule = new TimerModule("timer", "Обратный отсчёт");
 const clicks = new ClicksModule("click", "Счетчик кликов");
 contextMenu.add(clicks);
 
