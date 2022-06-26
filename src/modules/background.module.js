@@ -1,4 +1,5 @@
-import {Module} from '../core/module'
+import { Module } from '../core/module'
+import { randomColor } from '../utils'
 
 export class BackgroundModule extends Module {
     constructor(type, text) {
@@ -6,6 +7,6 @@ export class BackgroundModule extends Module {
     }
 
     trigger(){
-        console.log('я фон')
-    }
+        document.body.style.backgroundColor = `${randomColor()}`
+   }
 }
