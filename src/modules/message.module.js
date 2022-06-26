@@ -5,9 +5,9 @@ export class MessageModule extends Module {
   constructor() {
     super("text", "Показать цитату");
   }
+
   trigger() {
     this.#getQuotes();
-    this.#removeQuotes();
   }
 
   async #getQuotes() {
@@ -28,6 +28,8 @@ export class MessageModule extends Module {
   }
 
   #createQuoteBlock(text, author) {
+
+    const mainAppModules = document.querySelector(".main_app-modules");
     const quoteBlock = document.createElement("div");
     const quoteAuthor = document.createElement("h3");
     const quoteText = document.createElement("span");
@@ -39,14 +41,38 @@ export class MessageModule extends Module {
     quoteAuthor.textContent = author;
     quoteText.textContent = `"-${text}-"`;
 
+    this.#styles(quoteBlock, quoteAuthor);
+    this.#removeQuotes(quoteBlock);
+
     quoteBlock.append(quoteAuthor, quoteText);
-    document.body.append(quoteBlock);
+    mainAppModules.append(quoteBlock);
   }
 
-  #removeQuotes() {
+  #styles(quoteBlock, quoteAuthor) {
+    quoteBlock.style.margin = "10px 0";
+    quoteBlock.style.width = "260px";
+    quoteBlock.style.padding = "10px";
+    quoteBlock.style.borderRadius = "10px";
+    quoteBlock.style.boxShadow = "0 0 20px rgba(0, 0, 0, .7)";
+    quoteBlock.style.background = "#eee";
+    quoteBlock.style.opacity = "0";
+    quoteBlock.style.transition = "opacity .3s linear";
+    quoteBlock.classList.add("show");
+
+    if (quoteBlock.className === "quote-block show") {
+      setTimeout(() => (quoteBlock.style.opacity = "1"), 300);
+    }
+
+    quoteAuthor.style.marginBottom = "10px";
+    quoteAuthor.style.fontSize = "0.85rem";
+  }
+
+  #removeQuotes(quoteBlock) {
     setTimeout(() => {
-      const quoteToRemove = document.querySelector(".quote-block");
-      quoteToRemove.remove();
+      quoteBlock.style.opacity = "0";
     }, 7000);
+    setTimeout(() => {
+      quoteBlock.remove();
+    }, 7500);
   }
 }
