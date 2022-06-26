@@ -27,13 +27,10 @@ body,
 
 .menu {
   position: relative;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 10px;
   position: fixed;
   z-index: 1000;
-  width: 300px;
+  width: 250px;
   border-radius: 10px;
   display: none;
   list-style: none;
@@ -67,8 +64,9 @@ body,
 
 .menu .menu-item {
   z-index: 100;
-  padding: 15px 15px;
-  font-size: 2rem;
+  padding: 10px 0;
+  margin: 5px 0;
+  font-size: 1.5rem;
   color: #eee;
   cursor: pointer;
   transition: background-color 0.2s ease-in;
@@ -387,8 +385,8 @@ body,
 
 .block-game {
   cursor: none;
-  width: 700px;
-  height: 700px;
+  width: 600px;
+  height: 600px;
   position: relative;
   display: none;
   overflow: hidden;

@@ -95,7 +95,7 @@ export class ClicksModule extends Module {
     this.descriptionParagraph.innerHTML = `Твоя задача очень проста: как только ты нажмешь на кнопку, игра запустится, и тебе нужно
     будет кликать в появившийся квадрат. Каждый удачный клик в квадрат будет засчитан, и когда
     игра закончится на экран выведется твой результат. Засчитываются любые клики
-    <strong>"ЛЕВОЙ"</strong> кнопки мыши! У тебя будет ровно <strong>ОДНА</strong> минута, с
+    <strong>"ЛЕВОЙ"</strong> кнопки мыши! У тебя будет ровно <strong>ДЕСЯТЬ</strong> СЕКУНД, с
     того момента как ты нажмешь кнопку "Начать".`;
     this.descriptionTitle.className = "description__title";
     this.descriptionTitle.textContent = "ИТАК, ТЫ ГОТОВ?!";
@@ -123,7 +123,7 @@ export class ClicksModule extends Module {
     this.timerInfo.className = "info";
     this.timerInfo.innerHTML = "ВРЕМЕНИ ОСТАЛОСЬ:&nbsp";
     this.timerCount.className = "timer";
-    this.timerCount.textContent = 5;
+    this.timerCount.textContent = 10;
     this.clicksCount.className = "clicks";
 
     this.timerBlockContainer.append(this.timerInfo, this.timerCount);
