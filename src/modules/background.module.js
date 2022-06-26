@@ -11,7 +11,6 @@ export class BackgroundModule extends Module {
   trigger() {
     this.itemsList.addEventListener("click", (event) => {
       const { target } = event;
-      console.log(target);
       if (target.dataset.type === this.item.id) {
         document.body.style.backgroundColor = getRandomColor();
       }
