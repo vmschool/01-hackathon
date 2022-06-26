@@ -45,21 +45,20 @@ menuList.addEventListener("click", (event) => {
   }
 
 
-	if (target.dataset.type === "6") {
-		const timer = new Timer()
-		timer.render()
-	}
+  if (target.dataset.type === "6") {
+    const timer = new Timer()
+    timer.render()
+  }
 })
-  if (target.dataset.type === "7") {
-    const randomComment = new RandomComment("comment", "comment");
-    randomComment.trigger();
-  }
+if (target.dataset.type === "7") {
+  const randomComment = new RandomComment("comment", "comment");
+  randomComment.trigger();
+}
 
-  if (target.dataset.type === "8") {
-    const balloon = new Balloon("balloon", "balloon");
-    balloon.trigger();
-  }
-});
+if (target.dataset.type === "8") {
+  const balloon = new Balloon("balloon", "balloon");
+  balloon.trigger();
+}
 
 const clickItem = contextMenuItems.find((item) => item.id === "2");
 const clicksModule = new ClicksModule(".menu", clickItem);

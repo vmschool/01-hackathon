@@ -196,7 +196,6 @@ function secondsToTime(timeSeconds, timeContainer) {
 
 }
 
-}
 
 export function getRandomColor() {
   const colors = [
