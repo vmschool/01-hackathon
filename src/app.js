@@ -6,7 +6,7 @@ import { MessageModule } from "./modules/message.module";
 import { RandomSound } from "./modules/randomsound.module";
 import { BackgroundModule } from "./modules/background.module";
 import { ClicksModule } from "./modules/clicks.module";
-import { Countdown } from "./modules/countdown-module";
+import { Countdown } from "./modules/countdown.module";
 
 const contextMenu = new ContextMenu();
 
