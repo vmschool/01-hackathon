@@ -1,30 +1,22 @@
 import { Module } from '../core/module';
 import { random } from '../utils';
+import { getRandomColor } from '../utils';
 
-export default class BackgroundModule extends Module {
-	#colorNumber;
-
+export class BackgroundModule extends Module {
 	constructor(type, text) {
 		super(type, text);
-		this.#colorNumber = 0;
 	}
 
 	trigger() {
-		let hexString = "0123456789abcdef";
-
-		let randomColor = () => {
-			let hexCode = "#";
-			for (let i = 0; i < 6; i++) {
-				hexCode += hexString[Math.floor(Math.random() * hexString.length)];
-			}
-			return hexCode;
-		}
-
-		let colorOne = randomColor();
-		let colorTwo = randomColor();
+		let colorOne = getRandomColor();
+		let colorTwo = getRandomColor();
 	
 		document.body.style.background = `
-			linear-gradient(${random([this.#colorNumber], 255)}deg, ${colorOne}, ${colorTwo})
+			linear-gradient(${random(0, 360)}deg, ${colorOne}, ${colorTwo})
 		`;
+
+		setTimeout(() => {
+			document.body.style.background = '';
+		}, 3000);
 	}
 }
