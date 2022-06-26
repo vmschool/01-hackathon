@@ -7,6 +7,7 @@ import { RandomSound } from "./modules/randomsound.module";
 import { BackgroundModule } from "./modules/background.module";
 import { ClicksModule } from "./modules/clicks.module";
 import { Countdown } from "./modules/countdown.module";
+import { Clock } from "./modules/clock.module";
 
 const contextMenu = new ContextMenu();
 
@@ -16,3 +17,4 @@ contextMenu.add(new RandomSound());
 contextMenu.add(new Countdown());
 contextMenu.add(new BackgroundModule());
 contextMenu.add(new ClicksModule());
+contextMenu.add(new Clock());
