@@ -23,12 +23,11 @@ export class MessageModule extends Module {
       const quoteAuthor = responses[randomQuoteId].author;
       this.#createQuoteBlock(quoteText, quoteAuthor);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 
   #createQuoteBlock(text, author) {
-
     const mainAppModules = document.querySelector(".main_app-modules");
     const quoteBlock = document.createElement("div");
     const quoteAuthor = document.createElement("h3");
