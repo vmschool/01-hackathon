@@ -11,28 +11,32 @@ export class TimerModule extends Module {
     #seconds
     #color
     #image
+    #userInput
 
     constructor(type, text) {
         super(type, text)
         this.#timerWindow = document.createElement('div');
         this.#timerText = document.createElement('span');
-        this.#minutes = '0';
-        this.#seconds = '5';
+        this.#userInput = document.createElement('div');
+        this.#minutes;
+        this.#seconds;
         this.#color = randomColor();
         this.#image = document.createElement('img');
     }
 
     trigger() {
-        console.log(this.#timerText.textContent);
-        const eventContainer = document.querySelector(`.${this.type}`);
-        console.log(eventContainer);
-        if (!eventContainer) {
-            this.#render();
-            this.#decreaseTime();
-        }
-        if (this.#timerText.textContent === 'time is up') {
-            this.#decreaseTime();
-        }
+        this.#renderUserInput();
+        // const eventContainer = document.querySelector(`.${this.type}`);
+        // if (!eventContainer) {
+        // addEventContainer(this.type);
+        // this.#render();
+        // this.#decreaseTime();
+        // }
+        // addEventContainer();
+        // this.#renderUserInput();
+        // if (this.#timerText.textContent === 'time is up') {
+        //     this.#decreaseTime();
+        // }
     }
 
     #render() {
@@ -40,6 +44,7 @@ export class TimerModule extends Module {
         const eventContainer = document.querySelector(`.${this.type}`);
         console.log(eventContainer);
         eventContainer.style.background = `black`;
+
         this.#timerWindow.className = 'timer-window';
         this.#timerWindow.style.border = `1px solid ${this.#color}`;
         this.#timerWindow.style.boxShadow = `0 0 2px ${this.#color}, 0 0 10px ${this.#color}`
@@ -50,7 +55,6 @@ export class TimerModule extends Module {
         this.#timerText.style.textShadow = `0 0 2px ${this.#color}, 0 0 5px ${this.#color}`;
 
         this.#image.className = 'image-meme';
-        // this.#image.classList.add('hidden');
         this.#image.src = JS_MEME;
 
         this.#timerWindow.append(this.#timerText);
@@ -71,5 +75,45 @@ export class TimerModule extends Module {
                 --this.#seconds;
             }
         }, 1000)
+    }
+
+    #renderUserInput() {
+        addEventContainer();
+        let eventContainer = document.querySelector(`.${this.type}`);
+        if (!eventContainer) {
+            addEventContainer(this.type);
+            eventContainer = document.querySelector(`.${this.type}`);
+        }
+        this.#userInput.className = 'user-input';
+
+
+        const increaseTimer = document.createElement('div');
+        increaseTimer.className = 'increase';
+        increaseTimer.classList.add('user-button');
+        increaseTimer.textContent = '+5';
+
+        const decreaseTimer = document.createElement('div');
+        decreaseTimer.className = 'user-button decrease';
+        decreaseTimer.textContent = '-5';
+
+        const timerSpan = document.createElement('span');
+        timerSpan.className = 'timer-span';
+        timerSpan.textContent = '60';
+
+        this.#userInput.addEventListener('click', (event) => {
+            const { target } = event;
+            if (target.classList.contains("increase")) {
+                console.log(target.className)
+            }
+        })
+        this.#userInput.append(increaseTimer, timerSpan, decreaseTimer);
+        eventContainer.append(this.#userInput);
+        console.log(eventContainer)
+
+
+    }
+
+    #renderInputElement() {
+
     }
 }
