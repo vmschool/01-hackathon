@@ -1,5 +1,6 @@
 import { Module } from "../core/module";
 import { randomColor } from "../utils";
+import { addEventContainer } from "../utils";
 
 export class ClicksModule extends Module {
   constructor(type, text) {
@@ -42,8 +43,19 @@ export class ClicksModule extends Module {
   }
 
   trigger() {
-    const hasClicker = document.querySelector(".count-clicker");
-    if (!hasClicker) {
+    addEventContainer(this.type);
+    const eventContainer = document.querySelector(`.${this.type}`);
+
+    const isRun = document.querySelector('.timer');
+    if (isRun && isRun.textContent ==="0"){
+      eventContainer.innerHTML='';
+    }
+    
+    if (!isRun || eventContainer.innerHTML===''){
+      // eventContainer.innerHTML="";
+    // }
+    // const hasClicker = document.querySelector(".count-clicker");
+    // if (!hasClicker) {
       this.render();
       this.buttonsAnimated();
       this.hideFirst();
@@ -56,6 +68,7 @@ export class ClicksModule extends Module {
   }
 
   render() {
+    const eventContainer = document.querySelector(`.${this.type}`);
     /* Секция сыграем в игру */
     this.countNumbers.className = "count-numbers";
     this.countNumbersContainer.className = "count-container container";
@@ -107,7 +120,7 @@ export class ClicksModule extends Module {
     this.timerInfo.className = "info";
     this.timerInfo.innerHTML = "ВРЕМЕНИ ОСТАЛОСЬ:&nbsp";
     this.timerCount.className = "timer";
-    this.timerCount.textContent = 60;
+    this.timerCount.textContent = 5;
     this.clicksCount.className = "clicks";
 
     this.timerBlockContainer.append(this.timerInfo, this.timerCount);
@@ -125,7 +138,7 @@ export class ClicksModule extends Module {
 
     /* Добавляем в DOM */
 
-    document.body.append(this.countNumbers, this.description, this.block, this.result);
+    eventContainer.append(this.countNumbers, this.description, this.block, this.result);
   }
 
   /* -----Создаем кнопки и игровое поле----- */
@@ -194,9 +207,10 @@ export class ClicksModule extends Module {
 
   timer() {
     let secs = this.timerCount.textContent;
-    setInterval(() => {
+    let timer = setInterval(() => {
       this.timerCount.textContent = --secs;
       if (this.timerCount.textContent == 0) {
+        clearInterval(timer);
         this.blockGame.style.display = "none";
         this.timerCount.style.display = "none";
         this.timerInfo.style.display = "none";
