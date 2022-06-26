@@ -12,9 +12,9 @@ export default class Timer {
                 <p class="time">0</p>
             </div>
             <div class="set-numbers">
-                <input class="input input-days" type="number" placeholder="days" step="0.5">
-                <input class="input input-hours" type="number" placeholder="hours" step="0.5">
-                <input class="input input-minutes" type="number" placeholder="minutes" value="0.09"  step="0.5">
+                <input class="input input-days" type="number" placeholder="days" min="0" step="0.5">
+                <input class="input input-hours" type="number" placeholder="hours" min="0" step="0.5">
+                <input class="input input-minutes" type="number" placeholder="minutes" min="0" value="0.09"  step="0.5">
             </div>
             <form class="buttons">
                 <button id="btn" type="button"><i id="1" class="ic_play icon" ></i></button>
