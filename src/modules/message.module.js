@@ -28,6 +28,7 @@ export class MessageModule extends Module {
   }
 
   #createQuoteBlock(text, author) {
+
     const mainAppModules = document.querySelector(".main_app-modules");
     const quoteBlock = document.createElement("div");
     const quoteAuthor = document.createElement("h3");
