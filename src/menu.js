@@ -1,5 +1,6 @@
 import { Menu } from "./core/menu";
 
+
 export class ContextMenu extends Menu {
 	constructor(el, menuList, menuItems) {
 		super(el, menuList);
@@ -11,3 +12,6 @@ export class ContextMenu extends Menu {
 }
 
 export default ContextMenu;
+
+export class ContextMenu extends Menu {}
+

@@ -78,3 +78,4 @@ shapeModule.trigger();
 const backgroundColorItem = contextMenuItems.find((item) => item.id === "3");
 const backgroundModule = new BackgroundModule(".menu", backgroundColorItem);
 backgroundModule.trigger();
+
