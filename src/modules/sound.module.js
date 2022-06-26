@@ -3,26 +3,27 @@ import { addEventContainer } from '../utils';
 export class Soundmodule extends Module {
 
 trigger() {
+    addEventContainer(this.type);
+    const eventContainer = document.querySelector(`.${this.type}`);
     let context, analyser, src, array;
 
     let audioHTML = document.createElement('audio');
     let random = Math.floor(Math.random() * 5 + 1);
-    audioHTML.src = `src/sound/${random}.mp3`;
+    audioHTML.src = `src/assets/sound/${random}.mp3`;
     audioHTML.className = 'audio'
     
     let logoHTML = document.createElement('logo');
     logoHTML.className = 'logo'
     
-    body = document.querySelector('body');
-    body.style.display = 'flex';
-    body.style.justifyContent = 'center';
-    body.style.marginTop = '10%';
-    body.style.width = '100vw';
-    body.style.background = '#1e1e1e';
-    body.style.minheight = '100vh';
+    //let body = document.querySelector('body');
+    eventContainer.style.display = 'flex';
+    eventContainer.style.justifyContent = 'center';
+    //eventContainer.style.width = '100%';
+    //eventContainer.style.background = '#1e1e1e';
+    eventContainer.style.height = '170px';
     
-    body.prepend(logoHTML);
-    body.prepend(audioHTML);
+    eventContainer.prepend(logoHTML);
+    eventContainer.prepend(audioHTML);
     
     let logo = document.querySelector('.logo').style;
     
