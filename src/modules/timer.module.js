@@ -42,7 +42,10 @@ export class TimerModule extends Module {
         }
 
         if (!hasUserInput || this.#timerText.textContent === 'time is up') {
-            this.#userInput.textContent=``;
+            this.#userInput.remove();
+            this.#confirmButton.remove();
+            this.#confirmButton = document.createElement('div');
+            this.#userInput = document.createElement('div');
             this.#renderUserInput();
         }
     }
