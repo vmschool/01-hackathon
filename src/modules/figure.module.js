@@ -3,15 +3,20 @@ import { random, getRandomPositionForElement, getRandomColor } from "../utils";
 
 export class FigureModule extends Module {
     #typesNumber;
+    #removeElementEvent;
 
     constructor(type, text) {
         super(type, text);
         this.el = document.createElement('div');
-        this.el.className = 'figure';
+        this.el.className = 'figure-container';
         this.el.style.display = 'inline';
         this.el.style.position = 'fixed';
         this.#typesNumber = 7
+        this.#removeElementEvent = (event) => {
+            event.target.parentNode.removeChild(event.target);
+        }
     }
+
 
     trigger() {
         for (const child of this.el.childNodes) {
@@ -28,6 +33,7 @@ export class FigureModule extends Module {
                 `width: ${size}px;
                 height: ${size}px;
                 background: ${getRandomColor()};`)
+                square.addEventListener('click', this.#removeElementEvent);
                 this.el.append(square);
 
                 pos = getRandomPositionForElement(size + 40, size + 40);
@@ -43,6 +49,7 @@ export class FigureModule extends Module {
                 `width: ${width}px;
                 height: ${height}px;
                 background: ${getRandomColor()};`)
+                rectangle.addEventListener('click', this.#removeElementEvent);
                 this.el.append(rectangle);
 
                 pos = getRandomPositionForElement(width + 40, height + 40);
@@ -58,6 +65,7 @@ export class FigureModule extends Module {
                 height: ${size}px;
                 background: ${getRandomColor()};
                 border-radius: 50%;`)
+                circle.addEventListener('click', this.#removeElementEvent);
                 this.el.append(circle);
 
                 pos = getRandomPositionForElement(size + 40, size + 40);
@@ -74,6 +82,7 @@ export class FigureModule extends Module {
                 height: ${height}px;
                 background: ${getRandomColor()};
                 border-radius: 50%;`)
+                oval.addEventListener('click', this.#removeElementEvent);
                 this.el.append(oval);
 
                 pos = getRandomPositionForElement(width + 40, height + 40);
@@ -86,12 +95,13 @@ export class FigureModule extends Module {
                 const triangle = document.createElement('div');
                 const ratio = Math.random();
                 triangle.setAttribute('style',
-                `width: 5px;
-                height: 5px;
+                `width: 0px;
+                height: 0px;
                 border-left: ${size - ratio * size}px solid transparent;
                 border-right: ${size - (size - ratio * size)}px solid transparent;
                 border-bottom: ${size * 0.75}px solid ${getRandomColor()};
                 transform: rotate(${random(-60, 60)}deg);`)
+                triangle.addEventListener('click', this.#removeElementEvent);
                 this.el.append(triangle);
 
                 pos = getRandomPositionForElement(size + 40, size + 40);
@@ -108,6 +118,7 @@ export class FigureModule extends Module {
                 background: ${getRandomColor()};
                 transform: skew(${random(5,45)}deg);
                 margin-left: ${size * 0.5}px;`)
+                parallelogram.addEventListener('click', this.#removeElementEvent);
                 this.el.append(parallelogram);
 
                 pos = getRandomPositionForElement(size * 1.5 + 40, size * 0.75 + 40);
@@ -124,6 +135,7 @@ export class FigureModule extends Module {
                 border-bottom: ${size / 2}px solid ${getRandomColor()};
                 border-left: ${size / 4}px solid transparent;
                 border-right: ${size / 4}px solid transparent;`)
+                trapezoid.addEventListener('click', this.#removeElementEvent);
                 this.el.append(trapezoid);
 
                 pos = getRandomPositionForElement(size + 40, size + 40);
