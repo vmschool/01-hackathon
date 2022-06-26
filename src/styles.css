@@ -479,8 +479,8 @@ body,
 }
 
 .audio{
-  margin:0;
-  font-size: 3rem;
+  position: fixed;
+  top: 350px;
 }
 
 @keyframes animateGlow {

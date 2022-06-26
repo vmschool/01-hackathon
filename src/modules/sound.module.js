@@ -5,6 +5,7 @@ export class Soundmodule extends Module {
         super(type, text)
         this.logoHTML = document.createElement('logo');
         this.audioHTML = document.createElement('audio');
+
         this.textHint = document.createElement('span');
         this.soundContainer = document.createElement('div');
     }
@@ -22,11 +23,13 @@ export class Soundmodule extends Module {
             this.textHint = document.createElement('div');
             this.logoHTML = document.createElement('logo');
             this.audioHTML = document.createElement('audio');
+            
         }
 
         let random = Math.floor(Math.random() * 5 + 1);
         this.audioHTML.src = `src/assets/sound/${random}.mp3`;
         this.audioHTML.className = 'audio'
+        this.audioHTML.setAttribute('controls', '');
 
         this.logoHTML.className = 'logo'
 
@@ -40,13 +43,13 @@ export class Soundmodule extends Module {
         this.textHint.style.marginBottom = '50px';
         this.textHint.textContent = 'Pause/Resume - клик левой клавишей мышки';
 
-        this.soundContainer.prepend(this.logoHTML, this.audioHTML);
+        this.soundContainer.prepend(this.audioHTML, this.logoHTML );
         eventContainer.append(this.textHint, this.soundContainer);
 
         let logo = document.querySelector('.logo').style;
 
         let audio = document.querySelector('.audio');
-
+                
         this.logoHTML.onclick = function () {
             if (!context) {
                 preparation();
