@@ -29,6 +29,7 @@ body {
 }
 
 .menu .menu-item {
+    position: relative;
     padding: 8px 10px;
     font-size: 1rem;
     color: #eee;
@@ -37,6 +38,482 @@ body {
     border-radius: inherit;
 }
 
+.menu .menu-item::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    display: block;
+    width: 0;
+    height: 1px;
+    background-color: #d9d9d9;
+    transition: 0.3s ease-in-out;
+}
+
 .menu .menu-item:hover {
     background: #343434;
+}
+
+.menu .menu-item:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+/* Стили для счетчика кликов */
+
+.timer-modal-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    height: 85%;
+    padding: 50px 0;
+    margin: 0 auto;
+    border-radius: 25px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 20px 10px #0002;
+}
+
+.timer-container {
+    display: flex;
+    width: 360px;
+    height: 360px;
+    margin-bottom: 10%;
+    padding-top: 30px;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 30px;
+    border-radius: 25px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 2px #0001;
+}
+
+.circle-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 250px;
+    width: 250px;
+    background-color: #f0ff;
+    border-radius: 50%;
+    background: conic-gradient(#7d2ae8, 3.6deg, #ededed 0deg);
+}
+
+.circle-progress::before {
+    content: "";
+    position: absolute;
+    height: 210px;
+    width: 210px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+.progress-value {
+    position: relative;
+    font-size: 50px;
+    font-weight: 600;
+    color: #7d2ae8;
+}
+
+.text {
+    margin-bottom: 10px;
+    font-size: 30px;
+    font-weight: 500;
+    color: #606060;
+}
+
+.start-button {
+    position: relative;
+    width: 30%;
+    height: 30px;
+    border: none;
+    color: #000;
+    border-radius: 3px;
+}
+
+.start-button:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    left: 0;
+    direction: rtl;
+    z-index: -1;
+    box-shadow:
+        -7px -7px 20px 0px #fff9,
+        -4px -4px 5px 0px #fff9,
+        7px 7px 20px 0px #0002,
+        4px 4px 5px 0px #0001;
+    transition: all 0.3s ease;
+}
+.start-button:hover {
+    color: #000;
+}
+.start-button:hover:after {
+    left: auto;
+    right: 0;
+    width: 100%;
+    }
+    .start-button:active {
+    top: 2px;
+}
+
+.score-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/*================================Styles MessageBlock Module==========================*/
+
+#message-area {
+    position:fixed;
+    top:0px;
+    right:10px;
+    width:250px;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+}
+.message-item{
+    text-align: left;
+    position:relative;
+    padding:20px 20px;
+    background:#111;
+    color:#f5f5f5;
+    font-size:14px;
+    font-weight:600;
+    border-radius:5px;
+    margin:5px 0px;
+    opacity:0;
+    left:20px;
+    animation:showNotification 500ms ease-in-out forwards;
+}
+@keyframes showNotification {
+    to {
+        opacity:1;
+        left:0px;
+    }
+}
+.message-item.success {
+    background:#389838;
+}
+.message-item.error {
+    background:orangered;
+}
+.message-item.info {
+    background:#00acee;
+}
+
+/*================================Styles Dice Game Module==========================*/
+
+#dice-game-container{
+    width: 400px;
+    padding: 50px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 15px 25px rgba(50,50,50,0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+.dice-wrap{
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.dice-total{
+    font-size: 17px;
+    font-weight: 600;
+    margin: 30px 0;
+}
+
+.dice-button{
+    background-color: mediumseagreen;
+    border: none;
+    outline: none;
+    color: #fff;
+    padding: 15px ;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.roll{
+    animation: roll 0.5s infinite;
+}
+
+@keyframes roll{
+    0%{
+        transform: rotate(180deg);
+    }
+    50%{
+        transform: rotate(-180deg);
+    }
+    100%{
+        transform: rotate(180deg);
+    }
+}
+
+
+
+/* Стили для таймера */
+
+h1 {
+    font-weight: normal;
+    font-size: 60px;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+}
+
+.time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 15px;
+}
+
+.time h2 {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 1;
+    margin: 0 0 5px;
+}
+
+.countdown-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 215px;
+    margin: 0 auto;
+    margin-top: 15%;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 25px;
+    box-shadow: 0px 0px 10px 2px #0001;
+}
+
+.modal-window {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 170px;
+    height: 90px;
+    margin: 5px auto;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 2px #0001;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.input-field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.time-input {
+    display: block;
+    width: 60px;
+    margin-right: 10px;
+    padding: 10px 5px;
+    border-radius: 8px;
+    border: 1px solid #e8e8e8;
+}
+
+.submit-time-button {
+    position: relative;
+    width: 136px;
+    height: 30px;
+    line-height: 1;
+    padding: 0;
+    border: none;
+    border-radius: 7px;
+    background: #f2f2f2;
+}
+.submit-time-button:hover {
+    color: #000;
+    background: transparent;
+    box-shadow:none;
+}
+.submit-time-button:before,
+.submit-time-button:after{
+    content:'';
+    position:absolute;
+    top:0;
+    height:2px;
+    right: 10px;
+    width:0;
+    background: #c0a;
+    transition:400ms ease all;
+}
+
+.submit-time-button:after{
+    right:inherit;
+    top:inherit;
+    left:10px;
+    bottom:0;
+}
+.submit-time-button:hover:before,
+.submit-time-button:hover:after{
+    width: 85%;
+    transition:800ms ease all;
+}
+
+/* Крест закрытия меню */
+
+.cross-block {
+    position: absolute;
+    display: block;
+    top: 15px;
+    right: 15px;
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid #dbdbdb;
+}
+
+.cross-block span {
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+
+.cross-block span::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 15px;
+    height: 2px;
+    transform: translateY(-50%) translateX(-50%) rotate(45deg);
+    background-color: #000000;
+}
+
+.cross-block span::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 15px;
+    height: 2px;
+    transform: translateY(-50%) translateX(-50%) rotate(-45deg);
+    background-color: #000000;
+}
+
+/*=====================Styles Ball Catcher=====================*/
+
+#ball-catcher-container {
+    color: #fff;
+    font-family: 'Khula', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    text-align: center;
+}
+
+.screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.title-counter {
+    font-size: 20px;
+    color: #000;
+}
+
+#start {
+    padding: 10px 20px;
+    margin: 30px 0;
+    font-size: 1rem;
+}
+
+.time-list {
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+.time-list li {
+    margin: 10px;
+}
+
+.time-btn {
+    background-color: #C0C0C0;
+    border: 2px solid #C0C0C0;
+    color: #000;
+    cursor: pointer;
+    font-family: inherit;
+    padding: .5rem 1rem;
+    font-size: 1.5rem;
+}
+
+.time-btn:hover {
+    border: 2px solid #00acee;
+    color: #343434;
+}
+
+.board {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(118.38deg, #29323C -4.6%, #485563 200.44%);
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.circle {
+    background: linear-gradient(90deg, #16D9E3 0%, #30C7EC 47%, #46AEF7 100%);
+    position: absolute;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#new-game {
+    margin-top: 30px;
+    padding: 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 3px;
+    background: #15803d;
+    color: #fff;
 }

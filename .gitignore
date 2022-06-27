@@ -3,3 +3,4 @@ node_modules
 .cache
 dist
 .DS_Store
+./src/sound.utils/sound.parser.js
